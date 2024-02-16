@@ -1,0 +1,54 @@
+<app-background-video
+  [title]="item?.title"
+  [height]="'40vh'"
+  [src]="item?.actualimage"
+  [scale]="1.2"
+  [video]="0"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".5"
+  [initialOffset]="0">
+</app-background-video>
+<div class="spacer">
+    <div class="content">
+        <app-info-box title="{{item.title}} ({{item.year}})" id="title"  desc="{{ item?.desc }}"/>
+    </div>
+
+    <div class="credits">
+        
+        <app-info-box title="Credits" id="credits" >
+            <ng-template>
+                <div class="sdr-text">
+                    <!-- god  bless these ifs -->
+                    @if(item.director.length > 0 && item.director !== ""){
+                        <p>Director:</p>
+                        <p>{{ item.director.join(', ') }}</p>
+                    }
+
+                    @if(item.producers.length > 0 && item.producers !=""){                        
+                        <br>
+                        <p>Series Executive Producers:</p>
+                        <p>{{ item.producers.join(', ') }}</p>
+                    }
+
+                    @if(item.vfxsupe.length > 0 && item.vfxsupe !=""){
+                        <br>
+                        <p>RuneFX Visual Effects Supervisor:</p>
+                        <p>{{ item.vfxsupe.join(', ') }}</p>
+                    }
+
+                    @if(item.vfxprod.length > 0  && item.vfxprod !=""){
+                        <br>
+                        <p>RuneFX Visual Effects Producer:</p>
+                        <p>{{ item.vfxprod.join(', ') }}</p>
+                    }
+
+                    @if(item.animsupe.length > 0 && item.animsupe !=""){
+                        <br>
+                        <p>RuneFX Animation Supervisor:</p>
+                        <p>{{ item.animsupe.join(', ') }}</p>
+                    }
+                </div>
+            </ng-template>
+        </app-info-box>
+    </div >    
+</div>

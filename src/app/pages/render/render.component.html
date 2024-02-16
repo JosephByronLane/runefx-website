@@ -1,0 +1,127 @@
+<app-background-video
+  [title]="'Technologies.'"
+  [description]="'What we have made so far.'"
+  [height]="'40vh'" 
+  [src]="'https://static.chaos.com/images/assets/000/017/452/full_width_image/product-page-v-ray6-houdini-1920x600_%281%29.jpg?1670853494'"
+  [scale]="1.3"
+  [video]="0"
+  [BottomPadding]="'1%'"
+  [scrollFactor]=".5"
+  [initialOffset]="0">
+</app-background-video>
+
+<app-shitty-navbar [navItems]="navItems" id="Rendering"></app-shitty-navbar>
+<app-info-box title="Rendering" desc="At the core of RuneFX technological advancements lies the groundbreaking Runic Renderer and our innovative approach to rendering with Spherical Harmonics. The Runic Renderer, developed through years of dedicated research and development, represents a significant leap in rendering technology. It is engineered to handle complex scenes and lighting conditions with unmatched efficiency and realism.">
+</app-info-box>
+
+<app-background-video
+  [title]="'Runic Renderer'"
+  [description]="'Runic Renderer is RuneFXs multi-award-winning, state-of-the-art production physically based, unbiased spectral renderer, which has been used on many award winning feature films such as . Runic Renderer was developed at RuneFX and is in continuous active development and includes an extensive library of production-tested, physically based materials, a USD Hydra render delegate, multi-machine and cloud rendering via the Arras distributed computation framework.'"
+  [height]="'60vh'" 
+  [src]="'https://luxcorerender.org/wp-content/uploads/2017/12/the_cyber_hacker-02_01.jpg'"
+  [scale]="1.3"
+  [video]="0"
+  [button]="1"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-200"
+  [textAlignment]="'left'" 
+  [titleFontSize]="'4vh'" 
+  [descriptionFontSize]="'2vh'"
+  [ButtonText]="'Learn more.'"
+  [textWidth]="'50%'"
+  [ButtonLink]="'/render/runic-renderer'" 
+>  
+</app-background-video>
+
+<app-background-video
+  [title]="'Spherical Harmonics'"
+  [description]="'RuneFX uses spherical harmonics to store information about the effects of each light (including directional occlusion and light contribution). Originally developed to enable the incredible level of light complexity required for human skin and hair, it is now a core part of RuneFXs lighting pipeline. It is vital for the creation of realistic hair and eyes.'"
+  [height]="'60vh'" 
+  [src]="'https://pixar-community-production.s3.us-west-1.amazonaws.com/Tutorials/houdini_grooming/image47.jpg'"
+  [scale]="1.2"
+  [video]="0"
+  [button]="1"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-390"
+  [textAlignment]="'left'" 
+  [titleFontSize]="'4vh'" 
+  [descriptionFontSize]="'2vh'"
+  [textWidth]="'30%'"
+  [textBlockAlignment]="'right'"
+  [ButtonText]="'Learn more.'"
+  [ButtonLink]="'/render/spherical-harmonics'" 
+
+  >  
+</app-background-video>
+
+<app-info-box title="Simulations" id="Simulations" desc="Our stunning visuals couldn't be accomplished without our cutting-edge simulation technologies, including a fully GPU-accelerated fluid solver and an advanced rigid body solver that meticulously adheres to principles of energy conservation and scaling. The fluid solver harnesses the power of modern GPU architectures to simulate smoke, water, and a myriad of fluid-like properties with unprecedented speed and realism. Complementing this, our rigid body solver brings to the table an intelligent approach to simulating the physical behavior of solid objects, ensuring that energy conservation and scaling are accurately represented."></app-info-box>
+
+<app-background-video
+  [title]="'Axiom'"
+  [description]="'Axiom is a sparse GPU-accelerated volumetric fluid solver for computer graphics and visual effects. What sets it apart is the ability to run true sparse simulations fully on a GPU.'"
+  [height]="'60vh'" 
+  [src]="'https://player.vimeo.com/video/912094168?muted=1&autoplay=1&loop=1&transparent=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'"
+  [scale]="1.2"
+  [video]="1"
+  [button]="1"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-410"
+  [textAlignment]="'left'" 
+  [titleFontSize]="'4vh'" 
+  [descriptionFontSize]="'2vh'"
+  [textWidth]="'30%'"
+  [textBlockAlignment]="'right'"
+  [ButtonText]="'Learn more.'"
+  [ButtonLink]="'/render/axiom'" 
+
+  >  
+</app-background-video>
+
+<app-info-box title="Parallelization"  id="Parallelization" desc="RuneFXs has developed RQueue as a way to parallelize the simulating and rendering of many different elements across a distributed network. Heavy parallelization is often needed due to the complexity of scenes and final renders."></app-info-box>
+
+<app-background-video
+  [title]="'RQueue'"
+  [description]="'RQueue distributes tasks to a farm of execution servers. It manages large queues of concurrent jobs from many users, enforcing dependencies and scheduling policies. It specializes in managing render and dynamic simulation jobs submitted from Houdini, but you can customize it to work with any job from any application.'"
+  [height]="'60vh'" 
+  [src]="'https://media.sidefx.com/uploads/products/pdg/PDG_nodes_bkgd.jpg'"
+  [scale]="1.3"
+  [video]="0"
+  [button]="1"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-1150"
+  [textAlignment]="'left'" 
+  [titleFontSize]="'4vh'" 
+  [descriptionFontSize]="'2vh'"
+  [textWidth]="'30%'"
+  [textBlockAlignment]="'left'"
+  [ButtonText]="'Learn more.'"
+  [ButtonLink]="'/render/rqueue'" 
+  >  
+</app-background-video>
+
+<app-info-box title="Machine Learning"  id="Machine" desc="honestly idk what to put here  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nostrum quod eum maxime doloribus quibusdam beatae dolorum enim praesentium autem facilis modi consectetur delectus, a iusto? Distinctio exercitationem quia enim. "></app-info-box>
+<app-background-video
+  [title]="'Forge'"
+  [description]="'Forge is RuneFXs way of doing terrain. Forge is an AI Assisted terrain generating tool that allows artists to view and iterate very quickly. It is fully procedual and node based, providing an easy wrapper for artists to work on.'"
+  [height]="'60vh'" 
+  [src]="'https://i.imgur.com/z36FG7v.jpeg'"
+  [scale]="1.3"
+  [video]="0"
+  [button]="1"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-1400"
+  [textAlignment]="'left'" 
+  [titleFontSize]="'4vh'" 
+  [descriptionFontSize]="'2vh'"
+  [textWidth]="'30%'"
+  [textBlockAlignment]="'right'"
+  [ButtonText]="'Learn more.'"
+  [ButtonLink]="'/render/forge'" 
+
+  >  
+</app-background-video>

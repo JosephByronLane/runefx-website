@@ -1,0 +1,89 @@
+#splash-screen-intermitent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998; 
+    overflow: hidden; 
+    pointer-events: none; 
+}
+
+#splash-logo-intermitent {
+    max-width: 20vw; 
+}
+
+
+#splash-screen-intermitent {
+}
+  
+.fade-out {
+	-webkit-animation: fade-out var(--intermitent-loading-screen-duration) ease-out both;
+	        animation: fade-out var(--intermitent-loading-screen-duration) ease-out both;
+}
+.fade-in {
+	-webkit-animation: fade-in var(--intermitent-loading-screen-duration) ease-out both;
+	        animation: fade-in var(--intermitent-loading-screen-duration) ease-out both;
+}
+
+@-webkit-keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+.disabled {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes sweepEffect {
+    0% {
+      background-position: left;
+    }
+    100% {
+      background-position: right;
+    }
+  }
+  
+  .sweep-animation {
+    animation: sweepEffect 3s infinite;
+    background: linear-gradient(to right, var(--hover-text-color) 50%, #ffffff 50%);
+    background-size: 200% 100%;
+    background-position: left bottom;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+

@@ -1,0 +1,24 @@
+<div class="Tech-Container">
+    <div class="info-container">
+        <div class="text">
+            <div class="title">
+                <h1 class="title-text">{{title}}</h1>
+            </div>
+            <div class="desc">
+                <p class="sdr-text">{{desc}}</p>
+                @if(video===0){
+                    <ng-container *ngTemplateOutlet="contentTemplate" />
+                }
+            </div>
+
+        </div>
+        @if(video==1){
+            <div class="not-text">
+                <ng-container *ngTemplateOutlet="contentTemplate" />
+            </div>
+        }
+
+
+    </div>
+
+</div>

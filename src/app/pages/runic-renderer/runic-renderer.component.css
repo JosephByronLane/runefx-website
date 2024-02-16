@@ -1,0 +1,43 @@
+.basic-holder {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    grid-template-rows: auto; 
+    max-height: 20%; 
+    background-color: var(--triangle-before);
+}
+.basic-holder-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) ;
+    grid-template-rows: auto; 
+    height: 10%; 
+    background-color: var(--triangle-before);
+}
+.dont-fucking-go-over{
+}
+
+.basic-holder-1-1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) ;
+    grid-template-rows: auto; 
+    height: 10%; 
+    background-color: var(--triangle-before);
+}
+
+.basic-holder-4-1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) ;
+    grid-template-rows: auto; 
+    height: 15vh;
+    gap: 12vw; 
+}
+.basic-holder-4-2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) ;
+    grid-template-rows: auto; 
+    height: 10%;
+    gap: 2vw; 
+    background-color: var(--triangle-before);
+}
+.dcc-holder img{
+    max-height: 50%;
+}

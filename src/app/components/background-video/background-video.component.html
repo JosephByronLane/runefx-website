@@ -1,0 +1,17 @@
+<div class="video-container" [style.height]="height">
+    <iframe *ngIf="video === 1" loading="eager" [src]="safeSrc" frameborder="0" allow="autoplay; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  class="video-itself" id="vimeoPlayer" data-ready="true" mute="1" [style.transform]="'scale(' + scale + ')'"></iframe>
+
+    <img *ngIf="video === 0" [src]="safeSrc" class="image-itself" [style.transform]="'translateY(' + translateY + 'vh) scale(' + scale + ')'">
+    
+    <video *ngIf="video === 2" id="comp-l8vvvlh0_video" class="video-itself" role="presentation" crossorigin="anonymous" playsinline="" preload="auto" muted="" loop="" tabindex="-1" autoplay="" [src]="safeSrc" [style.transform]="'translateY(' + translateY + 'vh) scale(' + scale + ')'" ></video>
+
+    <div class="content-overlay" [ngStyle]="{ 'justify-content': getJustifyContent(textBlockAlignment) }">
+        <div class="actual-text" [ngStyle]="{'padding-bottom': BottomPadding, 'width': textWidth, 'text-align': 'left'}">
+            <h1 class="title-text" [ngStyle]="{'font-size': titleFontSize,  'text-align':textAlignment}">{{ title }}</h1>
+            <p class="sdr-text" [ngStyle]="{'font-size': descriptionFontSize,  'text-align':textAlignment}">{{ description }}</p>
+            @if(button===1){
+                <app-rbutton [sendTo]="ButtonLink" [buttonText]="ButtonText" class="action-button" [buttonAlignment]="ButtonAlignment" [loadingDuration]="LoadingDuration"/>
+            }
+        </div>
+    </div>
+</div>

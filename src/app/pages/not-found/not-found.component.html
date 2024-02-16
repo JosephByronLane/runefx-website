@@ -1,0 +1,24 @@
+<app-background-video
+  [title]="'Not so fast cowboy.'"
+  [description]="'We couldnt find what you were searching for.'"
+  [height]="'40vh'" 
+  [src]="'https://cdnb.artstation.com/p/assets/images/images/072/596/033/4k/karim-yasser-final-render-still-4k.jpg?1707759413'"
+  [scale]="1"
+  [video]="0"
+  [BottomPadding]="'1%'"
+  [scrollFactor]=".5"
+  [initialOffset]="0">
+</app-background-video>
+
+<app-info-box 
+    class="dont-fucking-go-over"
+    title="Return to home." 
+    desc="You wont find anything else here.">
+    <ng-template>
+        <app-rbutton 
+        [buttonText]="'Home'"
+        [sendTo]="''"
+        [loadingDuration]="8000"
+        />
+      </ng-template>
+</app-info-box>

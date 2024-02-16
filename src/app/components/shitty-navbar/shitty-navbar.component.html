@@ -1,0 +1,17 @@
+<div class="header-container">
+    <div class="black-part">
+
+    </div>
+    <div class="triangle-container">
+    
+    </div>
+    <div class="shittier-navbar">
+        <ul [ngStyle]="{'grid-template-columns': 'repeat(' + gridColumnCount + ', 1fr)'}">
+            @for (item of navItems; track  $index){
+                <li>
+                    <a (click)="scrollToElement(item.targetId, 0)" class="sdr-text">{{ item.text }}</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

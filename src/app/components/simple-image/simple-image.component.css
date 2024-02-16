@@ -1,0 +1,21 @@
+.image-area {
+    margin:var(--base-site-margin-lr);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    max-height: 100%;
+    
+}
+
+.image-area img {
+    width: 100%; 
+    height: 100%;
+    object-fit:contain; 
+    overflow: hidden;
+}
+
+.image-area video {
+    width: 100%; 
+    height: 100%;
+    object-fit:contain; 
+    overflow: hidden;
+}

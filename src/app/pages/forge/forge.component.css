@@ -1,0 +1,7 @@
+.basic-holder-3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) ;
+    grid-template-rows: auto; 
+    height: 10%; 
+    background-color: var(--triangle-before);
+}

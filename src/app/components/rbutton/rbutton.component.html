@@ -1,0 +1,7 @@
+<div class="button-container" [ngClass]="{
+    'align-left': buttonAlignment === 'left',
+    'align-center': buttonAlignment === 'center',
+    'align-right': buttonAlignment === 'right'
+  }">
+    <button type="button" id="button" class="sdr-text" (click)="scrollToTop(); navigate(sendTo,'',loadingDuration)" routerLinkActive="router-link-active" (click)="scrollToTop()">{{ buttonText }}</button>
+  </div>

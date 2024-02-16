@@ -1,0 +1,11 @@
+*{
+    color: var(--primary-text-color); 
+}
+
+.basic-holder-1-1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) ;
+    grid-template-rows: auto; 
+    height: 10%; 
+    background-color: var(--triangle-before);
+}

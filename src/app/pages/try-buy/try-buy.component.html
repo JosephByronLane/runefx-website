@@ -1,0 +1,104 @@
+<app-background-video
+  [title]="'Try/Buy'"
+  [description]="'Not all our tech is proprieraty.'"
+  [height]="'80vh'" 
+  [src]="'https://player.vimeo.com/video/570509560?muted=1&autoplay=1&loop=1&transparent=0&background=1&app_id=122963'"
+  [scale]="1.5"
+  [video]="1"
+  [BottomPadding]="'1%'"
+  [scrollFactor]=".5"
+  [initialOffset]="-50">
+</app-background-video>
+
+<app-info-box title="Try/Buy" desc="We offer Commercial and Non-Commercial liscences for anyone who wants them." [video]="0">
+</app-info-box>
+
+<app-background-video id="Renderer"
+    [title]="'Runic Renderer.'"
+    [description]="'Wield the power.'"
+    [height]="'30vh'" 
+    [src]="'https://cdna.artstation.com/p/assets/images/images/013/199/722/4k/tamas-gyerman-highland-final.jpg?1538514080'"
+    [scale]="1.6"
+    [video]="0"
+    [BottomPadding]="'.5vh'"
+    [scrollFactor]=".25"
+    [initialOffset]="-250"
+    [textBlockAlignment]="'center'"
+    [textAlignment]="'center'"
+    [titleFontSize]="'4vh'" 
+    [descriptionFontSize]="'2vh'"
+    [ButtonText]="'Learn more.'"
+    [textWidth]="'70%'"
+/>
+
+<div class="basic-holder-3">
+    <app-info-box title="Professional" [video]="0">
+        <ng-template>
+            <div class="sdr-text little-padding">
+                <p>Purchase Runic Renderer today</p>
+            </div>
+            <div>
+                <app-rbutton [buttonText]="'Get a quote'" [sendTo]="'hola profe, me sorprende que haya leido esto.'"/>
+            </div>        
+        </ng-template>
+      </app-info-box>
+      <app-info-box title="Non-Commercial"[video]="0">
+        <ng-template>
+            <div class="sdr-text little-padding">
+                <p>
+                    Try Non-Commercial Runic Renderer
+                </p>
+            </div>
+            <div>
+                <app-rbutton [buttonText]="'Try for free'" [sendTo]="'hola profe, me sorprende que haya leido esto.'"/>
+            </div>  
+        </ng-template>
+      </app-info-box>  
+      
+</div>
+
+<app-background-video id="Forge"
+    [title]="'Forge.'"
+    [description]="'Make your own world.'"
+    [height]="'30vh'" 
+    [src]="'https://quadspinner.com/images/aaronwestwood_namibia.webp'"
+    [scale]="1.6"
+    [video]="0"
+    [BottomPadding]="'.5vh'"
+    [scrollFactor]=".25"
+    [initialOffset]="-450"
+    [textBlockAlignment]="'center'"
+    [textAlignment]="'center'"
+    [titleFontSize]="'4vh'" 
+    [descriptionFontSize]="'2vh'"
+    [ButtonText]="'Learn more.'"
+    [textWidth]="'50%'"
+/>
+
+<div class="basic-holder-3">
+    <app-info-box title="Professional" [video]="0">
+        <ng-template>
+            <div class="sdr-text little-padding">
+                <p>Purchase Forge today</p>
+            </div>
+            <div>
+                <app-rbutton [buttonText]="'Get a quote'" [sendTo]="'hola profe, me sorprende que haya leido esto.'"/>
+            </div>        
+        </ng-template>
+      </app-info-box>
+      <app-info-box title="Non-Commercial"[video]="0">
+        <ng-template>
+            <div class="sdr-text little-padding">
+                <p>
+                    Try Forge 
+                </p>
+            </div>
+            <div>
+                <app-rbutton [buttonText]="'Try for free'" [sendTo]="'hola profe, me sorprende que haya leido esto.'"
+                />
+            </div>  
+        </ng-template>
+      </app-info-box>  
+      
+</div>
+

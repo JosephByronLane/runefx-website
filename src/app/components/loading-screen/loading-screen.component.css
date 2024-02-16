@@ -1,0 +1,70 @@
+#splash-screen-initial {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10001; 
+    overflow: hidden; 
+    pointer-events: none; 
+}
+
+#splash-logo-initial {
+    max-width: 20vw; 
+    animation: zoomIn 9s forwards;
+}
+#splash-logo-initial .cls-1 {
+    fill: #fff; 
+    transition: fill .5s;
+}
+#splash-logo-initial:hover .cls-1 {
+    fill: var(--hover-text-color); 
+}
+
+@keyframes zoomIn {
+from {
+    transform: scale(1);
+    animation-timing-function: linear; 
+}
+to {
+    transform: scale(1.2);
+    }
+}
+
+#splash-screen-initial {
+    transition: opacity 1s ease-out;
+    opacity: 1;
+}
+  
+.fade-out {
+	-webkit-animation: fade-out 1s ease-out both;
+	        animation: fade-out 1s ease-out both;
+}
+
+@-webkit-keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+.disabled {
+    opacity: 0;
+    visibility: hidden;
+}
+
+

@@ -1,0 +1,89 @@
+<app-background-video
+  [title]="'Axiom'"
+  [description]="'Real time fluid solver.'"
+  [height]="'40vh'" 
+  [src]="'https://video.wixstatic.com/video/6b65ad_9baddd87bd1d40fc96342b4dd8822059/720p/mp4/file.mp4?autoplay=1&loop=1'"
+  [scale]="2.1"
+  [video]="2"
+  [BottomPadding]="'.1vh'"
+  [scrollFactor]=".5"
+  [initialOffset]="0">
+</app-background-video>
+
+<app-info-box 
+    class="dont-fucking-go-over"
+    title="Axiom" 
+    desc="Sparse GPU Accelerated Volumetric Fluid Simulations. ">
+</app-info-box>
+
+<app-background-video
+  [title]="'Fully Deterministic'"
+  [description]="'With Metal and Cuda, Axiom can use your system memory if you run out of GPU memory. No more switching to the CPU.'"
+  [height]="'60vh'" 
+  [src]="'https://video.wixstatic.com/video/6b65ad_a38f82b2551d4c4e84748e79e9bfd7ce/720p/mp4/file.mp4'"
+  [scale]="2.1"
+  [video]="2"
+  [button]="0"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-200"
+  [textAlignment]="'left'" 
+  [titleFontSize]="'4vh'" 
+  [descriptionFontSize]="'2vh'"
+  [ButtonText]="'Learn more.'"
+  [textWidth]="'50%'"
+  [ButtonLink]="'/render/runic-renderer'" 
+>  
+</app-background-video>
+
+<app-background-video
+  [title]="'Easy to use.'"
+  [description]="'With just a few Axiom nodes (three to be exact) you can get the results shown here. With Axiom, we are striving to simplify all of your pyro needs without compromising on quality.'"
+  [height]="'60vh'" 
+  [src]="'https://video.wixstatic.com/video/6b65ad_9f9114a7669f46e2a574d2527ab509d9/720p/mp4/file.mp4'"
+  [scale]="2"
+  [video]="2"
+  [button]="0"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-200"
+  [textBlockAlignment]="'right'"
+  [titleFontSize]="'4vh'" 
+  [descriptionFontSize]="'2vh'"
+  [textWidth]="'40%'"
+  [ButtonLink]="'/render/runic-renderer'" 
+>  
+</app-background-video>
+
+
+<app-info-box 
+    class="dont-fucking-go-over"
+    title="Scales between resolutions." 
+    desc="">
+</app-info-box>
+<div class="basic-holder-1-1">
+  <app-info-box title="High resolution Simulation (250M Voxels)" id="credits" [video]="1">
+    <ng-template>
+      <app-simple-image 
+      class="dont-fucking-go-over"
+      [src]="'https://video.wixstatic.com/video/6b65ad_1f20bcd40de341bcb7276da120d4402e/720p/mp4/file.mp4'"
+      [scale]="1.3"
+      [initialOffset]="-650"
+      [scrollFactor]=".2"
+      [video]="1"
+      />
+    </ng-template>
+  </app-info-box>
+    <app-info-box title="  Low resolution Simulation      (25M Voxels)" id="credits" [video]="1">
+      <ng-template>
+        <app-simple-image 
+        class="dont-fucking-go-over"
+        [src]="'https://video.wixstatic.com/video/6b65ad_bafe044dd0eb4e028ec691791a5ab715/720p/mp4/file.mp4'"
+        [scale]="1.3"
+        [initialOffset]="-650"
+        [scrollFactor]=".2"
+        [video]="1"
+        />
+      </ng-template>
+    </app-info-box>
+</div>
