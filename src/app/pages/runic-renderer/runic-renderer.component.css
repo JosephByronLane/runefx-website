@@ -19,7 +19,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr) ;
     grid-template-rows: auto; 
-    height: 10%; 
     background-color: var(--triangle-before);
 }
 
@@ -39,5 +38,10 @@
     background-color: var(--triangle-before);
 }
 .dcc-holder img{
-    max-height: 50%;
+    max-height: 15vh;
+}
+
+.dcc{
+    display: block;
+    height: 35vh;
 }
