@@ -2,6 +2,5 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr) ;
     grid-template-rows: auto; 
-    height: 1vh; 
     background-color: var(--triangle-before);
 }
