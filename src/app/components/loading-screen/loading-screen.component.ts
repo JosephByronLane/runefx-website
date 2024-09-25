@@ -15,40 +15,16 @@ import { RouterModule } from '@angular/router';
   animations: [
   ]
 })
-export class LoadingScreenComponent implements OnInit {
+export class LoadingScreenComponent {
 
   //
   //
   // THIS IS THE BASE LOADING SCREEN
-  //
-  //
-  
-  @Input() fadeTime: number = 5;
+  // refer to loading-screen.service for the code
+  // 
 
-  show: boolean = true; 
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.startFadeOut();
-    }, this.fadeTime * 1000); 
-  }
+  //IF YOU WANT TO DISABLE IT, GO TO APP.COMPONENT.TS AND SET DEBUG=TRUE;
 
-  startFadeOut(): void {
-    const element = document.getElementById('splash-screen');
-    const logo = document.getElementById('splash-logo');
 
-    if (element && logo) {
-      element.classList.add('fade-out');
-      logo.classList.add('fade-out-tl');
-
-      setTimeout(() => {
-        this.show = false; 
-        element.classList.add('disabled');
-        element.classList.remove('fade-out');
-
-        logo.classList.add('disabled');
-        logo.classList.remove('fade-out-tl');
-      }, 1000); 
-    }
-  }
 }

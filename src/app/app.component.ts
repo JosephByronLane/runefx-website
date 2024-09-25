@@ -26,6 +26,8 @@ export class AppComponent {
   browserRefresh?: boolean;
   subscription: Subscription;
 
+  debug: boolean = false;
+
 
 
   ///omfg it took me the whole fucking 4 days to get this working
@@ -38,7 +40,10 @@ export class AppComponent {
         //when we're on home, the url is undefined because its literally nothing, so when that happens we replace it with '' so it finds the correct value.
         pathString = pathString.split('/')[1];
         if (pathString===undefined) pathString=''
-        initloader.startLoadingScreen(pathString, refreshed);         
+        if(!this.debug){
+          initloader.startLoadingScreen(pathString, refreshed);         
+
+        }
       }
     });
   }
