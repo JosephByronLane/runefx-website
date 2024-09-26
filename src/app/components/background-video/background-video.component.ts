@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { RButtonComponent } from '../rbutton/rbutton.component';
 import { NavbarStuffService } from '../../services/navbar-stuff.service';
+import { AbsoluteSourceSpan } from '@angular/compiler';
     
 @Component({
   selector: 'app-background-video',
@@ -41,7 +42,7 @@ export class BackgroundVideoComponent implements OnInit {
   ratio = this.mapRange(window.screen.width/window.screen.height, 2, .45, 3, 1);
   justifyContentStyle: string = '';
   textWidthFit = "";
-  
+  diff = Math.abs(this.ratio-2.7);
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -60,6 +61,10 @@ export class BackgroundVideoComponent implements OnInit {
       return `${halvedValue}${unit}`;
     }
   ngOnInit(): void {
+    this.scale = this.mapRange(this.ratio, 0, 1.7, 1.2 , 6)
+    console.log("ratio:" + this.ratio);
+    console.log("diff:" + this.diff);
+
     if (this.video==0){
       this.safeSrc = this.sanitizer.bypassSecurityTrustStyle('url(' + this.src + ')');
     }

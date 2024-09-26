@@ -7,10 +7,10 @@
 
 :root {
     --primary-text-color: white;
-    --primary-bg-color: #333;
+    --primary-bg-color: #333; /*og is 333*/
     --hover-text-color: #7aa3d1;
-    --triangle-before: rgb(22,22,22);
-    --triangle-after: rgb(32,32,32);
+    --triangle-before: rgb(22,22,22); /*rgb(22,22,22);*/
+    --triangle-after: rgb(32,32,32); /*rgb(32,32,32);*/
     --header-text-size: 1.5vw;
     --header-home-text-size: 4vh;
 
