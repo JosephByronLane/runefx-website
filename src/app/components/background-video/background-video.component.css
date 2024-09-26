@@ -30,35 +30,37 @@
      width: 100%; 
      height: calc(100vh - var(--header-size));
      overflow: hidden;
- }
- 
+ } 
+
  .content-overlay {
-     display: flex;
-     z-index: 0; 
-     height: 100%;
- }
- 
- .content-overlay .actual-text{
-     display: flex;
-     flex-direction: column;
-     margin: auto;
-     justify-content: center;
-     /* align-items: left; */
-     margin: var(--base-site-margin-lr);
-     padding-bottom:.9vh;
-     padding-left: 2vw;
- }
- .content-overlay .actual-text h1{
-     color: white;
-     font-size: 8vh;
-     text-shadow: 0 0 5px rgba(0,0,0,1);
- }
- 
- .content-overlay .actual-text p{
-     color: white;
-     font-size: 5vh;
-     text-shadow: 0 0 5px rgba(0,0,0,1);
- }
+    display: flex;
+    z-index: 3; 
+    height: 100%;
+}
+  
+.content-overlay .actual-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: var(--base-site-margin-lr);
+    padding-bottom: .9vh;
+    padding-left: 2vw;
+    z-index: 3; 
+  }
+  .content-overlay .actual-text h1 {
+    color: white;
+    text-shadow: 
+    0 0 1vh rgba(0, 0, 0, 1) 
+
+  }
+  
+  .content-overlay .actual-text p {
+    color: white;
+    font-size: 5vh;
+    text-shadow: 
+    0 0 1vh rgba(0, 0, 0, 1) 
+
+  }
    
  .recent-proyects{
      padding: .2vh 0vh;
@@ -82,4 +84,21 @@ button:hover {
     background-color: transparent;
     color:var(--hover-text-color);
     border: 1px solid var(--hover-text-color);
+}
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.parallax-background {
+    position: absolute;
+    top: -25%;
+    left: 0;
+    width: 100%;
+    height: 150%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transition: transform 0.1s ease-out;
 }

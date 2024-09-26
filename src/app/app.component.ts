@@ -26,7 +26,7 @@ export class AppComponent {
   browserRefresh?: boolean;
   subscription: Subscription;
 
-  debug: boolean = false;
+  debug: boolean = true;
 
 
 

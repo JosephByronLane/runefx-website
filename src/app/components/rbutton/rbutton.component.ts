@@ -20,6 +20,7 @@ export class RButtonComponent {
   @Input() buttonText: string = 'See All';
   @Input() buttonAlignment: 'left' | 'center' | 'right' = 'center';
   @Input() sendTo: string ="";
+  @Input() isExternalWebpage: boolean = false;
   @Input() loadingDuration:number = 2000;
   scrollToTop() {
     window.scrollTo({
@@ -30,6 +31,19 @@ export class RButtonComponent {
   }
 
   constructor(private temploading: LoadingScreenService) {}
+
+  handleNavigation() {
+    if (this.isExternalWebpage) {
+      //navigate outside the website
+
+      //TODO: Try to make this angular rather than standard JS/TS 
+      window.open(this.sendTo, '_blank');
+    } else {
+      //nagivate inside the website
+      this.navigate(this.sendTo, '', this.loadingDuration);
+    }
+  }
+
   navigate(path:string, id:string, duration:number) {
     this.temploading.switchWithLoading(path, id, duration);
   }
