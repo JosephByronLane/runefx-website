@@ -40,7 +40,7 @@ export class BackgroundVideoComponent implements OnInit {
   safeSrc!: SafeResourceUrl;
   ratio = this.mapRange(window.screen.width/window.screen.height, 2, .45, 3, 1);
   justifyContentStyle: string = '';
-  textWidthFit = "100";
+  textWidthFit = "";
 
 
   constructor(
