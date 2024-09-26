@@ -41,7 +41,7 @@ export class BackgroundVideoComponent implements OnInit {
   ratio = this.mapRange(window.screen.width/window.screen.height, 2, .45, 3, 1);
   justifyContentStyle: string = '';
   textWidthFit = "";
-
+  
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -60,7 +60,12 @@ export class BackgroundVideoComponent implements OnInit {
       return `${halvedValue}${unit}`;
     }
   ngOnInit(): void {
-    this.safeSrc = this.sanitizer.bypassSecurityTrustStyle('url(' + this.src + ')');
+    if (this.video==0){
+      this.safeSrc = this.sanitizer.bypassSecurityTrustStyle('url(' + this.src + ')');
+    }
+    else{
+      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
+    }
     this.justifyContentStyle = this.getJustifyContent(this.textBlockAlignment);
     this.textWidthFit = this.textWidth;
     if (this.ratio<1.7){
@@ -77,28 +82,28 @@ export class BackgroundVideoComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(): void {
-    console.log(this.ratio);
-
-    const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
-    const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
-    const containerRect = container.getBoundingClientRect();
-    const containerTop = containerRect.top + window.scrollY;
-    const containerHeight = containerRect.height;
-    const windowHeight = window.innerHeight;
-
-    const scrolled = window.scrollY+400;
-    const offset = scrolled - containerTop;
-
-    const parallaxSpeed = 0.2;
-    const translateY = offset * parallaxSpeed;
-
-    const padding = containerHeight * 0.25; 
-    const maxTranslateY = padding;
-    const minTranslateY = -padding;
-
-    if (scrolled > containerTop - windowHeight && scrolled < containerTop + containerHeight) {
-      const boundedTranslateY = Math.max(minTranslateY, Math.min(translateY, maxTranslateY));
-      this.renderer.setStyle(parallax, 'transform', `translateY(${boundedTranslateY}px)`);
+    if (this.video==0){
+      const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
+      const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
+      const containerRect = container.getBoundingClientRect();
+      const containerTop = containerRect.top + window.scrollY;
+      const containerHeight = containerRect.height;
+      const windowHeight = window.innerHeight;
+  
+      const scrolled = window.scrollY+400;
+      const offset = scrolled - containerTop;
+  
+      const parallaxSpeed = 0.2;
+      const translateY = offset * parallaxSpeed;
+  
+      const padding = containerHeight * 0.25; 
+      const maxTranslateY = padding;
+      const minTranslateY = -padding;
+  
+      if (scrolled > containerTop - windowHeight && scrolled < containerTop + containerHeight) {
+        const boundedTranslateY = Math.max(minTranslateY, Math.min(translateY, maxTranslateY));
+        this.renderer.setStyle(parallax, 'transform', `translateY(${boundedTranslateY}px)`);
+      }
     }
   }
 
