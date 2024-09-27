@@ -67,4 +67,8 @@ to {
     visibility: hidden;
 }
 
-
+@media(max-width: 1300px){
+    #splash-logo-initial {
+        max-width: 30vh; 
+    }
+}
