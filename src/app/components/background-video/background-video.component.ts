@@ -39,10 +39,18 @@ export class BackgroundVideoComponent implements OnInit {
 
   //sanitize url since angular complains otherwise 
   safeSrc!: SafeResourceUrl;
-  ratio = this.mapRange(window.screen.width/window.screen.height, 2, .45, 3, 1);
+
+  ////include in helper function
+
+  ratio = window.screen.width/window.screen.height;
+  ratioR = Number((this.ratio).toFixed(1))
+  diff = Math.abs(this.ratio-1.7);
+
   justifyContentStyle: string = '';
   textWidthFit = "";
-  diff = Math.abs(this.ratio-2.7);
+
+  inputScale = 0;
+
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -61,10 +69,10 @@ export class BackgroundVideoComponent implements OnInit {
       return `${halvedValue}${unit}`;
     }
   ngOnInit(): void {
-    this.scale = this.mapRange(this.ratio, 0, 1.7, 1.2 , 6)
-    console.log("ratio:" + this.ratio);
-    console.log("diff:" + this.diff);
+    this.inputScale = this.scale;
+    this.scale = this.mapRange(this.diff, 0.1, 1.7,this.inputScale , 6)
 
+    //sanitize either the url for video or image, depending
     if (this.video==0){
       this.safeSrc = this.sanitizer.bypassSecurityTrustStyle('url(' + this.src + ')');
     }
@@ -74,7 +82,6 @@ export class BackgroundVideoComponent implements OnInit {
     this.justifyContentStyle = this.getJustifyContent(this.textBlockAlignment);
     this.textWidthFit = this.textWidth;
     if (this.ratio<1.7){
-      console.log("Detecting responsive mode.")
         this.textAlignment = "center"
         this.ButtonAlignment = "center"
         this.textWidthFit = '100%'
@@ -87,6 +94,7 @@ export class BackgroundVideoComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(): void {
+    //only apply parallax to bg images, not to video
     if (this.video==0){
       const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
       const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
@@ -114,7 +122,7 @@ export class BackgroundVideoComponent implements OnInit {
 
  //using as a getter rather than a function
   getJustifyContent(alignment: string): string {
-    if (this.ratio < 1.3) {
+    if (this.diff > .8) {
       return 'center';
     } else {
       switch (alignment) {
@@ -130,7 +138,11 @@ export class BackgroundVideoComponent implements OnInit {
     }
   }
 
+//include in helper function
   mapRange(x: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
-    return ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin;
+    const result = ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin;
+
+    // Clamp the result between outMin and outMax to prevent overshooting
+    return Math.max(outMin, Math.min(result, outMax));
   }
 }

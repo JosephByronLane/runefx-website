@@ -16,6 +16,12 @@ export class ShowcaseGridComponent {
   @Input() gridX!: number;
   @Input() gridY!: number;
   @Input() showcaseList!: any[]; 
+  @Input() isExternalWebpage:boolean = false;
+
+//include in helper function
+  ratio = window.screen.width/window.screen.height;
+  ratioR = Number((this.ratio).toFixed(1))
+  diff = Math.abs(this.ratio-1.7);
 
   //generates grids for the showcase grid
   generateGridColumns(): string {

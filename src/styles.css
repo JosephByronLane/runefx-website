@@ -23,6 +23,8 @@
     --border-radius: .5vh;
 
     --intermitent-loading-screen-duration:.25s;
+
+    --responsive-threshhold: 1150px
   }
 
 *{

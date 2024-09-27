@@ -15,4 +15,15 @@ export class InfoBoxComponent {
 
   //this is used to add custom html to the infobox
   @ContentChild(TemplateRef) contentTemplate!: TemplateRef<any>;
+
+
+  //HALVING FONT SIZE for responsiveness.
+  halveFontSize(fontSize: string): string {
+    const numericValue = parseFloat(fontSize);
+    const unit = fontSize.replace(numericValue.toString(), '');
+
+    const halvedValue = numericValue / 1.5;
+
+    return `${halvedValue}${unit}`;
+  }
 }

@@ -17,3 +17,16 @@
 .credits p{
     width: 100%;
 }
+
+
+@media (max-width: 1150px) {
+    .spacer{
+        flex-direction: column;
+    }
+    .content{
+        width: 100%;
+    }
+    .credits{
+        width: 100%
+    }
+}
