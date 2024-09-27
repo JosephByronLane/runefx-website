@@ -2,7 +2,6 @@
     margin:var(--base-site-margin-lr);
     border-radius: var(--border-radius);
     overflow: hidden;
-    max-height: 100%;
     
 }
 

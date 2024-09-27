@@ -27,7 +27,7 @@ export class BackgroundVideoComponent implements OnInit {
   @Input() ButtonLink:string=''
   @Input() isExternalWebpage: boolean = false;
   @Input() BottomPadding:string=".9vh";
-  @Input() ButtonAlignment: 'left' | 'center' | 'right' ='left'
+  @Input() ButtonAlignment: 'left' | 'center' | 'right' ='left';
   @Input() scrollFactor: number = 0.5; 
   @Input() initialOffset: number = 0; 
   @Input() textAlignment: 'left' | 'center' | 'right' = 'left';
@@ -36,7 +36,7 @@ export class BackgroundVideoComponent implements OnInit {
   @Input() textWidth: string = '100%'; 
   @Input() textBlockAlignment: 'left' | 'center' | 'right' = 'left';
   @Input() LoadingDuration: number = 2000;
-
+  @Input() showTextWhenResponsive: Boolean = false;
   //sanitize url since angular complains otherwise 
   safeSrc!: SafeResourceUrl;
 
@@ -50,7 +50,7 @@ export class BackgroundVideoComponent implements OnInit {
   textWidthFit = "";
 
   inputScale = 0;
-
+  showDesc:boolean = true;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -81,13 +81,19 @@ export class BackgroundVideoComponent implements OnInit {
     }
     this.justifyContentStyle = this.getJustifyContent(this.textBlockAlignment);
     this.textWidthFit = this.textWidth;
-    if (this.ratio<1.7){
+    if (this.diff>.8){
         this.textAlignment = "center"
         this.ButtonAlignment = "center"
         this.textWidthFit = '100%'
-        this.titleFontSize = this.halveFontSize(this.titleFontSize);
         this.descriptionFontSize = this.halveFontSize(this.descriptionFontSize);
+        if(!this.showTextWhenResponsive){
+          this.showDesc = false;
+        }
+        else{
+          this.titleFontSize = this.halveFontSize(this.titleFontSize);
+        }
     }
+
   }
   translateY=this.initialOffset;
 
