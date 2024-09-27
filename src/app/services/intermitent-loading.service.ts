@@ -9,8 +9,12 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class IntermitentLoadingService {
   private loadingscreenelement: any
 
-  private debug:boolean = true;
+  //
+  // USE THIS FLAG TO KEEP THE INTERMITENT SCREEN ON, IT WONT FADE
+  //
 
+  private keepOn:boolean = false;
+  private enabled:boolean=true;
   constructor(private router: Router) {
   }
 
@@ -22,7 +26,7 @@ export class IntermitentLoadingService {
 
   private hideLoadingScreen() {
     setTimeout(() => {
-      if(!this.debug){
+      if(!this.keepOn){
         this.loadingscreenelement = document.getElementById('splash-screen-intermitent');
         this.loadingscreenelement.classList.add("fade-out");
         this.loadingscreenelement.classList.remove("fade-in");
@@ -33,22 +37,23 @@ export class IntermitentLoadingService {
 
   
   switchWithLoading(routePath: string, scrollToId?: string, duration: number = 3000) {
-    console.log("Switching intermitently to loading lmao")
-    this.showLoadingScreen(); //we enable loading screen
-    setTimeout(() => {
-      this.router.navigate([routePath]).then(() => { //switch to it
-        if (scrollToId) { //see if we gotta scroll somewhere
-          setTimeout(() => { 
-            const element = document.getElementById(scrollToId);
-            element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 0); // scroll to shit
-        }
-      });
-    }, 500); 
-
-    setTimeout(() => {
-      this.hideLoadingScreen();
-    }, duration); //then hide loading screen 
-
+    if(this.enabled){
+      this.showLoadingScreen(); //we enable loading screen
+      setTimeout(() => {
+        this.router.navigate([routePath]).then(() => { //switch to it
+          if (scrollToId) { //see if we gotta scroll somewhere
+            setTimeout(() => { 
+              const element = document.getElementById(scrollToId);
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 0); // scroll to shit
+          }
+        });
+      }, 500); 
+  
+      setTimeout(() => {
+        this.hideLoadingScreen();
+      }, duration); //then hide loading screen 
+  
+    }
   }
 }

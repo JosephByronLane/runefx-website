@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, Input, OnInit, input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { NavbarStuffService } from '../../services/navbar-stuff.service';
@@ -21,15 +21,43 @@ export class SimpleImageComponent implements OnInit{
   safeSrc!: SafeResourceUrl;
 
   //dom sanitizer cause angular or something  complained about unsafe websites
-  constructor(private sanitizer: DomSanitizer, public scroller:NavbarStuffService) {}
+  constructor(
+    private sanitizer: DomSanitizer,
+     public scroller:NavbarStuffService,
+     private el: ElementRef,
+     private renderer: Renderer2
+    ) {}
 
   //sanitize the url so that  bitchass don't complain
   ngOnInit(): void {
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
   }
   
-  translateY=this.initialOffset;
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    this.translateY = this.scroller.onWindowScroll(window.scrollY,this.scrollFactor,this.initialOffset);
-  }}
+  onWindowScroll(): void {
+    //only apply parallax to bg images, not to video
+    if (this.video==0){
+      const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
+      const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
+      const containerRect = container.getBoundingClientRect();
+      const containerTop = containerRect.top + window.scrollY;
+      const containerHeight = containerRect.height;
+      const windowHeight = window.innerHeight;
+  
+      const scrolled = window.scrollY+400;
+      const offset = scrolled - containerTop;
+  
+      const parallaxSpeed = 0.2;
+      const translateY = offset * parallaxSpeed;
+  
+      const padding = containerHeight * 0.25; 
+      const maxTranslateY = padding;
+      const minTranslateY = -padding;
+  
+      if (scrolled > containerTop - windowHeight && scrolled < containerTop + containerHeight) {
+        const boundedTranslateY = Math.max(minTranslateY, Math.min(translateY, maxTranslateY));
+        this.renderer.setStyle(parallax, 'transform', `translateY(${boundedTranslateY}px)`);
+      }
+    }
+  }
+}

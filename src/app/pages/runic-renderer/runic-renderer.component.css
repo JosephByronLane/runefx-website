@@ -26,7 +26,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr) ;
     grid-template-rows: auto; 
-    height: 15vh;
+    height: auto;
     gap: 12vw; 
 }
 .basic-holder-4-2 {
@@ -43,5 +43,20 @@
 
 .dcc{
     display: block;
-    height: 35vh;
+    height: 100%;
+}
+
+
+@media(max-width: 1500px){
+    .basic-holder-3{
+        grid-template-columns: repeat(1, 1fr) ;
+    }
+    .basic-holder-4-1{
+        grid-template-columns: repeat(2, 1fr) ;
+
+    }
+    .basic-holder-4-2{
+        grid-template-columns: repeat(2, 1fr) ;
+
+    }
 }
