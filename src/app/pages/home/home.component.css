@@ -2,3 +2,8 @@
     color: var(--primary-text-color);
 }
 
+@media (max-width: 1150px) {
+    .grid{
+        width: 100%;
+    }
+}

@@ -23,6 +23,17 @@ export class ShowcaseGridComponent {
   ratioR = Number((this.ratio).toFixed(1))
   diff = Math.abs(this.ratio-1.7);
 
+
+  ngOnInit(): void {
+    if (this.diff>.7){
+      this.gridX = 2;
+      this.gridY = 3;
+    }
+    if (this.diff>1){
+      this.gridX = 1;
+    }
+  }
+
   //generates grids for the showcase grid
   generateGridColumns(): string {
     return `repeat(${this.gridX}, 1fr)`;

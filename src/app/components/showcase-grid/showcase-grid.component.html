@@ -1,6 +1,6 @@
 <div class="grid-container" [style.grid-template-columns]="generateGridColumns()" [style.grid-template-rows]="generateGridRows()">
     @for (item of showcaseList; track $index) {
-      <app-simple-box [item]="item"></app-simple-box>
+      <app-simple-box [item]="item" class="showcasebox"></app-simple-box>
     } @empty {
         <div></div>
       <div class="sdr-text center">No shows this year.</div>

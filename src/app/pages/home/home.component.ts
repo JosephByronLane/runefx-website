@@ -22,9 +22,18 @@ import { VfxDataFetcherService } from '../../services/vfx-data-fetcher.service';
 export class HomeComponent implements OnInit{
   ShowcaseList:any[] = [];
   constructor(private loadingScreenService: LoadingScreenService, private VfxData: VfxDataFetcherService) {}
+  
+  ratio = window.screen.width/window.screen.height;
+  ratioR = Number((this.ratio).toFixed(1))
+  diff = Math.abs(this.ratio-1.7);
+  
   ngOnInit(): void {
+    console.log(this.diff);
     this.ShowcaseList = this.VfxData.getAllItems();
     this.ShowcaseList = this.ShowcaseList.slice(0, 9)
+    if(this.diff>.7){
+      this.ShowcaseList = this.ShowcaseList.slice(0, 6)
+    }
   }
 
 }
