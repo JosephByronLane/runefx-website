@@ -15,7 +15,7 @@ import { LoadingScreenService  } from '../../services/loading-screen.service';
   styleUrl: './vfx.component.css'
 })
 export class VfxComponent implements OnInit{
-
+  itemCount:number = 0;
   ShowcaseList:any[]=[ ]
   filteredShowcaseList: any[] = [];
   public browserRefresh?: boolean;
@@ -28,6 +28,7 @@ export class VfxComponent implements OnInit{
   //and 2) see if brower refreshed (for loading screen)
   ngOnInit() {
     this.ShowcaseList = this.VfxData.getAllItems();
+    this.itemCount = this.navItems.length;
   }
 
   //filter shit by year so i can just dump it all into the huge json

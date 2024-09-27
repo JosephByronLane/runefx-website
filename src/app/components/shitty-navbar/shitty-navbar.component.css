@@ -73,10 +73,22 @@
 .header-container {
     display: flex;
     flex-direction: row;
-    height: 5vh; 
     position: sticky;
     top: 7.6vh;
     z-index: 9997;
     background: var(--triangle-after);
 
  }
+
+ @media (max-width: 1150px) {
+    .black-part{
+        display: none;
+
+    }
+    .triangle-container{
+        display: none;
+    }
+    .shittier-navbar{
+        margin: 1vh 16vw 1vh 16vw;
+    }
+}
