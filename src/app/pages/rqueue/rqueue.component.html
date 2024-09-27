@@ -7,12 +7,15 @@
   [video]="0"
   [BottomPadding]="'.1vh'"
   [scrollFactor]=".5"
-  [initialOffset]="-50">
+  [initialOffset]="-50"
+  [showTextWhenResponsive]="true"
+
+  >
 </app-background-video>
 
 <app-info-box 
     class="dont-fucking-go-over"
-    title="What is" 
+    title="What it is" 
     desc="RQueue can describe large parts of your pipeline to ensure that assets are being loaded, processed and saved out efficiently. The fine-grained dependencies can ensure a minimum of compute upon a given change.">
 </app-info-box>
 
@@ -30,7 +33,10 @@
   [titleFontSize]="'4vh'" 
   [descriptionFontSize]="'2vh'"
   [ButtonText]="'Learn more.'"
-  [textWidth]="'50%'"
+  [textWidth]="'50%'"  
+  [showTextWhenResponsive]="true"
+  [halveTextSize]="false"
+
   />
 
   <app-background-video
@@ -48,4 +54,7 @@
   [descriptionFontSize]="'2vh'"
   [ButtonText]="'Learn more.'"
   [textWidth]="'50%'"
+  [showTextWhenResponsive]="true"
+  [halveTextSize]="false"
+
   />

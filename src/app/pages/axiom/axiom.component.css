@@ -5,3 +5,11 @@
     height: 10%; 
     background-color: var(--triangle-before);
 }
+
+
+@media(max-width: 1200px){
+    .basic-holder-1-1{
+        grid-template-columns: repeat(1, 1fr) ;
+    }
+
+}

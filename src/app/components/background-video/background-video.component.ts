@@ -37,6 +37,7 @@ export class BackgroundVideoComponent implements OnInit {
   @Input() textBlockAlignment: 'left' | 'center' | 'right' = 'left';
   @Input() LoadingDuration: number = 2000;
   @Input() showTextWhenResponsive: Boolean = false;
+  @Input() halveTextSize: Boolean = true;
   //sanitize url since angular complains otherwise 
   safeSrc!: SafeResourceUrl;
 
@@ -85,7 +86,9 @@ export class BackgroundVideoComponent implements OnInit {
         this.textAlignment = "center"
         this.ButtonAlignment = "center"
         this.textWidthFit = '100%'
-        this.descriptionFontSize = this.halveFontSize(this.descriptionFontSize);
+        if(this.halveTextSize){
+          this.descriptionFontSize = this.halveFontSize(this.descriptionFontSize);
+        }
         if(!this.showTextWhenResponsive){
           this.showDesc = false;
         }
