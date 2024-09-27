@@ -2,12 +2,15 @@
   [title]="'Forge'"
   [description]="'Machine Learning based terrain generation.'"
   [height]="'40vh'" 
-  [src]="'https://quadspinner.com/images/samkrug_himalaya.webp'"
+  [src]="'https://blog.quadspinner.com/content/images/size/w2000/2023/10/aaron_hero_title.webp'"
   [scale]="1.2"
   [video]="0"
   [BottomPadding]="'1%'"
   [scrollFactor]=".5"
-  [initialOffset]="-50">
+  [initialOffset]="-50"
+  [showTextWhenResponsive]="true"
+  [halveTextSize]="false">
+  
 </app-background-video>
 
 <app-info-box 
@@ -20,7 +23,7 @@
   [title]="'Easy & Fast'"
   [description]="'Forge lets artists decide the final look much quicker compared to competing technologies.'"
   [height]="'50vh'" 
-  [src]="'https://quadspinner.com/users/AlexAlvarez.webp'"
+  [src]="'https://blog.quadspinner.com/content/images/size/w2000/2022/05/QuadSpinner_Gaea_-Dev-_-1.3.1-_-crumble-x-003.tor-_04-17-53-AM.jpg'"
   [scale]="1.2"
   [video]="0"
   [BottomPadding]="'1vh'"
@@ -31,13 +34,15 @@
   [descriptionFontSize]="'2vh'"
   [ButtonText]="'Learn more.'"
   [textWidth]="'30%'"
+  [showTextWhenResponsive]="true"
+  [halveTextSize]="false"
   />
 
   <app-background-video
   [title]="'Complex looks and simulations wrapped into simple, usable tools.'"
   [description]="'Forges features an efficient, minimal, artist-friendly user interface with scientific nodes wrapped in easy-to-comprehend settings. The realtime viewport allows you to see your terrain in crisp detail with previous to up to 16 million polygons.'"
   [height]="'50vh'" 
-  [src]="'https://quadspinner.com/users/AaronVR_0.webp'"
+  [src]="'https://blog.quadspinner.com/content/images/size/w2000/2022/02/blue.jpg'"
   [scale]="1.3"
   [video]="0"
   [BottomPadding]="'1vh'"
@@ -48,13 +53,15 @@
   [descriptionFontSize]="'2vh'"
   [ButtonText]="'Learn more.'"
   [textWidth]="'50%'"
+  [showTextWhenResponsive]="true"
+  [halveTextSize]="false"
   />
 
   <app-background-video
   [title]="'Non destructive workflow.'"
   [description]="'Forge features the most advanced Machine learning powered graph system in CG terrains, howered by many different AI Models and carefully designed nodes.'"
   [height]="'50vh'" 
-  [src]="'https://quadspinner.com/images/aaronwestwood_desert.webp'"
+  [src]="'https://blog.quadspinner.com/content/images/2024/08/gaea-ui2.webp'"
   [scale]="1.3"
   [video]="0"
   [BottomPadding]="'1vh'"
@@ -65,14 +72,16 @@
   [descriptionFontSize]="'2vh'"
   [ButtonText]="'Learn more.'"
   [textWidth]="'50%'"
+  [showTextWhenResponsive]="true"
+  [halveTextSize]="false"
   />
 
   <div class="basic-holder-3">
-    <app-info-box title="Lush Alpine biome with snow, ruvers and lakes." id="credits" [video]="1">
+    <app-info-box title="A snowy mountanous range." id="credits" [video]="1">
         <ng-template>
             <app-simple-image 
             class="dont-fucking-go-over"
-            [src]="'https://quadspinner.com/images/biome_alpine.webp'"
+            [src]="'https://blog.quadspinner.com/content/images/2024/07/Gaea_2.0_09-23-34-AM.jpg'"
             [scale]="1.2"
             [initialOffset]="-300"
             [scrollFactor]=".1"
@@ -80,11 +89,11 @@
             />
         </ng-template>
       </app-info-box>
-      <app-info-box title="Arid biome with desert vegetation and sandstone." id="credits" [video]="1">
+      <app-info-box title="Arid biome with desert sandstone." id="credits" [video]="1">
         <ng-template>
           <app-simple-image 
           class="dont-fucking-go-over"
-          [src]="'https://quadspinner.com/images/biome_arid.webp'"
+          [src]="'https://blog.quadspinner.com/content/images/size/w2000/2024/08/erosion2x.jpg'"
           [scale]="1.2"
           [initialOffset]="-300"
           [scrollFactor]=".1"
@@ -92,11 +101,11 @@
           />
         </ng-template>
       </app-info-box>
-      <app-info-box title="Hoodoo-filled rocky biome with a cannyon." id="credits" [video]="1">
+      <app-info-box title="A lush, rocky mountainscape with grass and snow." id="credits" [video]="1">
         <ng-template>
           <app-simple-image 
           class="dont-fucking-go-over"
-          [src]="'https://quadspinner.com/images/biome_desert.webp'"
+          [src]="'https://blog.quadspinner.com/content/images/size/w2000/2022/11/QuadSpinner_Gaea_-Dev-_-1.3.1-_-slumpRock-006.tor-_10-25-47-PM.jpg'"
           [scale]="1.2"
           [initialOffset]="-400"
           [scrollFactor]=".1"
@@ -108,7 +117,7 @@
         <ng-template>
           <app-simple-image 
           class="dont-fucking-go-over"
-          [src]="'https://quadspinner.com/mp4/Shield.webp'"
+          [src]="'https://blog.quadspinner.com/content/images/size/w2000/2022/04/QuadSpinner_Gaea_-Dev-_-1.3.1-_-sandstonia.tor-_04-13-16-PM.jpg'"
           [scale]="1.2"
           [initialOffset]="-400"
           [scrollFactor]=".1"
@@ -116,28 +125,5 @@
           />
         </ng-template>
       </app-info-box>
-      <app-info-box title="Create infinite mutations that retain the original look." id="credits" [video]="1">
-        <ng-template>
-          <app-simple-image 
-          class="dont-fucking-go-over"
-          [src]="'https://quadspinner.com/mp4/Merged.webp'"
-          [scale]="1.3"
-          [initialOffset]="-500"
-          [scrollFactor]=".1"
-          [video]="0"
-          />
-        </ng-template>
-      </app-info-box>
-      <app-info-box title="Easily plan and art direct your environment." id="credits" [video]="1">
-        <ng-template>
-          <app-simple-image 
-          class="dont-fucking-go-over"
-          [src]="'https://quadspinner.com/images/biome_all.webp'"
-          [scale]="1.3"
-          [initialOffset]="-500"
-          [scrollFactor]=".1"
-          [video]="0"
-          />
-        </ng-template>
-      </app-info-box>
+      
 </div>
