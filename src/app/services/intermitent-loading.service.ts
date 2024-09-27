@@ -9,6 +9,8 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class IntermitentLoadingService {
   private loadingscreenelement: any
 
+  private debug:boolean = true;
+
   constructor(private router: Router) {
   }
 
@@ -20,9 +22,12 @@ export class IntermitentLoadingService {
 
   private hideLoadingScreen() {
     setTimeout(() => {
-      this.loadingscreenelement = document.getElementById('splash-screen-intermitent');
-      this.loadingscreenelement.classList.add("fade-out");
-      this.loadingscreenelement.classList.remove("fade-in");
+      if(!this.debug){
+        this.loadingscreenelement = document.getElementById('splash-screen-intermitent');
+        this.loadingscreenelement.classList.add("fade-out");
+        this.loadingscreenelement.classList.remove("fade-in");
+      }
+
     }, 500);
   }
 

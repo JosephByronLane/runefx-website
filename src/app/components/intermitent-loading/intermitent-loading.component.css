@@ -87,3 +87,9 @@
     color: transparent;
   }
 
+@media (max-width: 1500px){
+  #splash-logo-intermitent {
+    max-width: 20vh; 
+  }
+}
+
