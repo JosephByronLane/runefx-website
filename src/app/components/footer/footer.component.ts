@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
-import { LoadingScreenService } from '../../services/loading-screen.service';
 import { NavbarStuffService } from '../../services/navbar-stuff.service';
-
+import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 @Component({
   selector: 'app-footer',
   standalone: true,
@@ -12,6 +11,6 @@ import { NavbarStuffService } from '../../services/navbar-stuff.service';
 })
 export class FooterComponent {
 
-  constructor(private router: Router, private route: ActivatedRoute, public temploading: LoadingScreenService, public navbarTools:NavbarStuffService) {}
+  constructor(private router: Router, private route: ActivatedRoute, public temploading: IntermitentLoadingService, public navbarTools:NavbarStuffService) {}
 
 }

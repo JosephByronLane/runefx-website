@@ -26,6 +26,8 @@ export class AppComponent {
   browserRefresh?: boolean;
   subscription: Subscription;
 
+
+  //DEBUG FLAG TO STOP INITIAL LOADING SCREEN
   debug: boolean = true;
 
 

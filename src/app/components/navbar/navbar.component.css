@@ -184,11 +184,11 @@
     align-items: center;
     background-color: var(--triangle-after);
     position: fixed;  
-    width: 30vw;          
+    width: 40vw;          
     height: 40%;        
     z-index: 9999;
     top: 100%; 
-    left: 70%;
+    left: 60%;
     transition: transform 1s ease-in-out; 
 }
 .mobile-menu ul {

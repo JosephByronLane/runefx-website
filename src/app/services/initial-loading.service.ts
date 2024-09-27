@@ -8,6 +8,18 @@ export let browserRefresh = false;
   providedIn: 'root'
 })
 export class InitialLoadingService {
+
+
+
+  //
+  //
+  // IF YOURE LOOKING TO DISABLE THE LOADING SCREEN GO INTO APP.COMPONENT.TS
+  //
+  //
+  //
+
+
+  
   //we add the class of .fade-out so that it begins fading out.
   //who would of thought, eh?
   startFadeOut(): void {

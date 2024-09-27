@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LoadingScreenService } from '../../services/loading-screen.service';
+import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 
 @Component({
   selector: 'app-rbutton',
@@ -30,7 +30,7 @@ export class RButtonComponent {
     });
   }
 
-  constructor(private temploading: LoadingScreenService) {}
+  constructor(private temploading: IntermitentLoadingService) {}
 
   handleNavigation() {
     if (this.isExternalWebpage) {

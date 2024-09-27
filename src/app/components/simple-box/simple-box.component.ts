@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingScreenService } from '../../services/loading-screen.service';
+import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { VfxDataFetcherService } from '../../services/vfx-data-fetcher.service';
 import { NavbarStuffService } from '../../services/navbar-stuff.service';
 
@@ -13,7 +13,7 @@ import { NavbarStuffService } from '../../services/navbar-stuff.service';
 })
 export class SimpleBoxComponent {
   @Input() item: any; 
-  constructor(private router: Router, private loader:LoadingScreenService, private dataFetches :VfxDataFetcherService, public navbarTools:NavbarStuffService) {}
+  constructor(private router: Router, private loader:IntermitentLoadingService, private dataFetches :VfxDataFetcherService, public navbarTools:NavbarStuffService) {}
 
   localDataFetcher :any; //im lazy, judge me.
 

@@ -79,6 +79,10 @@
     background: var(--triangle-after);
 
  }
+ .shittier-navbar ul li a{
+    margin: auto;
+    display: flex;
+ }
 
  @media (max-width: 1150px) {
     .black-part{
@@ -90,5 +94,10 @@
     }
     .shittier-navbar{
         margin: 1vh 16vw 1vh 16vw;
+
     }
+    .shittier-navbar ul{
+        gap: 4vw
+    }
+
 }

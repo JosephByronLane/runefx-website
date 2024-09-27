@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IntermitentLoadingComponent } from '../intermitent-loading/intermitent-loading.component';
-import { LoadingScreenService } from '../../services/loading-screen.service';
+import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { CommonModule } from '@angular/common';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 
@@ -37,7 +37,7 @@ export class NavbarComponent {
   closeMenu() {
     this.isMenuOpen = false;
   }
-  constructor(private temploading: LoadingScreenService) {}
+  constructor(private temploading: IntermitentLoadingService) {}
   navigate(path:string, id:string, duration:number) {
     this.temploading.switchWithLoading(path, id, duration);
   }

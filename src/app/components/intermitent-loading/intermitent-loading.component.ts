@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingScreenService } from '../../services/loading-screen.service';
+import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 

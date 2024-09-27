@@ -5,7 +5,7 @@ import { ShowcaseGridComponent } from '../../components/showcase-grid/showcase-g
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { VfxDataFetcherService } from '../../services/vfx-data-fetcher.service';
 import { InitialLoadingService, browserRefresh } from '../../services/initial-loading.service';
-import { LoadingScreenService  } from '../../services/loading-screen.service';
+import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 
 @Component({
   selector: 'app-vfx',

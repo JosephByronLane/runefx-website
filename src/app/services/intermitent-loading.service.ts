@@ -6,7 +6,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class LoadingScreenService {
+export class IntermitentLoadingService {
   private loadingscreenelement: any
 
   constructor(private router: Router) {
