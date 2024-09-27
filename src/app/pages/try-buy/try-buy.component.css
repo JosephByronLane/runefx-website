@@ -9,3 +9,9 @@
 .little-padding{
     padding-bottom: 2vh;
 }
+
+@media(max-width: 800px){
+    .basic-holder-3{
+        grid-template-columns: repeat(1, 1fr) ;
+    } 
+}
