@@ -24,9 +24,9 @@ jobs:
       # Build the Docker image
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx-helloworld .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/runefx-website .
 
       # Push the Docker image to Docker Hub
       - name: Push Docker image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/nginx-helloworld
+          docker push ${{ secrets.DOCKER_USERNAME }}/runefx-website
