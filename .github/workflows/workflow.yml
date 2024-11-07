@@ -48,7 +48,7 @@ jobs:
 
         #if shit dont work add sudo
         run: |        
-          docker pull your-dockerhub-username/your-repo-name:latest
+          docker pull joemama7/runefx-website:latest
           docker stop your-container-name || true
           docker rm your-container-name || true
           docker run -d --name runefx-website -p 80:80 joemama7/runefx-website:latest
