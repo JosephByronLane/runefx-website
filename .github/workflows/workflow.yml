@@ -8,8 +8,6 @@ on:
 
 jobs:
 
-
-
   # Build and push the Docker image to Docker Hub
   build:
     runs-on: ubuntu-latest
@@ -36,14 +34,13 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/runefx-website
 
-  #AWS EC2 Deployment
+  # AWS EC2 Deployment
   deploy:
     name: Deploy to AWS EC2
     needs: build
     runs-on: self-hosted
     steps:
       - name: Log in to Docker Hub
-        if: ${{ secrets.DOCKER_TOKEN }}
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Pull and Run Docker Image
@@ -51,4 +48,4 @@ jobs:
           docker pull your-dockerhub-username/your-repo-name:latest
           docker stop your-container-name || true
           docker rm your-container-name || true
-          docker run -d --name your-container-name -p 80:80 your-dockerhub-username/your-repo-name:latest
+          docker run -d --name runefx-website -p 80:80 joemama7/runefx-website:latest
