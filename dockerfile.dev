@@ -1,0 +1,17 @@
+# Use a Node.js base image
+FROM node:21
+
+# Set the working directory
+WORKDIR /runefx-website
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Expose the development server port
+EXPOSE 4200
+
+# Start the Angular development server
+CMD ["npx", "ng", "serve", "--host", "0.0.0.0"]

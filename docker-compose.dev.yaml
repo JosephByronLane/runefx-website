@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  angular-app:
+    build:
+      context: .
+      dockerfile: dockerfile.dev
+    volumes:
+      - .:/runefx-website
+      - /runefx-website/node_modules
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=development
