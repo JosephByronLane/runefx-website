@@ -3,6 +3,7 @@ name: Docker Build & Upload
 on:
   push:
     branches:
+      #change this to main later, bruh
       - dev
 
 
