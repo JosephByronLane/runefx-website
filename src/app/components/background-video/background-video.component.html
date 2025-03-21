@@ -5,12 +5,10 @@
             <div [style.backgroundImage]="safeSrc" class="parallax-background"></div>
         }
         @case (1) {
-            <iframe loading="eager" [src]="safeSrc" frameborder="0" allow="autoplay; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  class="video-itself" id="vimeoPlayer" data-ready="true" mute="1" [style.transform]="'scale(' + scale + ')'"></iframe>
-
+            <iframe loading="eager" [src]="safeSrc" frameborder="0" allow="autoplay; fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="video-itself" id="vimeoPlayer" data-ready="true" muted [style.transform]="'scale(' + scale + ')'" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
         }
         @case (2) {
             <video *ngIf="video === 2" id="comp-l8vvvlh0_video" class="video-itself" role="presentation" crossorigin="anonymous" playsinline="" preload="auto" muted="" loop="" tabindex="-1" autoplay="" [src]="safeSrc" [style.transform]="'translateY(' + translateY + 'vh) scale(' + scale + ')'" ></video>
-
         }
     }   
 

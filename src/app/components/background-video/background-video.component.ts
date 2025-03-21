@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges, input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges, AfterViewInit, NgZone, input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { RButtonComponent } from '../rbutton/rbutton.component';
@@ -13,7 +13,7 @@ import { AbsoluteSourceSpan } from '@angular/compiler';
   templateUrl: './background-video.component.html',
   styleUrl: './background-video.component.css'
 })
-export class BackgroundVideoComponent implements OnInit {
+export class BackgroundVideoComponent implements OnInit, AfterViewInit {
 
   //jesus fuck
   @Input() title: string = '';
@@ -53,53 +53,159 @@ export class BackgroundVideoComponent implements OnInit {
   inputScale = 0;
   showDesc:boolean = true;
 
+  private videoPlayer: HTMLIFrameElement | null = null;
+  private videoLoadAttempts = 0;
+  private maxLoadAttempts = 3;
+
   constructor(
     private sanitizer: DomSanitizer,
-     public scroller:NavbarStuffService,
-     private el: ElementRef,
-     private renderer: Renderer2
-    ) {}
+    public scroller: NavbarStuffService,
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private ngZone: NgZone
+  ) {}
 
-    //HALVING FONT SIZE for responsiveness.
+  //HALVING FONT SIZE for responsiveness.
   halveFontSize(fontSize: string): string {
-      const numericValue = parseFloat(fontSize);
-      const unit = fontSize.replace(numericValue.toString(), '');
+    const numericValue = parseFloat(fontSize);
+    const unit = fontSize.replace(numericValue.toString(), '');
   
-      const halvedValue = numericValue / 1.5;
+    const halvedValue = numericValue / 1.5;
   
-      return `${halvedValue}${unit}`;
-    }
+    return `${halvedValue}${unit}`;
+  }
+
   ngOnInit(): void {
     this.inputScale = this.scale;
-    this.scale = this.mapRange(this.diff, 0.1, 1.7,this.inputScale , 6)
+    this.scale = this.mapRange(this.diff, 0.1, 1.7, this.inputScale, 6);
 
     //sanitize either the url for video or image, depending
-    if (this.video==0){
+    if (this.video == 0) {
       this.safeSrc = this.sanitizer.bypassSecurityTrustStyle('url(' + this.src + ')');
+    } else {
+      // Make sure URL has all required parameters for autoplay
+      let videoUrl = this.src;
+      if (this.video == 1 && !videoUrl.includes('autoplay=1')) {
+        videoUrl += videoUrl.includes('?') ? '&autoplay=1' : '?autoplay=1';
+      }
+      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
     }
-    else{
-      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
-    }
+    
     this.justifyContentStyle = this.getJustifyContent(this.textBlockAlignment);
     this.textWidthFit = this.textWidth;
-    if (this.diff>.8){
-        this.textAlignment = "center"
-        this.ButtonAlignment = "center"
-        this.textWidthFit = '100%'
-        if(this.halveTextSize){
-          this.descriptionFontSize = this.halveFontSize(this.descriptionFontSize);
-        }
-        if(!this.showTextWhenResponsive){
-          this.showDesc = false;
-        }
-        else{
-          this.titleFontSize = this.halveFontSize(this.titleFontSize);
-        }
+    if (this.diff > .8) {
+      this.textAlignment = "center";
+      this.ButtonAlignment = "center";
+      this.textWidthFit = '100%';
+      if (this.halveTextSize) {
+        this.descriptionFontSize = this.halveFontSize(this.descriptionFontSize);
+      }
+      if (!this.showTextWhenResponsive) {
+        this.showDesc = false;
+      } else {
+        this.titleFontSize = this.halveFontSize(this.titleFontSize);
+      }
     }
 
   }
+  
+  ngAfterViewInit(): void {
+    if (this.video === 1) {
+      this.setupVideoPlayer();
+    }
+  }
+  
   translateY=this.initialOffset;
 
+  private setupVideoPlayer(): void {
+    // Use a timeout to ensure DOM is fully loaded
+    setTimeout(() => {
+      this.videoPlayer = this.el.nativeElement.querySelector('#vimeoPlayer') as HTMLIFrameElement;
+      
+      if (this.videoPlayer) {
+        // Ensure iframe is fully loaded
+        this.videoPlayer.addEventListener('load', () => {
+          this.ensureVideoPlays();
+        });
+        
+        // Also try to initialize in case the load event already fired
+        this.ensureVideoPlays();
+      } else if (this.videoLoadAttempts < this.maxLoadAttempts) {
+        // Retry if videoPlayer isn't found yet
+        this.videoLoadAttempts++;
+        this.setupVideoPlayer();
+      }
+    }, 500);
+  }
+  
+  private ensureVideoPlays(): void {
+    if (this.videoPlayer) {
+      // Add visibility observer to play/pause based on visibility
+      this.setupVisibilityObserver();
+      
+      // Try both postMessage and standard iframe API methods for Vimeo
+      try {
+        const vimeoPlayer = this.videoPlayer.contentWindow;
+        if (vimeoPlayer) {
+          // Try Vimeo API postMessage
+          vimeoPlayer.postMessage({
+            method: 'play',
+            value: 'play'
+          }, '*');
+          
+          // Ensure autoplay parameter is in URL
+          if (!this.videoPlayer.src.includes('autoplay=1')) {
+            let newSrc = this.videoPlayer.src;
+            newSrc += newSrc.includes('?') ? '&autoplay=1' : '?autoplay=1';
+            this.videoPlayer.src = newSrc;
+          }
+          
+          // Force reload iframe if it seems stuck
+          if (this.videoLoadAttempts > 0) {
+            const currentSrc = this.videoPlayer.src;
+            this.videoPlayer.src = '';
+            setTimeout(() => {
+              if (this.videoPlayer) {
+                this.videoPlayer.src = currentSrc;
+              }
+            }, 100);
+          }
+        }
+      } catch (e) {
+        console.error('Error playing Vimeo video:', e);
+      }
+    }
+  }
+  
+  private setupVisibilityObserver(): void {
+    if (!this.videoPlayer) return;
+    
+    // Use Intersection Observer to monitor visibility
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Only send messages when visibility changes significantly
+        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+          // Element is visible - try to play
+          try {
+            const vimeoPlayer = this.videoPlayer?.contentWindow;
+            if (vimeoPlayer) {
+              vimeoPlayer.postMessage({
+                method: 'play',
+                value: 'play'
+              }, '*');
+            }
+          } catch (e) {
+            console.error('Error playing video when visible:', e);
+          }
+        }
+      });
+    }, {
+      root: null,
+      threshold: [0.5]
+    });
+    
+    observer.observe(this.videoPlayer);
+  }
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(): void {
