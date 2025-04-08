@@ -4,17 +4,33 @@ import { IntermitentLoadingComponent } from '../intermitent-loading/intermitent-
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { CommonModule } from '@angular/common';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
-
+import { IDropdownItem } from '../../interfaces/IDropdownItem';
+import { DropdownComponent } from '../dropdown/dropdown.component';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule, ClickOutsideDirective ],
+  imports: [RouterLink, CommonModule, ClickOutsideDirective, DropdownComponent ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
 
-  ///ive seen this function before. Im sure i can generalize it and put it in a service
+  technologiesDropdownItems: IDropdownItem[] = [
+    {
+      id: '1',
+      title: 'Rendering',
+      items: [
+        {
+          id: '1',
+          displayString: 'Runic Renderer',
+          link: '/runic-renderer'
+        },
+        
+      ]
+    }
+  ]
+
+  ///TODO: ive seen this function before. Im sure i can generalize it and put it in a service
   scrollToTop() {
     window.scrollTo({
       top: 0,

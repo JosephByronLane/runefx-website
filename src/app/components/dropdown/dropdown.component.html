@@ -1,1 +1,14 @@
-<p>dropdown works!</p>
+<div class="dropdown-container">
+    <div class="dropdown-label">
+      <span>{{ dropdownItem.title }}</span>
+    </div>
+    <div class="dropdown-content">
+      <ul>
+        @for (item of dropdownItem.items; track $index) {
+          <li (click)="navigate(item.link, '', 2000)">
+            <a>{{ item.displayString }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
