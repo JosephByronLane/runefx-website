@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 import { IDropdownItem } from '../../interfaces/IDropdownItem';
 import { DropdownComponent } from '../dropdown/dropdown.component';
+import { UtilsService } from '../../services/utils.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -153,13 +154,7 @@ export class NavbarComponent {
 ]
 
   ///TODO: ive seen this function before. Im sure i can generalize it and put it in a service
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }
+
   calculatedPadding  = this.mapRange(window.screen.width/window.screen.height, 2, 1, 5, 1)
   isMenuOpen = false;
   menuState = 'out';
@@ -175,7 +170,7 @@ export class NavbarComponent {
   closeMenu() {
     this.isMenuOpen = false;
   }
-  constructor(private temploading: IntermitentLoadingService) {}
+  constructor(private temploading: IntermitentLoadingService, public utils: UtilsService) {}
   navigate(path:string, id:string, duration:number) {
     this.temploading.switchWithLoading(path, id, duration);
   }
