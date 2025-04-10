@@ -15,20 +15,33 @@ import { DropdownComponent } from '../dropdown/dropdown.component';
 })
 export class NavbarComponent {
 
-  technologiesDropdownItems: IDropdownItem[] = [
-    {
-      id: '1',
-      title: 'Rendering',
-      items: [
+  technologiesDropdownItem: IDropdownItem = {
+    id: '1',
+    title: 'Rendering',
+    items: [
         {
           id: '1',
           displayString: 'Runic Renderer',
           link: '/runic-renderer'
         },
-        
+        {
+          id: '2',
+          displayString: 'Arnold Renderer',
+          link: '/arnold-renderer'
+        },
+        {
+          id: '3',
+          displayString: 'Cycles Renderer',
+          link: '/cycles-renderer'
+        },
+        {
+          id: '4',
+          displayString: 'Redshift Renderer',
+          link: '/redshift-renderer'
+        },      
+          
       ]
-    }
-  ]
+  }
 
   ///TODO: ive seen this function before. Im sure i can generalize it and put it in a service
   scrollToTop() {
