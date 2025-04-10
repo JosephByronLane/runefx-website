@@ -1,67 +1,55 @@
 .dropdown-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-label {
-    cursor: pointer;
-    color: white;
-    transition: color 0.5s;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-  }
-  .dropdown-label span{
-    transition: color 0.5s;
-  }
+  position: relative;
+  display: inline-block;
+}
 
-  .dropdown-label:hover span{
-    color: var(--hover-text-color);
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--triangle-after);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 9999;
-    border-radius: var(--border-radius);
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 2vh;
-    padding: 0.5vh 0;
-    top: 100%;
-    left: 0;
-    margin-top: 0.5vh;
-  }
-  
-  .dropdown-container:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown-content ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .dropdown-content li {
-    padding: 1vh 1vw;
-    transition: background-color 0.3s;
-  }
-  
-  .dropdown-content li:hover {
-    background-color: var(--triangle-before);
-  }
-  
-  .dropdown-content a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  .dropdown-content a:hover {
-    color: var(--hover-text-color);
-  }
+.dropdown-label {
+  cursor: pointer;
+  color: white;
+  transition: color 0.5s;
+}
+
+.dropdown-label:hover {
+  color: var(--hover-text-color);
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: var(--triangle-after);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 9999;
+  border-radius: var(--border-radius);
+  padding: 0.5vh 0;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5vh;
+  overflow: hidden;
+}
+
+.dropdown-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-content li {
+  padding: 1vh 1vw;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content li:hover {
+  background-color: var(--triangle-before);
+}
+
+.dropdown-content a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.dropdown-content a:hover {
+  color: var(--hover-text-color);
+}

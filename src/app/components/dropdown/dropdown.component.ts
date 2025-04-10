@@ -3,13 +3,29 @@ import { IDropdownItem } from '../../interfaces/IDropdownItem';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
+import { state, style, trigger, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-dropdown',
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.css'
+  styleUrl: './dropdown.component.css',
+  animations: [
+    trigger('dropdownAnimation', [
+      state('closed', style({
+        opacity: 0,
+        height: 0,
+        visibility: 'hidden'
+      })),
+      state('open', style({
+        opacity: 1,
+        height: '*',
+        visibility: 'visible'
+      })),
+      transition('closed <=> open', animate('0.3s ease-in-out')),
+    ])
+  ]
 })
 export class DropdownComponent {
   @Input() dropdownItem: IDropdownItem = {
@@ -35,5 +51,10 @@ export class DropdownComponent {
   //TODO: make a helper function to navigate to internal and external links
   navigate(path:string, id:string, duration:number) {
     this.tempLoadingService.switchWithLoading(path, id, duration);
+  }
+
+  toggleDropdown(event: MouseEvent ) {
+    event.stopPropagation();
+    this.isOpen = !this.isOpen;
   }
 }
