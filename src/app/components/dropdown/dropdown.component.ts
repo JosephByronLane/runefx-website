@@ -54,8 +54,5 @@ export class DropdownComponent {
     this.tempLoadingService.switchWithLoading(path, id, duration);
   }
 
-  toggleDropdown(event: MouseEvent ) {
-    event.stopPropagation();
-    this.isOpen = !this.isOpen;
-  }
+
 }

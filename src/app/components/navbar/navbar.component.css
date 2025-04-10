@@ -73,7 +73,7 @@
     align-items: center;
     justify-content: space-between; 
     width: 100%;
-    padding: .5% 1% .5% 5%;
+    padding: .5% 2% .5% 2%;
     z-index: 1;
     background-color: var(--triangle-after);
 }
@@ -97,16 +97,6 @@
     margin: auto;
     display: flex;
     justify-content: center;
-}
-
-.tabs-container ul li a{
-    text-decoration: none; 
-    color: white;
-    cursor: pointer;
-    transition: color .5s;
-    flex-grow: 1; 
-    text-shadow: 0 0 5px rgba(0,0,0,1);
-    width: 100%;    
 }
 
 .tabs-container li a:hover {
