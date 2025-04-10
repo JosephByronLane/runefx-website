@@ -31,6 +31,7 @@ export class DropdownComponent {
   @Input() dropdownItem: IDropdownItem = {
       id: '1',
       title: 'You forgot to set the items',
+      link: '/',
       items: [
         {
           id: '1',

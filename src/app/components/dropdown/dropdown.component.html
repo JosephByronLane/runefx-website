@@ -1,5 +1,5 @@
 <div class="dropdown-container" (mouseenter)="isOpen = true" (mouseleave)="isOpen = false">
-    <div class="dropdown-label">
+    <div class="dropdown-label" (click)="navigate(dropdownItem.link, '', 2000)">
       <span>{{ dropdownItem.title }}</span>
     </div>
     <div class="dropdown-content" [@dropdownAnimation]="isOpen ? 'open' : 'closed'">

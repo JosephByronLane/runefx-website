@@ -8,5 +8,6 @@ export interface IDropdownListItem {
 export interface IDropdownItem{
     id: string;
     title:string;
+    link: string;
     items: IDropdownListItem[];
 }

@@ -3,20 +3,21 @@
   display: inline-block;
 }
 
-.dropdown-label {
+.dropdown-label span {
   cursor: pointer;
   color: white;
   transition: color 0.5s;
 }
 
-.dropdown-label:hover {
+.dropdown-label span:hover {
   color: var(--hover-text-color);
 }
 
 .dropdown-content {
   position: absolute;
   background-color: var(--triangle-after);
-  min-width: 160px;
+  min-width: 10vw;
+  transform: translateX(-3vw);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 9999;
   border-radius: var(--border-radius);
@@ -48,6 +49,7 @@
   display: block;
   cursor: pointer;
   transition: color 0.3s;
+  font-size: 2vh;
 }
 
 .dropdown-content a:hover {

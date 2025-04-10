@@ -15,33 +15,87 @@ import { DropdownComponent } from '../dropdown/dropdown.component';
 })
 export class NavbarComponent {
 
-  technologiesDropdownItem: IDropdownItem = {
+    dropdownItems: IDropdownItem[] = [
+
+  {
     id: '1',
-    title: 'Rendering',
+    title: 'Showcase',
+    link: '/vfx',
     items: [
-        {
-          id: '1',
-          displayString: 'Runic Renderer',
-          link: '/runic-renderer'
-        },
-        {
-          id: '2',
-          displayString: 'Arnold Renderer',
-          link: '/arnold-renderer'
-        },
-        {
-          id: '3',
-          displayString: 'Cycles Renderer',
-          link: '/cycles-renderer'
-        },
-        {
-          id: '4',
-          displayString: 'Redshift Renderer',
-          link: '/redshift-renderer'
-        },      
-          
-      ]
-  }
+      {
+        id: '1',
+        displayString: '2025',
+        link: '/vfx#2025'
+      },
+      {
+        id: '2',
+        displayString: '2024',
+        link: '/vfx#2024'
+      },
+      {
+        id: '3',
+        displayString: '2023',
+        link: '/vfx#2023'
+      },
+      {
+        id: '4',
+        displayString: '2022',
+        link: '/vfx#2022'
+      },
+      {
+        id: '5',
+        displayString: 'Further back',
+        link: '/vfx#2021'
+      },  
+        
+    ]
+  },
+  {
+    id: '2',
+    title: 'Technologies',
+    link: '/render',
+    items: [
+      {
+        id: '1',
+        displayString: 'Rendering',
+        link: '/render'
+      },
+      {
+        id: '2',
+        displayString: 'Simulation',
+        link: '/render#Simulations'
+      },
+      {
+        id: '3',
+        displayString: 'Parallelization',
+        link: '/render#Parallelization'
+      },
+      {
+        id: '4',
+        displayString: 'Machine Learning',
+        link: '/render#MachineLearning'
+      },
+    ]
+  },
+  {
+    id: '3',
+    title: 'Try/Buy',
+    link: '/try-buy',
+    items: [
+      {
+        id: '1',
+        displayString: 'Runic Renderer',
+        link: '/try-buy'
+      },
+      {
+        id: '2',
+        displayString: 'Forge',
+        link: '/try-buy'
+      }
+    ]
+  },
+
+]
 
   ///TODO: ive seen this function before. Im sure i can generalize it and put it in a service
   scrollToTop() {

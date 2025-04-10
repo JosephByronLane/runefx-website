@@ -26,10 +26,13 @@
     <div class="tabs-container">
         <ul>
             <li class="home-tab"><a   routerLinkActive="active-link" class="title-nav" (click)="scrollToTop(); navigate('','',7000)">Home</a></li>
-            <li><a class="title-nav"  routerLinkActive="active-link"  (click)="scrollToTop(); navigate('vfx','',500)">Showcase</a></li>
+            @for (item of dropdownItems; track item.id) {
+                <li><app-dropdown [dropdownItem]="item"></app-dropdown></li>
+            }
+            <!-- <li><a class="title-nav"  routerLinkActive="active-link"  (click)="scrollToTop(); navigate('vfx','',500)">Showcase</a></li>
             <li><app-dropdown [dropdownItem]="technologiesDropdownItem"></app-dropdown></li>
             <LI><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('try-buy','',5000)">Try/Buy</a></LI>
-            <li><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('about','',500)">About</a></li>
+            <li><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('about','',500)">About</a></li> -->
         </ul>
     </div>
     <div class="hamburger-holder">
