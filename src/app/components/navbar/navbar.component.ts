@@ -155,7 +155,7 @@ export class NavbarComponent {
 
   ///TODO: ive seen this function before. Im sure i can generalize it and put it in a service
 
-  calculatedPadding  = this.mapRange(window.screen.width/window.screen.height, 2, 1, 5, 1)
+  calculatedPadding  = this.utils.mapRange(window.screen.width/window.screen.height, 2, 1, 5, 1)
   isMenuOpen = false;
   menuState = 'out';
 
@@ -175,9 +175,7 @@ export class NavbarComponent {
     this.temploading.switchWithLoading(path, id, duration);
   }
   //add to helper service
-  mapRange(x: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
-    return ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin;
-  }
+
 
 
 }

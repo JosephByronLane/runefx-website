@@ -15,5 +15,7 @@ export class UtilsService {
     });
   }
 
-  
+  mapRange(x: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
+    return ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin;
+  }
 }
