@@ -1,12 +1,17 @@
 .dropdown-container {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 
 .dropdown-label span {
   cursor: pointer;
   color: white;
   transition: color 0.5s;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .dropdown-label span:hover {
@@ -16,8 +21,7 @@
 .dropdown-content {
   position: absolute;
   background-color: var(--triangle-after);
-  min-width: 10vw;
-  transform: translateX(-3vw);
+  width: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 9999;
   border-radius: var(--border-radius);
@@ -54,4 +58,9 @@
 
 .dropdown-content a:hover {
   color: var(--hover-text-color);
+}
+
+.home-tab{
+  padding-bottom: 2%;
+  font-size: var(--header-home-text-size);
 }

@@ -1,5 +1,5 @@
 <div class="dropdown-container" (mouseenter)="isOpen = true" (mouseleave)="isOpen = false">
-    <div class="dropdown-label" (click)="navigate(dropdownItem.link, '', 2000)">
+    <div class="dropdown-label" (click)="navigate(dropdownItem.link, '', 2000)"  [ngClass]="{'home-tab': dropdownItem.title.toLowerCase() === 'home'}">
       <span>{{ dropdownItem.title }}</span>
     </div>
     <div class="dropdown-content" [@dropdownAnimation]="isOpen ? 'open' : 'closed'">
