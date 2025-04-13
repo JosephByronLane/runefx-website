@@ -18,13 +18,13 @@ import { UtilsService } from '../../services/utils.service';
     trigger('textFadeInUp', [
       state('hidden', style({
         opacity: 0,
-        transform: 'translateY(1vh)'
+        transform: 'translateY(5vh)'
       })),
       state('visible', style({
         opacity: 1,
         transform: 'translateY(0)'
       })),
-      transition('hidden <=> visible', animate('0.5s ease-in-out'))
+      transition('hidden => visible', animate('0.5s ease-out'))
     ])
   ]
 })
@@ -61,11 +61,12 @@ export class BackgroundVideoComponent implements OnInit {
   //the parent element of the title-text and description-text
   @ViewChild('textContainerElement') textContainerElement!: ElementRef;
 
+  private isInitiallyVisible: boolean = false;
+
   //sanitize url since angular complains otherwise 
   safeSrc!: SafeResourceUrl;
 
   ////include in helper function
-
   ratio = window.screen.width/window.screen.height;
   ratioR = Number((this.ratio).toFixed(1))
   diff = Math.abs(this.ratio-1.7);
@@ -130,16 +131,26 @@ export class BackgroundVideoComponent implements OnInit {
     if (this.video==0){
       this.updateVideoParallax();
     }
+    this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
+  } 
 
+  ngAfterViewInit() {    
+    this.updateVideoParallax();    
+    this.isInitiallyVisible = this.utils.isElementInView(this.textContainerElement);
+    if (this.isInitiallyVisible){
+      this.textAnimationState = 'visible';
+      this.textContainerElement.nativeElement.classList.add('no-animation');
+    }
   }
+
   updateVideoParallax(){
     const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
     const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
     
     this.utils.calculateParallax(container, parallax, this.renderer);
   }
-
   
+
  //using as a getter rather than a function
   getJustifyContent(alignment: string): string {
     if (this.diff > .8) {
@@ -159,8 +170,4 @@ export class BackgroundVideoComponent implements OnInit {
   }
 
 
-
-  ngAfterViewInit() {
-    this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
-  }
 }
