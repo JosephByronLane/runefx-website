@@ -53,7 +53,7 @@ export class BackgroundVideoComponent implements OnInit {
   @Input() LoadingDuration: number = 2000;
   @Input() showTextWhenResponsive: Boolean = false;
   @Input() halveTextSize: Boolean = true;
-  @Input() credits: string = 'No credits';
+  @Input() credits: string = '';
 
   
   textAnimationState: 'hidden' | 'visible' = 'hidden';
