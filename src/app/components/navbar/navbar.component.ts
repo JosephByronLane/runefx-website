@@ -7,6 +7,7 @@ import { ClickOutsideDirective } from '../../directives/click-outside.directive'
 import { IDropdownItem } from '../../interfaces/IDropdownItem';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { UtilsService } from '../../services/utils.service';
+import { items as navbarItems } from '../../data/navbarItems.json';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -16,142 +17,7 @@ import { UtilsService } from '../../services/utils.service';
 })
 export class NavbarComponent {
 
-    dropdownItems: IDropdownItem[] = [
-      {
-        id: '0',
-        title: 'Home',
-        link: '/',
-        items: []
-      },
-    {
-      id: '1',
-      title: 'Showcase',
-      link: '/vfx',
-      items: [
-        {
-          id: '1',
-          displayString: '2025',
-          link: '/vfx#2025'
-        },
-        {
-          id: '2',
-          displayString: '2024',
-          link: '/vfx#2024'
-        },
-        {
-          id: '3',
-          displayString: '2023',
-          link: '/vfx#2023'
-        },
-        {
-          id: '4',
-          displayString: '2022',
-          link: '/vfx#2022'
-        },
-        {
-          id: '5',
-          displayString: 'Further back',
-          link: '/vfx#2021'
-        },  
-          
-      ]
-    },
-    {
-      id: '2',
-      title: 'Technologies',
-      link: '/render',
-      items: [
-        {
-          id: '1',
-          displayString: 'Rendering',
-          link: '/render'
-        },
-        {
-          id: '2',
-          displayString: 'Simulation',
-          link: '/render#Simulations'
-        },
-        {
-          id: '3',
-          displayString: 'Parallelization',
-          link: '/render#Parallelization'
-        },
-        {
-          id: '4',
-          displayString: 'Machine Learning',
-          link: '/render#MachineLearning'
-        },
-      ]
-    },
-    {
-      id: '3',
-      title: 'Try/Buy',
-      link: '/try-buy',
-      items: [
-        {
-          id: '1',
-          displayString: 'Runic Renderer',
-          link: '/try-buy'
-        },
-        {
-          id: '2',
-          displayString: 'Forge',
-          link: '/try-buy'
-        }
-      ]
-    },
-    {
-      id: '4',
-      title: 'Community',
-      link: '/community',
-      items: [
-        {
-          id: '1',
-          displayString: "Releases",
-          link: '/blog'
-        },
-        {
-          id: '2',
-          displayString: "Forum",
-          link: '/forum'
-        },
-        {
-          id: '3',
-          displayString: "Gallery",
-          link: '/gallery'
-        },  
-        
-      ]
-    },
-    {
-      id: '5',
-      title: 'Support',
-      link: '/support',
-      items: [
-
-        {
-          id: '1',
-          displayString: "Documentation",
-          link: '/documentation'
-        },
-        {
-          id: '2',
-          displayString: "FAQ",
-          link: '/faq'
-        },
-        {
-          id: '3',
-          displayString: "Forums",
-          link: '/forum'
-        },
-        {
-          id: '4',
-          displayString: "Sample Scenes",
-          link: '/sample-scenes'
-        },
-      ]
-    }
-]
+    dropdownItems: IDropdownItem[] = navbarItems;
 
   ///TODO: ive seen this function before. Im sure i can generalize it and put it in a service
 
