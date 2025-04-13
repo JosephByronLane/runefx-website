@@ -1,17 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges, input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild, input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { RButtonComponent } from '../rbutton/rbutton.component';
 import { NavbarStuffService } from '../../services/navbar-stuff.service';
 import { AbsoluteSourceSpan } from '@angular/compiler';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { UtilsService } from '../../services/utils.service';
     
 @Component({
   selector: 'app-background-video',
   standalone: true,
   imports: [CommonModule, RouterLink, RButtonComponent],
   templateUrl: './background-video.component.html',
-  styleUrl: './background-video.component.css'
+  styleUrl: './background-video.component.css',
+  animations: [
+    trigger('textFadeInUp', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateY(1vh)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateY(0)'
+      })),
+      transition('hidden <=> visible', animate('0.5s ease-in-out'))
+    ])
+  ]
 })
 export class BackgroundVideoComponent implements OnInit {
 
@@ -38,6 +53,14 @@ export class BackgroundVideoComponent implements OnInit {
   @Input() LoadingDuration: number = 2000;
   @Input() showTextWhenResponsive: Boolean = false;
   @Input() halveTextSize: Boolean = true;
+  @Input() credits: string = '';
+
+  
+  textAnimationState: 'hidden' | 'visible' = 'hidden';
+
+  //the parent element of the title-text and description-text
+  @ViewChild('textContainerElement') textContainerElement!: ElementRef;
+
   //sanitize url since angular complains otherwise 
   safeSrc!: SafeResourceUrl;
 
@@ -57,9 +80,10 @@ export class BackgroundVideoComponent implements OnInit {
     private sanitizer: DomSanitizer,
      public scroller:NavbarStuffService,
      private el: ElementRef,
-     private renderer: Renderer2
+     private renderer: Renderer2,
+     private utils: UtilsService
     ) {}
-
+                                   
     //HALVING FONT SIZE for responsiveness.
   halveFontSize(fontSize: string): string {
       const numericValue = parseFloat(fontSize);
@@ -71,7 +95,7 @@ export class BackgroundVideoComponent implements OnInit {
     }
   ngOnInit(): void {
     this.inputScale = this.scale;
-    this.scale = this.mapRange(this.diff, 0.1, 1.7,this.inputScale , 6)
+    this.scale = this.utils.mapRange(this.diff, 0.1, 1.7,this.inputScale , 6, true)
 
     //sanitize either the url for video or image, depending
     if (this.video==0){
@@ -96,7 +120,6 @@ export class BackgroundVideoComponent implements OnInit {
           this.titleFontSize = this.halveFontSize(this.titleFontSize);
         }
     }
-
   }
   translateY=this.initialOffset;
 
@@ -107,25 +130,9 @@ export class BackgroundVideoComponent implements OnInit {
     if (this.video==0){
       const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
       const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
-      const containerRect = container.getBoundingClientRect();
-      const containerTop = containerRect.top + window.scrollY;
-      const containerHeight = containerRect.height;
-      const windowHeight = window.innerHeight;
-  
-      const scrolled = window.scrollY+400;
-      const offset = scrolled - containerTop;
-  
-      const parallaxSpeed = 0.2;
-      const translateY = offset * parallaxSpeed;
-  
-      const padding = containerHeight * 0.25; 
-      const maxTranslateY = padding;
-      const minTranslateY = -padding;
-  
-      if (scrolled > containerTop - windowHeight && scrolled < containerTop + containerHeight) {
-        const boundedTranslateY = Math.max(minTranslateY, Math.min(translateY, maxTranslateY));
-        this.renderer.setStyle(parallax, 'transform', `translateY(${boundedTranslateY}px)`);
-      }
+      
+      const boundedTranslateY = this.utils.calculateParallax(container);
+      this.renderer.setStyle(parallax, 'transform', `translateY(${boundedTranslateY}px)`);
     }
   }
 
@@ -147,11 +154,9 @@ export class BackgroundVideoComponent implements OnInit {
     }
   }
 
-//include in helper function
-  mapRange(x: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
-    const result = ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin;
 
-    // Clamp the result between outMin and outMax to prevent overshooting
-    return Math.max(outMin, Math.min(result, outMax));
+
+  ngAfterViewInit() {
+    this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
   }
 }

@@ -2,6 +2,7 @@
     <div class="dropdown-label" (click)="navigate(dropdownItem.link, '', 2000)"  [ngClass]="{'home-tab': dropdownItem.title.toLowerCase() === 'home'}">
       <span>{{ dropdownItem.title }}</span>
     </div>
+    @if (dropdownItem.items.length > 0) {
     <div class="dropdown-content" [@dropdownAnimation]="isOpen ? 'open' : 'closed'">
       <ul>
         @for (item of dropdownItem.items; track $index) {
@@ -11,4 +12,5 @@
         }
       </ul>
     </div>
+  }
   </div>
