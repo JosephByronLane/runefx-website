@@ -30,8 +30,10 @@ export class UtilsService {
 
     const rect = element.nativeElement.getBoundingClientRect();
     const windowHeight = window.innerHeight;
+    const isInView = rect.top <= windowHeight * 0.8;
 
-    return rect.top <= windowHeight * 0.8;
+    console.log(`Checked element ${element.nativeElement.id} and it is ${isInView ? 'in view' : 'not in view'}`);
+    return isInView;
   }
 
   calculateParallax(containerElement: HTMLElement, parallaxElement: HTMLElement, renderer: Renderer2): void{

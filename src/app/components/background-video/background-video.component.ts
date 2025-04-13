@@ -61,8 +61,6 @@ export class BackgroundVideoComponent implements OnInit {
   //the parent element of the title-text and description-text
   @ViewChild('textContainerElement') textContainerElement!: ElementRef;
 
-  isInitiallyVisible: boolean = false;
-
   //sanitize url since angular complains otherwise 
   safeSrc!: SafeResourceUrl;
 
@@ -145,11 +143,7 @@ export class BackgroundVideoComponent implements OnInit {
 
   ngAfterViewInit() {    
     this.updateVideoParallax();    
-    this.isInitiallyVisible = this.utils.isElementInView(this.textContainerElement);
-    if (this.isInitiallyVisible){
-      this.textAnimationState = 'visible';
-      this.textContainerElement.nativeElement.classList.add('no-animation');
-    }
+    this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
   }
 
   updateVideoParallax(){
