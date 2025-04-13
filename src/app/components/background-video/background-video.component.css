@@ -52,6 +52,20 @@
     backface-visibility: hidden;
     perspective: 1000px;
 }
+.credits-text{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: auto;
+    height: auto;
+    padding: 5px 10px;
+    color: white;
+    border-radius: var(--border-radius);
+    font-size: 0.8em;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow:  0 0 1vh rgba(0, 0, 0, 1);
+    z-index: 3;
+}
 
 .no-animation {
     opacity: 1 !important;

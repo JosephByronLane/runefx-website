@@ -53,7 +53,7 @@ export class BackgroundVideoComponent implements OnInit {
   @Input() LoadingDuration: number = 2000;
   @Input() showTextWhenResponsive: Boolean = false;
   @Input() halveTextSize: Boolean = true;
-  @Input() credits: string = '';
+  @Input() credits: string = 'No credits';
 
   
   textAnimationState: 'hidden' | 'visible' = 'hidden';
@@ -61,7 +61,7 @@ export class BackgroundVideoComponent implements OnInit {
   //the parent element of the title-text and description-text
   @ViewChild('textContainerElement') textContainerElement!: ElementRef;
 
-  private isInitiallyVisible: boolean = false;
+  isInitiallyVisible: boolean = false;
 
   //sanitize url since angular complains otherwise 
   safeSrc!: SafeResourceUrl;
@@ -83,7 +83,16 @@ export class BackgroundVideoComponent implements OnInit {
      private el: ElementRef,
      private renderer: Renderer2,
      private utils: UtilsService
-    ) {}
+    ) {
+      if(document.readyState === 'complete'){
+        this.ngOnInit();
+      }
+      else{
+        window.addEventListener('load', () => {
+          this.ngOnInit();
+        });
+      }
+    }
                                    
     //HALVING FONT SIZE for responsiveness.
   halveFontSize(fontSize: string): string {
