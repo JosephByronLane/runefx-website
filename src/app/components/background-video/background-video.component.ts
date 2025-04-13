@@ -128,14 +128,18 @@ export class BackgroundVideoComponent implements OnInit {
   onWindowScroll(): void {
     //only apply parallax to bg images, not to video
     if (this.video==0){
-      const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
-      const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
-      
-      const boundedTranslateY = this.utils.calculateParallax(container);
-      this.renderer.setStyle(parallax, 'transform', `translateY(${boundedTranslateY}px)`);
+      this.updateVideoParallax();
     }
+
+  }
+  updateVideoParallax(){
+    const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
+    const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
+    
+    this.utils.calculateParallax(container, parallax, this.renderer);
   }
 
+  
  //using as a getter rather than a function
   getJustifyContent(alignment: string): string {
     if (this.diff > .8) {

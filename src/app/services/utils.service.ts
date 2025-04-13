@@ -1,4 +1,4 @@
-import { ElementRef, Injectable } from '@angular/core';
+import { ElementRef, Injectable, Renderer2 } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class UtilsService {
     return rect.top <= windowHeight * 0.8;
   }
 
-  calculateParallax(containerElement: HTMLElement): number{
+  calculateParallax(containerElement: HTMLElement, parallaxElement: HTMLElement, renderer: Renderer2): void{
     const containerRect = containerElement.getBoundingClientRect();
     const containerTop = containerRect.top + window.scrollY;
     const containerHeight = containerRect.height;
@@ -52,8 +52,7 @@ export class UtilsService {
 
     if (scrolled > containerTop - windowHeight && scrolled < containerTop + containerHeight) {
       const boundedTranslateY = Math.max(minTranslateY, Math.min(translateY, maxTranslateY));
-      return boundedTranslateY;
+      renderer.setStyle(parallaxElement, 'transform', `translateY(${boundedTranslateY}px)`);
     }
-    return translateY;
   }
 }
