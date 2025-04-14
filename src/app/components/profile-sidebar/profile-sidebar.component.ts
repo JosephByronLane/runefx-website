@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { style, state, trigger, transition, animate } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
+import { RButtonComponent } from '../rbutton/rbutton.component';
 @Component({
   selector: 'app-profile-sidebar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RButtonComponent],
   templateUrl: './profile-sidebar.component.html',
   styleUrl: './profile-sidebar.component.css',
   animations: [
@@ -46,6 +47,7 @@ export class ProfileSidebarComponent {
 
   login() {
     this.isLoggedIn = true;
+    console.log('login');
   }
 
   logout() {
