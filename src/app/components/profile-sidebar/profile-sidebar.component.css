@@ -92,3 +92,20 @@
     text-decoration: none;
   }
   
+  .user-profile h3 {
+    color: white;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--hover-text-color);
+    padding-bottom: 10px;
+  }
+  
+  .profile-options .option {
+    padding: 10px 0;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .profile-options .option:hover {
+    color: var(--hover-text-color);
+  }

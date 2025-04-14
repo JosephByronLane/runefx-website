@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { style, state, trigger, transition, animate } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
 import { RButtonComponent } from '../rbutton/rbutton.component';
+import { Router } from '@angular/router';
+import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
+import { UtilsService } from '../../services/utils.service';
 @Component({
   selector: 'app-profile-sidebar',
   standalone: true,
@@ -36,6 +39,7 @@ export class ProfileSidebarComponent {
   public username: string = '';
   public password: string = '';
 
+  constructor(private router: Router, public temploading: IntermitentLoadingService, public utils: UtilsService) {}
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;

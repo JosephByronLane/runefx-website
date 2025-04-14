@@ -5,8 +5,14 @@
     
     <div class="sidebar-content">
       @if (isLoggedIn) {
-        <p>Logged in</p>
-      } @else {
+        <div class="user-profile">
+            <h3>My Account</h3>
+            <div class="profile-options">
+              <div class="option" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
+              <div class="option" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
+              <div class="option" (click)="logout()">Logout</div>
+            </div>
+          </div>      } @else {
         <div class="login-form">
             <h3>Login</h3>
             <form class="login-form">
