@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
+import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-rbutton',
@@ -23,15 +24,17 @@ export class RButtonComponent {
   @Input() isExternalWebpage: boolean = false;
   @Input() loadingDuration:number = 2000;
   @Input() onClickFunction: () => void = () => {};
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }
+  @Input() doesNavigate: boolean = true;
 
-  constructor(private temploading: IntermitentLoadingService) {}
+  constructor(private temploading: IntermitentLoadingService, public utils: UtilsService) {}
+
+  handleClick(){
+    if(this.doesNavigate){
+      this.handleNavigation();
+    } else {
+      this.onClickFunction();
+    }
+  }
 
   handleNavigation() {
     if (this.isExternalWebpage) {
