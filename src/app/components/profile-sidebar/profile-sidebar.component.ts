@@ -12,10 +12,10 @@ import { RButtonComponent } from '../rbutton/rbutton.component';
   animations: [
     trigger('sidebarState', [
       state('closed', style({
-        width:  '0px'
+        transform: 'translateX(100%)'
       })),
       state('open', style({
-        width: '15vw'
+        transform: 'translateX(0)'
       })),
       transition('closed <=> open', [animate('0.3s ease')])
     ]),
