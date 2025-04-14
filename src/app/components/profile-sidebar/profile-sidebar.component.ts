@@ -45,12 +45,13 @@ export class ProfileSidebarComponent {
     //implement auth check
   }
 
-  login() {
+  login = (): void => {
     this.isLoggedIn = true;
     console.log('login');
+    console.log(this.isLoggedIn);
   }
 
-  logout() {
+  logout = (): void => {
     this.isLoggedIn = false;
   }
 }
