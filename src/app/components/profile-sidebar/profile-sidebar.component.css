@@ -12,9 +12,9 @@
   .arrow-container {
     position: absolute;
     top: 10%;
-    left:-30px;
-    width: 30px;
-    height: 60px;
+    left:-1.5vw;
+    width: 1.5vw;
+    height: 4vh;
     background-color: var(--triangle-after);
     display: flex;
     align-items: center;
