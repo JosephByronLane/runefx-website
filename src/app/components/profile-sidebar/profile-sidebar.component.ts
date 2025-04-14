@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { style, state, trigger, transition, animate } from '@angular/animations';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-profile-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './profile-sidebar.component.html',
   styleUrl: './profile-sidebar.component.css',
   animations: [
@@ -31,12 +32,15 @@ import { style, state, trigger, transition, animate } from '@angular/animations'
 export class ProfileSidebarComponent {
   public isOpen: boolean = false;
   public isLoggedIn: boolean = false;
+  public username: string = '';
+  public password: string = '';
+
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
   }
   ngOnInit() {
-    this.isOpen = false;
+    this.isOpen = true;
     //implement auth check
   }
 

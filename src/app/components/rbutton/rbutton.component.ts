@@ -22,6 +22,7 @@ export class RButtonComponent {
   @Input() sendTo: string ="";
   @Input() isExternalWebpage: boolean = false;
   @Input() loadingDuration:number = 2000;
+  @Input() onClickFunction: () => void = () => {};
   scrollToTop() {
     window.scrollTo({
       top: 0,
