@@ -15,7 +15,7 @@
     }   
 
     <div class="content-overlay" [ngStyle]="{ 'justify-content': justifyContentStyle }">
-        <div class="actual-text" [ngStyle]="{'padding-bottom': BottomPadding, 'width': textWidthFit, 'text-align': textBlockAlignment }">
+        <div class="actual-text" [ngStyle]="{'padding-bottom': BottomPadding, 'width': textWidthFit, 'text-align': textBlockAlignment }" [@textFadeInUp]="textAnimationState" #textContainerElement>
             <h1 class="title-text" [ngStyle]="{'font-size': titleFontSize,  'text-align':textAlignment}">{{ title }}</h1>
             @if(showDesc){
                 <p class="sdr-text" [ngStyle]="{'font-size': descriptionFontSize,  'text-align':textAlignment}">{{ description }}</p>
@@ -23,6 +23,9 @@
             @if(button===1){
                 <app-rbutton [sendTo]="ButtonLink" [buttonText]="ButtonText" class="action-button" [buttonAlignment]="ButtonAlignment" [loadingDuration]="LoadingDuration" [isExternalWebpage]="isExternalWebpage"/>
             }
+        </div>
+        <div class="credits-text">
+            <p>{{ credits }}</p>
         </div>
     </div>
 </div>

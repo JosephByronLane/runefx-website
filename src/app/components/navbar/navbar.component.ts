@@ -4,25 +4,24 @@ import { IntermitentLoadingComponent } from '../intermitent-loading/intermitent-
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { CommonModule } from '@angular/common';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
-
+import { IDropdownItem } from '../../interfaces/IDropdownItem';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { UtilsService } from '../../services/utils.service';
+import { items as navbarItems } from '../../data/navbarItems.json';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule, ClickOutsideDirective ],
+  imports: [RouterLink, CommonModule, ClickOutsideDirective, DropdownComponent ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
 
-  ///ive seen this function before. Im sure i can generalize it and put it in a service
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }
-  calculatedPadding  = this.mapRange(window.screen.width/window.screen.height, 2, 1, 5, 1)
+    dropdownItems: IDropdownItem[] = navbarItems;
+
+  ///TODO: ive seen this function before. Im sure i can generalize it and put it in a service
+
+  calculatedPadding  = this.utils.mapRange(window.screen.width/window.screen.height, 2, 1, 5, 1)
   isMenuOpen = false;
   menuState = 'out';
 
@@ -37,14 +36,12 @@ export class NavbarComponent {
   closeMenu() {
     this.isMenuOpen = false;
   }
-  constructor(private temploading: IntermitentLoadingService) {}
+  constructor(private temploading: IntermitentLoadingService, public utils: UtilsService) {}
   navigate(path:string, id:string, duration:number) {
     this.temploading.switchWithLoading(path, id, duration);
   }
   //add to helper service
-  mapRange(x: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
-    return ((x - inMin) / (inMax - inMin)) * (outMax - outMin) + outMin;
-  }
+
 
 
 }

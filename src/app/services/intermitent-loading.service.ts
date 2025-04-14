@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
-
+import { UtilsService } from './utils.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +15,7 @@ export class IntermitentLoadingService {
 
   private keepOn:boolean = false;
   private enabled:boolean=true;
-  constructor(private router: Router) {
+  constructor(private router: Router, private utils: UtilsService) {
   }
 
   private showLoadingScreen() { //man i love css
@@ -36,8 +36,11 @@ export class IntermitentLoadingService {
   }
 
   
-  switchWithLoading(routePath: string, scrollToId?: string, duration: number = 3000) {
+  switchWithLoading(routePath: string, scrollToId?: string, duration: number = 3000, scrollToTop: boolean = true) {
     if(this.enabled){
+      if(scrollToTop){
+        this.utils.scrollToTop();
+      }
       this.showLoadingScreen(); //we enable loading screen
       setTimeout(() => {
         this.router.navigate([routePath]).then(() => { //switch to it

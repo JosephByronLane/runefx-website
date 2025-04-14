@@ -1,5 +1,5 @@
 <div class="header-container" >
-    <div class="logo-container"  (click)="scrollToTop(); navigate('','',7000)">
+    <div class="logo-container"  (click)="utils.scrollToTop(); navigate('','',7000)">
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261.48 95.63" >
             <defs>
               <style>
@@ -25,11 +25,14 @@
 
     <div class="tabs-container">
         <ul>
-            <li class="home-tab"><a   routerLinkActive="active-link" class="title-nav" (click)="scrollToTop(); navigate('','',7000)">Home</a></li>
-            <li><a class="title-nav"  routerLinkActive="active-link"  (click)="scrollToTop(); navigate('vfx','',500)">Showcase</a></li>
-            <li><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('render','',2000)">Technologies</a></li>
+            <!-- <li class="home-tab"><a   routerLinkActive="active-link" class="title-nav" (click)="scrollToTop(); navigate('','',7000)">Home</a></li> -->
+            @for (item of dropdownItems; track item.id) {
+                <li><app-dropdown [dropdownItem]="item" class="full-width"></app-dropdown></li>
+            }
+            <!-- <li><a class="title-nav"  routerLinkActive="active-link"  (click)="scrollToTop(); navigate('vfx','',500)">Showcase</a></li>
+            <li><app-dropdown [dropdownItem]="technologiesDropdownItem"></app-dropdown></li>
             <LI><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('try-buy','',5000)">Try/Buy</a></LI>
-            <li><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('about','',500)">About</a></li>
+            <li><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('about','',500)">About</a></li> -->
         </ul>
     </div>
     <div class="hamburger-holder">
@@ -40,11 +43,11 @@
 </div>
 <div class="mobile-menu"[ngClass]="{'open': isMenuOpen}" appClickOutside (appClickOutside)="isMenuOpen = false">
   <ul>
-      <li class="home-tab"><a routerLinkActive="active-link"  (click)="scrollToTop(); navigateAndClose('', '', 7000)">Home</a></li>
-      <li><a class="title-nav" routerLinkActive="active-link" (click)="scrollToTop(); navigateAndClose('vfx', '', 500)">Showcase</a></li>
-      <li><a class="title-nav" routerLinkActive="active-link" (click)="scrollToTop(); navigateAndClose('render', '', 2000)">Technologies</a></li>
-      <li><a class="title-nav" routerLinkActive="active-link" (click)="scrollToTop(); navigateAndClose('try-buy', '', 5000)">Try/Buy</a></li>
-      <li><a class="title-nav" routerLinkActive="active-link" (click)="scrollToTop(); navigateAndClose('about', '', 500)">About</a></li>
+      <li class="home-tab"><a routerLinkActive="active-link"  (click)="utils.scrollToTop(); navigateAndClose('', '', 7000)">Home</a></li>
+      <li><a class="title-nav" routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('vfx', '', 500)">Showcase</a></li>
+      <li><a class="title-nav" routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('render', '', 2000)">Technologies</a></li>
+      <li><a class="title-nav" routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('try-buy', '', 5000)">Try/Buy</a></li>
+      <li><a class="title-nav" routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('about', '', 500)">About</a></li>
   </ul>
 </div>
 <style>

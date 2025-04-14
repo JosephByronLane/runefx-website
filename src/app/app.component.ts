@@ -28,7 +28,7 @@ export class AppComponent {
 
 
   //DEBUG FLAG TO STOP INITIAL LOADING SCREEN
-  debug: boolean = false;
+  debug: boolean = true;
 
 
 
