@@ -1,0 +1,37 @@
+.profile-sidebar-container {
+    position: fixed;
+    top: var(--header-size);
+    right: 0;
+    height: calc(100vh - var(--header-size));
+    background-color: var(--triangle-after);    
+    z-index: 1;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .arrow-container {
+    position: absolute;
+    top: 10%;
+    left:-30px;
+    width: 30px;
+    height: 60px;
+    background-color: var(--triangle-after);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    z-index: 1;
+  }
+  
+  .arrow {
+    color: white;
+    font-size: 18px;
+  }
+  
+  .sidebar-content {
+    padding: 20px;
+    width: 20vw; /* placeholder, the actual width is set by the animation */
+    height: 100%;
+    overflow-y: auto;
+  }

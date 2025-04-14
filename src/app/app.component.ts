@@ -11,11 +11,11 @@ import { Subscription } from 'rxjs';
 import { InitialLoadingService, browserRefresh } from './services/initial-loading.service';
 export let LocalbrowserRefresh = false;
 import { Location } from '@angular/common';
-
+import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent,ShowcaseGridComponent, LoadingScreenComponent,HttpClientModule, IntermitentLoadingComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent,ShowcaseGridComponent, LoadingScreenComponent,HttpClientModule, IntermitentLoadingComponent, ProfileSidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

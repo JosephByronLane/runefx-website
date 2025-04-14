@@ -1,0 +1,13 @@
+<div class="profile-sidebar-container" [@sidebarState]="isOpen ? 'open' : 'closed'">
+    <div class="arrow-container" (click)="toggleSidebar()">
+      <span class="arrow" [@arrowState]="isOpen ? 'open' : 'closed'">&lt;</span>
+    </div>
+    
+    <div class="sidebar-content">
+      @if (isLoggedIn) {
+        <p>Logged in</p>
+      } @else {
+        <p>not logged in</p>
+      }
+    </div>
+  </div>
