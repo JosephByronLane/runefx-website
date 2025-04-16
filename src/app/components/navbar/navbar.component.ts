@@ -42,7 +42,4 @@ export class NavbarComponent {
     this.temploading.switchWithLoading(path, id, duration);
   }
   //add to helper service
-
-
-
 }

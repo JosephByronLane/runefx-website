@@ -6,10 +6,11 @@ import { RButtonComponent } from '../rbutton/rbutton.component';
 import { Router } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { UtilsService } from '../../services/utils.service';
+import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 @Component({
   selector: 'app-profile-sidebar',
   standalone: true,
-  imports: [CommonModule, FormsModule, RButtonComponent],
+  imports: [CommonModule, FormsModule, RButtonComponent, ClickOutsideDirective],
   templateUrl: './profile-sidebar.component.html',
   styleUrl: './profile-sidebar.component.css',
   animations: [
@@ -30,6 +31,15 @@ import { UtilsService } from '../../services/utils.service';
         transform: 'rotate(180deg)'
       })),
       transition('closed <=> open', [animate('1s ease-in-out')])
+    ]),
+    trigger('dimmedBackgroundOpacity', [
+      state('closed', style({
+        opacity: 0
+      })),
+      state('open', style({
+        opacity: 1
+      })),
+      transition('closed <=> open', [animate('0.3s ease')])
     ])
   ]
 })
@@ -45,7 +55,7 @@ export class ProfileSidebarComponent {
     this.isOpen = !this.isOpen;
   }
   ngOnInit() {
-    this.isOpen = true;
+    this.isOpen = false;
     //implement auth check
   }
 
@@ -58,4 +68,5 @@ export class ProfileSidebarComponent {
   logout = (): void => {
     this.isLoggedIn = false;
   }
+
 }

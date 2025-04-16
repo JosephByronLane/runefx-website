@@ -1,41 +1,47 @@
-<div class="profile-sidebar-container" [@sidebarState]="isOpen ? 'open' : 'closed'">
-    <div class="arrow-container" (click)="toggleSidebar()">
-      <span class="arrow" [@arrowState]="isOpen ? 'open' : 'closed'">&lt;</span>
-    </div>
-    
-    <div class="sidebar-content">
-      @if (isLoggedIn) {
-        <div class="user-profile">
-            <h3>My Account</h3>
-            <div class="profile-options">
-              <div class="option" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
-              <div class="option" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
-              <div class="option" (click)="logout()">Logout</div>
-            </div>
-          </div>      } @else {
-        <div class="login-form">
-            <h3>Login</h3>
-            <form class="login-form">
-              <div class="form-group">
-                <input type="text" placeholder="Username" [(ngModel)]="username" name="username">
-              </div>
-              <div class="form-group">
-                <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
-              </div>
-              <div class="login-actions">
-                <app-rbutton [buttonText]="'Login'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="login"></app-rbutton>
-              </div>
-            </form>     
-            <div class="login-options">
-                <span class="option-link">Forgot your password? </span>
-                <a href="#" class="link">Click here</a>
-                <br>
-                <br>
-                <span class="option-link">No account yet? </span>
-                <a href="#" class="link">Please Register</a>
-
-              </div>       
-          </div>
-      }
-    </div>
+<div class="profile-sidebar-container" [@sidebarState]="isOpen ? 'open' : 'closed'" appClickOutside (appClickOutside)="isOpen = false">
+  <div class="arrow-container" (click)="toggleSidebar()">
+    <span class="arrow" [@arrowState]="isOpen ? 'open' : 'closed'">&lt;</span>
   </div>
+  
+  <div class="sidebar-content" >
+    @if (isLoggedIn) {
+      <div class="user-profile">
+          <h3>My Account</h3>
+          <div class="profile-options">
+            <div class="option" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
+            <div class="option" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
+            <div class="option" (click)="logout()">Logout</div>
+          </div>
+        </div>      
+      }           
+    @else {
+      <div class="login-form">
+          <h3>Login</h3>
+          <form class="login-form">
+            <div class="form-group">
+              <input type="text" placeholder="Username" [(ngModel)]="username" name="username">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+            </div>
+            <div class="login-actions">
+              <app-rbutton [buttonText]="'Login'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="login"></app-rbutton>
+            </div>
+          </form>     
+          <div class="login-options">
+              <span class="option-link">Forgot your password? </span>
+              <a href="#" class="link">Click here</a>
+              <br>
+              <br>
+              <span class="option-link">No account yet? </span>
+              <a href="" class="link">Register here</a>
+
+            </div>       
+        </div>
+    }
+  </div>
+
+</div>
+<div class="dimmed-background" [@dimmedBackgroundOpacity]="isOpen ? 'open' : 'closed'">
+    
+</div>
