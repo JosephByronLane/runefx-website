@@ -34,6 +34,7 @@
             <LI><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('try-buy','',5000)">Try/Buy</a></LI>
             <li><a class="title-nav"  routerLinkActive="active-link" (click)="scrollToTop(); navigate('about','',500)">About</a></li> -->
         </ul>
+        <app-profile-sidebar/>
     </div>
     <div class="hamburger-holder">
       <div class="hamburger-menu" #hamburgerMenu (click)="toggleMenu(); $event.stopPropagation()">

@@ -8,10 +8,11 @@ import { IDropdownItem } from '../../interfaces/IDropdownItem';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { UtilsService } from '../../services/utils.service';
 import { items as navbarItems } from '../../data/navbarItems.json';
+import { ProfileSidebarComponent } from '../profile-sidebar/profile-sidebar.component';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule, ClickOutsideDirective, DropdownComponent ],
+  imports: [RouterLink, CommonModule, ClickOutsideDirective, DropdownComponent, ProfileSidebarComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -41,7 +42,4 @@ export class NavbarComponent {
     this.temploading.switchWithLoading(path, id, duration);
   }
   //add to helper service
-
-
-
 }

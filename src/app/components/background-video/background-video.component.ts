@@ -112,6 +112,8 @@ export class BackgroundVideoComponent implements OnInit {
     else{
       this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
     }
+   
+    //programatic responsiveness
     this.justifyContentStyle = this.getJustifyContent(this.textBlockAlignment);
     this.textWidthFit = this.textWidth;
     if (this.diff>.8){
@@ -144,13 +146,22 @@ export class BackgroundVideoComponent implements OnInit {
   ngAfterViewInit() {    
     this.updateVideoParallax();    
     this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
+
+    //sometimes the thing just doesnt run properly the first time, so this forces it to re-check again after half a second
+    //just incase some element decides to be a bitch
+    //if an element still doesn't load after 500ms, it aint gonna load, bro
+    setTimeout(() =>{
+      this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
+    }, 500)
   }
 
   updateVideoParallax(){
     const parallax = this.el.nativeElement.querySelector('.parallax-background') as HTMLElement;
     const container = this.el.nativeElement.querySelector('.parallax-container') as HTMLElement;
     
-    this.utils.calculateParallax(container, parallax, this.renderer);
+    if (parallax && container) {
+      this.utils.calculateParallax(container, parallax, this.renderer);
+    }
   }
   
 

@@ -1,0 +1,121 @@
+.profile-sidebar-container {
+    position: fixed;
+    top: var(--header-size);
+    right: 0;
+    height: calc(100vh - var(--header-size));
+    background-color: var(--triangle-after);    
+    z-index: 1;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .arrow-container {
+    position: absolute;
+    top: 10%;
+    left:-1.5vw;
+    width: 1.5vw;
+    height: 4vh;
+    background-color: var(--triangle-after);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    z-index: 1;
+  }
+  
+  .arrow {
+    color: white;
+    font-size: 18px;
+  }
+  
+  .sidebar-content {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .login-form h3 {
+    color: white;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: var(--border-radius);
+  }
+  
+  .login-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .login-actions button {
+    padding: 8px 15px;
+    background-color: var(--hover-text-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-actions button:hover {
+    background-color: transparent;
+    color: var(--hover-text-color);
+    border: 1px solid var(--hover-text-color);
+  }
+  
+.login-options {
+    margin-top: 20px;
+    font-size: 0.9em;
+  }
+  
+  .option-link {
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .link {
+    color: var(--hover-text-color);
+    text-decoration: none;
+  }
+  
+  .user-profile h3 {
+    color: white;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--hover-text-color);
+    padding-bottom: 10px;
+  }
+  
+  .profile-options .option {
+    padding: 10px 0;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .profile-options .option:hover {
+    color: var(--hover-text-color);
+  }
+
+  .dimmed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -3;
+  }
