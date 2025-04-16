@@ -27,7 +27,6 @@ export class UtilsService {
 
   isElementInView(element: ElementRef): boolean {
     if (!element){
-      console.log('element not found');
       return false;
     }
 
