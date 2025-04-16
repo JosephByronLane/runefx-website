@@ -26,17 +26,23 @@ export class UtilsService {
   }
 
   isElementInView(element: ElementRef): boolean {
-    if (!element) return false;
+    if (!element){
+      console.log('element not found');
+      return false;
+    }
 
     const rect = element.nativeElement.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const isInView = rect.top <= windowHeight * 0.8;
 
-    console.log(`Checked element ${element.nativeElement.id} and it is ${isInView ? 'in view' : 'not in view'}`);
     return isInView;
   }
 
   calculateParallax(containerElement: HTMLElement, parallaxElement: HTMLElement, renderer: Renderer2): void{
+    if (!containerElement || !parallaxElement || !renderer) {
+      return;
+    }
+    
     const containerRect = containerElement.getBoundingClientRect();
     const containerTop = containerRect.top + window.scrollY;
     const containerHeight = containerRect.height;
