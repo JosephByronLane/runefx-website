@@ -90,6 +90,7 @@
   .link {
     color: var(--hover-text-color);
     text-decoration: none;
+    cursor: pointer;
   }
   
   .user-profile h3 {
