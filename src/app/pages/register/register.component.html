@@ -136,7 +136,7 @@
         </div>
 
         <div class="form-actions">
-            <app-rbutton [buttonText]="'Register'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="onSubmit.bind(this)"></app-rbutton>
+            <app-rbutton [buttonText]="'Register'" [buttonAlignment]="'center'" [onClickFunction]="onSubmit.bind(this)" [disabled]="isSubmitting" [disabledText]="'Submitting...'" [doesNavigate]="false"></app-rbutton>
             <p>Already have an account? <a routerLink="/login">Login</a></p>
         </div>
     </form>

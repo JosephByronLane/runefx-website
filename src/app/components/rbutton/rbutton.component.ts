@@ -26,7 +26,7 @@ export class RButtonComponent {
   @Input() onClickFunction: () => void = () => {};
   @Input() doesNavigate: boolean = true;
   @Input() disabled: boolean = false;
-  
+  @Input() disabledText: string = '';
   constructor(private temploading: IntermitentLoadingService, public utils: UtilsService) {}
 
   handleClick(){

@@ -6,6 +6,7 @@ import { BackgroundVideoComponent } from '../../components/background-video/back
 import { RouterModule } from '@angular/router';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import dccOptions from '../../data/dccOptions.json';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -21,9 +22,11 @@ export class RegisterComponent {
         { "value": "katana", "label": "Katana" }
   ];
 
+  errorMessage: string = '';
+  isSubmitting: boolean = false;
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3),]],
       email: ['', [Validators.required, Validators.email]],
@@ -41,10 +44,28 @@ export class RegisterComponent {
   }
   onSubmit(){
     console.log('onSubmit');
-    this.registerForm.markAllAsTouched();
-    if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+    if (!this.registerForm.valid) {
+      this.registerForm.markAllAsTouched();
+      console.log("form is invalid");
+      return;
     }
+    
+    this.isSubmitting = true;
+    this.errorMessage = '';
+
+    console.log("sending request");
+    this.authService.register(this.registerForm.value).subscribe({
+      next: (res) => {
+        console.log(res);
+        console.log("request sent");
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message;
+        this.isSubmitting = false;
+        console.log("request failed");
+      }
+    })
+
   }
   validatePasswords(group: FormGroup){
     const password = group.get('password')?.value;
@@ -57,7 +78,7 @@ export class RegisterComponent {
   }
 
   ngOnInit(){
-
+    console.log('ngOnInit');
   }
 
 
