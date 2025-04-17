@@ -3,5 +3,5 @@
     'align-center': buttonAlignment === 'center',
     'align-right': buttonAlignment === 'right'
   }">
-    <button type="button" id="button" class="sdr-text" (click)="handleClick()" routerLinkActive="router-link-active">{{ buttonText }}</button>
+    <button type="button" id="button" class="sdr-text" (click)="handleClick()" [disabled]="disabled" routerLinkActive="router-link-active">{{ buttonText }}</button>
   </div>

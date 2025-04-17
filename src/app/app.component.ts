@@ -12,10 +12,11 @@ import { InitialLoadingService, browserRefresh } from './services/initial-loadin
 export let LocalbrowserRefresh = false;
 import { Location } from '@angular/common';
 import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent,ShowcaseGridComponent, LoadingScreenComponent,HttpClientModule, IntermitentLoadingComponent, ProfileSidebarComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent,ShowcaseGridComponent, LoadingScreenComponent,HttpClientModule, IntermitentLoadingComponent, ProfileSidebarComponent, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -53,6 +53,11 @@ export class ProfileSidebarComponent {
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
+    if(!this.isOpen){
+      //first we get the dimmed background element
+      
+      
+    }
   }
   ngOnInit() {
     this.isOpen = false;

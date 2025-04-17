@@ -39,8 +39,32 @@
     padding: 1.2vh 1vw;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--border-radius);
-    background-color: rgba(32, 32, 32, 0.7);
+    background-color: var(--triangle-after);
     color: var(--primary-text-color);
     font-size: 1.8vh;
     transition: border-color 0.3s ease;
+  }
+
+  
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--hover-text-color);
+  }
+  
+  .invalid {
+    border-color: #ff4d4d;
+  }
+  
+  .error-text {
+    color: #ff4d4d;
+    font-size: 1.4vh;
+    margin-top: 0.5vh;
+  }
+  
+  .error-message {
+    color: #ff4d4d;
+    padding: 1vh 1vw;
+    border-radius: var(--border-radius);
+    font-size: 1.8vh;
   }

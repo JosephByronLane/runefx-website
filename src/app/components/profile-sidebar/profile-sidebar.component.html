@@ -42,6 +42,6 @@
   </div>
 
 </div>
-<div class="dimmed-background" [@dimmedBackgroundOpacity]="isOpen ? 'open' : 'closed'">
+<div class="dimmed-background" [@dimmedBackgroundOpacity]="isOpen ? 'open' : 'closed'" [ngClass]="{'disabled': !isOpen}">
     
 </div>
