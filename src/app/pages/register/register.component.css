@@ -56,15 +56,15 @@
     border-color: #ff4d4d;
   }
   
-  .error-text {
-    color: #ff4d4d;
-    font-size: 1.4vh;
-    margin-top: 0.5vh;
-  }
   
   .error-message {
     color: #ff4d4d;
-    padding: 1vh 1vw;
+    padding: .2vh .2vw;
     border-radius: var(--border-radius);
-    font-size: 1.8vh;
+    font-size: 1.4vh;
+
   }
+
+  .error-container {
+    height: 1.4vh;
+}

@@ -40,6 +40,8 @@ export class RegisterComponent {
   console.log(this.registerForm);
   }
   onSubmit(){
+    console.log('onSubmit');
+    this.registerForm.markAllAsTouched();
     if (this.registerForm.valid) {
       console.log(this.registerForm.value);
     }
