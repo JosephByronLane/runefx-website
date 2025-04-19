@@ -28,13 +28,13 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3),]],
+      username: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.email]],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
       dcc: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
-      confirmPassword: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
+      password2: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
     },
     {
       validators: this.validatePasswords
@@ -47,6 +47,7 @@ export class RegisterComponent {
     if (!this.registerForm.valid) {
       this.registerForm.markAllAsTouched();
       console.log("form is invalid");
+      console.log(this.registerForm)
       return;
     }
     
@@ -60,18 +61,24 @@ export class RegisterComponent {
         console.log("request sent");
       },
       error: (err) => {
-        this.errorMessage = err.error.message;
         this.isSubmitting = false;
-        console.log("request failed");
-      }
-    })
 
+        if  (err.status ===0){
+          this.errorMessage = "No internet connection";
+        }
+        else if (err.status === 400){
+          this.errorMessage = "Invalid email address";
+        }
+      }
+
+    })
+    this.isSubmitting = false;
   }
   validatePasswords(group: FormGroup){
     const password = group.get('password')?.value;
-    const confirmPassword = group.get('confirmPassword')?.value;
+    const confirmPassword = group.get('password2')?.value;
     if (password !== confirmPassword) {
-      group.get('confirmPassword')?.setErrors({ mismatch: true });
+      group.get('password2')?.setErrors({ mismatch: true });
       return { mismatch: true };
     }
     return null;
