@@ -141,15 +141,22 @@
             </div>
         </div>
 
-        <div class="form-actions">
-            <app-rbutton [buttonText]="'Register'" [buttonAlignment]="'center'" [onClickFunction]="onSubmit.bind(this)" [disabled]="isSubmitting" [disabledText]="'Submitting...'" [doesNavigate]="false"></app-rbutton>
-            <p>Already have an account? <a routerLink="/login">Login</a></p>
-        </div>
-
         @if (errorMessage) {
             <div class="error-message">
                 {{ errorMessage }}
             </div>
         }
+
+        @if (statusMessage){
+            <div class="status-message">
+                {{ statusMessage }}
+            </div>
+        }
+        
+        <div class="form-actions">
+            <app-rbutton [buttonText]="'Register'" [buttonAlignment]="'center'" [onClickFunction]="onSubmit.bind(this)" [disabled]="isSubmitting" [disabledText]="'Submitting...'" [doesNavigate]="false"></app-rbutton>
+            <p>Already have an account? <a routerLink="/login">Login</a></p>
+        </div>
+
     </form>
 </div>

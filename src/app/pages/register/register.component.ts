@@ -24,6 +24,7 @@ export class RegisterComponent {
 
   errorMessage: string = '';
   isSubmitting: boolean = false;
+  statusMessage: string = '';
   registerForm: FormGroup;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
@@ -57,17 +58,29 @@ export class RegisterComponent {
     console.log("sending request");
     this.authService.register(this.registerForm.value).subscribe({
       next: (res) => {
-        console.log(res);
-        console.log("request sent");
+        this.statusMessage = "Registration successful";
       },
       error: (err) => {
         this.isSubmitting = false;
-
-        if  (err.status ===0){
-          this.errorMessage = "No internet connection";
-        }
-        else if (err.status === 400){
-          this.errorMessage = "Invalid email address";
+        console.log("Full error object:", err);
+        
+        // Get the error response body
+        const errorResponse = err.error;
+        console.log("Error response body:", errorResponse);
+        
+        if (errorResponse && errorResponse.message) {
+          // Check if message is an array and grab the first item
+          if (Array.isArray(errorResponse.message)) {
+            this.errorMessage = errorResponse.message[0];
+          } else {
+            this.errorMessage = errorResponse.message;
+          }
+        } else if (err.status === 400) {
+          // If the error body doesn't have a message property but status is 400
+          this.errorMessage = "Invalid form data. Please check your inputs and try again.";
+        } else {
+          // Fallback generic error
+          this.errorMessage = "An error occurred while registering. Please try again later.";
         }
       }
 

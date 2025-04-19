@@ -61,10 +61,17 @@
     color: #ff4d4d;
     padding: .2vh .2vw;
     border-radius: var(--border-radius);
-    font-size: 1.4vh;
+    font-size: 2vh;
 
   }
 
   .error-container {
-    height: 1.4vh;
+    height: 2vh;
+}
+
+.status-message {
+  color: #00ff00;
+  padding: .2vh .2vw;
+  border-radius: var(--border-radius);
+  font-size: 2vh;
 }

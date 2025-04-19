@@ -5,6 +5,7 @@ import { BehaviorSubject, catchError, Observable, of, tap, throwError } from 'rx
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { IUser } from '../interfaces/IUser';
+import { IAuthResponse } from '../interfaces/IAuthResponse';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +19,13 @@ export class AuthService {
   
   constructor(private http: HttpClient, private router: Router) {
       this.isAuthenticated();
+   }
+
+   private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    withCredentials: true
    }
 
   private isAuthenticated(): void{
@@ -36,7 +44,7 @@ export class AuthService {
 
   private handleError(error: any): Observable<never> {
     let errorMessage = 'Something went wrong;'
-
+    console.log("error: ", error);
     if (error.error instanceof ErrorEvent){
       //client side error
       errorMessage = error.error.message;
@@ -68,24 +76,21 @@ export class AuthService {
     return throwError(() => new Error(errorMessage));
   }
 
-  //need to implement cookie stuff
-  // register(data: IRegisterUser): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/auth/register/`, data, this.httpOptions).pipe(catchError(this.handleError))
-  // }
+  register(data: IRegisterUser): Observable<any> {
+    return this.http.post(`${this.apiUrl}/auth/register/`, data, this.httpOptions)
+  }
 
-  // login(username: string, password: string): Observable<any> {
-  //   return this.http.post<AuthTokens>(
-  //     `${this.apiUrl}/auth/login/`,
-  //     {username, password},
-  //     this.httpOptions
-  //   ).pipe(
-  //     tap((tokens: AuthTokens) => {
-  //       this.setSession(tokens);
-  //       this
-  //     }),
-  //     catchError(this.handleError)
-  //   )
-  // }
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<IAuthResponse>(
+      `${this.apiUrl}/auth/login/`,
+      {username, password},
+      this.httpOptions
+    ).pipe(
+      tap((response: IAuthResponse) => {
+        console.log("Login successful: ", response);
+      })
+    )
+  }
 
 
 }
