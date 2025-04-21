@@ -8,6 +8,7 @@ import { IntermitentLoadingService } from '../../services/intermitent-loading.se
 import { UtilsService } from '../../services/utils.service';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 import { HttpClient } from '@angular/common/http';
+import { IUser } from '../../interfaces/IUser';
 @Component({
   selector: 'app-profile-sidebar',
   standalone: true,
@@ -49,6 +50,7 @@ export class ProfileSidebarComponent {
   public isLoggedIn: boolean = false;
   public username: string = '';
   public password: string = '';
+  private currentUser: IUser | null = null;
 
   constructor(private router: Router,
      public temploading: IntermitentLoadingService,
@@ -70,12 +72,13 @@ export class ProfileSidebarComponent {
 
   login = (): void => {
     this.isLoggedIn = true;
-    this.httpClient.get('https://jsonplaceholder.typicode.com/posts/1').subscribe( ans => {
-      console.log(ans);
+    this.httpClient.get<IUser>('https://jsonplaceholder.typicode.com/posts/1').subscribe( ans => {
     })
     console.log('login');
     console.log(this.isLoggedIn);
   }
+
+
 
   logout = (): void => {
     this.isLoggedIn = false;

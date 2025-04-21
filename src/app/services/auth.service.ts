@@ -29,18 +29,36 @@ export class AuthService {
    }
 
   private isAuthenticated(): void{
-    this.http.get<IUser>(`${this.apiUrl}/auth/me/`)
+    this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`)
     .pipe(
       catchError(() => of(null))
     )
       .subscribe( user => {
         if (user){
-        this.currentUserSubject.next(user);
+        this.currentUserSubject.next(user?.user);
       } else {
         this.currentUserSubject.next(null);
       }
     })
   }
+
+  fetchCurrentUser(): Observable<IAuthResponse | null> {
+      return this.http.get<IAuthResponse | null>(`${this.apiUrl}/auth/me`,
+        this.httpOptions
+      )
+      .pipe(
+        tap(
+          user => {
+            if (!user){
+              this.logout();
+              return
+            }
+            this.currentUserSubject.next(user?.user)
+          }
+        ),
+      )
+  }
+
 
   register(data: IRegisterUser): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register/`, data, this.httpOptions)
@@ -60,5 +78,8 @@ export class AuthService {
     )
   }
 
+  logout(){
+    console.log("logged out")
+  }
 
 }
