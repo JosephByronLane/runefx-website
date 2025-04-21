@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { IUser } from '../interfaces/IUser';
 import { IAuthResponse } from '../interfaces/IAuthResponse';
+import { ProfileSidebarComponent } from '../components/profile-sidebar/profile-sidebar.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +20,7 @@ export class AuthService {
   private currentUser$ = this.currentUserSubject.asObservable();
   private isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, ) {
     this.isAuthenticated();
   }  
   
@@ -39,7 +40,9 @@ export class AuthService {
   }
 
   private isAuthenticated(): void{
-    this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`)
+    this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`,
+      this.httpOptions
+    )
     .pipe(
       catchError(() => of(null))
     )
@@ -52,7 +55,7 @@ export class AuthService {
     })
   }
 
-  fetchCurrentUser(): Observable<IAuthResponse | null> {
+  fetchCurrentUserData(): Observable<IAuthResponse | null> {
       return this.http.get<IAuthResponse | null>(`${this.apiUrl}/auth/me`,
         this.httpOptions
       )
@@ -67,6 +70,40 @@ export class AuthService {
           }
         ),
       )
+  }
+
+  isAuth(): void{
+    this.fetchCurrentUserData().subscribe({
+      next: () => {
+        this.isAuthenticatedSubject.next(true)
+      },
+      error: () =>{
+        this.refreshToken().subscribe({
+          next: () =>{
+            this.fetchCurrentUserData().subscribe()
+          },
+          error:() =>{
+            this.isAuthenticatedSubject.next(false)
+            this.currentUserSubject.next(null)
+          }
+        })
+      }
+    })
+  }
+
+  refreshToken() : Observable<boolean>{
+    return this.http.post<boolean>(
+      `${this.apiUrl}/auth/login/refresh/`,
+      {},
+      this.httpOptions
+    )
+    .pipe(
+      catchError(error =>{
+        this.isAuthenticatedSubject.next(false)
+        this.currentUserSubject.next(null)
+        return throwError(()=> error)
+      })
+    )
   }
 
   register(data: IRegisterUser): Observable<any> {

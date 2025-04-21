@@ -58,6 +58,10 @@ export class ProfileSidebarComponent {
     private authService: AuthService,  
     ) {}
 
+  public openSidebar() :void {
+    this.isOpen = true
+  }
+
   toggleSidebar() {
     this.isOpen = !this.isOpen;
     if(!this.isOpen){
@@ -69,7 +73,12 @@ export class ProfileSidebarComponent {
   ngOnInit() {
     this.isOpen = false;
 
+
+  }
+
+  ngAfterContentInit(){
     this.isLoggedIn = this.authService.isAuthenticatedValue
+    this.currentUser = this.authService.CurrentUserValue
     //implement auth check
   }
 

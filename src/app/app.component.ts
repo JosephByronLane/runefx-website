@@ -12,6 +12,7 @@ export let LocalbrowserRefresh = false;
 import { Location } from '@angular/common';
 import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { environment } from '../environments/environment.dev';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,11 +27,11 @@ export class AppComponent {
   browserRefresh?: boolean;
   subscription: Subscription;
 
+  showLoadingScreen: boolean = environment.production  
 
   //DEBUG FLAG TO STOP INITIAL LOADING SCREEN
-  debug: boolean = true;
 
-
+  
 
   ///omfg it took me the whole fucking 4 days to get this working
   constructor(public initloader: InitialLoadingService, private router: Router, private activatedRoute: ActivatedRoute, private location: Location) {
@@ -42,7 +43,7 @@ export class AppComponent {
         //when we're on home, the url is undefined because its literally nothing, so when that happens we replace it with '' so it finds the correct value.
         pathString = pathString.split('/')[1];
         if (pathString===undefined) pathString=''
-        if(!this.debug){
+        if(!this.showLoadingScreen){
           initloader.startLoadingScreen(pathString, refreshed);         
 
         }
