@@ -65,17 +65,33 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<IAuthResponse>(
+    console.log("login pressed")
+    console.log(`Login url: ${this.apiUrl}/auth/login`)
+    return this.http.post<IAuthResponse | null>(
       `${this.apiUrl}/auth/login/`,
-      {username, password},
+      {
+        "username": username, 
+        "password": password
+      },
       this.httpOptions
     ).pipe(
-      tap((response: IAuthResponse) => {
-        if (response.user){
-          this.currentUserSubject.next(response.user);
-        }
+        tap((response: IAuthResponse| null) => {
+          console.log("recieved response")
+          if (response && response.user){
+
+            this.currentUserSubject.next(response.user);
+          }
+          else{
+            console.log("failed auth")
+          }
+        },
+      ),
+      catchError((error) => {
+        console.log(error)
+        throw error;
       })
     )
+    
   }
 
   logout(){

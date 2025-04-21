@@ -25,7 +25,7 @@
               <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
             </div>
             <div class="login-actions">
-              <app-rbutton [buttonText]="'Login'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="login"></app-rbutton>
+              <app-rbutton [buttonText]="'Login'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="attemptLogin"></app-rbutton>
             </div>
           </form>     
           <div class="login-options">

@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { UtilsService } from '../../services/utils.service';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
-import { HttpClient } from '@angular/common/http';
 import { IUser } from '../../interfaces/IUser';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-profile-sidebar',
   standalone: true,
@@ -53,9 +53,10 @@ export class ProfileSidebarComponent {
   private currentUser: IUser | null = null;
 
   constructor(private router: Router,
-     public temploading: IntermitentLoadingService,
-      private httpClient: HttpClient,
-      public utils: UtilsService) {}
+    public temploading: IntermitentLoadingService,
+    public utils: UtilsService,
+    private authService: AuthService,  
+    ) {}
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
@@ -70,12 +71,15 @@ export class ProfileSidebarComponent {
     //implement auth check
   }
 
-  login = (): void => {
-    this.isLoggedIn = true;
-    this.httpClient.get<IUser>('https://jsonplaceholder.typicode.com/posts/1').subscribe( ans => {
+  attemptLogin = (): void => {
+    this.authService.login(this.username,this.password).subscribe({
+      next: (response) =>{
+        console.log("tat")
+      },
+      error: (error) =>{
+        console.log("awww")
+      }
     })
-    console.log('login');
-    console.log(this.isLoggedIn);
   }
 
 
