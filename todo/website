@@ -1,1 +1,2 @@
-fix the non newline on the details page not having a line break. we fixed this before and broke it again lmao
+- make this a docker container with nginx at the front which sends stuff to django backend
+ add heaedr config in nginx 

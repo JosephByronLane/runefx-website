@@ -5,7 +5,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ShowcaseGridComponent } from './components/showcase-grid/showcase-grid.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
-import { HttpClientModule } from '@angular/common/http';
 import { IntermitentLoadingComponent } from './components/intermitent-loading/intermitent-loading.component';
 import { Subscription } from 'rxjs';
 import { InitialLoadingService, browserRefresh } from './services/initial-loading.service';
@@ -16,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent,ShowcaseGridComponent, LoadingScreenComponent,HttpClientModule, IntermitentLoadingComponent, ProfileSidebarComponent, ReactiveFormsModule],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent,ShowcaseGridComponent, LoadingScreenComponent, IntermitentLoadingComponent, ProfileSidebarComponent, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

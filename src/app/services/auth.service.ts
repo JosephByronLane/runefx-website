@@ -42,40 +42,6 @@ export class AuthService {
     })
   }
 
-  private handleError(error: any): Observable<never> {
-    let errorMessage = 'Something went wrong;'
-    console.log("error: ", error);
-    if (error.error instanceof ErrorEvent){
-      //client side error
-      errorMessage = error.error.message;
-
-    }
-    else if (error.status){
-      switch (error.status){
-        case 401:
-          errorMessage = 'Unauthorized';
-          break;
-        case 403:
-          errorMessage = 'Forbidden';
-          break;
-        case 404:
-          errorMessage = 'Not Found';
-          break;
-        case 500:
-          errorMessage = 'Internal Server Error';
-          break;
-        case 400:
-          errorMessage = 'Bad Request';
-          break;
-        default:
-          errorMessage = 'An error occurred';
-          break;
-      }
-    }
-    console.error("Error: ", errorMessage);
-    return throwError(() => new Error(errorMessage));
-  }
-
   register(data: IRegisterUser): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register/`, data, this.httpOptions)
   }
@@ -87,7 +53,9 @@ export class AuthService {
       this.httpOptions
     ).pipe(
       tap((response: IAuthResponse) => {
-        console.log("Login successful: ", response);
+        if (response.user){
+          this.currentUserSubject.next(response.user);
+        }
       })
     )
   }
