@@ -8,6 +8,7 @@
       <div class="user-profile">
           <h3>My Account</h3>
           <div class="profile-options">
+            <div class="option">{{currentUser?.username}}</div>
             <div class="option" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
             <div class="option" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
             <div class="option" (click)="logout()">Logout</div>

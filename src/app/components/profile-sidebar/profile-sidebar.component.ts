@@ -50,7 +50,7 @@ export class ProfileSidebarComponent {
   public isLoggedIn: boolean = false;
   public username: string = '';
   public password: string = '';
-  private currentUser: IUser | null = null;
+  public currentUser: IUser | null = null;
 
   constructor(private router: Router,
     public temploading: IntermitentLoadingService,
@@ -68,13 +68,16 @@ export class ProfileSidebarComponent {
   }
   ngOnInit() {
     this.isOpen = false;
+
+    this.isLoggedIn = this.authService.isAuthenticatedValue
     //implement auth check
   }
 
   attemptLogin = (): void => {
     this.authService.login(this.username,this.password).subscribe({
       next: (response) =>{
-        console.log("tat")
+        this.currentUser = this.authService.CurrentUserValue
+        this.isLoggedIn = true
       },
       error: (error) =>{
         console.log("awww")

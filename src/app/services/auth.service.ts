@@ -14,19 +14,29 @@ export class AuthService {
   private apiUrl = environment.apiUrl;
   
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
-  public currentUser$ = this.currentUserSubject.asObservable();
-
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  
+  private currentUser$ = this.currentUserSubject.asObservable();
+  private isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   
   constructor(private http: HttpClient, private router: Router) {
-      this.isAuthenticated();
-   }
+    this.isAuthenticated();
+  }  
+  
+  get CurrentUserValue() : IUser | null{
+    return this.currentUserSubject.value
+  }
 
-   private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    }),
-    withCredentials: true
-   }
+  get isAuthenticatedValue(): boolean{
+    return this.isAuthenticatedSubject.value;
+  }
+
+  private httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  }),
+  withCredentials: true
+  }
 
   private isAuthenticated(): void{
     this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`)
@@ -59,14 +69,11 @@ export class AuthService {
       )
   }
 
-
   register(data: IRegisterUser): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register/`, data, this.httpOptions)
   }
 
   login(username: string, password: string): Observable<any> {
-    console.log("login pressed")
-    console.log(`Login url: ${this.apiUrl}/auth/login`)
     return this.http.post<IAuthResponse | null>(
       `${this.apiUrl}/auth/login/`,
       {
@@ -76,13 +83,9 @@ export class AuthService {
       this.httpOptions
     ).pipe(
         tap((response: IAuthResponse| null) => {
-          console.log("recieved response")
-          if (response && response.user){
-
-            this.currentUserSubject.next(response.user);
-          }
-          else{
-            console.log("failed auth")
+          if (response){
+            this.isAuthenticatedSubject.next(true)
+            this.currentUserSubject.next(response.user)
           }
         },
       ),
@@ -90,9 +93,9 @@ export class AuthService {
         console.log(error)
         throw error;
       })
-    )
-    
+    )    
   }
+  
 
   logout(){
     console.log("logged out")
