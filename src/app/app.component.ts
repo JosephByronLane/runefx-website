@@ -43,7 +43,7 @@ export class AppComponent {
         //when we're on home, the url is undefined because its literally nothing, so when that happens we replace it with '' so it finds the correct value.
         pathString = pathString.split('/')[1];
         if (pathString===undefined) pathString=''
-        if(!this.showLoadingScreen){
+        if(this.showLoadingScreen){
           initloader.startLoadingScreen(pathString, refreshed);         
 
         }

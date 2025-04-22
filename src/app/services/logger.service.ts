@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.dev';
 
 
-enum LogLevel {
+export enum LogLevel {
   None = 0,
   Error = 1,
   Warning = 2,
@@ -15,7 +15,7 @@ enum LogLevel {
 })
 
 export class LoggerService {
-  logLevel: LogLevel = LogLevel.Debug 
+  private logLevel: LogLevel = LogLevel.Debug 
 
   constructor() {
     if (environment.production){
@@ -27,7 +27,7 @@ export class LoggerService {
    }
 
 
-  log(level:LogLevel, msg:string){
+  public log(level:LogLevel, msg:string){
     switch(this.logLevel){
       case this.logLevel=LogLevel.None:
         //do nothing cause no loggin shall not happen
@@ -52,12 +52,11 @@ export class LoggerService {
           this.logToConsole(level,msg)
         }
         break;
-    }     
-
+    }
   }
 
-  logToConsole(level:LogLevel, msg:String){
-    console.log(`${level}: ${msg}`)
+  private logToConsole(level:LogLevel, msg:String){
+    console.log(`${LogLevel[level]}: ${msg}`)
   }
 
 }

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { IUser } from '../interfaces/IUser';
 import { IAuthResponse } from '../interfaces/IAuthResponse';
 import { ProfileSidebarComponent } from '../components/profile-sidebar/profile-sidebar.component';
+import { LoggerService, LogLevel } from './logger.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class AuthService {
   private currentUser$ = this.currentUserSubject.asObservable();
   private isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   
-  constructor(private http: HttpClient, private router: Router, ) {
+  constructor(private http: HttpClient, private router: Router, public logginService:LoggerService) {
     this.isAuthenticated();
   }  
   
@@ -48,6 +49,7 @@ export class AuthService {
     )
       .subscribe( user => {
         if (user){
+        this.logginService.log(LogLevel.Debug, "isAuthenticaed: User authenticated correctly.")
         this.currentUserSubject.next(user?.user);
       } else {
         this.currentUserSubject.next(null);
@@ -121,6 +123,7 @@ export class AuthService {
     ).pipe(
         tap((response: IAuthResponse| null) => {
           if (response){
+            this.logginService.log(LogLevel.Debug, "login: User logged in correctly")
             this.isAuthenticatedSubject.next(true)
             this.currentUserSubject.next(response.user)
           }
