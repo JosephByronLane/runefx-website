@@ -18,19 +18,16 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   
-  private currentUser$ = this.currentUserSubject.asObservable();
-  private isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
-  
   constructor(private http: HttpClient, private router: Router, public logginService:LoggerService) {
     this.isAuthenticated();
   }  
   
-  get CurrentUserValue() : IUser | null{
-    return this.currentUserSubject.value
+  get CurrentUserValue() : Observable<IUser | null>{
+    return this.currentUserSubject.asObservable();
   }
 
-  get isAuthenticatedValue(): boolean{
-    return this.isAuthenticatedSubject.value;
+  get isAuthenticatedValue(): Observable<boolean>{
+    return this.isAuthenticatedSubject.asObservable();
   }
 
   private httpOptions = {
@@ -41,20 +38,33 @@ export class AuthService {
   }
 
   private isAuthenticated(): void{
+
+    this.logginService.log(LogLevel.Debug, "isAuthenticated - Starting authentication check");
+
+
     this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`,
       this.httpOptions
     )
     .pipe(
-      catchError(() => of(null))
+      tap(
+        response => {
+          this.logginService.log(LogLevel.Debug, " IsAuthenticated > tap - Http response recieved")
+        
+          this.currentUserSubject.next(response.user);
+          this.isAuthenticatedSubject.next(true)
+          console.log(response.user)
+        }
+      ),
+      catchError(
+        (error) =>{
+          this.logginService.log(LogLevel.Error, `IsAuthenticated > CatchError - ${error}`)
+          this.currentUserSubject.next(null);
+          this.isAuthenticatedSubject.next(false)
+          return of(error)
+        }
+      )
     )
-      .subscribe( user => {
-        if (user){
-        this.logginService.log(LogLevel.Debug, "isAuthenticaed: User authenticated correctly.")
-        this.currentUserSubject.next(user?.user);
-      } else {
-        this.currentUserSubject.next(null);
-      }
-    })
+    .subscribe()
   }
 
   fetchCurrentUserData(): Observable<IAuthResponse | null> {
@@ -72,25 +82,6 @@ export class AuthService {
           }
         ),
       )
-  }
-
-  isAuth(): void{
-    this.fetchCurrentUserData().subscribe({
-      next: () => {
-        this.isAuthenticatedSubject.next(true)
-      },
-      error: () =>{
-        this.refreshToken().subscribe({
-          next: () =>{
-            this.fetchCurrentUserData().subscribe()
-          },
-          error:() =>{
-            this.isAuthenticatedSubject.next(false)
-            this.currentUserSubject.next(null)
-          }
-        })
-      }
-    })
   }
 
   refreshToken() : Observable<boolean>{
@@ -123,14 +114,14 @@ export class AuthService {
     ).pipe(
         tap((response: IAuthResponse| null) => {
           if (response){
-            this.logginService.log(LogLevel.Debug, "login: User logged in correctly")
+            this.logginService.log(LogLevel.Debug, "login - User logged in correctly")
             this.isAuthenticatedSubject.next(true)
             this.currentUserSubject.next(response.user)
           }
         },
       ),
       catchError((error) => {
-        console.log(error)
+        this.logginService.log(LogLevel.Error,  `${error}`)
         throw error;
       })
     )    

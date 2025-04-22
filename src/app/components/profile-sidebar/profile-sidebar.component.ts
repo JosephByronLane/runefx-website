@@ -9,6 +9,8 @@ import { UtilsService } from '../../services/utils.service';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 import { IUser } from '../../interfaces/IUser';
 import { AuthService } from '../../services/auth.service';
+import { Observable, Subscribable, Subscription } from 'rxjs';
+import { LoggerService, LogLevel } from '../../services/logger.service';
 @Component({
   selector: 'app-profile-sidebar',
   standalone: true,
@@ -50,13 +52,17 @@ export class ProfileSidebarComponent {
   public isLoggedIn: boolean = false;
   public username: string = '';
   public password: string = '';
-  public currentUser: IUser | null = null;
+  public currentUser: IUser | null= null;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     public temploading: IntermitentLoadingService,
     public utils: UtilsService,
     private authService: AuthService,  
-    ) {}
+    public loggerService: LoggerService
+    ) {
+
+    }
 
   public openSidebar() :void {
     this.isOpen = true
@@ -71,22 +77,35 @@ export class ProfileSidebarComponent {
     }
   }
   ngOnInit() {
-    this.isOpen = false;
 
+    this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Initialized`)
+    this.isOpen = false;
+    this.authService.CurrentUserValue.subscribe(
+      (user: IUser | null) =>{
+        this.currentUser = user
+        this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Updated auth user as ${this.currentUser}`)
+
+      }
+    )
+    this.authService.isAuthenticatedValue.subscribe(
+      (isAuth:boolean)=>{
+        this.isLoggedIn = isAuth
+        this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Updated auth status as ${this.isLoggedIn}`)
+      }
+    )
+  }
+
+  ngOnDestroy(){
 
   }
 
   ngAfterContentInit(){
-    this.isLoggedIn = this.authService.isAuthenticatedValue
-    this.currentUser = this.authService.CurrentUserValue
     //implement auth check
   }
 
   attemptLogin = (): void => {
     this.authService.login(this.username,this.password).subscribe({
       next: (response) =>{
-        this.currentUser = this.authService.CurrentUserValue
-        this.isLoggedIn = true
       },
       error: (error) =>{
         console.log("awww")
