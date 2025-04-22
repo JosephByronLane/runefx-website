@@ -19,7 +19,7 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   
   constructor(private http: HttpClient, private router: Router, public logginService:LoggerService) {
-    this.isAuthenticated();
+    this.isAuthenticated().subscribe();
   }  
   
   get CurrentUserValue() : Observable<IUser | null>{
@@ -37,12 +37,12 @@ export class AuthService {
   withCredentials: true
   }
 
-  private isAuthenticated(): void{
+  private isAuthenticated(): Observable<IAuthResponse>{
 
     this.logginService.log(LogLevel.Debug, "isAuthenticated - Starting authentication check");
 
 
-    this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`,
+    return this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`,
       this.httpOptions
     )
     .pipe(
@@ -57,41 +57,47 @@ export class AuthService {
       ),
       catchError(
         (error) =>{
-          this.logginService.log(LogLevel.Error, `IsAuthenticated > CatchError - ${error}`)
+          this.logginService.log(LogLevel.Error, `IsAuthenticated > CatchError - ${error.message}. Attempting to refresh tokens...`)
+
+          
+          this.refreshToken()
+            .pipe(
+              catchError((error) =>{
+              this.logginService.log(LogLevel.Error, "IsAuthenticated > CatchError > refreshToken -  Failed to refresh.")
+
+              this.currentUserSubject.next(null);
+              this.isAuthenticatedSubject.next(false)
+              return of(error)
+              })
+            ).subscribe()
+
           this.currentUserSubject.next(null);
           this.isAuthenticatedSubject.next(false)
           return of(error)
         }
       )
-    )
-    .subscribe()
+    )  
   }
 
-  fetchCurrentUserData(): Observable<IAuthResponse | null> {
-      return this.http.get<IAuthResponse | null>(`${this.apiUrl}/auth/me`,
-        this.httpOptions
-      )
-      .pipe(
-        tap(
-          user => {
-            if (!user){
-              this.logout();
-              return
-            }
-            this.currentUserSubject.next(user?.user)
-          }
-        ),
-      )
-  }
-
-  refreshToken() : Observable<boolean>{
-    return this.http.post<boolean>(
+  refreshToken() : Observable<IAuthResponse>{
+    this.logginService.log(LogLevel.Debug, "refreshToken - Attempting to refresh tokens...")
+    return this.http.post<IAuthResponse>(
       `${this.apiUrl}/auth/login/refresh/`,
       {},
       this.httpOptions
     )
     .pipe(
+      tap(
+        _ =>{
+          this.logginService.log(LogLevel.Debug, "refreshToken - Tokens refreshed successfully! Attempting to re-auth")
+
+          this.isAuthenticated().subscribe()
+
+        }
+      ),
       catchError(error =>{
+        this.logginService.log(LogLevel.Debug, "refreshToken - Refreshing failed.")
+
         this.isAuthenticatedSubject.next(false)
         this.currentUserSubject.next(null)
         return throwError(()=> error)
