@@ -35,7 +35,15 @@ export class LoggerService {
 
 
   private logToConsole(level:LogLevel, msg:String){
-    console.log(`${LogLevel[level]}: ${msg}`)
+    if (level === 1){
+      console.error(`${LogLevel[level]}: ${msg}`)
+    }
+    else if (level ===2){
+      console.warn(`${LogLevel[level]}: ${msg}`)
+    }
+    else{
+      console.log(`${LogLevel[level]}: ${msg}`)
+    }
   }
 
 }

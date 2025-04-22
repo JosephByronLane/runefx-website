@@ -104,19 +104,14 @@ export class ProfileSidebarComponent {
   }
 
   attemptLogin = (): void => {
-    this.authService.login(this.username,this.password).subscribe({
-      next: (response) =>{
-      },
-      error: (error) =>{
-        console.log("awww")
-      }
-    })
+    this.authService.login(this.username,this.password)
   }
 
 
 
   logout = (): void => {
-    this.isLoggedIn = false;
+    this.authService.logout()
+    this.isOpen=false //should we make logout reutrn a subscribabele? figure out...
   }
 
 }

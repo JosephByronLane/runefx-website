@@ -47,36 +47,38 @@ export class AuthService {
     )
     .pipe(
       tap(
-        response => {
-          this.logginService.log(LogLevel.Debug, " IsAuthenticated > tap - Http response recieved")
-        
+        response => {        
           this.currentUserSubject.next(response.user);
           this.isAuthenticatedSubject.next(true)
-          console.log(response.user)
+          this.logginService.log(LogLevel.Debug, ` IsAuthenticated > Authenticated as ${this.currentUserSubject.value}`)
+
         }
       ),
       catchError(
         (error) =>{
           this.logginService.log(LogLevel.Error, `IsAuthenticated > CatchError - ${error.message}. Attempting to refresh tokens...`)
-
           
           this.refreshToken()
             .pipe(
               catchError((error) =>{
               this.logginService.log(LogLevel.Error, "IsAuthenticated > CatchError > refreshToken -  Failed to refresh.")
 
-              this.currentUserSubject.next(null);
-              this.isAuthenticatedSubject.next(false)
+              this.unsetValues()
               return of(error)
               })
             ).subscribe()
 
-          this.currentUserSubject.next(null);
-          this.isAuthenticatedSubject.next(false)
+            this.unsetValues()
           return of(error)
         }
       )
     )  
+  }
+
+  unsetValues(){
+    this.logginService.log(LogLevel.Debug, "unsetValues - Unsetting values...")
+    this.currentUserSubject.next(null);
+    this.isAuthenticatedSubject.next(false)
   }
 
   refreshToken() : Observable<IAuthResponse>{
@@ -98,8 +100,7 @@ export class AuthService {
       catchError(error =>{
         this.logginService.log(LogLevel.Debug, "refreshToken - Refreshing failed.")
 
-        this.isAuthenticatedSubject.next(false)
-        this.currentUserSubject.next(null)
+        this.unsetValues()
         return throwError(()=> error)
       })
     )
@@ -109,8 +110,9 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/auth/register/`, data, this.httpOptions)
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<IAuthResponse | null>(
+  login(username: string, password: string): void {
+    this.logginService.log(LogLevel.Debug, "login - Attempting login")
+    this.http.post<IAuthResponse | null>(
       `${this.apiUrl}/auth/login/`,
       {
         "username": username, 
@@ -127,15 +129,33 @@ export class AuthService {
         },
       ),
       catchError((error) => {
-        this.logginService.log(LogLevel.Error,  `${error}`)
+        this.logginService.log(LogLevel.Error,  `login - ${error}`)
         throw error;
       })
-    )    
+    ).subscribe()
   }
   
 
-  logout(){
-    console.log("logged out")
-  }
+  logout():void{
+    this.logginService.log(LogLevel.Debug, "logout - Attempting logout")
 
+    this.http.post<IAuthResponse>(`${this.apiUrl}/auth/logout/`,
+      {},
+      this.httpOptions
+    )
+    .pipe(
+      tap(
+        (_) =>{
+          this.unsetValues()
+        }
+      ),    
+      catchError(
+        (error) =>{
+          this.logginService.log(LogLevel.Error,  `logout - ${error.message}`)
+          this.unsetValues()
+          throw error;
+        }
+      ) 
+    ).subscribe()
+  }
 }
