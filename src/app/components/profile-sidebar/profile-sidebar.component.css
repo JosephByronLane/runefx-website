@@ -54,28 +54,18 @@
     color: white;
     border-radius: var(--border-radius);
   }
-  
-  .login-actions {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .login-actions button {
-    padding: 8px 15px;
-    background-color: var(--hover-text-color);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-actions button:hover {
-    background-color: transparent;
-    color: var(--hover-text-color);
-    border: 1px solid var(--hover-text-color);
-  }
-  
+
+
+
+.error-container {
+  height: 2vh;
+}
+.error-message {
+  color: #ff4d4d;
+  padding: .2vh .2vw;
+  border-radius: var(--border-radius);
+  font-size: 1.5vh;
+}
 .login-options {
     margin-top: 20px;
     font-size: 0.9em;

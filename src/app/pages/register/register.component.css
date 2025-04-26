@@ -62,12 +62,11 @@
     padding: .2vh .2vw;
     border-radius: var(--border-radius);
     font-size: 2vh;
-
   }
 
   .error-container {
     height: 2vh;
-}
+  }
 
 .status-message {
   color: #00ff00;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.dev';
 import { IRegisterUser } from '../interfaces/IRegisterUser';
-import { BehaviorSubject, catchError, Observable, of, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, Subscribable, tap, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { IUser } from '../interfaces/IUser';
@@ -110,9 +110,9 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/auth/register/`, data, this.httpOptions)
   }
 
-  login(username: string, password: string): void {
+  login(username: string, password: string): Subscribable<IAuthResponse | null> {
     this.logginService.log(LogLevel.Debug, "login - Attempting login")
-    this.http.post<IAuthResponse | null>(
+    return this.http.post<IAuthResponse | null>(
       `${this.apiUrl}/auth/login/`,
       {
         "username": username, 
@@ -132,7 +132,7 @@ export class AuthService {
         this.logginService.log(LogLevel.Error,  `login - ${error}`)
         throw error;
       })
-    ).subscribe()
+    )
   }
   
 

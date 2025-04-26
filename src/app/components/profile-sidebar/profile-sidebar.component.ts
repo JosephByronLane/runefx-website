@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { style, state, trigger, transition, animate } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
@@ -54,6 +54,12 @@ export class ProfileSidebarComponent {
   public password: string = '';
   public currentUser: IUser | null= null;
 
+  public  errorMessage: string = '';
+
+  @ViewChild('userInput') userInputRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('passInput') passInputRef!: ElementRef<HTMLInputElement>;
+  //@ViewChild('errorMessage') errorMessageRef! : ElementRef<HTMLInputElement>;
+
   constructor(
     private router: Router,
     public temploading: IntermitentLoadingService,
@@ -99,12 +105,37 @@ export class ProfileSidebarComponent {
 
   }
 
-  ngAfterContentInit(){
-    //implement auth check
-  }
 
   attemptLogin = (): void => {
-    this.authService.login(this.username,this.password)
+    this.authService.login(this.username,this.password).subscribe({
+      next: (_) =>{
+        //we dont do anything, all the switching the states is done through the login function itself and its subscribables
+      },
+      error: (error) => {
+        this.userInputRef.nativeElement.style.outline = "2px solid red"
+        this.passInputRef.nativeElement.style.outline = "2px solid red"
+
+        const errorStatus = error.status
+        if (errorStatus === 0 ) {  //server dead or didnt recieve response
+          this.errorMessage = "Error comunicating with login server. Please contact support"
+        }
+        else if (errorStatus === 401 || errorStatus === 400){
+          this.errorMessage = "Incorrect credentials."
+        }
+        else if (errorStatus === 500){
+          this.errorMessage = "Server error. Please try again later."
+        }
+        else {
+          this.errorMessage = "Error logging in."
+        }
+        
+        setTimeout(() => {
+          this.userInputRef.nativeElement.style.outline = "none"
+          this.passInputRef.nativeElement.style.outline = "none"
+        }, 12000)
+
+      }
+    })
   }
 
 
