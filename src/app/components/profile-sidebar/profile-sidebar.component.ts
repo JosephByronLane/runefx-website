@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { style, state, trigger, transition, animate } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +7,10 @@ import { Router } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { UtilsService } from '../../services/utils.service';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
+import { IUser } from '../../interfaces/IUser';
+import { AuthService } from '../../services/auth.service';
+import { Observable, Subscribable, Subscription } from 'rxjs';
+import { LoggerService, LogLevel } from '../../services/logger.service';
 @Component({
   selector: 'app-profile-sidebar',
   standalone: true,
@@ -46,27 +50,103 @@ import { ClickOutsideDirective } from '../../directives/click-outside.directive'
 export class ProfileSidebarComponent {
   public isOpen: boolean = false;
   public isLoggedIn: boolean = false;
+  public isAttemptingLogin:boolean =false;
   public username: string = '';
   public password: string = '';
+  public currentUser: IUser | null= null;
 
-  constructor(private router: Router, public temploading: IntermitentLoadingService, public utils: UtilsService) {}
+  public  errorMessage: string = '';
+
+  @ViewChild('userInput') userInputRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('passInput') passInputRef!: ElementRef<HTMLInputElement>;
+  //@ViewChild('errorMessage') errorMessageRef! : ElementRef<HTMLInputElement>;
+
+  constructor(
+    private router: Router,
+    public temploading: IntermitentLoadingService,
+    public utils: UtilsService,
+    public authService: AuthService,  
+    public loggerService: LoggerService
+    ) {
+
+    }
+
+  closeSidebar(){
+    if (this.isOpen) this.authService.closeProfileSidebar()
+  }
 
   toggleSidebar() {
-    this.isOpen = !this.isOpen;
-  }
-  ngOnInit() {
-    this.isOpen = false;
-    //implement auth check
+    this.authService.toggleProfileSidebar()
   }
 
-  login = (): void => {
-    this.isLoggedIn = true;
-    console.log('login');
-    console.log(this.isLoggedIn);
+
+
+  ngOnInit() {
+    this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Initialized`)
+    this.authService.CurrentUserValue.subscribe(
+      (user: IUser | null) =>{
+        this.currentUser = user
+        this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Updated auth user as ${this.currentUser}`)
+
+      }
+    )
+    this.authService.isAuthenticatedValue.subscribe(
+      (isAuth:boolean)=>{
+        this.isLoggedIn = isAuth
+        this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Updated auth status as ${this.isLoggedIn}`)
+      }
+    )
+
+    this.authService.isSidebarOpenValue.subscribe(
+      (isSidebarOpen:boolean)=>{
+        this.isOpen = isSidebarOpen
+      }
+    )
   }
+
+  ngOnDestroy(){
+
+  }
+
+
+  attemptLogin = (): void => {
+    this.authService.login(this.username,this.password).subscribe({
+      next: (_) =>{
+        this.loggerService.log(LogLevel.Debug, "Login successful")
+        //we dont do anything, all the switching the states is done through the login function itself and its subscribables
+      },
+      error: (error) => {
+        this.userInputRef.nativeElement.style.outline = "2px solid red"
+        this.passInputRef.nativeElement.style.outline = "2px solid red"
+        this.loggerService.log(LogLevel.Error, `Error while logging in ${error}`)
+        const errorStatus = error.status
+        if (errorStatus === 0 ) {  //server dead or didnt recieve response
+          this.errorMessage = "Error comunicating with login server. Please contact support"
+        }
+        else if (errorStatus === 401 || errorStatus === 400){
+          this.errorMessage = "Incorrect credentials."
+        }
+        else if (errorStatus === 500){
+          this.errorMessage = "Server error. Please try again later."
+        }
+        else {
+          this.errorMessage = "Error logging in."
+        }
+        
+        setTimeout(() => {
+          this.userInputRef.nativeElement.style.outline = "none"
+          this.passInputRef.nativeElement.style.outline = "none"
+        }, 12000)
+
+      }
+    })
+  }
+
+
 
   logout = (): void => {
-    this.isLoggedIn = false;
+    this.authService.logout()
+    this.isOpen=false //should we make logout reutrn a subscribabele? figure out...
   }
 
 }

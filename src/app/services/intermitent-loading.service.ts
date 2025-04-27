@@ -1,4 +1,3 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -37,26 +36,44 @@ export class IntermitentLoadingService {
 
   
   switchWithLoading(routePath: string, scrollToId?: string, duration: number = 3000, scrollToTop: boolean = true) {
-    if(this.enabled){
-      if(scrollToTop){
-        this.utils.scrollToTop();
-      }
-      this.showLoadingScreen(); //we enable loading screen
-      setTimeout(() => {
-        this.router.navigate([routePath]).then(() => { //switch to it
-          if (scrollToId) { //see if we gotta scroll somewhere
-            setTimeout(() => { 
-              const element = document.getElementById(scrollToId);
-              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 0); // scroll to shit
-          }
-        });
-      }, 500); 
-  
-      setTimeout(() => {
-        this.hideLoadingScreen();
-      }, duration); //then hide loading screen 
-  
+    console.log('switchWithLoading', routePath);
+    if (!this.enabled) {
+      console.log('disabled');
+      return;
     }
+    
+    console.log('scrollToTop', scrollToTop);
+    if(scrollToTop){
+      this.utils.scrollToTop();
+    }
+
+    console.log('showLoadingScreen');
+    this.showLoadingScreen(); //we enable loading screen
+
+    setTimeout(() => {
+      console.log('navigating to', routePath);
+      this.router.navigate([routePath]).then((success) => { //switch to it
+        console.log('success', success);
+        console.log('navigated to', routePath);
+
+        if (scrollToId) { //see if we gotta scroll somewhere
+          setTimeout(() => { 
+            const element = document.getElementById(scrollToId);
+            element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 0); // scroll to shit
+        }
+
+        console.log('navigated to', routePath);
+      }).catch((error) => {
+        
+        console.log('error', error);
+        this.hideLoadingScreen();
+      });
+    }, 500); 
+
+    setTimeout(() => {
+      this.hideLoadingScreen();
+    }, duration); //then hide loading screen 
+    
   }
 }

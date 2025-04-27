@@ -33,6 +33,7 @@
     padding: 20px;
     height: 100%;
     overflow-y: auto;
+    width: 12.5vw;
   }
 
   .login-form h3 {
@@ -54,28 +55,18 @@
     color: white;
     border-radius: var(--border-radius);
   }
-  
-  .login-actions {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .login-actions button {
-    padding: 8px 15px;
-    background-color: var(--hover-text-color);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-actions button:hover {
-    background-color: transparent;
-    color: var(--hover-text-color);
-    border: 1px solid var(--hover-text-color);
-  }
-  
+
+
+
+.error-container {
+  height: 2vh;
+}
+.error-message {
+  color: #ff4d4d;
+  padding: .2vh .2vw;
+  border-radius: var(--border-radius);
+  font-size: 1.5vh;
+}
 .login-options {
     margin-top: 20px;
     font-size: 0.9em;
@@ -90,13 +81,17 @@
   .link {
     color: var(--hover-text-color);
     text-decoration: none;
+    cursor: pointer;
   }
   
-  .user-profile h3 {
+  .profile-info h3 {
     color: white;
     margin-bottom: 20px;
+    width: 100%;
     border-bottom: 1px solid var(--hover-text-color);
     padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
   }
   
   .profile-options .option {
@@ -104,6 +99,20 @@
     cursor: pointer;
     color: white;
     transition: color 0.3s ease;
+  }
+
+  .profile-info{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile-picture{
+    margin: 1vw 2vh;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+  }
+  .profile-picture img{
+    width: 100%;
   }
   
   .profile-options .option:hover {
@@ -119,3 +128,6 @@
     background-color: rgba(0, 0, 0, 0.3);
     z-index: -3;
   }
+.disabled{
+  display: none;
+}

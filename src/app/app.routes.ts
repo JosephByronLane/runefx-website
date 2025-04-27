@@ -11,68 +11,72 @@ import { RqueueComponent } from './pages/rqueue/rqueue.component';
 import { ForgeComponent } from './pages/forge/forge.component';
 import { TryBuyComponent } from './pages/try-buy/try-buy.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-
+import { RegisterComponent } from './pages/register/register.component';
 export const routes: Routes = [
     {
         path: '',
-        title:'Home | RuneFX',
+        title:'RuneFX | Home',
         component: HomeComponent
     },
     {
         path:'render',
-        title:'Technologies | RuneFX',
+        title:'RuneFX | Technologies',
         component: RenderComponent
     },
     {
         path:'render/runic-renderer',
-        title:'Runic Renderer | RuneFX',
+        title:'RuneFX | Runic Renderer',
         component: RunicRendererComponent
     },
     {
         path:'render/spherical-harmonics',
-        title:'Spherical Harmonics | RuneFX',
+        title:'RuneFX | Spherical Harmonics',
         component: SphericalHarmonicsComponent
     },
     {
         path:'render/axiom',
-        title:'Axiom | RuneFX',
+        title:'RuneFX | Axiom',
         component: AxiomComponent
     },
     {
         path:'render/rqueue',
-        title:'RQueue | RuneFX',
+        title:'RuneFX | RQueue',
         component: RqueueComponent
     },
     {
         path:'render/forge',
-        title:'Forge | RuneFX',
+        title:'RuneFX | Forge',
         component: ForgeComponent
     },
     { 
         path: 'vfx/:name',
-        title: 'Showcase | RuneFX',
+        title: 'RuneFX | Showcase',
         component: ItemDetailComponent 
     },
     { 
         path: 'vfx',     
-        title:'Showcase | RuneFX',
+        title:'RuneFX | Showcase',
         component: VfxComponent 
     },
     { 
         path: 'try-buy',     
-        title:'Try/Buy | RuneFX',
+        title:'RuneFX | Try/Buy',
         component: TryBuyComponent 
     },
     { 
         path: 'about',     
-        title:'About | RuneFX',
+        title:'RuneFX | About',
         component: AboutComponent 
     },
     { 
         path: '404', 
-        title:'Not found | RuneFX',
+        title:'RuneFX | Not found',
         component: NotFoundComponent },
-    
+    { 
+        path: 'register', 
+        title:'RuneFX | Register',
+        component: RegisterComponent
+    },
     { 
         path: '**', 
         redirectTo: '/404' 

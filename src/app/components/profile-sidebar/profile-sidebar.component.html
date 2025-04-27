@@ -1,4 +1,4 @@
-<div class="profile-sidebar-container" [@sidebarState]="isOpen ? 'open' : 'closed'" appClickOutside (appClickOutside)="isOpen = false">
+<div class="profile-sidebar-container" [@sidebarState]="isOpen ? 'open' : 'closed'" appClickOutside (appClickOutside)="closeSidebar()">
   <div class="arrow-container" (click)="toggleSidebar()">
     <span class="arrow" [@arrowState]="isOpen ? 'open' : 'closed'">&lt;</span>
   </div>
@@ -6,11 +6,17 @@
   <div class="sidebar-content" >
     @if (isLoggedIn) {
       <div class="user-profile">
-          <h3>My Account</h3>
+        <div class="profile-info">
+          <div class="profile-picture">
+            <img src="{{currentUser?.profile_picture_url}}" alt="Profile picture" >
+          </div>
+          <h3 class="sdr-text">{{currentUser?.username}}</h3>
+
+        </div>
           <div class="profile-options">
-            <div class="option" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
-            <div class="option" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
-            <div class="option" (click)="logout()">Logout</div>
+            <div class="option sdr-text" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
+            <div class="option sdr-text" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
+            <div class="option sdr-text" (click)="logout()">Logout</div>
           </div>
         </div>      
       }           
@@ -19,13 +25,16 @@
           <h3>Login</h3>
           <form class="login-form">
             <div class="form-group">
-              <input type="text" placeholder="Username" [(ngModel)]="username" name="username">
+              <input type="text" placeholder="Username" [(ngModel)]="username" name="username" #userInput>
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+              <input type="password" placeholder="Password" [(ngModel)]="password" name="password" #passInput>
+            </div>
+            <div class="error-container">
+              <p class="error-message">{{this.errorMessage}}</p>
             </div>
             <div class="login-actions">
-              <app-rbutton [buttonText]="'Login'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="login"></app-rbutton>
+              <app-rbutton [buttonText]="'Login'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="attemptLogin" [disabled]="isAttemptingLogin" [disabledText]="'Logging in...'"></app-rbutton>
             </div>
           </form>     
           <div class="login-options">
@@ -34,14 +43,13 @@
               <br>
               <br>
               <span class="option-link">No account yet? </span>
-              <a href="" class="link">Register here</a>
-
+              <a (click)="temploading.switchWithLoading('register', '', 2000, true); isOpen = false" class="link">Register here</a>
             </div>       
         </div>
     }
   </div>
 
 </div>
-<div class="dimmed-background" [@dimmedBackgroundOpacity]="isOpen ? 'open' : 'closed'">
+<div class="dimmed-background" [@dimmedBackgroundOpacity]="isOpen ? 'open' : 'closed'" [ngClass]="{'disabled': !isOpen}">
     
 </div>
