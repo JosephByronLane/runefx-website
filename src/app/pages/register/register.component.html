@@ -162,7 +162,7 @@
             
             <div class="form-actions">
                 <app-rbutton [buttonText]="'Register'" [buttonAlignment]="'center'" [onClickFunction]="onSubmit.bind(this)" [disabled]="isSubmitting" [disabledText]="'Submitting...'" [doesNavigate]="false"></app-rbutton>
-                <p>Already have an account? <a (click)="openSidebar()">Login</a></p>
+                <p>Already have an account? <a (click)="openSidebar($event)">Login</a></p>
             </div>
     
         </form>

@@ -49,7 +49,8 @@ export class RegisterComponent {
     );
   }
 
-  openSidebar(){
+  openSidebar(event:MouseEvent){
+    event.stopPropagation(); //stop directive from closing it as soon as it opens
     this.authService.openProfileSidebar()
   }
   onSubmit(){
