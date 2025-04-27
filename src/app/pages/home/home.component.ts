@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit{
   diff = Math.abs(this.ratio-1.7);
   
   ngOnInit(): void {
-    console.log(this.diff);
     this.ShowcaseList = this.VfxData.getAllItems();
     this.ShowcaseList = this.ShowcaseList.slice(0, 9)
     if(this.diff>.7){

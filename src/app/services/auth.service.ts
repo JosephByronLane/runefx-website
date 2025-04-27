@@ -18,6 +18,8 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   
+  private isProfileSidebarOpen = new BehaviorSubject<boolean>(false)
+
   constructor(private http: HttpClient, private router: Router, public logginService:LoggerService) {
     this.isAuthenticated().subscribe();
   }  
@@ -28,6 +30,25 @@ export class AuthService {
 
   get isAuthenticatedValue(): Observable<boolean>{
     return this.isAuthenticatedSubject.asObservable();
+  }
+
+  get isSidebarOpenValue() : Observable<boolean>{
+    return this.isProfileSidebarOpen.asObservable()
+  }
+
+  public toggleProfileSidebar(){
+    this.logginService.log(LogLevel.Debug, " openProfileSidebar - toggled profile sidebar")
+    this.isProfileSidebarOpen.next(!this.isProfileSidebarOpen.value);
+  }
+
+  public openProfileSidebar(){
+    this.logginService.log(LogLevel.Debug, " openProfileSidebar - Opened profile sidebar")
+    this.isProfileSidebarOpen.next(true);
+  }
+
+  public closeProfileSidebar(){
+    this.logginService.log(LogLevel.Debug, " closeProfileSidebar - Closed profile sidebar")
+    this.isProfileSidebarOpen.next(false);
   }
 
   private httpOptions = {

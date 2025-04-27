@@ -125,7 +125,7 @@
                         <span class="error-message">Password must be at least 8 characters</span>
                     }
                     @if (registerForm.get('password')?.errors?.['pattern']) {
-                        <span class="error-message">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</span>
+                        <span class="error-message">Password must contain at least uppercase and lowercase letters, one number, one special character, and be at most 7 characters long.</span>
                         }
                     }
                 </div>
@@ -162,7 +162,7 @@
             
             <div class="form-actions">
                 <app-rbutton [buttonText]="'Register'" [buttonAlignment]="'center'" [onClickFunction]="onSubmit.bind(this)" [disabled]="isSubmitting" [disabledText]="'Submitting...'" [doesNavigate]="false"></app-rbutton>
-                <p>Already have an account? <a routerLink="/login">Login</a></p>
+                <p>Already have an account? <a (click)="openSidebar()">Login</a></p>
             </div>
     
         </form>

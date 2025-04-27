@@ -83,3 +83,11 @@
   margin: auto;
   padding: 15vh 0;
 }
+
+.form-actions p a{
+  text-decoration: underline;
+}
+
+.form-actions p a:hover{
+  cursor: pointer;
+}

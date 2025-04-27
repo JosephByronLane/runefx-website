@@ -8,10 +8,11 @@ import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import dccOptions from '../../data/dccOptions.json';
 import { AuthService } from '../../services/auth.service';
 import { LoggerService, LogLevel } from '../../services/logger.service';
+import { ProfileSidebarComponent } from '../../components/profile-sidebar/profile-sidebar.component';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RButtonComponent, BackgroundVideoComponent, RouterModule, InfoBoxComponent, ReactiveFormsModule, RButtonComponent],
+  imports: [CommonModule, FormsModule, RButtonComponent, BackgroundVideoComponent, RouterModule, InfoBoxComponent, ReactiveFormsModule, RButtonComponent, ProfileSidebarComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -29,7 +30,6 @@ export class RegisterComponent {
   registerForm: FormGroup;
 
   isLoggedIn: boolean = false;
-
   
 
   constructor(private fb: FormBuilder, private authService: AuthService, private loggingService: LoggerService) {
@@ -39,14 +39,18 @@ export class RegisterComponent {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       dcc: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
-      password2: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/)]],
+      password2: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/)]],
     },
     {
       validators: this.validatePasswords
     }
-  );
-  console.log(this.registerForm);
+
+    );
+  }
+
+  openSidebar(){
+    this.authService.openProfileSidebar()
   }
   onSubmit(){
     if (!this.registerForm.valid) {
@@ -82,7 +86,6 @@ export class RegisterComponent {
           this.errorMessage = "An error occurred while registering. Please try again later.";
         }
       }
-
     })
     this.isSubmitting = false;
   }
@@ -95,6 +98,7 @@ export class RegisterComponent {
     }
     return null;
   }
+
 
   ngOnInit(){
     this.authService.isAuthenticatedValue.subscribe(

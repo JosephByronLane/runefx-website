@@ -65,17 +65,23 @@ export class ProfileSidebarComponent {
     private router: Router,
     public temploading: IntermitentLoadingService,
     public utils: UtilsService,
-    private authService: AuthService,  
+    public authService: AuthService,  
     public loggerService: LoggerService
     ) {
 
     }
 
-  toggleSidebar() {
-    this.isOpen = !this.isOpen;
+  closeSidebar(){
+    if (this.isOpen) this.authService.closeProfileSidebar()
   }
-  ngOnInit() {
 
+  toggleSidebar() {
+    this.authService.toggleProfileSidebar()
+  }
+
+
+
+  ngOnInit() {
     this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Initialized`)
     this.authService.CurrentUserValue.subscribe(
       (user: IUser | null) =>{
@@ -88,6 +94,12 @@ export class ProfileSidebarComponent {
       (isAuth:boolean)=>{
         this.isLoggedIn = isAuth
         this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Updated auth status as ${this.isLoggedIn}`)
+      }
+    )
+
+    this.authService.isSidebarOpenValue.subscribe(
+      (isSidebarOpen:boolean)=>{
+        this.isOpen = isSidebarOpen
       }
     )
   }
