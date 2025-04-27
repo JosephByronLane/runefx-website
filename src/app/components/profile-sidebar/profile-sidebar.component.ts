@@ -48,7 +48,7 @@ import { LoggerService, LogLevel } from '../../services/logger.service';
   ]
 })
 export class ProfileSidebarComponent {
-  public isOpen: boolean = true;
+  public isOpen: boolean = false;
   public isLoggedIn: boolean = false;
   public isAttemptingLogin:boolean =false;
   public username: string = '';
@@ -71,17 +71,12 @@ export class ProfileSidebarComponent {
 
     }
 
-  public openSidebar() :void {
-    this.isOpen = true
-  }
-
   toggleSidebar() {
     this.isOpen = !this.isOpen;
   }
   ngOnInit() {
 
     this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Initialized`)
-    this.isOpen = true;
     this.authService.CurrentUserValue.subscribe(
       (user: IUser | null) =>{
         this.currentUser = user

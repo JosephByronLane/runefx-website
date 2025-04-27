@@ -15,148 +15,157 @@
 <app-info-box title="Registration Form" desc="Please fill out the form below to register for an account."></app-info-box>
 
 <div class="register-container">
-    <form (ngSubmit)="onSubmit()" class="register-form" [formGroup]="registerForm">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" 
-            id="username"
-            formControlName="username"
-            >
-        <div class="error-container">
-            @if (registerForm.get('username')?.invalid && registerForm.get('username')?.touched) {
-                @if (registerForm.get('username')?.errors?.['required']) {
+    @if (isLoggedIn){
+        <div class="already-registered-container">
+            <h1>You seem to already have an account!</h1>
+            <p>Thank you!</p>
+        </div>
+    }
+    @else {
+        <form (ngSubmit)="onSubmit()" class="register-form" [formGroup]="registerForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" 
+                id="username"
+                formControlName="username"
+                >
+            <div class="error-container">
+                @if (registerForm.get('username')?.invalid && registerForm.get('username')?.touched) {
+                    @if (registerForm.get('username')?.errors?.['required']) {
+                        <div class="error-container">
+                            <span class="error-message">Username is required</span>
+                         </div>
+                   }
+                    @if (registerForm.get('username')?.errors?.['minlength']) {
+                        <span class="error-message">Username must be at least 3 characters</span>
+                    }
+                    @if (registerForm.get('username')?.errors?.['maxlength']) {
+                        <span class="error-message">Username must be less than 25 characters</span>
+                    }
+                }
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" 
+                id="email"
+                formControlName="email"
+                >
+                <div class="error-container">
+                    @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+                        @if (registerForm.get('email')?.errors?.['required']) {
+                            <span class="error-message">Email is required</span>
+                        }
+                        @if (registerForm.get('email')?.errors?.['email']) {
+                            <span class="error-message">Invalid email address</span>
+                        }
+                    }
+                </div>
+    
+    
+            </div>
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label for="firstName">First Name</label>
+                    <input type="text" 
+                    id="firstname"
+                    formControlName="first_name"
+                    >
                     <div class="error-container">
-                        <span class="error-message">Username is required</span>
-                     </div>
-               }
-                @if (registerForm.get('username')?.errors?.['minlength']) {
-                    <span class="error-message">Username must be at least 3 characters</span>
-                }
-                @if (registerForm.get('username')?.errors?.['maxlength']) {
-                    <span class="error-message">Username must be less than 25 characters</span>
-                }
+                        @if (registerForm.get('first_name')?.invalid && registerForm.get('first_name')?.touched) {
+                            @if (registerForm.get('first_name')?.errors?.['required']) {
+                                <span class="error-message">First name is required</span>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="form-group half-width">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" 
+                    id="lastname"
+                    formControlName="last_name"
+                    >
+                    <div class="error-container">
+                        @if (registerForm.get('last_name')?.invalid && registerForm.get('last_name')?.touched) {
+                            @if (registerForm.get('last_name')?.errors?.['required']) {
+                                <span class="error-message">Last name is required</span>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dcc">3D DCC Package</label>
+                <select name="dcc" id="dcc" formControlName="dcc">
+                    <option value="">Select a DCC Package</option>
+                    @for (option of dccOptions; track option.value) {
+                        <option value="{{option.value}}">{{option.label}}</option>
+                    }
+                </select>
+                <div class="error-container">
+                    @if (registerForm.get('dcc')?.invalid && registerForm.get('dcc')?.touched) {
+                        @if (registerForm.get('dcc')?.errors?.['required']) {
+                            <span class="error-message">Please select a DCC package</span>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" 
+                id="password"
+                formControlName="password"
+                >
+                <div class="error-container">
+                    @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+                        @if (registerForm.get('password')?.errors?.['required']) {
+                            <span class="error-message">Password is required</span>
+                        }
+                    @if (registerForm.get('password')?.errors?.['minlength']) {
+                        <span class="error-message">Password must be at least 8 characters</span>
+                    }
+                    @if (registerForm.get('password')?.errors?.['pattern']) {
+                        <span class="error-message">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</span>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" 
+                id="password2"
+                formControlName="password2"
+                >
+                <div class="error-container">
+                    @if (registerForm.get('password2')?.invalid && registerForm.get('password2')?.touched) {
+                        @if (registerForm.get('password2')?.errors?.['required']) {
+                            <span class="error-message">Password is required</span>
+                        }
+                        @if (registerForm.get('password2')?.errors?.['mismatch']) {
+                            <span class="error-message">Passwords do not match</span>
+                        }
+                    }
+                </div>
+            </div>
+    
+            @if (errorMessage) {
+                <div class="error-message">
+                    {{ errorMessage }}
+                </div>
             }
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" 
-            id="email"
-            formControlName="email"
-            >
-            <div class="error-container">
-                @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
-                    @if (registerForm.get('email')?.errors?.['required']) {
-                        <span class="error-message">Email is required</span>
-                    }
-                    @if (registerForm.get('email')?.errors?.['email']) {
-                        <span class="error-message">Invalid email address</span>
-                    }
-                }
-            </div>
-
-
-        </div>
-        <div class="form-row">
-            <div class="form-group half-width">
-                <label for="firstName">First Name</label>
-                <input type="text" 
-                id="firstname"
-                formControlName="first_name"
-                >
-                <div class="error-container">
-                    @if (registerForm.get('first_name')?.invalid && registerForm.get('first_name')?.touched) {
-                        @if (registerForm.get('first_name')?.errors?.['required']) {
-                            <span class="error-message">First name is required</span>
-                        }
-                    }
+    
+            @if (statusMessage){
+                <div class="status-message">
+                    {{ statusMessage }}
                 </div>
+            }
+            
+            <div class="form-actions">
+                <app-rbutton [buttonText]="'Register'" [buttonAlignment]="'center'" [onClickFunction]="onSubmit.bind(this)" [disabled]="isSubmitting" [disabledText]="'Submitting...'" [doesNavigate]="false"></app-rbutton>
+                <p>Already have an account? <a routerLink="/login">Login</a></p>
             </div>
-            <div class="form-group half-width">
-                <label for="lastName">Last Name</label>
-                <input type="text" 
-                id="lastname"
-                formControlName="last_name"
-                >
-                <div class="error-container">
-                    @if (registerForm.get('last_name')?.invalid && registerForm.get('last_name')?.touched) {
-                        @if (registerForm.get('last_name')?.errors?.['required']) {
-                            <span class="error-message">Last name is required</span>
-                        }
-                    }
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="dcc">3D DCC Package</label>
-            <select name="dcc" id="dcc" formControlName="dcc">
-                <option value="">Select a DCC Package</option>
-                @for (option of dccOptions; track option.value) {
-                    <option value="{{option.value}}">{{option.label}}</option>
-                }
-            </select>
-            <div class="error-container">
-                @if (registerForm.get('dcc')?.invalid && registerForm.get('dcc')?.touched) {
-                    @if (registerForm.get('dcc')?.errors?.['required']) {
-                        <span class="error-message">Please select a DCC package</span>
-                    }
-                }
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" 
-            id="password"
-            formControlName="password"
-            >
-            <div class="error-container">
-                @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
-                    @if (registerForm.get('password')?.errors?.['required']) {
-                        <span class="error-message">Password is required</span>
-                    }
-                @if (registerForm.get('password')?.errors?.['minlength']) {
-                    <span class="error-message">Password must be at least 8 characters</span>
-                }
-                @if (registerForm.get('password')?.errors?.['pattern']) {
-                    <span class="error-message">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</span>
-                    }
-                }
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password2">Confirm Password</label>
-            <input type="password" 
-            id="password2"
-            formControlName="password2"
-            >
-            <div class="error-container">
-                @if (registerForm.get('password2')?.invalid && registerForm.get('password2')?.touched) {
-                    @if (registerForm.get('password2')?.errors?.['required']) {
-                        <span class="error-message">Password is required</span>
-                    }
-                    @if (registerForm.get('password2')?.errors?.['mismatch']) {
-                        <span class="error-message">Passwords do not match</span>
-                    }
-                }
-            </div>
-        </div>
+    
+        </form>
+    }
 
-        @if (errorMessage) {
-            <div class="error-message">
-                {{ errorMessage }}
-            </div>
-        }
-
-        @if (statusMessage){
-            <div class="status-message">
-                {{ statusMessage }}
-            </div>
-        }
-        
-        <div class="form-actions">
-            <app-rbutton [buttonText]="'Register'" [buttonAlignment]="'center'" [onClickFunction]="onSubmit.bind(this)" [disabled]="isSubmitting" [disabledText]="'Submitting...'" [doesNavigate]="false"></app-rbutton>
-            <p>Already have an account? <a routerLink="/login">Login</a></p>
-        </div>
-
-    </form>
 </div>

@@ -74,3 +74,12 @@
   border-radius: var(--border-radius);
   font-size: 2vh;
 }
+
+.already-registered-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 15vh 0;
+}
