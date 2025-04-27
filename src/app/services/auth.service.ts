@@ -51,20 +51,13 @@ export class AuthService {
     this.isProfileSidebarOpen.next(false);
   }
 
-  private httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  }),
-  withCredentials: true
-  }
 
   private isAuthenticated(): Observable<IAuthResponse>{
 
     this.logginService.log(LogLevel.Debug, "isAuthenticated - Starting authentication check");
 
 
-    return this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`,
-      this.httpOptions
+    return this.http.get<IAuthResponse>(`${this.apiUrl}/auth/me/`
     )
     .pipe(
       tap(
@@ -106,8 +99,7 @@ export class AuthService {
     this.logginService.log(LogLevel.Debug, "refreshToken - Attempting to refresh tokens...")
     return this.http.post<IAuthResponse>(
       `${this.apiUrl}/auth/login/refresh/`,
-      {},
-      this.httpOptions
+      {}
     )
     .pipe(
       tap(
@@ -128,7 +120,7 @@ export class AuthService {
   }
 
   register(data: IRegisterUser): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/register/`, data, this.httpOptions)
+    return this.http.post(`${this.apiUrl}/auth/register/`, data)
   }
 
   login(username: string, password: string): Subscribable<IAuthResponse | null> {
@@ -138,8 +130,7 @@ export class AuthService {
       {
         "username": username, 
         "password": password
-      },
-      this.httpOptions
+      }
     ).pipe(
         tap((response: IAuthResponse| null) => {
           if (response){
@@ -161,8 +152,7 @@ export class AuthService {
     this.logginService.log(LogLevel.Debug, "logout - Attempting logout")
 
     this.http.post<IAuthResponse>(`${this.apiUrl}/auth/logout/`,
-      {},
-      this.httpOptions
+      {}
     )
     .pipe(
       tap(
