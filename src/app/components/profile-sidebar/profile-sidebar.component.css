@@ -99,13 +99,11 @@
     cursor: pointer;
     color: white;
     transition: color 0.3s ease;
-
   }
 
   .profile-info{
     display: flex;
     flex-direction: column;
-
   }
 
   .profile-picture{

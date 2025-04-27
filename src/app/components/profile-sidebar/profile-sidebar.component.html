@@ -10,13 +10,13 @@
           <div class="profile-picture">
             <img src="{{currentUser?.profile_picture_url}}" alt="Profile picture" >
           </div>
-          <h3>{{currentUser?.username}}</h3>
+          <h3 class="sdr-text">{{currentUser?.username}}</h3>
 
         </div>
           <div class="profile-options">
-            <div class="option" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
-            <div class="option" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
-            <div class="option" (click)="logout()">Logout</div>
+            <div class="option sdr-text" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
+            <div class="option sdr-text" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
+            <div class="option sdr-text" (click)="logout()">Logout</div>
           </div>
         </div>      
       }           
