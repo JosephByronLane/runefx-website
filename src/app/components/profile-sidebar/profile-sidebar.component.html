@@ -6,9 +6,14 @@
   <div class="sidebar-content" >
     @if (isLoggedIn) {
       <div class="user-profile">
-          <h3>My Account</h3>
+        <div class="profile-info">
+          <div class="profile-picture">
+            <img src="{{currentUser?.profile_picture_url}}" alt="Profile picture" >
+          </div>
+          <h3>{{currentUser?.username}}</h3>
+
+        </div>
           <div class="profile-options">
-            <div class="option">{{currentUser?.username}}</div>
             <div class="option" (click)="temploading.switchWithLoading('/user/profile')">My Profile</div>
             <div class="option" (click)="temploading.switchWithLoading('/user/settings')">Settings</div>
             <div class="option" (click)="logout()">Logout</div>
@@ -29,7 +34,7 @@
               <p class="error-message">{{this.errorMessage}}</p>
             </div>
             <div class="login-actions">
-              <app-rbutton [buttonText]="'Login'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="attemptLogin"></app-rbutton>
+              <app-rbutton [buttonText]="'Login'" [buttonAlignment]="'center'" [sendTo]="'#'" [isExternalWebpage]="false" [doesNavigate]="false" [onClickFunction]="attemptLogin" [disabled]="isAttemptingLogin" [disabledText]="'Logging in...'"></app-rbutton>
             </div>
           </form>     
           <div class="login-options">

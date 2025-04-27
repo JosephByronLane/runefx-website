@@ -48,8 +48,9 @@ import { LoggerService, LogLevel } from '../../services/logger.service';
   ]
 })
 export class ProfileSidebarComponent {
-  public isOpen: boolean = false;
+  public isOpen: boolean = true;
   public isLoggedIn: boolean = false;
+  public isAttemptingLogin:boolean =false;
   public username: string = '';
   public password: string = '';
   public currentUser: IUser | null= null;
@@ -76,16 +77,11 @@ export class ProfileSidebarComponent {
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
-    if(!this.isOpen){
-      //first we get the dimmed background element
-      
-      
-    }
   }
   ngOnInit() {
 
     this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Initialized`)
-    this.isOpen = false;
+    this.isOpen = true;
     this.authService.CurrentUserValue.subscribe(
       (user: IUser | null) =>{
         this.currentUser = user
@@ -109,12 +105,13 @@ export class ProfileSidebarComponent {
   attemptLogin = (): void => {
     this.authService.login(this.username,this.password).subscribe({
       next: (_) =>{
+        this.loggerService.log(LogLevel.Debug, "Login successful")
         //we dont do anything, all the switching the states is done through the login function itself and its subscribables
       },
       error: (error) => {
         this.userInputRef.nativeElement.style.outline = "2px solid red"
         this.passInputRef.nativeElement.style.outline = "2px solid red"
-
+        this.loggerService.log(LogLevel.Error, `Error while logging in ${error}`)
         const errorStatus = error.status
         if (errorStatus === 0 ) {  //server dead or didnt recieve response
           this.errorMessage = "Error comunicating with login server. Please contact support"
