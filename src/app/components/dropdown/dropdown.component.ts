@@ -36,12 +36,10 @@ export class DropdownComponent {
         {
           id: '1',
           displayString: 'bruh',
-          link: '/'
         },
         {
           id: '2',
           displayString: 'man',
-          link: '/'
         },                 
       ]
   }

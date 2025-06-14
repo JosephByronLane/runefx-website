@@ -6,7 +6,7 @@
     <div class="dropdown-content" [@dropdownAnimation]="isOpen ? 'open' : 'closed'">
       <ul>
         @for (item of dropdownItem.items; track $index) {
-          <li (click)="navigate(item.link, '', 2000)">
+          <li (click)="navigate(dropdownItem.link, item.scrollTo, 2000)">
             <a>{{ item.displayString }}</a>
           </li>
         }

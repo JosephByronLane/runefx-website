@@ -14,27 +14,26 @@
                 {
                     "id": "1",
                     "displayString": "2025",
-                    "link": "/vfx#2025"
-                },
-                {
+                    "scrollTo": "2025"
+                },                {
                     "id": "2",
                     "displayString": "2024",
-                    "link": "/vfx#2024"
+                    "scrollTo": "2024"
                 },
                 {
                     "id": "3",
                     "displayString": "2023",
-                    "link": "/vfx#2023"
+                    "scrollTo": "2023"
                 },
                 {
                     "id": "4",
                     "displayString": "2022",
-                    "link": "/vfx#2022"
+                    "scrollTo": "2022"
                 },
                 {
                     "id": "5",
                     "displayString": "Further back",
-                    "link": "/vfx#2021"
+                    "scrollTo": "2021"
                 }
             ]
         },
@@ -42,26 +41,24 @@
             "id": "2",
             "title": "Technologies",
             "link": "/render",
-            "items": [
-                {
+            "items": [                {
                     "id": "1",
                     "displayString": "Rendering",
-                    "link": "/render"
-                },
-                {
+                    "scrollTo": "Rendering"
+                },{
                     "id": "2",
                     "displayString": "Simulation",
-                    "link": "/render#Simulations"
+                    "scrollTo": "Simulations"
                 },
                 {
                     "id": "3",
                     "displayString": "Parallelization",
-                    "link": "/render#Parallelization"
+                    "scrollTo": "Parallelization"
                 },
                 {
                     "id": "4",
                     "displayString": "Machine Learning",
-                    "link": "/render#MachineLearning"
+                    "scrollTo": "MachineLearning"
                 }
             ]
         },
@@ -69,16 +66,15 @@
             "id": "3",
             "title": "Try/Buy",
             "link": "/try-buy",
-            "items": [
-                {
+            "items": [                {
                     "id": "1",
                     "displayString": "Runic Renderer",
-                    "link": "/try-buy"
+                    "scrollTo": "RunicRenderer"
                 },
                 {
                     "id": "2",
                     "displayString": "Forge",
-                    "link": "/try-buy"
+                    "scrollTo": "Forge"
                 }
             ]
         },
@@ -86,21 +82,20 @@
             "id": "4",
             "title": "Community",
             "link": "/community",
-            "items": [
-                {
+            "items": [                {
                     "id": "1",
                     "displayString": "Releases",
-                    "link": "/blog"
+                    "scrollTo": "Releases"
                 },
                 {
                     "id": "2",
                     "displayString": "Forum",
-                    "link": "/forum"
+                    "scrollTo": "Forum"
                 },
                 {
                     "id": "3",
                     "displayString": "Gallery",
-                    "link": "/gallery"
+                    "scrollTo": "Gallery"
                 }
             ]
         },
@@ -108,26 +103,25 @@
             "id": "5",
             "title": "Support",
             "link": "/support",
-            "items": [
-                {
+            "items": [                {
                     "id": "1",
                     "displayString": "Documentation",
-                    "link": "/documentation"
+                    "scrollTo": "Documentation"
                 },
                 {
                     "id": "2",
                     "displayString": "FAQ",
-                    "link": "/faq"
+                    "scrollTo": "FAQ"
                 },
                 {
                     "id": "3",
                     "displayString": "Forums",
-                    "link": "/forum"
+                    "scrollTo": "Forums"
                 },
                 {
                     "id": "4",
                     "displayString": "Sample Scenes",
-                    "link": "/sample-scenes"
+                    "scrollTo": "SampleScenes"
                 }
             ]
         }

@@ -1,7 +1,7 @@
 export interface IDropdownListItem {
     id: string;
     displayString: string;
-    link: string;
+    scrollTo?: string;
     isExternal?: boolean;
 }
 
