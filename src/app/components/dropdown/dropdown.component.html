@@ -6,7 +6,7 @@
     <div class="dropdown-content" [@dropdownAnimation]="isOpen ? 'open' : 'closed'">
       <ul>
         @for (item of dropdownItem.items; track $index) {
-          <li (click)="tempLoadingService.switchWithLoading(dropdownItem.link, item.id, 2000)">
+          <li (click)="tempLoadingService.switchWithLoading(dropdownItem.link, item.scrollTo, 2000)">
             <a>{{ item.displayString }}</a>
           </li>
         }

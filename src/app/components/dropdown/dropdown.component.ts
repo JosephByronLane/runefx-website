@@ -1,14 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { IDropdownItem } from '../../interfaces/IDropdownItem';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { state, style, trigger, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-dropdown',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.css',
   animations: [

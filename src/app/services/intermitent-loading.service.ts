@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilsService } from './utils.service';
+import { LoggerService } from './logger.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +16,8 @@ export class IntermitentLoadingService {
   private readonly enabled:boolean=true; //disables the loading screen, ej switching without the loading screen appearing
 
 
-  constructor(private readonly router: Router, private  readonly utils: UtilsService) {
+  constructor(private readonly router: Router, private  readonly utils: UtilsService, private readonly logger: LoggerService
+  ) {
   }
 
   private showLoadingScreen() { //man i love css
@@ -59,6 +61,7 @@ export class IntermitentLoadingService {
 
         if (scrollToId || scrollToId === '') { //see if we gotta scroll somewhere
           setTimeout(() => { 
+            console.log('scrolling to', scrollToId);
             const element = document.getElementById(scrollToId);
             element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 0); // scroll to shit

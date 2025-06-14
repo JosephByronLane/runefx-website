@@ -1,6 +1,4 @@
-import { Component, HostListener } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { IntermitentLoadingComponent } from '../intermitent-loading/intermitent-loading.component';
+import { Component} from '@angular/core';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { CommonModule } from '@angular/common';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
@@ -12,7 +10,7 @@ import { ProfileSidebarComponent } from '../profile-sidebar/profile-sidebar.comp
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule, ClickOutsideDirective, DropdownComponent, ProfileSidebarComponent],
+  imports: [ CommonModule, ClickOutsideDirective, DropdownComponent, ProfileSidebarComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -35,7 +33,7 @@ export class NavbarComponent {
   closeMenu() {
     this.isMenuOpen = false;
   }
-  constructor(private temploading: IntermitentLoadingService, public utils: UtilsService) {}
+  constructor(private readonly temploading: IntermitentLoadingService, public utils: UtilsService) {}
   navigate(path:string, id:string, duration:number) {
     this.temploading.switchWithLoading(path, id, duration);
   }
