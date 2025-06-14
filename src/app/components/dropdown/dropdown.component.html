@@ -1,12 +1,12 @@
 <div class="dropdown-container" (mouseenter)="isOpen = true" (mouseleave)="isOpen = false">
-    <div class="dropdown-label" (click)="navigate(dropdownItem.link, '', 2000)"  [ngClass]="{'home-tab': dropdownItem.title.toLowerCase() === 'home'}">
+    <div class="dropdown-label" (click)="tempLoadingService.switchWithLoading(dropdownItem.link, '', 2000)"  [ngClass]="{'home-tab': dropdownItem.title.toLowerCase() === 'home'}">
       <span>{{ dropdownItem.title }}</span>
     </div>
     @if (dropdownItem.items.length > 0) {
     <div class="dropdown-content" [@dropdownAnimation]="isOpen ? 'open' : 'closed'">
       <ul>
         @for (item of dropdownItem.items; track $index) {
-          <li (click)="navigate(dropdownItem.link, item.scrollTo, 2000)">
+          <li (click)="tempLoadingService.switchWithLoading(dropdownItem.link, item.id, 2000)">
             <a>{{ item.displayString }}</a>
           </li>
         }

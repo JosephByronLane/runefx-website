@@ -46,11 +46,6 @@ export class DropdownComponent {
   @Input() dropdownAnimationDuration: number = 0.25
   @Input() isOpen: boolean = false;
 
-  constructor(private tempLoadingService: IntermitentLoadingService) {}
-  //TODO: make a helper function to navigate to internal and external links
-  navigate(path:string, id:string, duration:number) {
-    this.tempLoadingService.switchWithLoading(path, id, duration);
-  }
-
+  constructor(public tempLoadingService: IntermitentLoadingService) {}
 
 }
