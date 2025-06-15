@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild, input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input,  OnInit, Renderer2,  ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { RouterLink } from '@angular/router';
 import { RButtonComponent } from '../rbutton/rbutton.component';
 import { NavbarStuffService } from '../../services/navbar-stuff.service';
-import { AbsoluteSourceSpan } from '@angular/compiler';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { UtilsService } from '../../services/utils.service';
-    
+
+type AlignmentOptions = 'left' | 'center' | 'right';
+
 @Component({
   selector: 'app-background-video',
   standalone: true,
-  imports: [CommonModule, RouterLink, RButtonComponent],
+  imports: [CommonModule,  RButtonComponent],
   templateUrl: './background-video.component.html',
   styleUrl: './background-video.component.css',
   animations: [
@@ -28,8 +28,8 @@ import { UtilsService } from '../../services/utils.service';
     ])
   ]
 })
-export class BackgroundVideoComponent implements OnInit {
 
+export class BackgroundVideoComponent implements OnInit {
   //jesus fuck
   @Input() title: string = '';
   @Input() description: string = '';
@@ -42,17 +42,17 @@ export class BackgroundVideoComponent implements OnInit {
   @Input() ButtonLink:string=''
   @Input() isExternalWebpage: boolean = false;
   @Input() BottomPadding:string=".9vh";
-  @Input() ButtonAlignment: 'left' | 'center' | 'right' ='left';
+  @Input() ButtonAlignment: AlignmentOptions  ='left';
   @Input() scrollFactor: number = 0.5; 
   @Input() initialOffset: number = 0; 
-  @Input() textAlignment: 'left' | 'center' | 'right' = 'left';
+  @Input() textAlignment: AlignmentOptions = 'left';
   @Input() titleFontSize: string = '8vh';
   @Input() descriptionFontSize: string = '5vh';
   @Input() textWidth: string = '100%'; 
-  @Input() textBlockAlignment: 'left' | 'center' | 'right' = 'left';
+  @Input() textBlockAlignment: AlignmentOptions = 'left';
   @Input() LoadingDuration: number = 2000;
-  @Input() showTextWhenResponsive: Boolean = false;
-  @Input() halveTextSize: Boolean = true;
+  @Input() showTextWhenResponsive: boolean = false;
+  @Input() halveTextSize: boolean = true;
   @Input() credits: string = '';
 
   
@@ -76,11 +76,11 @@ export class BackgroundVideoComponent implements OnInit {
   showDesc:boolean = true;
 
   constructor(
-    private sanitizer: DomSanitizer,
+    private readonly sanitizer: DomSanitizer,
      public scroller:NavbarStuffService,
-     private el: ElementRef,
-     private renderer: Renderer2,
-     private utils: UtilsService
+     private readonly el: ElementRef,
+     private readonly renderer: Renderer2,
+     private readonly utils: UtilsService
     ) {
       if(document.readyState === 'complete'){
         this.ngOnInit();

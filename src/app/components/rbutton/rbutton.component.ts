@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-rbutton',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './rbutton.component.html',
   styleUrl: './rbutton.component.css'
 })
@@ -27,7 +26,7 @@ export class RButtonComponent {
   @Input() doesNavigate: boolean = true;
   @Input() disabled: boolean = false;
   @Input() disabledText: string = '';
-  constructor(private temploading: IntermitentLoadingService, public utils: UtilsService) {}
+  constructor(private readonly temploading: IntermitentLoadingService, public utils: UtilsService) {}
 
   handleClick(){
     if(this.disabled) return;
@@ -41,7 +40,6 @@ export class RButtonComponent {
 
   handleNavigation() {
     if (this.isExternalWebpage) {
-      //navigate outside the website
 
       //TODO: Try to make this angular rather than standard JS/TS 
       window.open(this.sendTo, '_blank');

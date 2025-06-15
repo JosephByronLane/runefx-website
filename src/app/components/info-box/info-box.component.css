@@ -4,8 +4,6 @@
 
 .Tech-Container{
     background-color: var(--triangle-before);
-    /* padding-top:var(--base-site-margin-top);
-    padding-bottom:var(--base-site-margin-top); */
     display: grid;
     grid-template-columns: 1fr; 
     gap:3vh;
@@ -29,11 +27,6 @@
     height:100%;
 }
 
-.desc {
-    padding-top: 1vh;
-    max-width: 90%; 
-}
-
 .title  h1{
     padding: 0vh 1vw;
 }
@@ -49,11 +42,6 @@
     background-color: var(--triangle-after);
     display: flex;
     flex-direction: row-reverse;
-}
-.title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .title-text {

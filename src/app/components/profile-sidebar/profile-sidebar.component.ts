@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { style, state, trigger, transition, animate } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
 import { RButtonComponent } from '../rbutton/rbutton.component';
-import { Router } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { UtilsService } from '../../services/utils.service';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 import { IUser } from '../../interfaces/IUser';
 import { AuthService } from '../../services/auth.service';
-import { Observable, Subscribable, Subscription } from 'rxjs';
 import { LoggerService, LogLevel } from '../../services/logger.service';
 @Component({
   selector: 'app-profile-sidebar',
@@ -59,10 +57,8 @@ export class ProfileSidebarComponent {
 
   @ViewChild('userInput') userInputRef!: ElementRef<HTMLInputElement>;
   @ViewChild('passInput') passInputRef!: ElementRef<HTMLInputElement>;
-  //@ViewChild('errorMessage') errorMessageRef! : ElementRef<HTMLInputElement>;
 
   constructor(
-    private router: Router,
     public temploading: IntermitentLoadingService,
     public utils: UtilsService,
     public authService: AuthService,  
@@ -86,7 +82,7 @@ export class ProfileSidebarComponent {
     this.authService.CurrentUserValue.subscribe(
       (user: IUser | null) =>{
         this.currentUser = user
-        this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Updated auth user as ${this.currentUser}`)
+        this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Updated auth user as ${JSON.stringify(this.currentUser)}`)
 
       }
     )
@@ -104,12 +100,7 @@ export class ProfileSidebarComponent {
     )
   }
 
-  ngOnDestroy(){
-
-  }
-
-
-  attemptLogin = (): void => {
+   attemptLogin = (): void => {
     this.authService.login(this.username,this.password).subscribe({
       next: (_) =>{
         this.loggerService.log(LogLevel.Debug, "Login successful")
