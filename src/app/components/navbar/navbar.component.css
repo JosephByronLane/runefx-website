@@ -80,7 +80,6 @@
     text-decoration: none; 
     color: white;
     list-style: none;
-    display: grid;
     justify-items: center; 
     align-items: center; 
     grid-template-columns:repeat(5, 1fr);
