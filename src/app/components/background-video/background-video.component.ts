@@ -30,9 +30,6 @@ type AlignmentOptions = 'left' | 'center' | 'right';
 })
 
 export class BackgroundVideoComponent implements OnInit {
-
-  
-  
   //jesus fuck
   @Input() title: string = '';
   @Input() description: string = '';
@@ -57,7 +54,8 @@ export class BackgroundVideoComponent implements OnInit {
   @Input() showTextWhenResponsive: boolean = false;
   @Input() halveTextSize: boolean = true;
   @Input() credits: string = '';
-
+  @Input() autoClickSelector: string = '.video-itself'; // New input for the selector of element to auto-click
+  @Input() autoClickDelay: number = 0; // Optional delay before auto-clicking in milliseconds
   
   textAnimationState: 'hidden' | 'visible' = 'hidden';
 
@@ -155,7 +153,29 @@ export class BackgroundVideoComponent implements OnInit {
     //if an element still doesn't load after 500ms, it aint gonna load, bro
     setTimeout(() =>{
       this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
+      
+      this.simulateClickOnLoad();
     }, 500)
+
+    setTimeout(() => {
+      this.simulateClickOnLoad();
+    }, 2000);
+  }
+
+  // Method to simulate a click on a specified element
+  simulateClickOnLoad(): void {
+    if (this.autoClickSelector) {
+      setTimeout(() => {
+        const elementToClick = this.el.nativeElement.querySelector(this.autoClickSelector);
+        if (elementToClick) {
+          elementToClick.click();
+          console.log(elementToClick);
+          console.log(`Auto-clicked element with selector: ${this.autoClickSelector}`);
+        } else {
+          console.warn(`Element with selector ${this.autoClickSelector} not found for auto-click`);
+        }
+      }, this.autoClickDelay);
+    }
   }
 
   updateVideoParallax(){
