@@ -81,7 +81,7 @@
         {
             "id": "4",
             "title": "Community",
-            "link": "/community",
+            "link": "/under-construction",
             "items": [                {
                     "id": "1",
                     "displayString": "Releases",
@@ -102,7 +102,7 @@
         {
             "id": "5",
             "title": "Support",
-            "link": "/support",
+            "link": "/under-construction",
             "items": [                {
                     "id": "1",
                     "displayString": "Documentation",

@@ -12,6 +12,7 @@ import { ForgeComponent } from './pages/forge/forge.component';
 import { TryBuyComponent } from './pages/try-buy/try-buy.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
 export const routes: Routes = [
     {
         path: '',
@@ -76,6 +77,11 @@ export const routes: Routes = [
         path: 'register', 
         title:'RuneFX | Register',
         component: RegisterComponent
+    },
+    {
+        path: 'under-construction',
+        title: 'RuneFX | Under Construction',
+        component: ComingSoonComponent
     },
     { 
         path: '**', 
