@@ -4,10 +4,11 @@ import { SimpleImageComponent } from '../../components/simple-image/simple-image
 import { SimpleBoxComponent } from '../../components/simple-box/simple-box.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { RButtonComponent } from '../../components/rbutton/rbutton.component';
+import { ShowcaseBoxComponent } from '../../components/showcase-box/showcase-box.component';
 @Component({
   selector: 'app-community',
   standalone: true,
-  imports: [BackgroundVideoComponent, SimpleImageComponent, SimpleBoxComponent, InfoBoxComponent, RButtonComponent],
+  imports: [BackgroundVideoComponent, SimpleImageComponent, SimpleBoxComponent, InfoBoxComponent, RButtonComponent, ShowcaseBoxComponent],
   templateUrl: './community.component.html',
   styleUrl: './community.component.css'
 })

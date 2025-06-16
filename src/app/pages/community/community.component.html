@@ -1,1 +1,41 @@
-<p>Community works!</p>
+<app-background-video
+  [title]="'Community'"
+  [description]="'Join the community! We dont bite...'"
+  [height]="'40vh'" 
+  [src]="'https://www.youtube.com/embed/21EG6pm6IeA?si=FKI_Zp8B2AsZl4EI&amp;controls=0&mute=1&autoplay=1&loop=1&playlist=21EG6pm6IeA'"
+  [scale]="3"
+  [video]="1"
+  [BottomPadding]="'1%'"
+  [scrollFactor]=".5"
+  [initialOffset]="-150"
+  [showTextWhenResponsive]="true"
+  [halveTextSize]="false"
+  [credits]="'© Rebelway'"
+  >  
+</app-background-video>
+
+<app-info-box title="Community" desc="" [video]="0"></app-info-box>
+
+<div class="community-grid">
+    <app-showcase-box
+    [title]="'Discord Community'"
+    [description]="'Join our Discord community to connect with like-minded individuals, share your work, and get feedback.'"
+    [imageUrl]="'https://cdnb.artstation.com/p/assets/images/images/086/572/617/large/pablo-dominguez-demoncity-1.jpg?1743525699'"
+    [redirectTo]="'https://discord.gg/rebelway'"
+    >
+    </app-showcase-box>
+        <app-showcase-box
+    [title]="'Discord Community'"
+    [description]="'Join our Discord community to connect with like-minded individuals, share your work, and get feedback.'"
+    [imageUrl]="'https://cdn.discordapp.com/icons/1058706266468858880/2c3f6b7d8a1e4d5f9b0c8f1e2b3c4d5e.png?size=256'"
+    [redirectTo]="'https://discord.gg/rebelway'"
+    >
+    </app-showcase-box>
+        <app-showcase-box
+    [title]="'Discord Community'"
+    [description]="'Join our Discord community to connect with like-minded individuals, share your work, and get feedback.'"
+    [imageUrl]="'https://cdn.discordapp.com/icons/1058706266468858880/2c3f6b7d8a1e4d5f9b0c8f1e2b3c4d5e.png?size=256'"
+    [redirectTo]="'https://discord.gg/rebelway'"
+    >
+    </app-showcase-box>
+</div>

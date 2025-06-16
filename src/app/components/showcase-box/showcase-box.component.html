@@ -1,0 +1,12 @@
+<button class="showcase-root" 
+     (click)="tempLoadingService.switchWithLoading(redirectTo, '', 2000)" 
+     [style.--image-split]="imageSplit + '%'"
+     [attr.aria-label]="title">
+    <div class="image">
+        <img [src]="imageUrl" [alt]="title" class="showcase-image" />
+    </div>
+    <div class="text">
+        <h1 class="title">{{title}}</h1>
+        <p class="description">{{description}}</p>
+    </div>
+</button>
