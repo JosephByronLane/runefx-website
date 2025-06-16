@@ -14,6 +14,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
 import { CommunityComponent } from './pages/community/community.component';
+import { ForumComponent } from './pages/forum/forum.component';
 export const routes: Routes = [
     {
         path: '',
@@ -83,6 +84,11 @@ export const routes: Routes = [
         path: 'community',
         title: 'RuneFX | Community',
         component: CommunityComponent
+    },
+    {
+        path: 'forum',
+        title: 'RuneFX | Forum',
+        component: ForumComponent
     },
     {
         path: 'under-construction',
