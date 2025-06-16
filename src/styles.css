@@ -2,12 +2,12 @@
 *{
     padding: 0;
     margin: 0;
-    color: var(--primary-text-color);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
 }
 
 :root {
     --primary-text-color: white;
-    --primary-bg-color: #333; /*og is 333*/
     --hover-text-color: #7aa3d1;
     --triangle-before: rgb(22,22,22); /*rgb(22,22,22);*/
     --triangle-after: rgb(32,32,32); /*rgb(32,32,32);*/
@@ -27,10 +27,6 @@
     --responsive-threshhold: 1150px
   }
 
-*{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: normal;
-}
 
 .title-text{
     font-family: 'Open Sans', sans-serif;

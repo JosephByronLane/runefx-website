@@ -41,7 +41,8 @@
             "id": "2",
             "title": "Technologies",
             "link": "/render",
-            "items": [                {
+            "items": [
+            {
                     "id": "1",
                     "displayString": "Rendering",
                     "scrollTo": "Rendering"
@@ -66,7 +67,8 @@
             "id": "3",
             "title": "Try/Buy",
             "link": "/try-buy",
-            "items": [                {
+            "items": [
+                {
                     "id": "1",
                     "displayString": "Runic Renderer",
                     "scrollTo": "RunicRenderer"
@@ -81,8 +83,9 @@
         {
             "id": "4",
             "title": "Community",
-            "link": "/under-construction",
-            "items": [                {
+            "link": "/community",
+            "items": [
+                {
                     "id": "1",
                     "displayString": "Releases",
                     "scrollTo": "Releases"
@@ -103,7 +106,8 @@
             "id": "5",
             "title": "Support",
             "link": "/under-construction",
-            "items": [                {
+            "items": [                
+                {
                     "id": "1",
                     "displayString": "Documentation",
                     "scrollTo": "Documentation"
