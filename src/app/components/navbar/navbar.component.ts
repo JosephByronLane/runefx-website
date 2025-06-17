@@ -16,7 +16,7 @@ import { ProfileSidebarComponent } from '../profile-sidebar/profile-sidebar.comp
 })
 export class NavbarComponent {
 
-    dropdownItems: IDropdownItem[] = navbarItems;
+  dropdownItems: IDropdownItem[] = navbarItems;
 
   calculatedPadding  = this.utils.mapRange(window.screen.width/window.screen.height, 2, 1, 5, 1)
   isMenuOpen = false;

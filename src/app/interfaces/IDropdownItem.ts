@@ -23,5 +23,5 @@ export interface IDropdownItem{
     id: string;
     title:string;
     link: string;
-    items: IScrollToItem[] | ILinkItem[];
+    items: Array<IScrollToItem | ILinkItem>;
 }
