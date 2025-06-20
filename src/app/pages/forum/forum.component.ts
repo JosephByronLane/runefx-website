@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ForumService } from '../../services/forum.service';
+import { ITopicsAPIResponse } from '../../interfaces/IForumResponse';
 
 @Component({
   selector: 'app-forum',
@@ -7,6 +9,16 @@ import { Component } from '@angular/core';
   templateUrl: './forum.component.html',
   styleUrl: './forum.component.css'
 })
-export class ForumComponent {
+export class ForumComponent implements OnInit {
 
+  public topics: ITopicsAPIResponse[] = []; 
+
+  constructor(private readonly forumService: ForumService) {}
+
+  ngOnInit(){
+    this.forumService.getTopicsAndSubtopics()
+    .subscribe((data: ITopicsAPIResponse[]) =>{
+      this.topics = data;
+    })
+  }
 }

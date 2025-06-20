@@ -1,5 +1,6 @@
 .root{
     height: auto;
+    background-color: var(--triangle-after);
 }
 *{
     font-family: 'Open Sans', sans-serif;
