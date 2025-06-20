@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.dev';
+import { environment } from '../../environments/environment';
 
 
 export enum LogLevel {
@@ -15,7 +15,7 @@ export enum LogLevel {
 })
 
 export class LoggerService {
-  private logLevel: LogLevel = LogLevel.Debug 
+  private readonly logLevel: LogLevel = LogLevel.Debug 
 
   constructor() {
     if (environment.production){
@@ -34,7 +34,7 @@ export class LoggerService {
   }
 
 
-  private logToConsole(level:LogLevel, msg:String){
+  private logToConsole(level:LogLevel, msg: string){
     if (level === 1){
       console.error(`${LogLevel[level]}: ${msg}`)
     }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.dev';
+import { environment } from '../../environments/environment';
 import { IRegisterUser } from '../interfaces/IRegisterUser';
 import { BehaviorSubject, catchError, Observable, of, Subscribable, tap, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -62,7 +62,7 @@ export class AuthService {
         response => {        
           this.currentUserSubject.next(response.user);
           this.isAuthenticatedSubject.next(true)
-          this.logginService.log(LogLevel.Debug, ` IsAuthenticated > Authenticated as ${this.currentUserSubject.value}`)
+          this.logginService.log(LogLevel.Debug, ` IsAuthenticated > Authenticated as ${this.currentUserSubject.value?.username ?? 'unknown'}`)
 
         }
       ),
