@@ -1,1 +1,0 @@
-if request doesn't contain the security headers, take em out.

@@ -1,1 +1,9 @@
-<p>forum-topic-and-subtopic works!</p>
+<h1>
+    {{
+        topic.title
+    }}
+</h1>
+
+@for (subtopic of topic.subtopics; track $index) {
+    <p>{{subtopic.title}}</p>
+}
