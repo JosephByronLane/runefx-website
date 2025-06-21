@@ -1,5 +1,58 @@
 
 
 *{
-    color: var(--primary-text-color)
+    color: var(--primary-text-color);
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
 }
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    top: 0;
+ }
+
+.logo-container {
+    width: auto; 
+    padding: .5% 5% .5% 5%;
+    background: var(--triangle-before); 
+    display: block; 
+}
+
+ .triangle-container {
+    width: 10%;
+    height: 1;
+    position: relative; 
+} 
+
+ .triangle-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--triangle-before);
+    clip-path: polygon(0 0, 100.5% , -0.5% 100%);
+ }
+
+ .triangle-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--triangle-after);
+    clip-path: polygon(100% 0, 102% 100%, -2% 100%);
+}
+
+ .tabs-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+    padding: .5% 2% .5% 2%;
+    background-color: var(--triangle-after);
+}  

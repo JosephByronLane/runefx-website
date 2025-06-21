@@ -1,9 +1,13 @@
-<h1>
-    {{
-        topic.title
-    }}
-</h1>
+<div class="header-container" >
+    <div class="logo-container" >
+        {{topic.title}}
+    </div>
+    <div class="triangle-container"></div>
 
-@for (subtopic of topic.subtopics; track $index) {
-    <p>{{subtopic.title}}</p>
-}
+    <div class="tabs-container">
+        <ul>
+            test
+        </ul>
+    </div>
+</div>
+
