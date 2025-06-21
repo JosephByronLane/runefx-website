@@ -3,11 +3,12 @@ import { ForumService } from '../../services/forum.service';
 import { ITopicsAPIResponse } from '../../interfaces/IForumResponse';
 import { ForumTopicAndSubtopicComponent } from '../../components/forum-topic-and-subtopic/forum-topic-and-subtopic.component';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
+import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 
 @Component({
   selector: 'app-forum',
   standalone: true,
-  imports: [ForumTopicAndSubtopicComponent, BackgroundVideoComponent],
+  imports: [ForumTopicAndSubtopicComponent, BackgroundVideoComponent, InfoBoxComponent],
   templateUrl: './forum.component.html',
   styleUrl: './forum.component.css'
 })

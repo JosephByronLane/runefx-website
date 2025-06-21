@@ -1,9 +1,9 @@
 *{
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
 }
 
 .community-grid{
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
     padding: var(--base-site-margin-lr);
     display: flex;
     gap: 1vh 1.5vw;

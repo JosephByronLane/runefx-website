@@ -3,7 +3,7 @@
     top: var(--header-size);
     right: 0;
     height: calc(100vh - var(--header-size));
-    background-color: var(--triangle-after);    
+    background-color: var(--lighter-dark);    
     z-index: 1;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   }
@@ -15,7 +15,7 @@
     left:-1.5vw;
     width: 1.5vw;
     height: 4vh;
-    background-color: var(--triangle-after);
+    background-color: var(--lighter-dark);
     display: flex;
     align-items: center;
     justify-content: center;

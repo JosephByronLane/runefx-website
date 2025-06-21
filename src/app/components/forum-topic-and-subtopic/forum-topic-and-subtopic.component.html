@@ -1,13 +1,16 @@
 <div class="header-container" >
     <div class="logo-container" >
-        {{topic.title}}
+        <h1 class="forum-topic-title">{{topic.title}}</h1>
     </div>
     <div class="triangle-container"></div>
 
     <div class="tabs-container">
-        <ul>
-            test
-        </ul>
+        <!-- still needs to exist here or else the triangle will take aaaaalll the space -->
     </div>
 </div>
-
+<div class="subtopic-container">
+    @for (subtopic of topic.subtopics; track $index) {
+        <h2 class="forum-subtopic-title">{{subtopic.title}}</h2>
+        <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
+    }
+</div>

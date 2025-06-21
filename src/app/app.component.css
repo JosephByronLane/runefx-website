@@ -1,6 +1,6 @@
 .root{
     height: auto;
-    background-color: var(--triangle-after);
+    background-color: var(--darker-dark);
 }
 *{
     font-family: 'Open Sans', sans-serif;
