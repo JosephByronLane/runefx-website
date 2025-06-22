@@ -16,13 +16,13 @@
                 <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
             </div>
 
-            <div class="subtopic-latest-post-data">
+            <div class="subtopic-latest-post-data color-hover" (click)="loadingService.switchWithLoading('under-construction')">
                 <div class="subtopic-latest-post-user">
                     <img src={{subtopic.latest_post_data.latest_post_user_pfp}} alt="User profile">
                 </div>
                 <div class="subtopic-latest-post-text">
-                    <p>{{subtopic.latest_post_data.latest_post_user_name}}</p>
-                    <p>{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
+                    <p class="bold-text sdr-text">{{subtopic.latest_post_data.latest_post_user}}</p>
+                    <p >{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
                 </div>
             </div>            
         </div>

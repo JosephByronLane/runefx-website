@@ -23,6 +23,7 @@ export class ForumComponent implements OnInit {
     .subscribe({
       next: (value: ITopicsAPIResponse[]) =>{
         this.topics = value;
+        console.log(this.topics)
       },
       error: (error) =>{
         this.errorLoadingTopics = true;

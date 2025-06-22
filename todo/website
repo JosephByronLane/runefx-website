@@ -4,3 +4,4 @@
 - add proper tab usage, fixing the sonarling things should be a good start
 - make the background video component invisible to tabs, tabbing in it breaks it
 - cant middle click on navbar stuff to open it in a new tab
+- make year on footer dynamic

@@ -33,13 +33,21 @@
     font-weight: 700;
     font-size: 4vh;
 }
-
+.sm-title-text{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 3vh;
+}
 .sdr-text{
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     font-size: 2vh;
 }
-
+.sm-sdr-text{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.5vh;
+}
 .sm-text{
     font-size: 1vh;
     font-family: 'Open Sans', sans-serif;
@@ -97,6 +105,14 @@
     font-weight: 700;
 }
 
+.color-hover{
+      transition: color 0.5s;
+}
+
+.color-hover:hover{
+    color: var(--hover-text-color);
+
+}
 
 /* FORUM SPECIFIC STYLES
 

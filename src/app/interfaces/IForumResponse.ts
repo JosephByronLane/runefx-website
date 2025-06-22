@@ -25,7 +25,7 @@ interface IPostAPIResponse {
 
 
 interface ILatestPostsAPIResponse {
-    latest_post_user_name: string;
+    latest_post_user: string;
     latest_post_time: string;
     latest_post_user_pfp: string;
 }
