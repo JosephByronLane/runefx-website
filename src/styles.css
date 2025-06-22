@@ -42,6 +42,8 @@
 
 .sm-text{
     font-size: 1vh;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
 }
 
 .footer-text{
@@ -95,7 +97,8 @@
     font-weight: 700;
 }
 
-/* FORUM SPECIFIC STYLES */
+
+/* FORUM SPECIFIC STYLES
 
 .forum-topic-title{
     font-family: 'Open Sans', sans-serif;
@@ -111,4 +114,4 @@
 
 .forum-subtopic-desc{
     font-size: 1vh;
-}
+} */

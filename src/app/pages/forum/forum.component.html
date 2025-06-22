@@ -21,3 +21,13 @@
         />
     }
 </div>
+
+<!-- if topics are empty, then straight up nothing shows up. -->
+@if (errorLoadingTopics) {
+    <div class="base-padding base-margin light-bg base-bradius">
+        <div class="error-loading-topics">
+            <h1 class="title-text bold-text">There seems to be an error loading the forum content.</h1>
+            <p class="sdr-text">Please try again later or contact an administrator.</p>
+        </div>
+    </div>
+}

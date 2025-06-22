@@ -11,17 +11,20 @@
 <div class="subtopic-container">
     @for (subtopic of topic.subtopics; track $index) {
         <div class="subtopic-item">
-            <h2 class="">{{subtopic.title}}</h2>
-            <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
+            <div class="subtopic-data">
+                <h2 class="">{{subtopic.title}}</h2>
+                <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
+            </div>
+
             <div class="subtopic-latest-post-data">
-                <div>
+                <div class="subtopic-latest-post-user">
                     <img src={{subtopic.latest_post_data.latest_post_user_pfp}} alt="User profile">
                 </div>
                 <div class="subtopic-latest-post-text">
                     <p>{{subtopic.latest_post_data.latest_post_user_name}}</p>
-                    <p>{{subtopic.latest_post_data.latest_post_time}}</p>
+                    <p>{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
                 </div>
-            </div>
+            </div>            
         </div>
     }
 </div>

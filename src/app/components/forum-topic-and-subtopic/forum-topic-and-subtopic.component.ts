@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ITopicsAPIResponse } from '../../interfaces/IForumResponse';
+import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-forum-topic-and-subtopic',
@@ -17,9 +18,10 @@ export class ForumTopicAndSubtopicComponent {
     slug: "error-topic"  
   };
 
-
-  constructor() {
-
+  formatedDate: string = 'Error retrieviing date';
+  constructor(    public readonly utilsService: UtilsService) {
   }
+
+
 
 }

@@ -15,13 +15,18 @@ import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 export class ForumComponent implements OnInit {
 
   public topics: ITopicsAPIResponse[] = []; 
-
+  public errorLoadingTopics: boolean = false;
   constructor(private readonly forumService: ForumService) {}
 
   ngOnInit(){
     this.forumService.getTopicsAndSubtopics()
-    .subscribe((data: ITopicsAPIResponse[]) =>{
-      this.topics = data;
+    .subscribe({
+      next: (value: ITopicsAPIResponse[]) =>{
+        this.topics = value;
+      },
+      error: (error) =>{
+        this.errorLoadingTopics = true;
+      }
     })
   }
 }
