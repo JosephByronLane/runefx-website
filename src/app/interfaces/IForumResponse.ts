@@ -12,10 +12,20 @@ interface ISubtopicAPIResponse {
     title: string;
     description: string;
     slug: string;
+    posts?: IPostAPIResponse[];
+    post_count: number;
+    latest_post_data: ILatestPostsAPIResponse
 }
 
 interface IPostAPIResponse {
     id: number;
     title: string;
     content: string;
+}
+
+
+interface ILatestPostsAPIResponse {
+    latest_post_user_name: string;
+    latest_post_time: string;
+    latest_post_user_pfp: string;
 }

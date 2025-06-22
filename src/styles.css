@@ -40,6 +40,10 @@
     font-size: 2vh;
 }
 
+.sm-text{
+    font-size: 1vh;
+}
+
 .footer-text{
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
@@ -87,6 +91,9 @@
     background-color: var(--lighter-dark);
 }
 
+.bold-text{
+    font-weight: 700;
+}
 
 /* FORUM SPECIFIC STYLES */
 
@@ -99,9 +106,9 @@
 .forum-subtopic-title{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
-    font-size: 3vh;
+    font-size: 2vh;
 }
 
 .forum-subtopic-desc{
-    font-size: 2vh;
+    font-size: 1vh;
 }

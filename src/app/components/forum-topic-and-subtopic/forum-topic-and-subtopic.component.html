@@ -1,6 +1,6 @@
 <div class="header-container" >
     <div class="logo-container" >
-        <h1 class="forum-topic-title">{{topic.title}}</h1>
+        <h1 class="title-text">{{topic.title}}</h1>
     </div>
     <div class="triangle-container"></div>
 
@@ -10,7 +10,18 @@
 </div>
 <div class="subtopic-container">
     @for (subtopic of topic.subtopics; track $index) {
-        <h2 class="forum-subtopic-title">{{subtopic.title}}</h2>
-        <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
+        <div class="subtopic-item">
+            <h2 class="">{{subtopic.title}}</h2>
+            <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
+            <div class="subtopic-latest-post-data">
+                <div>
+                    <img src={{subtopic.latest_post_data.latest_post_user_pfp}} alt="User profile">
+                </div>
+                <div class="subtopic-latest-post-text">
+                    <p>{{subtopic.latest_post_data.latest_post_user_name}}</p>
+                    <p>{{subtopic.latest_post_data.latest_post_time}}</p>
+                </div>
+            </div>
+        </div>
     }
 </div>
