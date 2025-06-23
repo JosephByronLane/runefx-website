@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { ITopicsAPIResponse } from '../interfaces/IForumResponse';
+import { ISubtopicAPIResponse, ITopicsAPIResponse } from '../interfaces/IForumResponse';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +25,17 @@ export class ForumService {
     .pipe(
       tap(response => {
         console.log('Fetched topic:', response);
+      },      
+    ),      
+    );
+  }
+
+
+  getSingleSubtopic(subtopicId: number):Observable<ISubtopicAPIResponse>{
+    return this.http.get<ISubtopicAPIResponse>(`${environment.apiUrl}/forum/subtopics/${subtopicId}`)
+    .pipe(
+      tap(response => {
+        console.log('Fetched subtopic:', response);
       },      
     ),      
     );
