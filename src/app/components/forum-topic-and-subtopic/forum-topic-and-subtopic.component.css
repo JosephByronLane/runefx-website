@@ -47,12 +47,13 @@
     clip-path: polygon(100% 0, 102% 100%, -2% 100%);
 }
 .spacer{
-    width: 30vw;
+    flex: 1;
 }
 .post-data{
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-self: flex-end;
+    justify-content: flex-end; 
     padding: .5% 2% .5% 2%;
     background-color: var(--lighter-dark);
     flex: 1;  
@@ -60,7 +61,17 @@
 }  
 
 .post-data div p{
-    width: 10vw;
+    width: 100%;
+    text-align: center;
+}
+
+.post-data div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 10vw;
 }
 
 
@@ -88,6 +99,7 @@
     max-height: 5vh;
     max-width: 10vw;
     overflow: hidden;
+    width: 100%;
 }
 
 .subtopic-latest-post-data p.hover{
@@ -111,7 +123,7 @@
 }
 
 .subtopic-latest-post-user img {
-    height: 100%;    
+    width: 5vh;    
 }
 
 .subtopic-latest-post-text{
@@ -121,3 +133,22 @@
     justify-content: center;
 }
 
+.post-data-info-container{
+    display: flex;
+    align-items: center;
+    justify-self: flex-end;
+    justify-content: flex-end; 
+    background-color: var(--lighter-dark);
+    flex: 1;  
+    width: 100%;
+}
+
+
+.subtopic-post-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 10vw;
+}
