@@ -30,6 +30,4 @@ export class ForumTopicAndSubtopicComponent {
     }
     return userName;
   }
-
-
 }
