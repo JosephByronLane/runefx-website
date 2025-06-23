@@ -24,5 +24,12 @@ export class ForumTopicAndSubtopicComponent {
   constructor(    public readonly utilsService: UtilsService, public readonly loadingService: IntermitentLoadingService) {
   }
 
+  truncateUserName(userName: string): string {
+    if (userName.length > 13) {
+      return userName.slice(0, 10) + '...';
+    }
+    return userName;
+  }
+
 
 }

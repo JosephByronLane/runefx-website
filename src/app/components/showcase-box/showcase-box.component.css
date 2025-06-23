@@ -13,7 +13,7 @@
     text-align: left;
     font-family: inherit;
     color: var(--primary-text-color);
-    transition: color 0.2s ease; /* Add smooth transition */
+    transition: color 0.2s ease; 
 
 }
 

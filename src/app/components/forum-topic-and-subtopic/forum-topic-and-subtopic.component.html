@@ -3,25 +3,35 @@
         <h1 class="title-text">{{topic.title}}</h1>
     </div>
     <div class="triangle-container"></div>
+    <div class="spacer ">
 
-    <div class="tabs-container">
-        <!-- still needs to exist here or else the triangle will take aaaaalll the space -->
+    </div>
+    <div class="post-data">
+        <div>
+            <p class="bold-text sdr-text ">Topics</p>
+        </div>
+        <div>
+            <p class="bold-text sdr-text">Posts</p>
+        </div>
+        <div>
+            <p class="bold-text sdr-text">Latest Post</p>
+        </div>
     </div>
 </div>
 <div class="subtopic-container">
     @for (subtopic of topic.subtopics; track $index) {
         <div class="subtopic-item">
             <div class="subtopic-data">
-                <h2 class="">{{subtopic.title}}</h2>
+                <h2 class="bold-text sm-title-text">{{subtopic.title}}</h2>
                 <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
             </div>
 
-            <div class="subtopic-latest-post-data color-hover" (click)="loadingService.switchWithLoading('under-construction')">
+            <div class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('under-construction')">
                 <div class="subtopic-latest-post-user">
                     <img src={{subtopic.latest_post_data.latest_post_user_pfp}} alt="User profile">
                 </div>
                 <div class="subtopic-latest-post-text">
-                    <p class="bold-text sdr-text">{{subtopic.latest_post_data.latest_post_user}}</p>
+                    <p class="bold-text sdr-text hover">{{subtopic.latest_post_data.latest_post_user}}</p>
                     <p >{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
                 </div>
             </div>            

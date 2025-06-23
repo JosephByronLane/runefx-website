@@ -46,8 +46,10 @@
     background: var(--lighter-dark);
     clip-path: polygon(100% 0, 102% 100%, -2% 100%);
 }
-
-.tabs-container {
+.spacer{
+    width: 30vw;
+}
+.post-data{
     display: flex;
     align-items: center;
     justify-content: space-between; 
@@ -57,6 +59,9 @@
     width: 100%;
 }  
 
+.post-data div p{
+    width: 10vw;
+}
 
 
 .subtopic-container {
@@ -81,6 +86,24 @@
     flex-direction: row;
     justify-content: flex-end;
     max-height: 5vh;
+    max-width: 10vw;
+    overflow: hidden;
+}
+
+.subtopic-latest-post-data p.hover{
+    transition: color 0.5s;
+
+}
+.hover{
+    max-width: 10vw;
+    display: inline-block;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+.subtopic-latest-post-data:hover p.hover{
+    color: var(--hover-text-color)
 }
 
 .subtopic-latest-post-user{
@@ -97,3 +120,4 @@
     flex-direction: column;
     justify-content: center;
 }
+
