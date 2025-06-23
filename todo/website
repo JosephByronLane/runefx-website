@@ -5,3 +5,4 @@
 - make the background video component invisible to tabs, tabbing in it breaks it
 - cant middle click on navbar stuff to open it in a new tab
 - make year on footer dynamic
+- bg-image-video not scrolling properly, when the page loads and you scroll it jolts.

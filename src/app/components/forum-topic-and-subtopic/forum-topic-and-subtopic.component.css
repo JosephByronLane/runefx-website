@@ -19,6 +19,16 @@
     width: auto;
 }
 
+.logo-container h1.hover{
+    transition: color 0.5s;
+}
+
+.logo-container:hover h1.hover{
+    color: var(--hover-text-color)
+}
+
+
+
  .triangle-container {
     width: 5vw;
     height: 1;
@@ -71,7 +81,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 10vw;
+    max-width: 15vw;
 }
 
 
@@ -95,19 +105,21 @@
 .subtopic-latest-post-data{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     max-height: 5vh;
-    max-width: 10vw;
+    max-width: 15vw;
     overflow: hidden;
     width: 100%;
+
 }
 
 .subtopic-latest-post-data p.hover{
     transition: color 0.5s;
 
 }
-.hover{
-    max-width: 10vw;
+
+.break-word{
+    max-width: 15vw;
     display: inline-block;
     white-space: normal;
     overflow-wrap: break-word;
@@ -115,6 +127,14 @@
     word-break: break-word;
 }
 .subtopic-latest-post-data:hover p.hover{
+    color: var(--hover-text-color)
+}
+
+.subtopic-data h2.hover{
+    transition: color 0.5s;
+}
+
+.subtopic-data:hover h2.hover{
     color: var(--hover-text-color)
 }
 
@@ -150,5 +170,5 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 10vw;
+    max-width: 15vw;
 }
