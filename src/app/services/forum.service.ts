@@ -19,4 +19,14 @@ export class ForumService {
     ),      
     );
   }
+
+  getSingleTopic(topicId: number):Observable<ITopicsAPIResponse>{
+    return this.http.get<ITopicsAPIResponse>(`${environment.apiUrl}/forum/topics/${topicId}`)
+    .pipe(
+      tap(response => {
+        console.log('Fetched topic:', response);
+      },      
+    ),      
+    );
+  }
 }

@@ -1,5 +1,5 @@
 <div class="header-container" >
-    <div class="logo-container" >
+    <div class="logo-container" (click)="loadingService.switchWithLoading('forum/'+topic.id+'/'+topic.slug)">
         <h1 class="title-text hover">{{topic.title}}</h1>
     </div>
 
