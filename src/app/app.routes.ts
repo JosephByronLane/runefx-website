@@ -91,6 +91,11 @@ export const routes: Routes = [
         component: ForumComponent
     },
     {
+        path: 'forum/:topic',
+        title: 'RuneFX | Forum',
+        component: ForumComponent
+    },
+    {
         path: 'under-construction',
         title: 'RuneFX | Under Construction',
         component: ComingSoonComponent
