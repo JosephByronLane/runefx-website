@@ -19,7 +19,7 @@
 <div class="subtopic-container">
     @for (subtopic of topic.subtopics; track $index) {
         <div class="subtopic-item">
-            <div class="subtopic-data">
+            <div class="subtopic-data" (click)="loadingService.switchWithLoading('forum/'+topic.id+'/'+topic.slug+'/'+subtopic.id+'/'+subtopic.slug)">
                 <h2 class="bold-text sm-title-text hover">{{subtopic.title}}</h2>
                 <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
             </div>

@@ -138,6 +138,9 @@
 .subtopic-data:hover h2.hover{
     color: var(--hover-text-color)
 }
+.subtopic-data{
+    cursor: pointer;
+}
 
 .subtopic-latest-post-user{
     height: 100%;
