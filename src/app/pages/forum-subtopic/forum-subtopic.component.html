@@ -32,22 +32,22 @@
 </div>
 
 <div class="subtopic-container">
-    @for (subtopic of subtopicData.posts; track $index) {
+    @for (posts of subtopicData.posts; track $index) {
         <div class="subtopic-item">
             <div class="subtopic-data" >
-                <h2 class="bold-text sm-title-text hover">{{subtopic.title}}</h2>
+                <h2 class="bold-text sm-title-text hover">{{posts.title}}</h2>
             </div>
             <div class="post-data-info-container">
                 <div class="subtopic-post-count">
-                    <p class="bold-text sdr-text">{{subtopic.post_count}}</p>
+                    <p class="bold-text sdr-text">{{posts.amount_of_comments}}</p>
                 </div>
                 <div class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('under-construction')">
                     <div class="subtopic-latest-post-user">
-                        <img src={{subtopic.latest_post_data.latest_post_user_pfp}} alt="User profile">
+                        <img src={{posts.latest_comment_data.user_pfp_url}} alt="User profile">
                     </div>
                     <div class="subtopic-latest-post-text">
-                        <p class="bold-text sdr-text hover break-word">{{subtopic.latest_post_data.latest_post_user}}</p>
-                        <p >{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
+                        <p class="bold-text sdr-text hover break-word">{{posts.latest_comment_data.username}}</p>
+                        <p >{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
                     </div>
                 </div>    
             </div>     

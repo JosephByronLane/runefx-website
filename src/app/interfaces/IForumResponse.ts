@@ -1,3 +1,6 @@
+
+//TOPIC RESPONSE
+
 export interface ITopicsAPIResponse{
     id: number;
     title: string;
@@ -7,6 +10,9 @@ export interface ITopicsAPIResponse{
     slug: string;  
 }
 
+
+
+//SUBTOPIC RESPONSE
 interface IBaseSubtopicAPIResponse {
     id: number;
     title: string;
@@ -23,8 +29,11 @@ export interface ISubtopicAPIResponse extends IBaseSubtopicAPIResponse {
 //when querying the posts of a subtopic
 export interface ISubtopicDetailAPIResponse extends IBaseSubtopicAPIResponse{
     posts: IPostAPIResponse[];
+    post_count: number;
 }
 
+
+//POST RESPONSE
 interface IPostAPIResponse {
     id: number; 
     title: string;
@@ -32,6 +41,7 @@ interface IPostAPIResponse {
     comments: any[];
     created_at: string;
     created_by: string;
+    amount_of_comments: number;
     latest_comment_data: ILatestPostsAPIResponse;
 }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ForumService } from '../../services/forum.service';
 import { ActivatedRoute } from '@angular/router';
-import { ISubtopicAPIResponse } from '../../interfaces/IForumResponse';
+import { ISubtopicDetailAPIResponse } from '../../interfaces/IForumResponse';
 import { ForumTopicAndSubtopicComponent } from '../../components/forum-topic-and-subtopic/forum-topic-and-subtopic.component';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { UtilsService } from '../../services/utils.service';
@@ -16,7 +16,7 @@ import { IntermitentLoadingService } from '../../services/intermitent-loading.se
 })
 export class ForumSubtopicComponent {
 
-  public subtopicData: ISubtopicAPIResponse = {} as ISubtopicAPIResponse;
+  public subtopicData: ISubtopicDetailAPIResponse = {} as ISubtopicDetailAPIResponse;
   public errorLoadingSubtopic: boolean = false;
   constructor(private readonly forumService: ForumService, private readonly route: ActivatedRoute, public readonly loadingService: IntermitentLoadingService, public readonly utilsService: UtilsService) {
 
@@ -26,7 +26,7 @@ export class ForumSubtopicComponent {
 
       this.forumService.getSingleSubtopic(subtopicId)
       .subscribe({
-        next: (value: ISubtopicAPIResponse) =>{
+        next: (value: ISubtopicDetailAPIResponse) =>{
           this.subtopicData = value;
         },
         error: (error) =>{
