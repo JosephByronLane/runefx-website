@@ -26,17 +26,18 @@ export interface ISubtopicDetailAPIResponse extends IBaseSubtopicAPIResponse{
 }
 
 interface IPostAPIResponse {
-    id: number;
+    id: number; 
     title: string;
     content: string;
     comments: any[];
     created_at: string;
+    created_by: string;
     latest_comment_data: ILatestPostsAPIResponse;
 }
 
 
 interface IUserForumData{
-    username:string; //username
+    username:string; 
     user_pfp_url:string; 
 }
 

@@ -30,7 +30,6 @@ export class ForumComponent implements OnInit {
       if (topicId && topicSlug){
         this.isThereSpecificTopic = true;
         this.topicId = topicId;
-        console.log(topicId, topicSlug);
       }
     });
 
@@ -39,7 +38,6 @@ export class ForumComponent implements OnInit {
       .subscribe({
         next: (value: ITopicsAPIResponse) =>{
           this.topics = [value];
-          console.log(this.topics)
         }
       })
       return;
@@ -49,7 +47,6 @@ export class ForumComponent implements OnInit {
     .subscribe({
       next: (value: ITopicsAPIResponse[]) =>{
         this.topics = value;
-        console.log(this.topics)
       },
       error: (error) =>{
         this.errorLoadingTopics = true;

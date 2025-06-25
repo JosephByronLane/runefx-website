@@ -13,20 +13,14 @@ export class ForumService {
   getTopicsAndSubtopics():Observable<ITopicsAPIResponse[]>{
     return this.http.get<ITopicsAPIResponse[]>(`${environment.apiUrl}/forum/topics/`)
     .pipe(
-      tap(response => {
-        console.log('Fetched topics:', response);
-      },      
-    ),      
+     
     );
   }
 
   getSingleTopic(topicId: number):Observable<ITopicsAPIResponse>{
     return this.http.get<ITopicsAPIResponse>(`${environment.apiUrl}/forum/topics/${topicId}`)
     .pipe(
-      tap(response => {
-        console.log('Fetched topic:', response);
-      },      
-    ),      
+     
     );
   }
 
@@ -34,10 +28,7 @@ export class ForumService {
   getSingleSubtopic(subtopicId: number):Observable<ISubtopicAPIResponse>{
     return this.http.get<ISubtopicAPIResponse>(`${environment.apiUrl}/forum/subtopics/${subtopicId}`)
     .pipe(
-      tap(response => {
-        console.log('Fetched subtopic:', response);
-      },      
-    ),      
+     
     );
   }
 }
