@@ -166,7 +166,15 @@
     flex: 1;  
     width: 100%;
 }
-
+.post-title-info-container{
+    display: flex;
+    align-items: flex-end;
+    justify-self: flex-end;
+    justify-content: flex-end; 
+    background-color: var(--lighter-dark);
+    flex: 1;  
+    width: 100%;
+}
 
 .subtopic-post-count {
     display: flex;

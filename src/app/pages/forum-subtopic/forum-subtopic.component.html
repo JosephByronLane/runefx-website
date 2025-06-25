@@ -23,7 +23,7 @@
 
     <div class="post-data">
         <div>
-            <p class="bold-text sdr-text">Post Count</p>
+            <p class="bold-text sdr-text">Replies</p>
         </div>
         <div>
             <p class="bold-text sdr-text">Latest Post</p>
@@ -36,6 +36,12 @@
         <div class="subtopic-item">
             <div class="subtopic-data" >
                 <h2 class="bold-text sm-title-text hover">{{posts.title}}</h2>
+                <div class="post-title-info-container">
+                    <!-- &nbsp; is a whitespace character. I don't want to deal with the CSS so im just using that. -->
+                    <p class="sdr-text">By</p>&nbsp; 
+                    <p class="sdr-text bold-text">{{posts.created_by}}</p>
+                    <p class="sm-sdr-text">, {{utilsService.timeAgo(posts.created_at)}}</p>
+                </div>
             </div>
             <div class="post-data-info-container">
                 <div class="subtopic-post-count">
