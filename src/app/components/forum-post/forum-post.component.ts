@@ -3,6 +3,7 @@ import { IPostAPIResponse } from '../../interfaces/IForumResponse';
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 import { MarkdownComponent } from 'ngx-markdown';
 import { CommonModule } from '@angular/common';
+import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-forum-post',
@@ -14,7 +15,7 @@ import { CommonModule } from '@angular/common';
 export class ForumPostComponent {
   @Input() post: IPostAPIResponse = {} as IPostAPIResponse;
 
-  constructor(private readonly markdownService: MarkdownService){
+  constructor(private readonly markdownService: MarkdownService, public readonly utilsService: UtilsService){
 
   }
 

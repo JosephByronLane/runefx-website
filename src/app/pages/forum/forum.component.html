@@ -15,6 +15,15 @@
 </app-background-video>
 
 <div class="base-bradius base-margin-lr">
+
+    <div class="breadcrumbs">
+        @for (breadcrumb of breadcrumbs; track $index) {
+            <a class="bold-text sdr-text" (click)="intermitentLoadingService.switchWithLoading(breadcrumb.link)">{{breadcrumb.text}}</a>
+            @if ($index < breadcrumbs.length - 1) {
+                <p class="bold-text sdr-text">></p>
+            }
+        }
+    </div>
     <!-- handles viewing a subtopics posts -->
     @if (isThereSpecificSubtopic && subtopicData) {
         <app-forum-subtopic

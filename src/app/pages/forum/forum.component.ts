@@ -7,11 +7,12 @@ import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { ActivatedRoute } from '@angular/router';
 import { ForumSubtopicComponent } from "../../components/forum-subtopic/forum-subtopic.component";
 import { ForumPostComponent } from "../../components/forum-post/forum-post.component";
+import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 
 @Component({
   selector: 'app-forum',
   standalone: true,
-  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent, ForumSubtopicComponent, ForumPostComponent],
+  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent, ForumSubtopicComponent, ForumPostComponent ],
   templateUrl: './forum.component.html',
   styleUrl: './forum.component.css'
 })
@@ -32,9 +33,11 @@ export class ForumComponent implements OnInit {
   public isThereSpecificPost: boolean = false;
   public postId: number = 0;
 
+  public breadcrumbs: {text: string, link: string}[] = [
+    {text: "Forum", link: "/forum"},
+  ];
 
-
-  constructor(private readonly forumService: ForumService, private readonly route: ActivatedRoute) {}
+  constructor(private readonly forumService: ForumService, private readonly route: ActivatedRoute, public readonly intermitentLoadingService: IntermitentLoadingService) {}
 
   ngOnInit(){
 
@@ -46,7 +49,6 @@ export class ForumComponent implements OnInit {
       if (subtopicId && subtopicSlug){
         this.isThereSpecificSubtopic = true;
         this.subtopicId = subtopicId;
-        console.log('subtopicId', this.subtopicId);
         return;
       }
 
@@ -56,7 +58,6 @@ export class ForumComponent implements OnInit {
       if (topicId && topicSlug){
         this.isThereSpecificTopic = true;
         this.topicId = topicId;
-        console.log('topicId', this.topicId);
         return;
       }
 
@@ -64,7 +65,6 @@ export class ForumComponent implements OnInit {
       if (postId){
         this.isThereSpecificPost = true;
         this.postId = postId;
-        console.log('postId', this.postId);
         return;
       }
 

@@ -46,7 +46,7 @@ export interface IPostAPIResponse extends IBaseForumData{
     content: string;
     comments: ICommentAPIResponse[];
     created_at: string;
-    created_by: string;
+    created_by: IUserForumData;
     amount_of_comments: number;
     latest_comment_data: ILatestPostsAPIResponse;
 }
@@ -56,6 +56,6 @@ export interface ICommentAPIResponse {
     id: number;
     content: string;
     created_at: string;
-    created_by: string;
+    created_by: IUserForumData;
     post: number;
 }
