@@ -23,14 +23,26 @@
         />       
     }
 
-    <!-- handles all topics or a singular topic -->
-    @for (topic of topicData; track $index) {
-        <app-forum-topics
+    @if (isThereSpecificPost && postData) {
+        <app-forum-post
             class="base-margin base-bradius"
-            [topic]="topic"        
+            [post]="postData"        
         />
     }
-    
+
+
+    @else{
+        <!-- handles all topics or a singular topic -->
+        @for (topic of topicData; track $index) {
+            <app-forum-topics
+                class="base-margin base-bradius"
+                [topic]="topic"        
+            />
+                
+        }
+    }
+
+
 </div>
 
 <!-- if topics are empty, then straight up nothing shows up. -->

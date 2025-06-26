@@ -20,7 +20,7 @@
     @for (posts of subtopic.posts; track $index) {
         <div class="subtopic-item">
             <div class="subtopic-data" >
-                <h2 class="bold-text sm-title-text hover">{{posts.title}}</h2>
+                <h2 class="bold-text sm-title-text hover" (click)="loadingService.switchWithLoading('forum/posts/'+posts.id)">{{posts.title}}</h2>
                 <div class="post-title-info-container">
                     <!-- &nbsp; is a whitespace character. I don't want to deal with the CSS so im just using that. -->
                     <p class="sdr-text">By</p>&nbsp; 

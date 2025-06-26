@@ -92,8 +92,8 @@ export const routes: Routes = [
         component: ForumComponent
     },
     {
-        path: 'forum/:topicId/:topicSlug',
-        title: 'RuneFX | Forum', //title is set in the topic component
+        path: 'forum/posts/:postId',
+        title: 'RuneFX | Forum', //title is set in the post component
         component: ForumComponent
     },
     {
@@ -102,8 +102,8 @@ export const routes: Routes = [
         component: ForumComponent
     },
     {
-        path: 'forum/posts/:postId',
-        title: 'RuneFX | Forum', //title is set in the post component
+        path: 'forum/:topicId/:topicSlug',
+        title: 'RuneFX | Forum', //title is set in the topic component
         component: ForumComponent
     },
     {

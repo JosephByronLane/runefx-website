@@ -6,11 +6,12 @@ import { BackgroundVideoComponent } from '../../components/background-video/back
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { ActivatedRoute } from '@angular/router';
 import { ForumSubtopicComponent } from "../../components/forum-subtopic/forum-subtopic.component";
+import { ForumPostComponent } from "../../components/forum-post/forum-post.component";
 
 @Component({
   selector: 'app-forum',
   standalone: true,
-  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent, ForumSubtopicComponent],
+  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent, ForumSubtopicComponent, ForumPostComponent],
   templateUrl: './forum.component.html',
   styleUrl: './forum.component.css'
 })
@@ -45,6 +46,7 @@ export class ForumComponent implements OnInit {
       if (subtopicId && subtopicSlug){
         this.isThereSpecificSubtopic = true;
         this.subtopicId = subtopicId;
+        console.log('subtopicId', this.subtopicId);
         return;
       }
 
@@ -54,9 +56,17 @@ export class ForumComponent implements OnInit {
       if (topicId && topicSlug){
         this.isThereSpecificTopic = true;
         this.topicId = topicId;
+        console.log('topicId', this.topicId);
         return;
       }
 
+      const postId = params['postId'];
+      if (postId){
+        this.isThereSpecificPost = true;
+        this.postId = postId;
+        console.log('postId', this.postId);
+        return;
+      }
 
     });
 
@@ -65,6 +75,10 @@ export class ForumComponent implements OnInit {
       .subscribe({
         next: (value: ITopicsAPIResponse) =>{
           this.topicData = [value];
+        },
+        error: (error) =>{
+          console.log(error);
+          this.errorLoadingTopics = true;
         }
       })
       return;
@@ -75,9 +89,26 @@ export class ForumComponent implements OnInit {
       .subscribe({
         next: (value: ISubtopicDetailAPIResponse) =>{
           this.subtopicData = value;
+        },
+        error: (error) =>{
+          console.log(error);
+          this.errorLoadingTopics = true;
         }
       })
       return;
+    }
+
+    if(this.isThereSpecificPost){
+      this.forumService.getPostAndComments(this.postId)
+      .subscribe({
+        next: (value: IPostAPIResponse) =>{
+          this.postData = value;
+        },
+        error: (error) =>{  
+          console.log(error);
+          this.errorLoadingTopics = true;
+        }
+      })
     }
 
     //default: get all topics
@@ -87,10 +118,9 @@ export class ForumComponent implements OnInit {
         this.topicData = value;
       },
       error: (error) =>{
+        console.log(error);
         this.errorLoadingTopics = true;
       }
     })
-    
-
   }
 }
