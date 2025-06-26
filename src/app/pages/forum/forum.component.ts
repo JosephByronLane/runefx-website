@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForumService } from '../../services/forum.service';
-import { ITopicsAPIResponse } from '../../interfaces/IForumResponse';
+import { ISubtopicDetailAPIResponse, ITopicsAPIResponse } from '../../interfaces/IForumResponse';
 import { ForumTopicAndSubtopicComponent } from '../../components/forum-topic-and-subtopic/forum-topic-and-subtopic.component';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
@@ -15,10 +15,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ForumComponent implements OnInit {
 
-  public topics: ITopicsAPIResponse[] = []; 
   public errorLoadingTopics: boolean = false;
+
+  public topics: ITopicsAPIResponse[] = []; 
   public isThereSpecificTopic: boolean = false;
   public topicId: number = 0;
+
+
+  public subtopics: ISubtopicDetailAPIResponse[] = [];
+  public isThereSpecificSubtopic: boolean = false;
+  public subtopicId: number = 0;
+
+
   constructor(private readonly forumService: ForumService, private readonly route: ActivatedRoute) {}
 
   ngOnInit(){
@@ -30,6 +38,16 @@ export class ForumComponent implements OnInit {
       if (topicId && topicSlug){
         this.isThereSpecificTopic = true;
         this.topicId = topicId;
+        return;
+      }
+
+      const subtopicId = params['subtopicId'];
+      const subtopicSlug = params['subtopicSlug'];
+
+      if (subtopicId && subtopicSlug){
+        this.isThereSpecificSubtopic = true;
+        this.subtopicId = subtopicId;
+        return;
       }
     });
 
@@ -43,6 +61,15 @@ export class ForumComponent implements OnInit {
       return;
     }
 
+    if(this.isThereSpecificSubtopic){
+      this.forumService.getSingleSubtopic(this.subtopicId)
+      .subscribe({
+        next: (value: ISubtopicDetailAPIResponse) =>{
+          this.subtopics = [value];
+        }
+      })
+      return;
+    }
     this.forumService.getTopicsAndSubtopics()
     .subscribe({
       next: (value: ITopicsAPIResponse[]) =>{

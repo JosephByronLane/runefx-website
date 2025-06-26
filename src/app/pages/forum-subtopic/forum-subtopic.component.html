@@ -13,50 +13,53 @@
 [credits]="'© Pablo Dominguez'"
 >  
 </app-background-video>
-<div class="header-container" >
-    <div class="logo-container" >
-        <h1 class="title-text hover">{{subtopicData.title}}</h1>
-    </div>
 
-    <div class="triangle-container"></div>
-
-
-    <div class="post-data">
-        <div>
-            <p class="bold-text sdr-text">Replies</p>
+<div class="base-bradius base-margin-lr">
+    <div class="header-container" >
+        <div class="logo-container" >
+            <h1 class="title-text hover">{{subtopicData.title}}</h1>
         </div>
-        <div>
-            <p class="bold-text sdr-text">Latest Post</p>
-        </div>
-    </div>
-</div>
-
-<div class="subtopic-container">
-    @for (posts of subtopicData.posts; track $index) {
-        <div class="subtopic-item">
-            <div class="subtopic-data" >
-                <h2 class="bold-text sm-title-text hover">{{posts.title}}</h2>
-                <div class="post-title-info-container">
-                    <!-- &nbsp; is a whitespace character. I don't want to deal with the CSS so im just using that. -->
-                    <p class="sdr-text">By</p>&nbsp; 
-                    <p class="sdr-text bold-text">{{posts.created_by}}</p>
-                    <p class="sm-sdr-text">, {{utilsService.timeAgo(posts.created_at)}}</p>
-                </div>
+    
+        <div class="triangle-container"></div>
+    
+    
+        <div class="post-data">
+            <div>
+                <p class="bold-text sdr-text">Replies</p>
             </div>
-            <div class="post-data-info-container">
-                <div class="subtopic-post-count">
-                    <p class="bold-text sdr-text">{{posts.amount_of_comments}}</p>
-                </div>
-                <div class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('under-construction')">
-                    <div class="subtopic-latest-post-user">
-                        <img src={{posts.latest_comment_data.user_pfp_url}} alt="User profile">
-                    </div>
-                    <div class="subtopic-latest-post-text">
-                        <p class="bold-text sdr-text hover break-word">{{posts.latest_comment_data.username}}</p>
-                        <p >{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
-                    </div>
-                </div>    
-            </div>     
+            <div>
+                <p class="bold-text sdr-text">Latest Reply</p>
+            </div>
         </div>
-    }
+    </div>
+    
+    <div class="subtopic-container">
+        @for (posts of subtopicData.posts; track $index) {
+            <div class="subtopic-item">
+                <div class="subtopic-data" >
+                    <h2 class="bold-text sm-title-text hover">{{posts.title}}</h2>
+                    <div class="post-title-info-container">
+                        <!-- &nbsp; is a whitespace character. I don't want to deal with the CSS so im just using that. -->
+                        <p class="sdr-text">By</p>&nbsp; 
+                        <p class="sdr-text bold-text">{{posts.created_by}}</p>
+                        <p class="sm-sdr-text">, {{utilsService.timeAgo(posts.created_at)}}</p>
+                    </div>
+                </div>
+                <div class="post-data-info-container">
+                    <div class="subtopic-post-count">
+                        <p class="bold-text sdr-text">{{posts.amount_of_comments}}</p>
+                    </div>
+                    <div class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('under-construction')">
+                        <div class="subtopic-latest-post-user">
+                            <img src={{posts.latest_comment_data.user_pfp_url}} alt="User profile">
+                        </div>
+                        <div class="subtopic-latest-post-text">
+                            <p class="bold-text sdr-text hover break-word">{{posts.latest_comment_data.username}}</p>
+                            <p >{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
+                        </div>
+                    </div>    
+                </div>     
+            </div>
+        }
+    </div>
 </div>
