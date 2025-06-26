@@ -24,14 +24,13 @@
     }
 
     <!-- handles all topics or a singular topic -->
-    @if (isThereSpecificTopic && topicData) {
-        @for (topic of topicData; track $index) {
-            <app-forum-topics
-                class="base-margin base-bradius"
-                [topic]="topic"        
-            />
-        }
+    @for (topic of topicData; track $index) {
+        <app-forum-topics
+            class="base-margin base-bradius"
+            [topic]="topic"        
+        />
     }
+    
 </div>
 
 <!-- if topics are empty, then straight up nothing shows up. -->

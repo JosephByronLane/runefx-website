@@ -7,10 +7,14 @@
 }
 
 :root {
-    --primary-text-color: white;
-    --hover-text-color: #7aa3d1;
-    --darker-dark: rgb(22,22,22); /*rgb(22,22,22);*/
-    --lighter-dark: rgb(32,32,32); /*rgb(32,32,32);*/
+    --primary-text-color: hsl(0, 0%, 95%);
+    --secondary-text-color: hsl(0, 0%, 70%);
+    --tertiary-text-color: hsl(212, 3%, 30%);
+
+    --hover-text-color: hsl(212, 49%, 65%);
+
+    --darker-dark: hsl(212, 3%, 8%); /*rgb(22,22,22);*/
+    --lighter-dark: hsl(212, 3%, 13%); /*rgb(32,32,32);*/
     --header-text-size: 1.5vw;
     --header-home-text-size: 4vh;
 
@@ -113,5 +117,12 @@
 }
 .color-hover:hover{
     color: var(--hover-text-color);
+}
 
+/*no need for primary text since all text by default is primary text*/
+.secondary-text{
+    color: var(--secondary-text-color) !important;
+}
+.tertiary-text{
+    color: var(--tertiary-text-color) !important;
 }

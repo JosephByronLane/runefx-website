@@ -25,7 +25,7 @@
                     <!-- &nbsp; is a whitespace character. I don't want to deal with the CSS so im just using that. -->
                     <p class="sdr-text">By</p>&nbsp; 
                     <p class="sdr-text bold-text">{{posts.created_by}}</p>
-                    <p class="sm-sdr-text">, {{utilsService.timeAgo(posts.created_at)}}</p>
+                    <p class="sm-sdr-text secondary-text">, {{utilsService.timeAgo(posts.created_at)}}</p>
                 </div>
             </div>
             <div class="post-data-info-container">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="subtopic-latest-post-text">
                         <p class="bold-text sdr-text hover break-word">{{posts.latest_comment_data.username}}</p>
-                        <p >{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
+                        <p class="sm-sdr-text secondary-text">{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
                     </div>
                 </div>    
             </div>     

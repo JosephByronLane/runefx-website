@@ -76,6 +76,7 @@ export class ForumComponent implements OnInit {
       return;
     }
 
+    //default: get all topics
     this.forumService.getTopicsAndSubtopics()
     .subscribe({
       next: (value: ITopicsAPIResponse[]) =>{
