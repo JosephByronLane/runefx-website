@@ -19,16 +19,16 @@ export class ForumComponent implements OnInit {
 
   public errorLoadingTopics: boolean = false;
 
-  public topicData: ITopicsAPIResponse[] = []; 
+  public topicData: ITopicsAPIResponse[] | null = null; 
   public isThereSpecificTopic: boolean = false;
   public topicId: number = 0;
 
 
-  public subtopicData: ISubtopicDetailAPIResponse = {} as ISubtopicDetailAPIResponse;
+  public subtopicData: ISubtopicDetailAPIResponse | null = null;
   public isThereSpecificSubtopic: boolean = false;
   public subtopicId: number = 0;
 
-  public postData: IPostAPIResponse = {} as IPostAPIResponse;
+  public postData: IPostAPIResponse | null = null;
   public isThereSpecificPost: boolean = false;
   public postId: number = 0;
 
@@ -103,6 +103,7 @@ export class ForumComponent implements OnInit {
       .subscribe({
         next: (value: IPostAPIResponse) =>{
           this.postData = value;
+          console.log('postData', this.postData);
         },
         error: (error) =>{  
           console.log(error);

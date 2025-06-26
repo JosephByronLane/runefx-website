@@ -33,7 +33,7 @@ export class ForumService {
   }
 
   getPostAndComments(postId: number):Observable<IPostAPIResponse>{
-    return this.http.get<IPostAPIResponse>(`${environment.apiUrl}/forum/posts/${postId}/comments/`)
+    return this.http.get<IPostAPIResponse>(`${environment.apiUrl}/forum/posts/${postId}/`)
     .pipe(
      
     );

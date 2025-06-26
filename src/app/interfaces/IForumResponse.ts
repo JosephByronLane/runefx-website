@@ -44,10 +44,18 @@ export interface ISubtopicDetailAPIResponse extends IBaseSubtopicAPIResponse{
 //POST RESPONSE
 export interface IPostAPIResponse extends IBaseForumData{
     content: string;
-    comments: any[];
+    comments: ICommentAPIResponse[];
     created_at: string;
     created_by: string;
     amount_of_comments: number;
     latest_comment_data: ILatestPostsAPIResponse;
 }
 
+
+export interface ICommentAPIResponse {
+    id: number;
+    content: string;
+    created_at: string;
+    created_by: string;
+    post: number;
+}

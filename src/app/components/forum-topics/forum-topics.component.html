@@ -21,7 +21,7 @@
         <div class="subtopic-item">
             <div class="subtopic-data" (click)="loadingService.switchWithLoading('forum/'+topic.id+'/'+topic.slug+'/'+subtopic.id+'/'+subtopic.slug)">
                 <h2 class="bold-text sm-title-text hover">{{subtopic.title}}</h2>
-                <p  class="forum-subtopic-dsc">{{subtopic.description}}</p>
+                <p  class="forum-subtopic-dsc secondary-text">{{subtopic.description}}</p>
             </div>
             <div class="post-data-info-container">
                 <div class="subtopic-post-count">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="subtopic-latest-post-text">
                         <p class="bold-text sdr-text hover break-word">{{forumService.truncateUserName(subtopic.latest_post_data.username)}}</p>
-                        <p >{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
+                        <p class="secondary-text">{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
                     </div>
                 </div>    
             </div>     
