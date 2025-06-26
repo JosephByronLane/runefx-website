@@ -1,8 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ITopicsAPIResponse } from '../../interfaces/IForumResponse';
 import { UtilsService } from '../../services/utils.service';
 
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
+import { ForumService } from '../../services/forum.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-forum-topics',
@@ -11,7 +13,7 @@ import { IntermitentLoadingService } from '../../services/intermitent-loading.se
   templateUrl: './forum-topics.component.html',
   styleUrl: './forum-topics.component.css'
 })
-export class ForumTopicsComponent {
+export class ForumTopicsComponent implements OnChanges{
   @Input() topic: ITopicsAPIResponse = {
     id: 1,
     title: "Failed to load topic",
@@ -21,13 +23,10 @@ export class ForumTopicsComponent {
   };
 
   formatedDate: string = 'Error retrieviing date';
-  constructor(    public readonly utilsService: UtilsService, public readonly loadingService: IntermitentLoadingService) {
+  constructor(    public readonly utilsService: UtilsService, public readonly loadingService: IntermitentLoadingService, public readonly forumService: ForumService, private readonly title: Title) {
   }
 
-  truncateUserName(userName: string): string {
-    if (userName.length > 13) {
-      return userName.slice(0, 10) + '...';
-    }
-    return userName;
+  ngOnChanges(changes: SimpleChanges): void {
+    this.title.setTitle(`RuneFX | ${this.topic.title}`);
   }
 }

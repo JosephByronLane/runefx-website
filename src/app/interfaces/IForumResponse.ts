@@ -42,7 +42,7 @@ export interface ISubtopicDetailAPIResponse extends IBaseSubtopicAPIResponse{
 
 
 //POST RESPONSE
-interface IPostAPIResponse extends IBaseForumData{
+export interface IPostAPIResponse extends IBaseForumData{
     content: string;
     comments: any[];
     created_at: string;

@@ -32,7 +32,7 @@
                         <img src={{subtopic.latest_post_data.user_pfp_url}} alt="User profile">
                     </div>
                     <div class="subtopic-latest-post-text">
-                        <p class="bold-text sdr-text hover break-word">{{subtopic.latest_post_data.username}}</p>
+                        <p class="bold-text sdr-text hover break-word">{{forumService.truncateUserName(subtopic.latest_post_data.username)}}</p>
                         <p >{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
                     </div>
                 </div>    

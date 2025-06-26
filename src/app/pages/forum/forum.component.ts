@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForumService } from '../../services/forum.service';
-import { ISubtopicDetailAPIResponse, ITopicsAPIResponse } from '../../interfaces/IForumResponse';
+import { IPostAPIResponse, ISubtopicDetailAPIResponse, ITopicsAPIResponse } from '../../interfaces/IForumResponse';
 import { ForumTopicsComponent } from '../../components/forum-topics/forum-topics.component';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
@@ -26,6 +26,10 @@ export class ForumComponent implements OnInit {
   public subtopicData: ISubtopicDetailAPIResponse = {} as ISubtopicDetailAPIResponse;
   public isThereSpecificSubtopic: boolean = false;
   public subtopicId: number = 0;
+
+  public postData: IPostAPIResponse = {} as IPostAPIResponse;
+  public isThereSpecificPost: boolean = false;
+  public postId: number = 0;
 
 
 

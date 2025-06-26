@@ -37,7 +37,7 @@
                         <img src={{posts.latest_comment_data.user_pfp_url}} alt="User profile">
                     </div>
                     <div class="subtopic-latest-post-text">
-                        <p class="bold-text sdr-text hover break-word">{{posts.latest_comment_data.username}}</p>
+                        <p class="bold-text sdr-text hover break-word">{{forumService.truncateUserName(posts.latest_comment_data.username)}}</p>
                         <p class="sm-sdr-text secondary-text">{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
                     </div>
                 </div>    
