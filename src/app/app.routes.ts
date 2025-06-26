@@ -15,7 +15,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
 import { CommunityComponent } from './pages/community/community.component';
 import { ForumComponent } from './pages/forum/forum.component';
-import { ForumSubtopicComponent } from './pages/forum-subtopic/forum-subtopic.component';
 export const routes: Routes = [
     {
         path: '',
@@ -99,7 +98,7 @@ export const routes: Routes = [
     {
         path: 'forum/:topicId/:topicSlug/:subtopicId/:subtopicSlug',
         title: 'RuneFX | Forum',
-        component: ForumSubtopicComponent
+        component: ForumComponent
     },
     {
         path: 'under-construction',

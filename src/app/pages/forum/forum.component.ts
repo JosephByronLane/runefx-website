@@ -5,11 +5,12 @@ import { ForumTopicsComponent } from '../../components/forum-topics/forum-topics
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { ActivatedRoute } from '@angular/router';
+import { ForumSubtopicComponent } from "../../components/forum-subtopic/forum-subtopic.component";
 
 @Component({
   selector: 'app-forum',
   standalone: true,
-  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent],
+  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent, ForumSubtopicComponent],
   templateUrl: './forum.component.html',
   styleUrl: './forum.component.css'
 })
@@ -17,7 +18,7 @@ export class ForumComponent implements OnInit {
 
   public errorLoadingTopics: boolean = false;
 
-  public topics: ITopicsAPIResponse[] = []; 
+  public topicData: ITopicsAPIResponse[] = []; 
   public isThereSpecificTopic: boolean = false;
   public topicId: number = 0;
 
@@ -27,19 +28,12 @@ export class ForumComponent implements OnInit {
   public subtopicId: number = 0;
 
 
+
   constructor(private readonly forumService: ForumService, private readonly route: ActivatedRoute) {}
 
   ngOnInit(){
 
     this.route.params.subscribe(params => {
-      const topicId = params['topicId'];
-      const topicSlug = params['topicSlug'];
-
-      if (topicId && topicSlug){
-        this.isThereSpecificTopic = true;
-        this.topicId = topicId;
-        return;
-      }
 
       const subtopicId = params['subtopicId'];
       const subtopicSlug = params['subtopicSlug'];
@@ -49,13 +43,24 @@ export class ForumComponent implements OnInit {
         this.subtopicId = subtopicId;
         return;
       }
+
+      const topicId = params['topicId'];
+      const topicSlug = params['topicSlug'];
+
+      if (topicId && topicSlug){
+        this.isThereSpecificTopic = true;
+        this.topicId = topicId;
+        return;
+      }
+
+
     });
 
     if(this.isThereSpecificTopic){
       this.forumService.getSingleTopic(this.topicId)
       .subscribe({
         next: (value: ITopicsAPIResponse) =>{
-          this.topics = [value];
+          this.topicData = [value];
         }
       })
       return;
@@ -74,7 +79,7 @@ export class ForumComponent implements OnInit {
     this.forumService.getTopicsAndSubtopics()
     .subscribe({
       next: (value: ITopicsAPIResponse[]) =>{
-        this.topics = value;
+        this.topicData = value;
       },
       error: (error) =>{
         this.errorLoadingTopics = true;

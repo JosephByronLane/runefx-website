@@ -15,11 +15,22 @@
 </app-background-video>
 
 <div class="base-bradius base-margin-lr">
-    @for (topic of topics; track $index) {
-        <app-forum-topics
+    <!-- handles viewing a subtopics posts -->
+    @if (isThereSpecificSubtopic && subtopicData) {
+        <app-forum-subtopic
             class="base-margin base-bradius"
-            [topic]="topic"        
-        />
+            [subtopic]="subtopicData"        
+        />       
+    }
+
+    <!-- handles all topics or a singular topic -->
+    @if (isThereSpecificTopic && topicData) {
+        @for (topic of topicData; track $index) {
+            <app-forum-topics
+                class="base-margin base-bradius"
+                [topic]="topic"        
+            />
+        }
     }
 </div>
 
