@@ -46,14 +46,17 @@ export class ForumComponent implements OnInit {
       const subtopicId = params['subtopicId'];
       const subtopicSlug = params['subtopicSlug'];
 
+      const topicId = params['topicId'];
+      const topicSlug = params['topicSlug'];
+
+      const postId = params['postId'];
+
       if (subtopicId && subtopicSlug){
         this.isThereSpecificSubtopic = true;
         this.subtopicId = subtopicId;
         return;
       }
 
-      const topicId = params['topicId'];
-      const topicSlug = params['topicSlug'];
 
       if (topicId && topicSlug){
         this.isThereSpecificTopic = true;
@@ -61,7 +64,6 @@ export class ForumComponent implements OnInit {
         return;
       }
 
-      const postId = params['postId'];
       if (postId){
         this.isThereSpecificPost = true;
         this.postId = postId;
@@ -70,6 +72,20 @@ export class ForumComponent implements OnInit {
 
     });
 
+    //fetching breadcrumbs
+
+    if(this.isThereSpecificTopic){
+      this.forumService.getSingleTopic(this.topicId)
+      .subscribe({
+        next: (value: ITopicsAPIResponse) =>{
+          this.breadcrumbs.push({text: value.title, link: 'forum/'+value.id+'/'+value.slug});
+        },
+      })
+    }
+    
+
+
+    //fetching data to display
     if(this.isThereSpecificTopic){
       this.forumService.getSingleTopic(this.topicId)
       .subscribe({
