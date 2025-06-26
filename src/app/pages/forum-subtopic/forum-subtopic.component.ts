@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ForumService } from '../../services/forum.service';
 import { ActivatedRoute } from '@angular/router';
 import { ISubtopicDetailAPIResponse } from '../../interfaces/IForumResponse';
-import { ForumTopicAndSubtopicComponent } from '../../components/forum-topic-and-subtopic/forum-topic-and-subtopic.component';
+import { ForumTopicsComponent } from '../../components/forum-topics/forum-topics.component';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { UtilsService } from '../../services/utils.service';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
@@ -10,7 +10,7 @@ import { IntermitentLoadingService } from '../../services/intermitent-loading.se
 @Component({
   selector: 'app-forum-subtopic',
   standalone: true,
-  imports: [BackgroundVideoComponent, ForumTopicAndSubtopicComponent],
+  imports: [BackgroundVideoComponent, ForumTopicsComponent],
   templateUrl: './forum-subtopic.component.html',
   styleUrl: './forum-subtopic.component.css'
 })

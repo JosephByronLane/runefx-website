@@ -5,13 +5,13 @@ import { UtilsService } from '../../services/utils.service';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 
 @Component({
-  selector: 'app-forum-topic-and-subtopic',
+  selector: 'app-forum-topics',
   standalone: true,
   imports: [],
-  templateUrl: './forum-topic-and-subtopic.component.html',
-  styleUrl: './forum-topic-and-subtopic.component.css'
+  templateUrl: './forum-topics.component.html',
+  styleUrl: './forum-topics.component.css'
 })
-export class ForumTopicAndSubtopicComponent {
+export class ForumTopicsComponent {
   @Input() topic: ITopicsAPIResponse = {
     id: 1,
     title: "Failed to load topic",

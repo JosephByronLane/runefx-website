@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ForumService } from '../../services/forum.service';
 import { ISubtopicDetailAPIResponse, ITopicsAPIResponse } from '../../interfaces/IForumResponse';
-import { ForumTopicAndSubtopicComponent } from '../../components/forum-topic-and-subtopic/forum-topic-and-subtopic.component';
+import { ForumTopicsComponent } from '../../components/forum-topics/forum-topics.component';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-forum',
   standalone: true,
-  imports: [ForumTopicAndSubtopicComponent, BackgroundVideoComponent, InfoBoxComponent],
+  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent],
   templateUrl: './forum.component.html',
   styleUrl: './forum.component.css'
 })
@@ -22,7 +22,7 @@ export class ForumComponent implements OnInit {
   public topicId: number = 0;
 
 
-  public subtopics: ISubtopicDetailAPIResponse[] = [];
+  public subtopicData: ISubtopicDetailAPIResponse = {} as ISubtopicDetailAPIResponse;
   public isThereSpecificSubtopic: boolean = false;
   public subtopicId: number = 0;
 
@@ -65,11 +65,12 @@ export class ForumComponent implements OnInit {
       this.forumService.getSingleSubtopic(this.subtopicId)
       .subscribe({
         next: (value: ISubtopicDetailAPIResponse) =>{
-          this.subtopics = [value];
+          this.subtopicData = value;
         }
       })
       return;
     }
+
     this.forumService.getTopicsAndSubtopics()
     .subscribe({
       next: (value: ITopicsAPIResponse[]) =>{

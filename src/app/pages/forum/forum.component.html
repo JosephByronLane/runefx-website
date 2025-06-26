@@ -13,9 +13,10 @@
 [credits]="'© Pablo Dominguez'"
 >  
 </app-background-video>
+
 <div class="base-bradius base-margin-lr">
     @for (topic of topics; track $index) {
-        <app-forum-topic-and-subtopic
+        <app-forum-topics
             class="base-margin base-bradius"
             [topic]="topic"        
         />
