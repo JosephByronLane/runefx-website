@@ -49,6 +49,8 @@ export interface IPostAPIResponse extends IBaseForumData{
     created_by: IUserForumData;
     amount_of_comments: number;
     latest_comment_data: ILatestPostsAPIResponse;
+    subtopic?: number;
+    topic?: number;
 }
 
 

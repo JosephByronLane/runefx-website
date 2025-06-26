@@ -22,16 +22,16 @@ export class ForumComponent implements OnInit {
 
   public topicData: ITopicsAPIResponse[] | null = null; 
   public isThereSpecificTopic: boolean = false;
-  public topicId: number = 0;
+  public topicId: number = -1;
 
 
   public subtopicData: ISubtopicDetailAPIResponse | null = null;
   public isThereSpecificSubtopic: boolean = false;
-  public subtopicId: number = 0;
+  public subtopicId: number = -1;
 
   public postData: IPostAPIResponse | null = null;
   public isThereSpecificPost: boolean = false;
-  public postId: number = 0;
+  public postId: number = -1;
 
   public breadcrumbs: {text: string, link: string}[] = [
     {text: "Forum", link: "/forum"},
@@ -54,9 +54,10 @@ export class ForumComponent implements OnInit {
       if (subtopicId && subtopicSlug){
         this.isThereSpecificSubtopic = true;
         this.subtopicId = subtopicId;
+
+        this.topicId = topicId;
         return;
       }
-
 
       if (topicId && topicSlug){
         this.isThereSpecificTopic = true;
@@ -83,6 +84,36 @@ export class ForumComponent implements OnInit {
       })
     }
     
+    if(this.isThereSpecificSubtopic){
+      console.log('isThereSpecificSubtopic', this.isThereSpecificSubtopic);
+      console.log('topicId', this.topicId);
+      console.log('subtopicId', this.subtopicId);
+      this.forumService.getSingleTopic(this.topicId)
+      .subscribe({
+        next: (value: ITopicsAPIResponse) =>{
+          console.log('test');
+          this.breadcrumbs.push({text: value.title, link: 'forum/'+value.id+'/'+value.slug});
+          console.log('breadcrumbs', this.breadcrumbs);
+        },
+        error: (error) =>{
+          console.log(error);
+        }
+      })
+
+      this.forumService.getSingleSubtopic(this.subtopicId)
+      .subscribe({
+        next: (value: ISubtopicDetailAPIResponse) =>{
+          console.log('test2');
+          this.breadcrumbs.push({text: value.title, link: 'forum/'+value.id+'/'+value.slug});
+          console.log('breadcrumbs', this.breadcrumbs);
+        },
+        error: (error) =>{
+          console.log(error);
+        }
+      })
+    }
+
+
 
 
     //fetching data to display
