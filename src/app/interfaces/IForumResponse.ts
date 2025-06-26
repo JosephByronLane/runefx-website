@@ -38,6 +38,7 @@ export interface ISubtopicAPIResponse extends IBaseSubtopicAPIResponse {
 export interface ISubtopicDetailAPIResponse extends IBaseSubtopicAPIResponse{
     posts: IPostAPIResponse[];
     post_count: number;
+    parent_topic: number;
 }
 
 
