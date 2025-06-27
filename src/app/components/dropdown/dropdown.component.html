@@ -10,7 +10,7 @@
             item.link || dropdownItem.link, 
             item.link ? '' : item.scrollTo, 
             2000, true, $event)">
-            <a [href]="item.link || dropdownItem.link">{{ item.displayString }}</a>
+            <a [href]="(item.link || dropdownItem.link) + (item.scrollTo ? '#' + item.scrollTo : '')">{{ item.displayString }}</a>
           </li>        
         }
       </ul>
