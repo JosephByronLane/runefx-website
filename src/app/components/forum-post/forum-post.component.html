@@ -13,10 +13,10 @@
 <div class="light-bg base-bradius post-container">
     <div class="user-post-info">
         <div class="user-info">
-            <a class="user-pfp" (click)="loadingService.switchWithLoading('not-allowed', '', 2000, true, $event)" [href]="'not-allowed'">
+            <a class="user-pfp" >
                 <img src={{post.created_by.user_pfp_url}} alt="User profile">
                 <div class="user-info-text">
-                    <p class="bold-text sdr-text">{{post.created_by.username}}</p>
+                    <a class="bold-text sdr-text hover" (click)="loadingService.switchWithLoading('not-allowed', '', 2000, true, $event)" [href]="'not-allowed'">{{post.created_by.username}}</a>
                     <p class="secondary-text">{{utilsService.timeAgo(post.created_at)}}</p>
                 </div>
             </a>
@@ -36,7 +36,7 @@
                 <div class="user-pfp">
                     <img src={{comment.created_by.user_pfp_url}} alt="User profile">
                     <div class="user-info-text">
-                        <p class="bold-text sdr-text">{{comment.created_by.username}}</p>
+                        <p class="bold-text sdr-text hover">{{comment.created_by.username}}</p>
                         <p class="secondary-text">{{utilsService.timeAgo(comment.created_at)}}</p>
                     </div>
                 </div>
