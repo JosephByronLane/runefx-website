@@ -142,9 +142,18 @@
     transition: color 0.5s;
 }
 
-.subtopic-data:hover a.hover{
+.subtopic-data div a.hover{
+    transition: color 0.5s;
+}
+
+.subtopic-data a.hover:hover{
     color: var(--hover-text-color)
 }
+
+.subtopic-data div a.hover:hover{
+    color: var(--hover-text-color)
+}
+
 .subtopic-data a{
     cursor: pointer;
 }
