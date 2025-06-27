@@ -23,8 +23,7 @@
         </div>
     </div>
     <div class="post-content">
-        <markdown ngPreserveWhitespaces>
-            {{post.content}}
+        <markdown [data]="replaceNewLines(post.content)">
         </markdown>
     </div>
 </div>
@@ -43,8 +42,7 @@
             </div>
         </div>
         <div class="post-content">
-            <markdown ngPreserveWhitespaces>
-                {{comment.content}}
+            <markdown [data]="replaceNewLines(comment.content)">
             </markdown>
         </div>
     </div>

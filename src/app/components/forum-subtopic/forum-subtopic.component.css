@@ -75,6 +75,10 @@
     text-align: center;
 }
 
+.post-data > div:last-child > p{
+    text-align: left;
+}
+
 .post-data div {
     display: flex;
     flex-direction: column;
@@ -114,7 +118,7 @@
 .subtopic-latest-post-data{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     max-height: 5vh;
     max-width: 15vw;
     overflow: hidden;
@@ -186,7 +190,7 @@
     display: flex;
     align-items: flex-end;
     justify-self: flex-end;
-    justify-content: flex-end; 
+    justify-content: flex-start; 
     background-color: var(--lighter-dark);
     flex: 1;  
     width: 100%;
