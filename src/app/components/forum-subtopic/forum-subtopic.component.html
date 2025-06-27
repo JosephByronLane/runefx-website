@@ -25,7 +25,7 @@
                 <div class="post-title-info-container">
                     <!-- &nbsp; is a whitespace character. I don't want to deal with the CSS so im just using that. -->
                     <p class="sdr-text">By</p>&nbsp; 
-                    <p class="sdr-text bold-text">{{posts.created_by}}</p>
+                    <a class="sdr-text bold-text hover" (click)="loadingService.switchWithLoading('not-allowed', '', 2000, true, $event)" [href]="'not-allowed'">{{posts.created_by}}</a>
                     <p class="sm-sdr-text secondary-text">, {{utilsService.timeAgo(posts.created_at)}}</p>
                 </div>
             </div>
@@ -33,7 +33,11 @@
                 <div class="subtopic-post-count">
                     <p class="bold-text sdr-text">{{posts.amount_of_comments}}</p>
                 </div>
-                <a class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('under-construction', '', 2000, true, $event)" [href]="'under-construction'">
+                <!--
+                Hi if youre reading this! I know this is a cheat, and thats because profile page is not implemented yet, but i want to give the impression that it is lmao.
+                I also dont think i will implement them, i've burnt out on this forum side of things and just want to be done with it  
+                -->
+                <a class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('not-allowed', '', 2000, true, $event)" [href]="'not-allowed'">
                     <div class="subtopic-latest-post-user">
                         <img src={{posts.latest_comment_data.user_pfp_url}} alt="User profile">
                     </div>

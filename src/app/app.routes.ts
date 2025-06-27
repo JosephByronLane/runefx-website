@@ -15,6 +15,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
 import { CommunityComponent } from './pages/community/community.component';
 import { ForumComponent } from './pages/forum/forum.component';
+import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 
 export const routes: Routes = [
     {
@@ -110,6 +111,11 @@ export const routes: Routes = [
         path: 'under-construction',
         title: 'RuneFX | Under Construction',
         component: ComingSoonComponent
+    },
+    {
+        path: 'not-allowed',
+        title: 'RuneFX | Not Allowed',
+        component: NotAllowedComponent
     },
     { 
         path: '**', 

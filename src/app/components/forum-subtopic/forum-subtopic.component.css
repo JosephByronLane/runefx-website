@@ -124,7 +124,6 @@
 
 .subtopic-latest-post-data p.hover{
     transition: color 0.5s;
-
 }
 
 .break-word{
@@ -146,7 +145,7 @@
 .subtopic-data:hover a.hover{
     color: var(--hover-text-color)
 }
-.subtopic-data{
+.subtopic-data a{
     cursor: pointer;
 }
 
