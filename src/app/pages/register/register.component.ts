@@ -18,12 +18,6 @@ import { ErrorWarningOxComponent } from '../../components/error-warning-ox/error
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  dccOptions = [
-    { "value": "maya", "label": "Maya" },
-    { "value": "blender", "label": "Blender" },
-    { "value": "houdini", "label": "Houdini" },
-    { "value": "katana", "label": "Katana" }
-  ];
 
   errorMessage: string = '';
   isSubmitting: boolean = false;
@@ -32,6 +26,7 @@ export class RegisterComponent {
 
   isLoggedIn: boolean = false;
   
+  isRegisterAllowed: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private loggingService: LoggerService) {
     this.registerForm = this.fb.group({

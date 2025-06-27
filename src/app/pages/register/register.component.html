@@ -21,6 +21,12 @@
             [errorDescription]="'Thank you!'"
         />
     }
+    @if (!isRegisterAllowed) {
+        <app-error-warning-ox
+            [errorMessage]="'Registrations are currently closed.'"
+            [errorDescription]="'We are not accepting new registrations at the moment.'"
+        />
+    }
     @else {
         <form (ngSubmit)="onSubmit()" class="register-form" [formGroup]="registerForm">
             <div class="form-group">
@@ -95,22 +101,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="dcc">3D DCC Package</label>
-                <select name="dcc" id="dcc" formControlName="dcc">
-                    <option value="">Select a DCC Package</option>
-                    @for (option of dccOptions; track option.value) {
-                        <option value="{{option.value}}">{{option.label}}</option>
-                    }
-                </select>
-                <div class="error-container">
-                    @if (registerForm.get('dcc')?.invalid && registerForm.get('dcc')?.touched) {
-                        @if (registerForm.get('dcc')?.errors?.['required']) {
-                            <span class="error-message">Please select a DCC package</span>
-                        }
-                    }
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" 
                 id="password"
@@ -166,6 +156,11 @@
             </div>
     
         </form>
+        <div class="terms-container">
+            <p class="sm-text">As a user you agree to any information you have entered above being stored in a database. While this information will not be disclosed to any third party without your consent the webmaster, administrator and moderators cannot be held responsible for any hacking attempt that may lead to the data being compromised.</p>
+            <p class="sm-text">This website and its forum system uses cookies to store information on your local computer. These cookies do not contain any of the information you have entered above; they serve only to improve your viewing pleasure. The e-mail address is used only for confirming your registration details and password (and for sending new passwords should you forget your current one).</p>
+            <p class="sm-text">By clicking Register above you agree to be bound by these conditions.    </p>
+        </div>
     }
 
 </div>
