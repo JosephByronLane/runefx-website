@@ -121,8 +121,15 @@
 .user-pfp{
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.user-pfp img{
+    width: 10vh;    
+}
 
 .post-content{
     padding: 3vh 2vw;
