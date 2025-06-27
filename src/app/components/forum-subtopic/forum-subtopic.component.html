@@ -20,8 +20,8 @@
     @for (posts of subtopic.posts; track $index) {
         <div class="subtopic-item">
             <div class="subtopic-data" >
-                <h2 class="bold-text sm-title-text hover" (click)="loadingService.switchWithLoading('forum/posts/'+posts.id)">{{posts.title}}
-                </h2>
+                <a class="bold-text sm-title-text hover" (click)="loadingService.switchWithLoading('forum/posts/'+posts.id, '', 2000, true, $event)" [href]="'forum/posts/'+posts.id">{{posts.title}}
+                </a>
                 <div class="post-title-info-container">
                     <!-- &nbsp; is a whitespace character. I don't want to deal with the CSS so im just using that. -->
                     <p class="sdr-text">By</p>&nbsp; 
@@ -33,7 +33,7 @@
                 <div class="subtopic-post-count">
                     <p class="bold-text sdr-text">{{posts.amount_of_comments}}</p>
                 </div>
-                <div class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('under-construction')">
+                <a class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('under-construction', '', 2000, true, $event)" [href]="'under-construction'">
                     <div class="subtopic-latest-post-user">
                         <img src={{posts.latest_comment_data.user_pfp_url}} alt="User profile">
                     </div>
@@ -41,7 +41,7 @@
                         <p class="bold-text sdr-text hover break-word">{{forumService.truncateUserName(posts.latest_comment_data.username)}}</p>
                         <p class="sm-sdr-text secondary-text">{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
                     </div>
-                </div>    
+                </a>    
             </div>     
         </div>
     }
