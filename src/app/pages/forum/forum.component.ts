@@ -88,25 +88,33 @@ export class ForumComponent implements OnInit {
     }
     
     if(this.isThereSpecificSubtopic){
+
+      let breadcrumbTempTopic: {text: string, link: string} = {text: "", link: ""};
+      let breadcrumbTempSubtopic: {text: string, link: string} = {text: "", link: ""};
+
       this.forumService.getSingleTopic(this.topicId)
       .subscribe({
         next: (value: ITopicsAPIResponse) =>{
-          this.breadcrumbs.push({text: value.title, link: 'forum/'+value.id+'/'+value.slug});
+          breadcrumbTempTopic = {text: value.title, link: 'forum/'+value.id+'/'+value.slug};
+
+          this.forumService.getSingleSubtopic(this.subtopicId)
+          .subscribe({
+            next: (value: ISubtopicDetailAPIResponse) =>{
+              breadcrumbTempSubtopic = {text: value.title, link: breadcrumbTempTopic.link+'/'+value.id+'/'+value.slug};
+              this.breadcrumbs.push(breadcrumbTempTopic);
+              this.breadcrumbs.push(breadcrumbTempSubtopic);
+            },
+            error: (error) =>{
+              console.log(error);
+            }
+          })
         },
         error: (error) =>{
           console.log(error);
         }
       })
 
-      this.forumService.getSingleSubtopic(this.subtopicId)
-      .subscribe({
-        next: (value: ISubtopicDetailAPIResponse) =>{
-          this.breadcrumbs.push({text: value.title, link: 'forum/'+value.id+'/'+value.slug});
-        },
-        error: (error) =>{
-          console.log(error);
-        }
-      })
+
     }
 
     if(this.isThereSpecificPost){
@@ -133,14 +141,14 @@ export class ForumComponent implements OnInit {
               .subscribe({
                 next: (value: ISubtopicDetailAPIResponse) =>{
                   parentTopicId = value.parent_topic;
-                  breadcrumbTempSubtopic = {text: value.title, link: 'forum/'+value.id+'/'+value.slug};
+                  breadcrumbTempSubtopic = {text: value.title, link: '/'+value.id+'/'+value.slug}; 
 
-                  if(parentTopicId !== -1){
-                    if(parentTopicId !== -1){
+                  if(parentTopicId !== -1){                    
                       this.forumService.getSingleTopic(parentTopicId)
                       .subscribe({
                         next: (value: ITopicsAPIResponse) =>{
                           breadcrumbTempTopic = {text: value.title, link: 'forum/'+value.id+'/'+value.slug};
+                          breadcrumbTempSubtopic = {text: breadcrumbTempSubtopic.text, link: 'forum/'+value.id+'/'+value.slug + breadcrumbTempSubtopic.link};
 
                           this.breadcrumbs.push(breadcrumbTempTopic);
                           this.breadcrumbs.push(breadcrumbTempSubtopic);
@@ -149,8 +157,7 @@ export class ForumComponent implements OnInit {
                         error: (error) =>{
                           console.log(error);
                         }
-                      })
-                    }
+                      })                    
                   }
                 },
                 error: (error) =>{
@@ -160,8 +167,10 @@ export class ForumComponent implements OnInit {
             }
           }
         },
+        error: (error) =>{
+          console.log(error);
+        }
       })
-
     }
 
 

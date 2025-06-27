@@ -11,3 +11,24 @@
 *{
   color: var(--primary-text-color);
 }
+
+.breadcrumbs{
+  display: flex;
+  align-items: center;
+  color: var(--primary-text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  gap: 1vw;
+  margin: 1vh;
+}
+
+.breadcrumbs a{
+  color: var(--primary-text-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover{
+  color: var(--hover-text-color);
+}
