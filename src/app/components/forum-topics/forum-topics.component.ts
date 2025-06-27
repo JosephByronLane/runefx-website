@@ -22,7 +22,7 @@ export class ForumTopicsComponent implements OnChanges{
     slug: "error-topic"  
   };
 
-  formatedDate: string = 'Error retrieviing date';
+  formatedDate: string = 'Error retrieving date';
   constructor(    public readonly utilsService: UtilsService, public readonly loadingService: IntermitentLoadingService, public readonly forumService: ForumService, private readonly title: Title) {
   }
 

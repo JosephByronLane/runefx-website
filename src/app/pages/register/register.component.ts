@@ -9,10 +9,11 @@ import dccOptions from '../../data/dccOptions.json';
 import { AuthService } from '../../services/auth.service';
 import { LoggerService, LogLevel } from '../../services/logger.service';
 import { ProfileSidebarComponent } from '../../components/profile-sidebar/profile-sidebar.component';
+import { ErrorWarningOxComponent } from '../../components/error-warning-ox/error-warning-ox.component';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RButtonComponent, BackgroundVideoComponent, RouterModule, InfoBoxComponent, ReactiveFormsModule, RButtonComponent, ProfileSidebarComponent],
+  imports: [CommonModule, FormsModule, RButtonComponent, BackgroundVideoComponent, RouterModule, InfoBoxComponent, ReactiveFormsModule, RButtonComponent, ProfileSidebarComponent, ErrorWarningOxComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })

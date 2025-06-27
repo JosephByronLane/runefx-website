@@ -8,11 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 import { ForumSubtopicComponent } from "../../components/forum-subtopic/forum-subtopic.component";
 import { ForumPostComponent } from "../../components/forum-post/forum-post.component";
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
+import { ErrorWarningOxComponent } from '../../components/error-warning-ox/error-warning-ox.component';
 
 @Component({
   selector: 'app-forum',
   standalone: true,
-  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent, ForumSubtopicComponent, ForumPostComponent ],
+  imports: [ForumTopicsComponent, BackgroundVideoComponent, InfoBoxComponent, ForumSubtopicComponent, ForumPostComponent, ErrorWarningOxComponent ],
   templateUrl: './forum.component.html',
   styleUrl: './forum.component.css'
 })

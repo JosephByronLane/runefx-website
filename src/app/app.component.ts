@@ -33,7 +33,6 @@ export class AppComponent {
 
   
 
-  ///omfg it took me the whole fucking 4 days to get this working
   constructor(public initloader: InitialLoadingService, private readonly router: Router, private activatedRoute: ActivatedRoute, private readonly location: Location) {
     //subscribe to refreshed to get updates on it
     //if it updates, and its true then show the bigass loading screen

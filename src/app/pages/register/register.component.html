@@ -16,10 +16,10 @@
 
 <div class="register-container">
     @if (isLoggedIn){
-        <div class="already-registered-container">
-            <h1>You seem to already have an account!</h1>
-            <p>Thank you!</p>
-        </div>
+        <app-error-warning-ox
+            [errorMessage]="'You seem to already have an account!'"
+            [errorDescription]="'Thank you!'"
+        />
     }
     @else {
         <form (ngSubmit)="onSubmit()" class="register-form" [formGroup]="registerForm">
