@@ -55,7 +55,5 @@ export class AppComponent {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-  }
-
-  
+  }  
 }

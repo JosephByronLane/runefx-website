@@ -11,7 +11,6 @@
     display: flex;
     flex-direction: row;
     top: 0;
-    cursor: pointer;
  }
 
 .logo-container {
@@ -125,7 +124,6 @@
 
 .subtopic-latest-post-data p.hover{
     transition: color 0.5s;
-
 }
 
 .break-word{
@@ -140,14 +138,23 @@
     color: var(--hover-text-color)
 }
 
-.subtopic-data h2.hover{
+.subtopic-data a.hover{
     transition: color 0.5s;
 }
 
-.subtopic-data:hover h2.hover{
+.subtopic-data div a.hover{
+    transition: color 0.5s;
+}
+
+.subtopic-data a.hover:hover{
     color: var(--hover-text-color)
 }
-.subtopic-data{
+
+.subtopic-data div a.hover:hover{
+    color: var(--hover-text-color)
+}
+
+.subtopic-data a{
     cursor: pointer;
 }
 

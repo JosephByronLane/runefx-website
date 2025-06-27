@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: row;
     top: 0;
-    cursor: pointer;
  }
 
 .logo-container {
@@ -18,14 +17,18 @@
     width: auto;
 }
 
-.logo-container h1.hover{
+
+.logo-container:hover h1.hover{
+    color: var(--hover-text-color);
+}
+
+.user-info-text a.hover{
     transition: color 0.5s;
 }
 
-.logo-container:hover h1.hover{
+.user-info-text a.hover:hover{
     color: var(--hover-text-color)
 }
-
 
 
  .triangle-container {
@@ -122,4 +125,5 @@
 
 .post-content{
     padding: 3vh 2vw;
+    width: 100%;
 }

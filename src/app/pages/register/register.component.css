@@ -1,4 +1,8 @@
-  .register-container {
+*{
+  color: var(--primary-text-color);
+}
+
+.register-container {
     background-color: var(--darker-dark);
     width: 100%;
     max-width: 100vw;
@@ -90,4 +94,9 @@
 
 .form-actions p a:hover{
   cursor: pointer;
+}
+
+
+.terms-container{
+  padding: 2vh 0;
 }

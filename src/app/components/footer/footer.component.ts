@@ -9,7 +9,7 @@ import { IntermitentLoadingService } from '../../services/intermitent-loading.se
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-
+  currentYear = new Date().getFullYear();
   constructor(public temploading: IntermitentLoadingService, public navbarTools:NavbarStuffService) {}
 
 }

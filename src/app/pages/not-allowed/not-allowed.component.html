@@ -1,0 +1,25 @@
+<app-background-video
+  [title]="'Stop right there.'"
+  [description]="'You don't have enough permissions to access this page.'"
+  [height]="'40vh'" 
+  [src]="'https://cdna.artstation.com/p/assets/images/images/013/281/766/large/robert-craig-rotga2.jpg?1538912069'"
+  [scale]="1"
+  [video]="0"
+  [BottomPadding]="'1%'"
+  [scrollFactor]=".5"
+  [credits]="'© Robert Craig'"
+  [initialOffset]="0">
+</app-background-video>
+
+<app-info-box 
+    class="dont-fucking-go-over"
+    title="You are not allowed to access this page." 
+    desc="Either you are not logged in or your account doesn't have enough permissions to access this page.">
+    <ng-template>
+        <app-rbutton 
+        [buttonText]="'Home'"
+        [sendTo]="''"
+        [loadingDuration]="8000"
+        />
+      </ng-template>
+</app-info-box>

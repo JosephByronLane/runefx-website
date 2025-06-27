@@ -11,12 +11,6 @@ import { UtilsService } from '../../services/utils.service';
   styleUrl: './rbutton.component.css'
 })
 export class RButtonComponent {
-  ///
-  ///
-  /// READ ME PLEASE, IMPLEMENT THIS INSIDE OF background-video PLEASE.
-  /// IT CURRENTLY USES ITS OWN BUTTON WHICH IS A COPY OF THIS.
-  ///
-  ///
   @Input() buttonText: string = 'See All';
   @Input() buttonAlignment: 'left' | 'center' | 'right' = 'center';
   @Input() sendTo: string ="";
@@ -26,30 +20,29 @@ export class RButtonComponent {
   @Input() doesNavigate: boolean = true;
   @Input() disabled: boolean = false;
   @Input() disabledText: string = '';
+  @Input() scrollToTop: boolean = true;
   constructor(private readonly temploading: IntermitentLoadingService, public utils: UtilsService) {}
 
-  handleClick(){
+  handleClick(event: MouseEvent){
     if(this.disabled) return;
     
     if(this.doesNavigate){
-      this.handleNavigation();
+      this.handleNavigation(event);
     } else {
       this.onClickFunction();
     }
   }
 
-  handleNavigation() {
+  handleNavigation(event: MouseEvent) {
     if (this.isExternalWebpage) {
 
       //TODO: Try to make this angular rather than standard JS/TS 
       window.open(this.sendTo, '_blank');
     } else {
       //nagivate inside the website
-      this.navigate(this.sendTo, '', this.loadingDuration);
+      this.temploading.switchWithLoading(this.sendTo, '', this.loadingDuration, this.scrollToTop, event);
     }
   }
 
-  navigate(path:string, id:string, duration:number) {
-    this.temploading.switchWithLoading(path, id, duration);
-  }
+
 }

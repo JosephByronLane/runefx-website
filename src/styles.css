@@ -5,7 +5,10 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
 }
-
+a{
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
 :root {
     --primary-text-color: hsl(0, 0%, 95%);
     --secondary-text-color: hsl(0, 0%, 70%);

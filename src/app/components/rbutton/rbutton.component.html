@@ -1,13 +1,13 @@
-<div class="button-container" [ngClass]="{
+<div class="a-container" [ngClass]="{
     'align-left': buttonAlignment === 'left',
     'align-center': buttonAlignment === 'center',
     'align-right': buttonAlignment === 'right'
   }">
-    <button type="button" id="button" class="sdr-text" (click)="handleClick()" [disabled]="disabled" routerLinkActive="router-link-active">
+    <a type="button" id="button" class="sdr-text" (click)="handleClick($event)" routerLinkActive="router-link-active" [href]="sendTo">
       @if (disabled) {
         {{ disabledText }}
       } @else {
         {{ buttonText }}
       }
-    </button>
+    </a>
   </div>

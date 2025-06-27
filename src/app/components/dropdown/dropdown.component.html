@@ -1,7 +1,7 @@
 <div class="dropdown-container" (mouseenter)="isOpen = true" (mouseleave)="isOpen = false">
-    <div class="dropdown-label" (click)="tempLoadingService.switchWithLoading(dropdownItem.link, '', 2000)"  [ngClass]="{'home-tab': dropdownItem.title.toLowerCase() === 'home'}">
+    <a class="dropdown-label" (click)="tempLoadingService.switchWithLoading(dropdownItem.link, '', 2000, true, $event)"  [ngClass]="{'home-tab': dropdownItem.title.toLowerCase() === 'home'}" [href]="dropdownItem.link">
       <span>{{ dropdownItem.title }}</span>
-    </div>
+    </a>
     @if (dropdownItem.items.length > 0) {
     <div class="dropdown-content" [@dropdownAnimation]="isOpen ? 'open' : 'closed'">
       <ul>
@@ -9,8 +9,8 @@
           <li (click)="tempLoadingService.switchWithLoading(
             item.link || dropdownItem.link, 
             item.link ? '' : item.scrollTo, 
-            2000)">
-            <a>{{ item.displayString }}</a>
+            2000, true, $event)">
+            <a [href]="(item.link || dropdownItem.link) + (item.scrollTo ? '#' + item.scrollTo : '')">{{ item.displayString }}</a>
           </li>        
         }
       </ul>
