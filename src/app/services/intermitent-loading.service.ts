@@ -38,7 +38,12 @@ export class IntermitentLoadingService {
   }
 
   
-  switchWithLoading(routePath: string, scrollToId?: string, duration: number = 3000, scrollToTop: boolean = true) {
+  switchWithLoading(routePath: string, scrollToId?: string, duration: number = 3000, scrollToTop: boolean = true, event?: MouseEvent, ) {
+    if (event && !event.ctrlKey && !event.metaKey && event.button === 0) {
+      event.preventDefault(); // Prevent default navigation
+    } 
+    
+    
     console.log('switchWithLoading', routePath);
     if (!this.enabled) {
       console.log('disabled');
