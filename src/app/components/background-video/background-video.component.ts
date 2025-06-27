@@ -147,12 +147,30 @@ export class BackgroundVideoComponent implements OnInit {
     this.updateVideoParallax();    
     this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
 
+    //if the page starts not at the top, the parallax will not work, so we simulate a scroll to shimmy it into place
+    this.simulateScroll();
+
     //sometimes the thing just doesnt run properly the first time, so this forces it to re-check again after half a second
     //just incase some element decides to be a bitch
     //if an element still doesn't load after 500ms, it aint gonna load, bro
     setTimeout(() =>{
       this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
     }, 500)
+  }
+
+  simulateScroll(): void {
+    if (this.video === 0) {
+      const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      
+      window.scrollTo(0, currentScrollY + 1);
+      
+      this.updateVideoParallax();
+      
+      setTimeout(() => {
+        window.scrollTo(0, currentScrollY);
+        this.updateVideoParallax();
+      }, 10);
+    }
   }
 
   updateVideoParallax(){
