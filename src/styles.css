@@ -7,10 +7,14 @@
 }
 
 :root {
-    --primary-text-color: white;
-    --hover-text-color: #7aa3d1;
-    --triangle-before: rgb(22,22,22); /*rgb(22,22,22);*/
-    --triangle-after: rgb(32,32,32); /*rgb(32,32,32);*/
+    --primary-text-color: hsl(0, 0%, 95%);
+    --secondary-text-color: hsl(0, 0%, 70%);
+    --tertiary-text-color: hsl(212, 3%, 30%);
+
+    --hover-text-color: hsl(212, 49%, 65%);
+
+    --darker-dark: hsl(212, 3%, 8%); /*rgb(22,22,22);*/
+    --lighter-dark: hsl(212, 3%, 13%); /*rgb(32,32,32);*/
     --header-text-size: 1.5vw;
     --header-home-text-size: 4vh;
 
@@ -33,10 +37,25 @@
     font-weight: 700;
     font-size: 4vh;
 }
+.sm-title-text{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 2.5vh;
+}
 .sdr-text{
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
-    font-size: 2vh;
+    font-size: 1.8vh;
+}
+.sm-sdr-text{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.5vh;
+}
+.sm-text{
+    font-size: 1vh;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
 }
 
 .footer-text{
@@ -44,8 +63,66 @@
     font-weight: normal;
     font-size: 2.5vh;
 }
+
 .footer-title{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 3vh;
+}
+
+.base-margin{
+    margin: 2vh 2vw;
+}
+
+.base-margin-lr{
+    margin: 0vh 2vw;
+}
+
+.base-margin-tb{
+    margin: 2vh 0vw;
+}
+
+.base-padding-lr{
+    padding: 0vh 2vw;
+}
+
+.base-padding-tb{
+    padding: 2vh 0vw;
+}
+
+.base-padding{
+    padding: 2vh 2vw;
+}
+
+.base-bradius{
+    border-radius: var(--border-radius);
+}
+
+.dark-bg{
+    background-color: var(--darker-dark);
+}
+.light-bg{
+    background-color: var(--lighter-dark);
+}
+
+.bold-text{
+    font-weight: 700;
+}
+
+.color-hover{
+      transition: color 0.5s;
+}
+.pointy-cursor{
+    cursor: pointer;
+}
+.color-hover:hover{
+    color: var(--hover-text-color);
+}
+
+/*no need for primary text since all text by default is primary text*/
+.secondary-text{
+    color: var(--secondary-text-color) !important;
+}
+.tertiary-text{
+    color: var(--tertiary-text-color) !important;
 }

@@ -1,0 +1,51 @@
+<div class="header-container" >
+    <div class="logo-container">
+        <h1 class="title-text hover">{{post.title}}</h1>
+    </div>
+
+    <div class="triangle-container"></div>
+
+
+    <div class="post-data">
+    </div>
+</div>
+
+<div class="light-bg base-bradius post-container">
+    <div class="user-post-info">
+        <div class="user-info">
+            <div class="user-pfp">
+                <img src={{post.created_by.user_pfp_url}} alt="User profile">
+                <div class="user-info-text">
+                    <p class="bold-text sdr-text">{{post.created_by.username}}</p>
+                    <p class="secondary-text">{{utilsService.timeAgo(post.created_at)}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-content">
+        <markdown ngPreserveWhitespaces>
+            {{post.content}}
+        </markdown>
+    </div>
+</div>
+
+@for (comment of post.comments; track $index) {
+    <div class="light-bg base-bradius post-container">
+        <div class="user-post-info">
+            <div class="user-info">
+                <div class="user-pfp">
+                    <img src={{comment.created_by.user_pfp_url}} alt="User profile">
+                    <div class="user-info-text">
+                        <p class="bold-text sdr-text">{{comment.created_by.username}}</p>
+                        <p class="secondary-text">{{utilsService.timeAgo(comment.created_at)}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post-content">
+            <markdown ngPreserveWhitespaces>
+                {{comment.content}}
+            </markdown>
+        </div>
+    </div>
+}

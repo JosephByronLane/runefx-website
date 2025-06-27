@@ -14,6 +14,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
 import { CommunityComponent } from './pages/community/community.component';
+import { ForumComponent } from './pages/forum/forum.component';
+
 export const routes: Routes = [
     {
         path: '',
@@ -83,6 +85,26 @@ export const routes: Routes = [
         path: 'community',
         title: 'RuneFX | Community',
         component: CommunityComponent
+    },
+    {
+        path: 'forum',
+        title: 'RuneFX | Forum - All Topics',
+        component: ForumComponent
+    },
+    {
+        path: 'forum/posts/:postId',
+        title: 'RuneFX | Forum', //title is set in the post component
+        component: ForumComponent
+    },
+    {
+        path: 'forum/:topicId/:topicSlug/:subtopicId/:subtopicSlug',
+        title: 'RuneFX | Forum', //title is set in the subtopic component
+        component: ForumComponent
+    },
+    {
+        path: 'forum/:topicId/:topicSlug',
+        title: 'RuneFX | Forum', //title is set in the topic component
+        component: ForumComponent
     },
     {
         path: 'under-construction',

@@ -3,5 +3,5 @@
     grid-template-columns: repeat(2, 1fr) ;
     grid-template-rows: auto; 
     height: 10%; 
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
 }

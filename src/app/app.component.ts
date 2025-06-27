@@ -12,7 +12,7 @@ export let LocalbrowserRefresh = false;
 import { Location } from '@angular/common';
 import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { environment } from '../environments/environment.dev';
+import { environment } from '../environments/environment';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -33,13 +33,12 @@ export class AppComponent {
 
   
 
-  ///omfg it took me the whole fucking 4 days to get this working
-  constructor(public initloader: InitialLoadingService, private router: Router, private activatedRoute: ActivatedRoute, private location: Location) {
+  constructor(public initloader: InitialLoadingService, private readonly router: Router, private activatedRoute: ActivatedRoute, private readonly location: Location) {
     //subscribe to refreshed to get updates on it
     //if it updates, and its true then show the bigass loading screen
     this.subscription = this.initloader.browserRefresh.subscribe((refreshed) => {
       if(refreshed){
-        var pathString = location.path();
+        let pathString = location.path();
         //when we're on home, the url is undefined because its literally nothing, so when that happens we replace it with '' so it finds the correct value.
         pathString = pathString.split('/')[1];
         if (pathString===undefined) pathString=''

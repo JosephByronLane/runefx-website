@@ -5,7 +5,7 @@
     height: 35vh;
     border-radius: var(--border-radius);
     overflow: hidden;
-    background-color: var(--triangle-after);
+    background-color: var(--lighter-dark);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     padding: 0;
@@ -13,7 +13,7 @@
     text-align: left;
     font-family: inherit;
     color: var(--primary-text-color);
-    transition: color 0.2s ease; /* Add smooth transition */
+    transition: color 0.2s ease; 
 
 }
 

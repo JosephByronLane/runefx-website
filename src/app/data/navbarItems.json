@@ -93,7 +93,7 @@
                 {
                     "id": "2",
                     "displayString": "Forum",
-                    "scrollTo": "Forum"
+                    "link": "forum"
                 },
                 {
                     "id": "3",

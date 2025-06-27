@@ -1,0 +1,63 @@
+<app-background-video
+[title]="'Forum'"
+[description]="'Discuss, talk and share your thoughts, ideas and questions with the community.'"
+[height]="'40vh'" 
+[src]="'https://cdnb.artstation.com/p/assets/images/images/023/222/447/large/pablo-dominguez-kitbash3d-medievalmarket-v001-002.jpg?1578506413'"
+[scale]="1.3"
+[video]="0"
+[button]="0"
+[scrollFactor]=".25"
+[textAlignment]="'left'" 
+[textBlockAlignment]="'left'"
+[textWidth]="'90%'"
+[credits]="'© Pablo Dominguez'"
+>  
+</app-background-video>
+
+<div class="base-bradius base-margin-lr">
+
+    <div class="breadcrumbs">
+        @for (breadcrumb of breadcrumbs; track $index) {
+            <a class="bold-text sdr-text" (click)="intermitentLoadingService.switchWithLoading(breadcrumb.link)">{{breadcrumb.text}}</a>
+            @if ($index < breadcrumbs.length - 1) {
+                <p class="bold-text sdr-text">></p>
+            }
+        }
+    </div>
+    <!-- handles viewing a subtopics posts -->
+    @if (isThereSpecificSubtopic && subtopicData) {
+        <app-forum-subtopic
+            class="base-margin base-bradius"
+            [subtopic]="subtopicData"        
+        />       
+    }
+
+    @if (isThereSpecificPost && postData) {
+        <app-forum-post
+            class="base-margin base-bradius"
+            [post]="postData"        
+        />
+    }
+
+
+    @else{
+        <!-- handles all topics or a singular topic -->
+        @for (topic of topicData; track $index) {
+            <app-forum-topics
+                class="base-margin base-bradius"
+                [topic]="topic"        
+            />
+                
+        }
+    }
+
+
+</div>
+
+<!-- if topics are empty, then straight up nothing shows up. -->
+@if (errorLoadingTopics) {
+    <app-error-warning-ox
+        [errorMessage]="'There seems to be an error loading the forum content.'"
+        [errorDescription]="'Please try again later or contact an administrator.'"
+    />
+}

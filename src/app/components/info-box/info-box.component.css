@@ -3,7 +3,7 @@
 }
 
 .Tech-Container{
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
     display: grid;
     grid-template-columns: 1fr; 
     gap:3vh;
@@ -33,13 +33,13 @@
 .info-container{
     margin:var(--base-site-margin-lr);
     padding: 2vh 2vw;
-    background-color: var(--triangle-after);
+    background-color: var(--lighter-dark);
     border-radius: var(--border-radius);
 }s
 .info-container-r{
     margin:var(--base-site-margin-lr);
     padding: 1% 2%;
-    background-color: var(--triangle-after);
+    background-color: var(--lighter-dark);
     display: flex;
     flex-direction: row-reverse;
 }

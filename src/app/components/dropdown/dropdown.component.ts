@@ -35,10 +35,12 @@ export class DropdownComponent {
         {
           id: '1',
           displayString: 'bruh',
+          scrollTo: 'bruh',
         },
         {
           id: '2',
           displayString: 'man',
+          scrollTo: 'bruh',
         },                 
       ]
   }

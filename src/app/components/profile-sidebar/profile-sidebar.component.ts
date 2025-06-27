@@ -104,7 +104,7 @@ export class ProfileSidebarComponent {
     this.authService.login(this.username,this.password).subscribe({
       next: (_) =>{
         this.loggerService.log(LogLevel.Debug, "Login successful")
-        //we dont do anything, all the switching the states is done through the login function itself and its subscribables
+        //we dont do anything, all the switching the states is done through the login function itself and its subscribables (on the auth service)
       },
       error: (error) => {
         this.userInputRef.nativeElement.style.outline = "2px solid red"

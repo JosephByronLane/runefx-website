@@ -1,26 +1,24 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.dev';
+import { environment } from '../../environments/environment';
 import { IRegisterUser } from '../interfaces/IRegisterUser';
 import { BehaviorSubject, catchError, Observable, of, Subscribable, tap, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { IUser } from '../interfaces/IUser';
 import { IAuthResponse } from '../interfaces/IAuthResponse';
-import { ProfileSidebarComponent } from '../components/profile-sidebar/profile-sidebar.component';
 import { LoggerService, LogLevel } from './logger.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  private apiUrl = environment.apiUrl;
+  private readonly apiUrl = environment.apiUrl;
   
-  private currentUserSubject = new BehaviorSubject<IUser | null>(null);
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  private readonly currentUserSubject = new BehaviorSubject<IUser | null>(null);
+  private readonly isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   
-  private isProfileSidebarOpen = new BehaviorSubject<boolean>(false)
+  private readonly isProfileSidebarOpen = new BehaviorSubject<boolean>(false)
 
-  constructor(private http: HttpClient, private router: Router, public logginService:LoggerService) {
+  constructor(private readonly http: HttpClient, public logginService:LoggerService) {
     this.isAuthenticated().subscribe();
   }  
   
@@ -64,7 +62,7 @@ export class AuthService {
         response => {        
           this.currentUserSubject.next(response.user);
           this.isAuthenticatedSubject.next(true)
-          this.logginService.log(LogLevel.Debug, ` IsAuthenticated > Authenticated as ${this.currentUserSubject.value}`)
+          this.logginService.log(LogLevel.Debug, ` IsAuthenticated > Authenticated as ${this.currentUserSubject.value?.username ?? 'unknown'}`)
 
         }
       ),

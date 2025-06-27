@@ -3,14 +3,14 @@
     grid-template-columns: 1fr 2fr; 
     grid-template-rows: auto; 
     max-height: 20%; 
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
 }
 .basic-holder-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr) ;
     grid-template-rows: auto; 
     height: 10%; 
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
 }
 .dont-fucking-go-over{
 }
@@ -19,7 +19,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr) ;
     grid-template-rows: auto; 
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
 }
 
 .basic-holder-4-1 {
@@ -35,7 +35,7 @@
     grid-template-rows: auto; 
     height: 10%;
     gap: 2vw; 
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
 }
 .dcc-holder img{
     max-height: 15vh;
