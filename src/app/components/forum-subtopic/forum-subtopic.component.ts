@@ -19,7 +19,7 @@ export class ForumSubtopicComponent implements OnChanges{
     public readonly utilsService: UtilsService, 
     public readonly loadingService: IntermitentLoadingService,
     public readonly forumService: ForumService,
-     private readonly title: Title) {}
+    private readonly title: Title) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.title.setTitle(`RuneFX | ${this.subtopic.title}`);
