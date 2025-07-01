@@ -1,4 +1,4 @@
-export interface IReleaseResponse {
+export interface IReleaseAPIResponse {
     id: number;
     title: string;
     description: string;
@@ -13,6 +13,6 @@ interface IReleaseUserData {
     user_pfp_url: string;
 }
 
-export interface IReleaseDetailAPIResponse extends IReleaseResponse {
+export interface IReleaseDetailAPIResponse extends IReleaseAPIResponse {
     content: string;
 }
