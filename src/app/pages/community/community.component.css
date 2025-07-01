@@ -11,3 +11,8 @@
     align-items: center;
     justify-items: center;
 }
+
+.box-size{
+    width: 25vw;
+    height: 35vh;
+}

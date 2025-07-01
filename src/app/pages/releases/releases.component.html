@@ -20,9 +20,10 @@
     desc="Find all the latest releases, patch notes, and more. ">
 </app-info-box>
 
-<div class="grid">
+<div class="grid base-padding-lr">
     @for (release of releases; track $index) {
-        <app-showcase-box
+        <app-showcase-box 
+            class="box-size"
             [title]="release.title"
             [description]="release.description"
             [imageUrl]="release.showcase_picture_url"
