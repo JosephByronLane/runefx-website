@@ -88,7 +88,7 @@
                 {
                     "id": "1",
                     "displayString": "Releases",
-                    "scrollTo": "Releases"
+                    "link": "/releases"
                 },
                 {
                     "id": "2",
