@@ -3,13 +3,14 @@ export interface IReleaseAPIResponse {
     title: string;
     description: string;
     showcase_picture_url: string;
+    showcase_picture_credits: string;
     created_at: string;
     updated_at: string;
     created_by_user_data: IReleaseUserData;    
 }
 
 interface IReleaseUserData {
-     username: string;
+    username: string;
     user_pfp_url: string;
 }
 

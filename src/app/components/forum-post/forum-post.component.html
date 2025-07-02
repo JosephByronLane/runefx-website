@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="post-content">
-        <markdown [data]="replaceNewLines(post.content)">
+        <markdown [data]="utilsService.replaceNewLines(post.content)">
         </markdown>
     </div>
 </div>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="post-content">
-            <markdown [data]="replaceNewLines(comment.content)">
+            <markdown [data]="utilsService.replaceNewLines(comment.content)">
             </markdown>
         </div>
     </div>

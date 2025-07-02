@@ -1,1 +1,21 @@
-<p>release-detail works!</p>
+<app-background-video
+  [title]="release.title"
+  [description]="release.description"
+  [height]="'40vh'" 
+  [src]="release.showcase_picture_url"
+  [scale]="1.3"
+  [video]="0"
+  [button]="0"
+  [scrollFactor]=".25"
+  [textAlignment]="'left'" 
+  [textWidth]="'90%'"
+  [credits]="'© ' + release.showcase_picture_credits"
+>  
+</app-background-video>
+
+
+
+<div class="base-padding-lr">
+  <markdown [data]="utilsService.replaceNewLines(release.content)">
+  </markdown>
+</div>

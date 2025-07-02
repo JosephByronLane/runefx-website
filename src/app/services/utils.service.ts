@@ -124,4 +124,10 @@ export class UtilsService {
       (new Date().valueOf() - new Date(date).valueOf()) / 1000
     )
   }
+
+
+  replaceNewLines(content: string): string {
+    return content.replace(/\\n/g, '\n');
+  }
+
 }

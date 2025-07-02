@@ -4,19 +4,25 @@ import { IReleaseDetailAPIResponse } from '../../interfaces/IReleaseResponse';
 import { ReleasesService } from '../../services/releases.service';
 import { ActivatedRoute } from '@angular/router';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
+import { UtilsService } from '../../services/utils.service';
+import { MarkdownComponent, MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-release-detail',
   standalone: true,
-  imports: [BackgroundVideoComponent],
+  imports: [BackgroundVideoComponent, MarkdownComponent, MarkdownModule],
   templateUrl: './release-detail.component.html',
   styleUrl: './release-detail.component.css'
 })
 export class ReleaseDetailComponent implements OnChanges, OnInit{
 
-  public release: IReleaseDetailAPIResponse | null = null;
+  public release: IReleaseDetailAPIResponse = {} as IReleaseDetailAPIResponse;
 
-  constructor(private readonly title: Title, private readonly releasesService: ReleasesService, private readonly route: ActivatedRoute) {}
+  constructor(private readonly title: Title, 
+    private readonly releasesService: ReleasesService, 
+    private readonly route: ActivatedRoute,
+    public readonly utilsService: UtilsService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.title.setTitle(`RuneFX | Release`);
