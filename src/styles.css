@@ -129,3 +129,11 @@ a{
 .tertiary-text{
     color: var(--tertiary-text-color) !important;
 }
+
+
+
+/* markdown component styles */
+
+.md {
+    font-size: 120%;
+}
