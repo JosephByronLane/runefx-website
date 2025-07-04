@@ -1,4 +1,6 @@
 .root{
-    color: var(--primary-text-color)
+    color: var(--primary-text-color);
+    white-space: wrap;
+    word-break:normal
 }
 

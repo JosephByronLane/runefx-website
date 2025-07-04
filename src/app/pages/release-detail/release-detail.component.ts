@@ -18,6 +18,7 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
   public release: IReleaseDetailAPIResponse = {} as IReleaseDetailAPIResponse;
 
+  public releaseFormattedStuff: {type: string, content: string}[] = []
   constructor(private readonly title: Title, 
     private readonly releasesService: ReleasesService, 
     private readonly route: ActivatedRoute,
@@ -34,11 +35,45 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
       this.releasesService.getSingleRelease(id).subscribe({
       next: (release: IReleaseDetailAPIResponse) => {
         this.release = release;
+        this.parseText(release.content)
+
       },
       error: (error: any) => {
         console.error('Error fetching release:', error);
         }
       });
     });
+  }
+
+  parseText(text:string){
+    const allTextList:  string[] = text.split(/\r?\n/)
+    let tempTxtHolder: string = ""
+    for (let element of allTextList) {
+      if(element == ''){
+        continue;
+      }
+
+      if (element.includes("![")) {  
+        console.log("found image, pushing temp text to dict")    
+        this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
+        tempTxtHolder = ""
+
+        let regex = /!\[.*?\]\((https?:\/\/[^)]+)\)/;
+        let imageUrl = element.match(regex)
+        if (imageUrl != null) {
+          let imageTemp = {type: "image", content: imageUrl[1]}
+          console.log("pushing image to dict")
+          this.releaseFormattedStuff.push(imageTemp)
+          continue;
+        }
+      }    
+
+      tempTxtHolder = tempTxtHolder + element
+    }
+    this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
+  }
+
+  parseImage(imageString:string){
+
   }
 }

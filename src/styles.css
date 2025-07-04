@@ -137,3 +137,35 @@ a{
 .md {
     font-size: 120%;
 }
+
+.md h1 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.md h1,
+.md h2,
+.md h3,
+.md h4,
+.md h5 {
+    font-weight: 700 !important;
+}
+
+.md h1 strong,
+.md h2 strong,
+.md h3 strong,
+.md h4 strong,
+.md h5 strong {
+    font-weight: 700 !important;
+}
+
+.md h1, 
+.md h2, 
+.md h3, 
+.md h4, 
+.md h5 {
+    margin-top: 2vh;
+    margin-bottom: 1.5vh;
+}
+
