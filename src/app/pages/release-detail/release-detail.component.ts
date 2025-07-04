@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { IReleaseDetailAPIResponse, ParsedElements } from '../../interfaces/IReleaseResponse';
+import { IReleaseDetailAPIResponse, ParsedElement } from '../../interfaces/IReleaseResponse';
 import { ReleasesService } from '../../services/releases.service';
 import { ActivatedRoute } from '@angular/router';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
@@ -23,7 +23,7 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
   public release: IReleaseDetailAPIResponse = {} as IReleaseDetailAPIResponse;
 
-  public releaseFormattedStuff: ParsedElements[] = []
+  public releaseFormattedStuff: ParsedElement[] = []
 
   constructor(private readonly title: Title, 
     private readonly releasesService: ReleasesService, 
@@ -42,7 +42,7 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
       this.releasesService.getSingleRelease(id).subscribe({
       next: (release: IReleaseDetailAPIResponse) => {
         this.release = release;
-        this.parseText(release.content)
+        this.releaseFormattedStuff = this.parseText(release.content)
       },
       error: (error: any) => {
         console.error('Error fetching release:', error);
@@ -51,73 +51,75 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
     });
   }
 
-  parseText(text:string): ParsedElements[]{
-
+  parseText(text:string): ParsedElement[]{
     if (!text) return [];
 
-
     const lines = text.split(/\r?\n/).filter(line => line.trim() !== '');
-    let buffer: string = ""
+    let buffer: string = ''
+    let result: ParsedElement[] =[]
 
-    if (lines == null){
-      return;
+    const flushBuffer = () =>{
+      if (buffer && buffer !== ''){
+        result.push({type:'text', content: buffer.trim()})
+        buffer = ''
+      }
     }
-    lines = lines.filter((ele, _) => ele !== '')
- 
+
+    const REGEX = /!\[.*?\]\((https?:\/\/[^)]+)\)/
+
+
+    function getImageUrl(line:string):RegExpExecArray | null{
+      return REGEX.exec(line)
+    }
+    
     for (let index = 0; index < lines.length; index++) {
 
       const line = lines[index];
 
       if (index == 0 && line.length>1){
+        flushBuffer()
+
         const titleText = removeMd(line)
         const descText = removeMd(lines[index+1])
-        this.releaseFormattedStuff.push({type: "title", content:titleText, extras: {desc: descText}})
+        result.push({
+          type: "title", 
+          content:titleText, 
+          extras: {desc: descText}}
+        )
+        console.log(result)
         index +=1;
         continue;
       }
 
-
-      if (line.includes("![")) {  
-        if (buffer !== '') {
-          this.releaseFormattedStuff.push({type: "text", content: buffer})
-          buffer = ""
-        }
-
-
-        let imageUrl = RegExp(regex).exec(line)
-        if (imageUrl != null) {
-          let imageTemp = {type: "image", content: imageUrl[1], extras: {text: lines[index+1]}}
-          this.releaseFormattedStuff.push(imageTemp)
-
-          index +=1;
-          continue;
-        }
-        continue;
-      }    
-      if (line.startsWith("## ")) {
-        const isEmpty:boolean = buffer == ''
+      let imageUrl = getImageUrl(line)
+      if (imageUrl !== null) {  
+        flushBuffer()
         
-        if (isEmpty) {
-          buffer = line + '\n'
-          continue;
-        }
-        this.releaseFormattedStuff.push({type: "text", content: buffer})
-        buffer = line + '\n'
-        continue;
+        result.push({
+          type: "image", 
+          content: imageUrl[1],
+          extras: {text: lines[index+1]}
+        })
+
+        index +=1;
+        continue;      
       }
-    buffer = buffer + line + '\n'
-    }
 
-    if (buffer !== '') {
-        this.releaseFormattedStuff.push({type: "text", content: buffer})
+      if (line.startsWith("## ")) {
+        flushBuffer()
+      }
+      
+      buffer += line + '\n'
+
     }
-  
+    console.log(result)
+    flushBuffer()
+
     console.log(this.releaseFormattedStuff)
+
+    return result
   }
 
-  isImage(line:string): boolean{
-    if(line.startsWith("!["))
-    return /!\[.*?\]\((https?:\/\/[^)]+)\)/.test(line);
-  }
+
 
 }

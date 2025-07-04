@@ -19,7 +19,7 @@ export interface IReleaseDetailAPIResponse extends IReleaseAPIResponse {
 }
 
 
-export interface ParsedElements{
+export interface ParsedElement{
   type: "title" | "image" | "text";
   content: string;
   extras?: { [key: string]: any };
