@@ -33,7 +33,6 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
   ngOnChanges(changes: SimpleChanges): void {
     this.title.setTitle(`RuneFX | ${this.release.title}`);
-
   }
 
   ngOnInit(): void {
