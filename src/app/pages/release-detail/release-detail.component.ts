@@ -7,11 +7,14 @@ import { BackgroundVideoComponent } from '../../components/background-video/back
 import { UtilsService } from '../../services/utils.service';
 import { MarkdownComponent, MarkdownModule } from 'ngx-markdown';
 import { SimpleImageComponent } from '../../components/simple-image/simple-image.component';
+import { ErrorWarningOxComponent } from '../../components/error-warning-ox/error-warning-ox.component';
+import { InfoBoxComponent } from '../../components/info-box/info-box.component';
+import removeMd from 'remove-markdown';
 
 @Component({
   selector: 'app-release-detail',
   standalone: true,
-  imports: [BackgroundVideoComponent, MarkdownComponent, MarkdownModule, SimpleImageComponent],
+  imports: [BackgroundVideoComponent, MarkdownComponent, MarkdownModule, SimpleImageComponent, ErrorWarningOxComponent, InfoBoxComponent],
   templateUrl: './release-detail.component.html',
   styleUrl: './release-detail.component.css'
 })
@@ -19,7 +22,8 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
   public release: IReleaseDetailAPIResponse = {} as IReleaseDetailAPIResponse;
 
-  public releaseFormattedStuff: {type: string, content: string}[] = []
+  public releaseFormattedStuff: {type: string, content: string, extras?: Record<string, string>}[] = []
+
   constructor(private readonly title: Title, 
     private readonly releasesService: ReleasesService, 
     private readonly route: ActivatedRoute,
@@ -28,6 +32,7 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
   ngOnChanges(changes: SimpleChanges): void {
     this.title.setTitle(`RuneFX | ${this.release.title}`);
+
   }
 
   ngOnInit(): void {
@@ -37,7 +42,6 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
       next: (release: IReleaseDetailAPIResponse) => {
         this.release = release;
         this.parseText(release.content)
-
       },
       error: (error: any) => {
         console.error('Error fetching release:', error);
@@ -47,24 +51,42 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
   }
 
   parseText(text:string){
-    const allTextList:  string[] = text.split(/\r?\n/)
+    let allTextList:  string[] = text.split(/\r?\n/)
     let tempTxtHolder: string = ""
-    for (let element of allTextList) {
-      if(element == ''){
+
+    let skipNext: boolean = false;
+    if (allTextList == null){
+      return;
+    }
+
+    allTextList = allTextList.filter((ele, _) => ele !== '')
+ 
+    for (let index = 0; index < allTextList.length; index++) {
+
+      if(skipNext){
+        skipNext=false;
+        continue;
+      }
+      const element = allTextList[index];
+
+      if (index == 0 ){
+        this.releaseFormattedStuff.push({type: "title", content: removeMd(element), extras: {desc: removeMd(allTextList[index+1])}})
+        skipNext=true;
         continue;
       }
 
+
       if (element.includes("![")) {  
-        console.log("found image, pushing temp text to dict")    
         this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
         tempTxtHolder = ""
 
         let regex = /!\[.*?\]\((https?:\/\/[^)]+)\)/;
-        let imageUrl = element.match(regex)
+        let imageUrl = RegExp(regex).exec(element)
         if (imageUrl != null) {
-          let imageTemp = {type: "image", content: imageUrl[1]}
-          console.log("pushing image to dict")
+          let imageTemp = {type: "image", content: imageUrl[1], extras: {text: allTextList[index+1]}}
           this.releaseFormattedStuff.push(imageTemp)
+
+          skipNext = true;
           continue;
         }
       }    
@@ -75,7 +97,5 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
     console.log(this.releaseFormattedStuff)
   }
 
-  parseImage(imageString:string){
 
-  }
 }

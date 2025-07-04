@@ -139,6 +139,7 @@ a{
 }
 
 .md h1,
+.md h2,
 .md p:has(img){
     text-align: center !important;
     margin-left: auto !important;
@@ -151,11 +152,12 @@ a{
 .md p img{
     margin-top: 4vh;
     border-radius: var(--border-radius);
-    width:40vw;
+    width:40%;
 }
 
 .md p:has(img) + p {
     text-align: center;
+    margin-bottom: 5vh
 }
 .md h1,
 .md h2,
