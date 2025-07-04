@@ -2,7 +2,7 @@
   [title]="release.title"
   [description]="release.description"
   [height]="'40vh'" 
-  [src]="release.showcase_picture_url"
+  [src]="'{{release.showcase_picture_credits}}'"
   [scale]="1.3"
   [video]="0"
   [button]="0"
@@ -12,8 +12,6 @@
   [credits]="'© ' + release.showcase_picture_credits"
 >  
 </app-background-video>
-
-
 
 <div class="base-padding-lr md root">
   <markdown [data]="utilsService.replaceNewLines(release.content)" >

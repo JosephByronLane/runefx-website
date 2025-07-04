@@ -6,11 +6,12 @@ import { ActivatedRoute } from '@angular/router';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { UtilsService } from '../../services/utils.service';
 import { MarkdownComponent, MarkdownModule } from 'ngx-markdown';
+import { SimpleImageComponent } from '../../components/simple-image/simple-image.component';
 
 @Component({
   selector: 'app-release-detail',
   standalone: true,
-  imports: [BackgroundVideoComponent, MarkdownComponent, MarkdownModule],
+  imports: [BackgroundVideoComponent, MarkdownComponent, MarkdownModule, SimpleImageComponent],
   templateUrl: './release-detail.component.html',
   styleUrl: './release-detail.component.css'
 })
@@ -68,9 +69,10 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
         }
       }    
 
-      tempTxtHolder = tempTxtHolder + element
+      tempTxtHolder = tempTxtHolder + element + '\n'
     }
     this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
+    console.log(this.releaseFormattedStuff)
   }
 
   parseImage(imageString:string){

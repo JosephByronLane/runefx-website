@@ -138,12 +138,25 @@ a{
     font-size: 120%;
 }
 
-.md h1 {
+.md h1,
+.md p:has(img){
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
 }
+.md p {
+    text-align: justify;
+}
 
+.md p img{
+    margin-top: 4vh;
+    border-radius: var(--border-radius);
+    width:40vw;
+}
+
+.md p:has(img) + p {
+    text-align: center;
+}
 .md h1,
 .md h2,
 .md h3,
