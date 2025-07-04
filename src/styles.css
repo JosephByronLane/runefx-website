@@ -94,7 +94,7 @@ a{
 }
 
 .base-padding{
-    padding: 2vh 2vw;
+    padding: 2vh 2vw !important;
 }
 
 .base-bradius{
@@ -145,6 +145,8 @@ a{
     margin-left: auto !important;
     margin-right: auto !important;
 }
+
+
 .md p {
     text-align: justify;
 }

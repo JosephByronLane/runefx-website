@@ -10,11 +10,12 @@ import { SimpleImageComponent } from '../../components/simple-image/simple-image
 import { ErrorWarningOxComponent } from '../../components/error-warning-ox/error-warning-ox.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import removeMd from 'remove-markdown';
+import { SimpleBoxComponent } from '../../components/simple-box/simple-box.component';
 
 @Component({
   selector: 'app-release-detail',
   standalone: true,
-  imports: [BackgroundVideoComponent, MarkdownComponent, MarkdownModule, SimpleImageComponent, ErrorWarningOxComponent, InfoBoxComponent],
+  imports: [BackgroundVideoComponent, MarkdownComponent, MarkdownModule, SimpleImageComponent, ErrorWarningOxComponent, InfoBoxComponent, SimpleBoxComponent],
   templateUrl: './release-detail.component.html',
   styleUrl: './release-detail.component.css'
 })
@@ -77,6 +78,9 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
 
       if (element.includes("![")) {  
+        if(tempTxtHolder == ''){
+          continue;
+        }
         this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
         tempTxtHolder = ""
 
@@ -89,6 +93,7 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
           skipNext = true;
           continue;
         }
+        continue;
       }    
 
       tempTxtHolder = tempTxtHolder + element + '\n'

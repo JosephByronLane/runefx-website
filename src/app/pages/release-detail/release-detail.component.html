@@ -12,7 +12,7 @@
   [credits]="'© ' + release.showcase_picture_credits"
 >  
 </app-background-video>
-
+<div class="root">
   @for (item of releaseFormattedStuff; track $index) {
     @if (item.type == "title") {
       <app-info-box [title]="item.content" [desc]="item.extras?.['desc']!">
@@ -21,7 +21,7 @@
 
     @if (item.type == "text") {
       <div class="base-padding-lr root">
-        <div class="md">
+        <div class="md light-bg base-bradius base-padding ">
           <markdown [data]="utilsService.replaceNewLines(item.content)" >
           </markdown>
         </div>
@@ -29,7 +29,12 @@
     }
 
     @if (item.type == "image") {
-      
+      <div class="base-padding md">
+          <markdown [data]="utilsService.replaceNewLines('![Showcase image](' + item.content + ')') + '        ' + '\n' + (item.extras?.['text'] || '')">
+          </markdown>
+      </div>
     }
   }
+</div>
+
 
