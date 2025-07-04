@@ -20,7 +20,7 @@
     }
 
     @if (item.type == "text") {
-      <div class="base-padding-lr root">
+      <div class="base-padding">
         <div class="md light-bg base-bradius base-padding ">
           <markdown [data]="utilsService.replaceNewLines(item.content)" >
           </markdown>

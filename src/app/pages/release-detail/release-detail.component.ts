@@ -78,11 +78,11 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
 
       if (element.includes("![")) {  
-        if(tempTxtHolder == ''){
-          continue;
+        if (tempTxtHolder !== '') {
+          this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
+          tempTxtHolder = ""
         }
-        this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
-        tempTxtHolder = ""
+
 
         let regex = /!\[.*?\]\((https?:\/\/[^)]+)\)/;
         let imageUrl = RegExp(regex).exec(element)
@@ -95,10 +95,24 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
         }
         continue;
       }    
-
-      tempTxtHolder = tempTxtHolder + element + '\n'
+      if (element.startsWith("## ")) {
+        const isEmpty:boolean = tempTxtHolder == ''
+        
+        if (isEmpty) {
+          tempTxtHolder = element + '\n'
+          continue;
+        }
+        this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
+        tempTxtHolder = element + '\n'
+        continue;
+      }
+    tempTxtHolder = tempTxtHolder + element + '\n'
     }
-    this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
+
+    if (tempTxtHolder !== '') {
+        this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
+    }
+  
     console.log(this.releaseFormattedStuff)
   }
 

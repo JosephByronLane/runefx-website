@@ -139,7 +139,12 @@ a{
 }
 
 .md h1,
-.md h2,
+.md h2{
+    font-size: 150%;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 .md p:has(img){
     text-align: center !important;
     margin-left: auto !important;
@@ -177,11 +182,12 @@ a{
     font-weight: 700 !important;
 }
 
-.md h1, 
-.md h2, 
-.md h3, 
-.md h4, 
-.md h5 {
+.md h1:not(:first-child), 
+.md h2:not(:first-child),
+.md h3:not(:first-child),
+.md h4:not(:first-child),
+.md h5:not(:first-child) 
+{
     margin-top: 2vh;
     margin-bottom: 1.5vh;
 }
