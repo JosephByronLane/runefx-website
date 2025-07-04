@@ -92,11 +92,42 @@ export class UtilsService {
   };
 
   timeAgo = (date: string | number | Date) => {
-    const time = Math.floor(
-      (new Date().valueOf() - new Date(date).valueOf()) / 1000
-    );
-    const { interval, unit } = this.calculateTimeDifference(time);
+    const time = this.getTime(date);
+
+    //so the forum posts were made between oldestDate and newestDate, but I'd like for it to seem like t he
+    //forum posts aren't from JUST that date; id like for the posts to seem more recent than that.
+    
+    //So we grab the oldest date and newest date, and I'll use a map range to set the percievedTimeNewest to be yesterday, and the percievedTimeOldest to be 8 months ago.
+
+
+    const oldestDate: string = "2024-02-01 10:35:00-06";
+    const newestDate: string = "2024-07-30 12:30:00-06";
+
+    //time MUST be between these two dates.
+    const timeOldest = this.getTime(oldestDate);
+    const timeNewest = this.getTime(newestDate);
+
+    const todaysDate = new Date();
+    const todaysTime = this.getTime(todaysDate);
+
+    const eightMonthsAgoTime = todaysTime + 13 * 30 * 24 * 60 * 60;
+    
+    const percivedTime = this.mapRange(time, timeOldest, timeNewest, eightMonthsAgoTime, todaysTime);
+
+    const { interval, unit } = this.calculateTimeDifference(percivedTime);
     const suffix = interval === 1 ? '' : 's';
     return `${interval} ${unit}${suffix} ago`;
   };
+
+  getTime(date: string | number | Date): number {
+    return Math.floor(
+      (new Date().valueOf() - new Date(date).valueOf()) / 1000
+    )
+  }
+
+
+  replaceNewLines(content: string): string {
+    return content.replace(/\\n/g, '\n');
+  }
+
 }

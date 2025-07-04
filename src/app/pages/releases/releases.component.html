@@ -1,0 +1,34 @@
+<app-background-video
+  [title]="'Releases'"
+  [description]="'Find the latest patch notes for our commercial products.'"
+  [height]="'40vh'" 
+  [src]="'https://cdnb.artstation.com/p/assets/images/images/086/572/617/large/pablo-dominguez-demoncity-1.jpg?1743525699'"
+  [scale]="1.3"
+  [video]="0"
+  [button]="0"
+  [scrollFactor]=".25"
+  [textAlignment]="'left'" 
+  [textWidth]="'90%'"
+  [credits]="'© Pablo Dominguez'"
+>  
+</app-background-video>
+
+
+<app-info-box 
+    class="dont-fucking-go-over"
+    title="Releases" 
+    desc="Find all the latest releases, patch notes, and more. ">
+</app-info-box>
+
+<div class="grid base-padding-lr">
+    @for (release of releases; track $index) {
+        <app-showcase-box 
+            class="box-size"
+            [title]="release.title"
+            [description]="release.description"
+            [imageUrl]="release.showcase_picture_url"
+            [redirectTo]="'/releases/'+release.id"
+            [imageSplit]="60"
+        />
+    }
+</div>

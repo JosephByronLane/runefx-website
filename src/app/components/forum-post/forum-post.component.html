@@ -22,8 +22,8 @@
             </a>
         </div>
     </div>
-    <div class="post-content">
-        <markdown [data]="replaceNewLines(post.content)">
+    <div class="post-content md">
+        <markdown [data]="utilsService.replaceNewLines(post.content)">
         </markdown>
     </div>
 </div>
@@ -35,14 +35,14 @@
                 <div class="user-pfp">
                     <img src={{comment.created_by.user_pfp_url}} alt="User profile">
                     <div class="user-info-text">
-                        <p class="bold-text sdr-text hover">{{comment.created_by.username}}</p>
+                        <a class="bold-text sdr-text hover" (click)="loadingService.switchWithLoading('not-allowed', '', 2000, true, $event)" [href]="'not-allowed'">{{comment.created_by.username}}</a>
                         <p class="secondary-text">{{utilsService.timeAgo(comment.created_at)}}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="post-content">
-            <markdown [data]="replaceNewLines(comment.content)">
+        <div class="post-content md">
+            <markdown [data]="utilsService.replaceNewLines(comment.content)">
             </markdown>
         </div>
     </div>

@@ -17,21 +17,21 @@
 <app-info-box title="Community" desc="We've fostered a community around our products, go check them out!" [video]="0"></app-info-box>
 
 <div class="community-grid">
-    <app-showcase-box
+    <app-showcase-box class="box-size"
     [title]="'Releases'"
-    [description]="'Patch notes for our commercial products.'"
+    [description]="'Find the latest patch notes for our commercial products.'"
     [imageUrl]="'https://cdnb.artstation.com/p/assets/images/images/086/572/617/large/pablo-dominguez-demoncity-1.jpg?1743525699'"
-    [redirectTo]="'/under-construction'"
+    [redirectTo]="'/releases'"
     >
     </app-showcase-box>
-        <app-showcase-box
+    <app-showcase-box class="box-size"
     [title]="'Forum'"
     [description]="'Discuss and share your work with the community.'"
     [imageUrl]="'https://cdnb.artstation.com/p/assets/images/images/023/222/447/large/pablo-dominguez-kitbash3d-medievalmarket-v001-002.jpg?1578506413'"
     [redirectTo]="'/forum'"
     >
     </app-showcase-box>
-        <app-showcase-box
+    <app-showcase-box class="box-size"
     [title]="'Gallery'"
     [description]="'Check out the latest work from our community.'"
     [imageUrl]="'https://cdna.artstation.com/p/assets/images/images/088/507/238/large/massimo-verona-nature-reserve-var-v04-01-002-cam017-ps.jpg?1748460222'"
@@ -56,7 +56,7 @@
   [descriptionFontSize]="'2vh'"
   [ButtonText]="'Go to patch notes.'"
   [textWidth]="'50%'"
-  [ButtonLink]="'/under-construction'" 
+  [ButtonLink]="'/releases'" 
   [credits]="'© Pablo Dominguez'"
 >  
 </app-background-video>

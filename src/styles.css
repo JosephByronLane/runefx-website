@@ -94,7 +94,7 @@ a{
 }
 
 .base-padding{
-    padding: 2vh 2vw;
+    padding: 2vh 2vw !important;
 }
 
 .base-bradius{
@@ -129,3 +129,66 @@ a{
 .tertiary-text{
     color: var(--tertiary-text-color) !important;
 }
+
+
+
+/* markdown component styles */
+
+.md {
+    font-size: 120%;
+}
+
+.md h1,
+.md h2{
+    font-size: 150%;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.md p:has(img){
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+.md p {
+    text-align: justify;
+}
+
+.md p img{
+    margin-top: 4vh;
+    border-radius: var(--border-radius);
+    width:40%;
+}
+
+.md p:has(img) + p {
+    text-align: center;
+    margin-bottom: 5vh
+}
+.md h1,
+.md h2,
+.md h3,
+.md h4,
+.md h5 {
+    font-weight: 700 !important;
+}
+
+.md h1 strong,
+.md h2 strong,
+.md h3 strong,
+.md h4 strong,
+.md h5 strong {
+    font-weight: 700 !important;
+}
+
+.md h1:not(:first-child), 
+.md h2:not(:first-child),
+.md h3:not(:first-child),
+.md h4:not(:first-child),
+.md h5:not(:first-child) 
+{
+    margin-top: 2vh;
+    margin-bottom: 1.5vh;
+}
+
