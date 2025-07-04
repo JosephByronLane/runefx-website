@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tarea-2": {
+    "runefx-website": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/tarea-2",
+            "outputPath": "dist/runefx-website",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tarea-2:build:production"
+              "buildTarget": "runefx-website:build:production"
             },
             "development": {
-              "buildTarget": "tarea-2:build:development"
+              "buildTarget": "runefx-website:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "tarea-2:build"
+            "buildTarget": "runefx-website:build"
           }
         },
         "test": {
