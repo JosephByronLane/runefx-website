@@ -17,3 +17,10 @@ interface IReleaseUserData {
 export interface IReleaseDetailAPIResponse extends IReleaseAPIResponse {
     content: string;
 }
+
+
+export interface ParsedElements{
+  type: "title" | "image" | "text";
+  content: string;
+  extras?: { [key: string]: any };
+}

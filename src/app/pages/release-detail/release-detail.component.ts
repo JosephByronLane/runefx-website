@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { IReleaseDetailAPIResponse } from '../../interfaces/IReleaseResponse';
+import { IReleaseDetailAPIResponse, ParsedElements } from '../../interfaces/IReleaseResponse';
 import { ReleasesService } from '../../services/releases.service';
 import { ActivatedRoute } from '@angular/router';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
@@ -23,7 +23,7 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
   public release: IReleaseDetailAPIResponse = {} as IReleaseDetailAPIResponse;
 
-  public releaseFormattedStuff: {type: string, content: string, extras?: Record<string, string>}[] = []
+  public releaseFormattedStuff: ParsedElements[] = []
 
   constructor(private readonly title: Title, 
     private readonly releasesService: ReleasesService, 
@@ -51,9 +51,13 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
     });
   }
 
-  parseText(text:string){
-    let lines:  string[] = text.split(/\r?\n/)
-    let tempTxtHolder: string = ""
+  parseText(text:string): ParsedElements[]{
+
+    if (!text) return [];
+
+
+    const lines = text.split(/\r?\n/).filter(line => line.trim() !== '');
+    let buffer: string = ""
 
     if (lines == null){
       return;
@@ -74,9 +78,9 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
 
 
       if (line.includes("![")) {  
-        if (tempTxtHolder !== '') {
-          this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
-          tempTxtHolder = ""
+        if (buffer !== '') {
+          this.releaseFormattedStuff.push({type: "text", content: buffer})
+          buffer = ""
         }
 
 
@@ -91,21 +95,21 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
         continue;
       }    
       if (line.startsWith("## ")) {
-        const isEmpty:boolean = tempTxtHolder == ''
+        const isEmpty:boolean = buffer == ''
         
         if (isEmpty) {
-          tempTxtHolder = line + '\n'
+          buffer = line + '\n'
           continue;
         }
-        this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
-        tempTxtHolder = line + '\n'
+        this.releaseFormattedStuff.push({type: "text", content: buffer})
+        buffer = line + '\n'
         continue;
       }
-    tempTxtHolder = tempTxtHolder + line + '\n'
+    buffer = buffer + line + '\n'
     }
 
-    if (tempTxtHolder !== '') {
-        this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
+    if (buffer !== '') {
+        this.releaseFormattedStuff.push({type: "text", content: buffer})
     }
   
     console.log(this.releaseFormattedStuff)
