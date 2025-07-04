@@ -52,61 +52,56 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
   }
 
   parseText(text:string){
-    let allTextList:  string[] = text.split(/\r?\n/)
+    let lines:  string[] = text.split(/\r?\n/)
     let tempTxtHolder: string = ""
 
-    let skipNext: boolean = false;
-    if (allTextList == null){
+    if (lines == null){
       return;
     }
-
-    allTextList = allTextList.filter((ele, _) => ele !== '')
+    lines = lines.filter((ele, _) => ele !== '')
  
-    for (let index = 0; index < allTextList.length; index++) {
+    for (let index = 0; index < lines.length; index++) {
 
-      if(skipNext){
-        skipNext=false;
+      const line = lines[index];
+
+      if (index == 0 && line.length>1){
+        const titleText = removeMd(line)
+        const descText = removeMd(lines[index+1])
+        this.releaseFormattedStuff.push({type: "title", content:titleText, extras: {desc: descText}})
+        index +=1;
         continue;
       }
-      const element = allTextList[index];
-
-      if (index == 0 ){
-        this.releaseFormattedStuff.push({type: "title", content: removeMd(element), extras: {desc: removeMd(allTextList[index+1])}})
-        skipNext=true;
-        continue;
-      }
 
 
-      if (element.includes("![")) {  
+      if (line.includes("![")) {  
         if (tempTxtHolder !== '') {
           this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
           tempTxtHolder = ""
         }
 
 
-        let regex = /!\[.*?\]\((https?:\/\/[^)]+)\)/;
-        let imageUrl = RegExp(regex).exec(element)
+        let imageUrl = RegExp(regex).exec(line)
         if (imageUrl != null) {
-          let imageTemp = {type: "image", content: imageUrl[1], extras: {text: allTextList[index+1]}}
+          let imageTemp = {type: "image", content: imageUrl[1], extras: {text: lines[index+1]}}
           this.releaseFormattedStuff.push(imageTemp)
 
-          skipNext = true;
+          index +=1;
           continue;
         }
         continue;
       }    
-      if (element.startsWith("## ")) {
+      if (line.startsWith("## ")) {
         const isEmpty:boolean = tempTxtHolder == ''
         
         if (isEmpty) {
-          tempTxtHolder = element + '\n'
+          tempTxtHolder = line + '\n'
           continue;
         }
         this.releaseFormattedStuff.push({type: "text", content: tempTxtHolder})
-        tempTxtHolder = element + '\n'
+        tempTxtHolder = line + '\n'
         continue;
       }
-    tempTxtHolder = tempTxtHolder + element + '\n'
+    tempTxtHolder = tempTxtHolder + line + '\n'
     }
 
     if (tempTxtHolder !== '') {
@@ -116,5 +111,9 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
     console.log(this.releaseFormattedStuff)
   }
 
+  isImage(line:string): boolean{
+    if(line.startsWith("!["))
+    return /!\[.*?\]\((https?:\/\/[^)]+)\)/.test(line);
+  }
 
 }
