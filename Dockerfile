@@ -16,7 +16,6 @@ RUN ng build --configuration=production
 FROM nginx:1.28.0 AS nginx
 
 COPY --from=build /usr/src/app/dist/runefx-website/browser /usr/share/nginx/html
-RUN apt-get update
 
 COPY nginx.conf  /etc/nginx/nginx.conf
 
