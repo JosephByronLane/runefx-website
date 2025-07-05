@@ -3,8 +3,7 @@
 }
 
 .faq-container {
-    max-width: 80%;
-    margin: 5vh auto;
+    margin: 5vh var(--base-site-padding-w);
     padding: 2vh 0;
 }
 
@@ -18,7 +17,6 @@
     padding: 4vh 2vw;
     background-color: var(--lighter-dark);
     border-radius: var(--border-radius);
-    max-width: 60%;
 }
 
 .contact-section h3 {
