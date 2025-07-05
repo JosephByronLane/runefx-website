@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RenderComponent } from './pages/render/render.component';
-import { AboutComponent } from './pages/about/about.component';
 import { ItemDetailComponent } from './pages/item-detail/item-detail.component';
 import { VfxComponent } from './pages/vfx/vfx.component';
 import { RunicRendererComponent } from './pages/runic-renderer/runic-renderer.component';
@@ -71,11 +70,6 @@ export const routes: Routes = [
         path: 'try-buy',     
         title:'RuneFX | Try/Buy',
         component: TryBuyComponent 
-    },
-    { 
-        path: 'about',     
-        title:'RuneFX | About',
-        component: AboutComponent 
     },
     { 
         path: '404', 
