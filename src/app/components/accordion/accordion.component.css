@@ -4,18 +4,48 @@
 
 .accordion-item {
   overflow: hidden;
+  margin-bottom: 1.5vh;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid transparent;
 }
 
 .accordion-header {
   cursor: pointer;
-  padding: 10px;
+  padding: 1.5vh 2vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion-header h3 {
+  font-size: 2.2vh;
+  font-weight: 500;
 }
 
 .accordion-body {
-  padding: 10px;
+  padding: 2vh 2.5vw;
+  line-height: 1.6;
+  font-size: 1.8vh;
+}
+
+.arrow {
+  transform: rotate(-90deg);
+  transition: all 0.3s ease-in-out;
+  font-size: 1.8vh;
+  font-weight: bold;
+}
+
+.accordion-item:hover {
+  border: 1px solid var(--hover-text-color);
+}
+
+.accordion-item:hover .accordion-header h3 {
+  color: var(--hover-text-color);
+}
+
+.accordion-header:has(+ .accordion-body) .arrow {
+  transform: rotate(90deg);
 }
 
 
