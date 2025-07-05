@@ -98,34 +98,29 @@
                 {
                     "id": "3",
                     "displayString": "Gallery",
-                    "scrollTo": "Gallery"
+                    "scrollTo": "under-construction"
                 }
             ]
         },
         {
             "id": "5",
             "title": "Support",
-            "link": "/under-construction",
+            "link": "/support",
             "items": [                
                 {
                     "id": "1",
-                    "displayString": "Documentation",
-                    "scrollTo": "Documentation"
+                    "displayString": "FAQ",
+                    "link": "support/faq"
                 },
                 {
                     "id": "2",
-                    "displayString": "FAQ",
-                    "scrollTo": "FAQ"
-                },
-                {
-                    "id": "3",
                     "displayString": "Forums",
                     "scrollTo": "Forums"
                 },
                 {
-                    "id": "4",
+                    "id": "3",
                     "displayString": "Sample Scenes",
-                    "scrollTo": "SampleScenes"
+                    "scrollTo": "under-construction"
                 }
             ]
         }

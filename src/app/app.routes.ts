@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RenderComponent } from './pages/render/render.component';
-import { AboutComponent } from './pages/about/about.component';
 import { ItemDetailComponent } from './pages/item-detail/item-detail.component';
 import { VfxComponent } from './pages/vfx/vfx.component';
 import { RunicRendererComponent } from './pages/runic-renderer/runic-renderer.component';
@@ -18,6 +17,8 @@ import { ForumComponent } from './pages/forum/forum.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { ReleasesComponent } from './pages/releases/releases.component';
 import { ReleaseDetailComponent } from './pages/release-detail/release-detail.component';
+import { SupportComponent } from './pages/support/support.component';
+import { FaqComponent } from './pages/faq/faq.component';
 
 export const routes: Routes = [
     {
@@ -71,11 +72,6 @@ export const routes: Routes = [
         component: TryBuyComponent 
     },
     { 
-        path: 'about',     
-        title:'RuneFX | About',
-        component: AboutComponent 
-    },
-    { 
         path: '404', 
         title:'RuneFX | Not found',
         component: NotFoundComponent },
@@ -118,6 +114,16 @@ export const routes: Routes = [
         path: 'releases/:id',
         title: 'RuneFX | Release', //title is set in the release detail component
         component: ReleaseDetailComponent
+    },
+    {
+        path: 'support',
+        title: 'RuneFX | Support',
+        component: SupportComponent
+    },
+    {
+        path: 'support/faq',
+        title: "RuneFX | FAQ",
+        component: FaqComponent
     },
     {
         path: 'under-construction',

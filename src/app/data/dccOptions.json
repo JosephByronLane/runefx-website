@@ -1,9 +1,0 @@
-{
-    "dccOptions": [
-        { "value": "maya", "label": "Maya" },
-        { "value": "blender", "label": "Blender" },
-        { "value": "houdini", "label": "Houdini" },
-        { "value": "katana", "label": "Katana" }
-    ]
-}
-
