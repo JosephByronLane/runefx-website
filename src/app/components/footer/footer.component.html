@@ -3,9 +3,9 @@
         <div class="footer-content sdr-text">
           @for (item of footerItems; track $index) {
             @if (item.items.length > 0) {
-            <app-footer-item
-              [item]="item"
-            ></app-footer-item>
+              <app-footer-item
+                [item]="item"
+              ></app-footer-item>
             }
           }
         </div>

@@ -30,8 +30,8 @@
     align-items: top; 
     gap: .2vw;
     background-color: var(--darker-dark);
-    padding: 4vh 20vw 4vh 10vw
-  }
+    padding: 4vh calc(var(--base-site-padding-w)*2) 4vh var(--base-site-padding-w) 
+}
 
 
   

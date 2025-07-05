@@ -23,9 +23,11 @@ a{
 
     --header-size:8vh;
 
-    --base-site-margin-top:2vh;
-    --base-site-margin-lr:2vh 2vw;
+    --base-site-margin-top:5vh;
+    --base-site-margin-lr:5vh 5vw;
     --base-site-padding-lr:var(var(--base-site-margin-lr));
+    --base-site-padding-h: 5vh;
+    --base-site-padding-w: 5vw;
 
     --border-radius: .5vh;
 
