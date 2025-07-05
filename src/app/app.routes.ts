@@ -19,6 +19,7 @@ import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { ReleasesComponent } from './pages/releases/releases.component';
 import { ReleaseDetailComponent } from './pages/release-detail/release-detail.component';
 import { SupportComponent } from './pages/support/support.component';
+import { FaqComponent } from './pages/faq/faq.component';
 
 export const routes: Routes = [
     {
@@ -124,6 +125,11 @@ export const routes: Routes = [
         path: 'support',
         title: 'RuneFX | Support',
         component: SupportComponent
+    },
+    {
+        path: 'support/faq',
+        title: "RuneFX | FAQ",
+        component: FaqComponent
     },
     {
         path: 'under-construction',
