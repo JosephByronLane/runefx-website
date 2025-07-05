@@ -1,0 +1,10 @@
+<div class="footer-section">
+    <h4 (click)="navbarTools.scrollToTop(); temploading.switchWithLoading('vfx', '',1000)">{{item.title}}</h4>
+    <ul class="list-container">
+        @for (subItem of item.items; track $index) {
+            <li>
+                <a class="list-item"(click)="temploading.switchWithLoading('vfx','2024',1000)">{{subItem.displayString}}</a>
+            </li>
+        }
+    </ul>
+</div>
