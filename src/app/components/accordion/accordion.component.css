@@ -1,0 +1,21 @@
+*{
+    color: var(--primary-text-color);
+}
+
+.accordion-item {
+  overflow: hidden;
+}
+
+.accordion-header {
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-body {
+  padding: 10px;
+}
+
+

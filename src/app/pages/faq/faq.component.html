@@ -1,1 +1,28 @@
-<p>faq works!</p>
+<app-background-video
+  [title]="'FAQ'"
+  [description]="'Common questions and answers about RuneFX and our commercially available product.s'"
+  [height]="'40vh'" 
+  [src]="'https://cdnb.artstation.com/p/assets/images/images/059/233/947/large/mauger-baptiste-crop-01.jpg?1675933147'"
+  [scale]="1.4"
+  [video]="0"
+  [button]="1"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-135"
+  [textAlignment]="'left'" 
+  [titleFontSize]="'4vh'" 
+  [descriptionFontSize]="'2vh'"
+  [ButtonText]="'Learn more.'"
+  [textWidth]="'40%'"
+  [ButtonLink]="'/support/faq'" 
+  [showTextWhenResponsive]="true"
+>  
+</app-background-video>
+
+@for (item of accordionItems; track $index) {
+    <app-accordion  
+    [title]="item.title"
+    [content]="item.content">
+    </app-accordion>
+}
+
