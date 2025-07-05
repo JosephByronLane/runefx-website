@@ -18,6 +18,7 @@ import { ForumComponent } from './pages/forum/forum.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { ReleasesComponent } from './pages/releases/releases.component';
 import { ReleaseDetailComponent } from './pages/release-detail/release-detail.component';
+import { SupportComponent } from './pages/support/support.component';
 
 export const routes: Routes = [
     {
@@ -118,6 +119,11 @@ export const routes: Routes = [
         path: 'releases/:id',
         title: 'RuneFX | Release', //title is set in the release detail component
         component: ReleaseDetailComponent
+    },
+    {
+        path: 'support',
+        title: 'RuneFX | Support',
+        component: SupportComponent
     },
     {
         path: 'under-construction',
