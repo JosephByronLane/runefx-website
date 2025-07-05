@@ -76,27 +76,27 @@ a{
 }
 
 .base-margin{
-    margin: 2vh 2vw;
+    margin: var(--base-site-padding-h) var(--base-site-padding-w);
 }
 
 .base-margin-lr{
-    margin: 0vh 2vw;
+    margin: 0vh var(--base-site-padding-w);
 }
 
 .base-margin-tb{
-    margin: 2vh 0vw;
+    margin: var(--base-site-padding-h) 0vw;
 }
 
 .base-padding-lr{
-    padding: 0vh 2vw;
+    padding: 0vh var(--base-site-padding-w);
 }
 
 .base-padding-tb{
-    padding: 2vh 0vw;
+    padding: var(--base-site-padding-h) 0vw;
 }
 
 .base-padding{
-    padding: 2vh 2vw !important;
+    padding: var(--base-site-padding-h) var(--base-site-padding-w) !important;
 }
 
 .base-bradius{
