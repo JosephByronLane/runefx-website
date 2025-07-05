@@ -5,7 +5,6 @@ import { RButtonComponent } from '../../components/rbutton/rbutton.component';
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { RouterModule } from '@angular/router';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
-import dccOptions from '../../data/dccOptions.json';
 import { AuthService } from '../../services/auth.service';
 import { LoggerService, LogLevel } from '../../services/logger.service';
 import { ProfileSidebarComponent } from '../../components/profile-sidebar/profile-sidebar.component';
