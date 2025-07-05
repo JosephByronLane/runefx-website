@@ -110,7 +110,7 @@
                 {
                     "id": "1",
                     "displayString": "FAQ",
-                    "scrollTo": "support/faq"
+                    "link": "support/faq"
                 },
                 {
                     "id": "2",
