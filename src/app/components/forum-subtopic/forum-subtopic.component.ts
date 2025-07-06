@@ -15,11 +15,18 @@ import { ForumService } from '../../services/forum.service';
 export class ForumSubtopicComponent implements OnChanges{
   @Input() subtopic: ISubtopicDetailAPIResponse = {} as ISubtopicDetailAPIResponse;
 
+  isResponsive:boolean = false
+
   constructor(
     public readonly utilsService: UtilsService, 
     public readonly loadingService: IntermitentLoadingService,
     public readonly forumService: ForumService,
-    private readonly title: Title) {}
+    private readonly title: Title) {
+
+    if(window.screen.width < 1600){
+      this.isResponsive = true;
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.title.setTitle(`RuneFX | ${this.subtopic.title}`);
