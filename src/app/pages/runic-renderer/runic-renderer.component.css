@@ -31,7 +31,7 @@
 }
 .basic-holder-4-2 {
     display: grid;
-    grid-template-columns: repeat(4, 1fr) ;
+    grid-template-columns: repeat(2, 1fr) ;
     grid-template-rows: auto; 
     height: 10%;
     gap: 2vw; 
