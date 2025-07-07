@@ -1,5 +1,5 @@
 <div class="dropdown-container" (mouseenter)="isOpen = true" (mouseleave)="isOpen = false">
-    <a class="dropdown-label" (click)="tempLoadingService.switchWithLoading(dropdownItem.link, '', 2000, true, $event)"  [ngClass]="{'home-tab': dropdownItem.title.toLowerCase() === 'home'}" [href]="dropdownItem.link">
+    <a class="dropdown-label" (click)="handleClick( $event, dropdownItem)"  [ngClass]="{'home-tab': dropdownItem.title.toLowerCase() === 'home'}" [href]="dropdownItem.link">
       <span>{{ dropdownItem.title }}</span>
     </a>
     @if (dropdownItem.items.length > 0) {

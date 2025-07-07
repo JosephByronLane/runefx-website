@@ -47,6 +47,16 @@ export class DropdownComponent {
   @Input() dropdownAnimationDuration: number = 0.25
   @Input() isOpen: boolean = false;
 
+  handleClick(event: MouseEvent, dropdownItem: IDropdownItem){
+    console.log("handleclick clicked", this.isOpen)
+    if (!this.isOpen) {
+      this.isOpen=true
+      return;
+    } 
+    this.tempLoadingService.switchWithLoading(dropdownItem.link, '', 2000, true, event)
+  }
+
+
   constructor(public tempLoadingService: IntermitentLoadingService) {}
 
 }

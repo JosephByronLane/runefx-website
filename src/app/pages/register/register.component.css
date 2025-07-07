@@ -6,7 +6,7 @@
     background-color: var(--darker-dark);
     width: 100%;
     max-width: 100vw;
-    padding: 2vh 20vw;
+    padding: 2vh var(--base-site-padding-w);
     box-sizing: border-box;
   }
   

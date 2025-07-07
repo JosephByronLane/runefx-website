@@ -5,6 +5,7 @@
 .community-grid{
     background-color: var(--darker-dark);
     padding: var(--base-site-margin-lr);
+    padding-top: 0 !important;
     display: flex;
     gap: 1vh 1.5vw;
     justify-content: space-between;

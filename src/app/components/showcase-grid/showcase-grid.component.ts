@@ -25,6 +25,7 @@ export class ShowcaseGridComponent {
 
 
   ngOnInit(): void {
+    console.log(this.diff)
     if (this.diff>.7){
       this.gridX = 2;
       this.gridY = 3;

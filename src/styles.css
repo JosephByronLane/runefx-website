@@ -18,7 +18,7 @@ a{
 
     --darker-dark: hsl(212, 3%, 8%); /*rgb(22,22,22);*/
     --lighter-dark: hsl(212, 3%, 13%); /*rgb(32,32,32);*/
-    --header-text-size: 1.5vw;
+    --header-text-size: 2.5vh;
     --header-home-text-size: 4vh;
 
     --header-size:8vh;
