@@ -183,7 +183,6 @@
     top: 0; 
     right: 0;
     overflow-y: auto;
-    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-menu ul {

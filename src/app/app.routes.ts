@@ -19,6 +19,7 @@ import { ReleasesComponent } from './pages/releases/releases.component';
 import { ReleaseDetailComponent } from './pages/release-detail/release-detail.component';
 import { SupportComponent } from './pages/support/support.component';
 import { FaqComponent } from './pages/faq/faq.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
     {
@@ -124,6 +125,11 @@ export const routes: Routes = [
         path: 'support/faq',
         title: "RuneFX | FAQ",
         component: FaqComponent
+    },
+    {
+        path: 'login',
+        title: 'RuneFX | Login',
+        component: LoginComponent
     },
     {
         path: 'under-construction',
