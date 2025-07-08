@@ -3,6 +3,7 @@ import { IDropdownItem } from '../../interfaces/IDropdownItem';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-navbar-accordion',
@@ -32,7 +33,7 @@ export class NavbarAccordionComponent {
   isAcordionOpen: boolean = false;
   constructor (
     private readonly temploading: IntermitentLoadingService,
-
+    private readonly mainNavbarComponent: NavbarComponent
   ){}
   
   toggleAccordion(id: string) {
@@ -40,6 +41,7 @@ export class NavbarAccordionComponent {
   }
 
   navigateAndClose(path:string, id:string, duration:number) {
+    this.mainNavbarComponent.closeMenu()
     this.isAcordionOpen = false;
     this.temploading.switchWithLoading(path, id, duration, true);    
   }

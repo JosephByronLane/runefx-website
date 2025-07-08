@@ -1,1 +1,51 @@
-<p>login works!</p>
+<app-background-video
+  [title]="'Login'"
+  [description]="'Do you remember your password?.'"
+  [height]="'40vh'" 
+  [src]="'https://cdnb.artstation.com/p/assets/images/images/022/975/507/large/vincent-mactiernan-223b60de-efc4-41b9-9649-6f6693e7ecb1.jpg?1577551298'"
+  [scale]="1.2"
+  [video]="0"
+  [BottomPadding]="'1%'"
+  [scrollFactor]=".5"
+  [initialOffset]="-50"
+  [showTextWhenResponsive]="true"
+  [halveTextSize]="false"
+  [credits]="'© Vincent MacTiernan'"
+  >
+</app-background-video>
+
+<div class="login-container">
+  <div class="login-form-container">
+    <div class="login-form">
+      <h2>Login to Your Account</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="Username" [(ngModel)]="username" name="username" #userInput>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password" [(ngModel)]="password" name="password" #passInput>
+        </div>
+        <div class="error-container">
+          <p class="error-message" *ngIf="errorMessage">{{errorMessage}}</p>
+        </div>
+        <div class="login-actions">
+          <app-rbutton 
+            [buttonText]="'Login'" 
+            [buttonAlignment]="'center'" 
+            [isExternalWebpage]="false" 
+            [doesNavigate]="false" 
+            [onClickFunction]="attemptLogin" 
+            [disabled]="isAttemptingLogin" 
+            [disabledText]="'Logging in...'">
+          </app-rbutton>
+        </div>
+      </form>
+      <div class="login-options">
+        <div class="register-option">
+          <span class="option-link">No account yet? </span>
+          <a (click)="navigateToRegister()" class="link">Register here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
