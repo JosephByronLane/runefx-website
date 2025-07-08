@@ -44,6 +44,4 @@ export class RButtonComponent {
       this.temploading.switchWithLoading(this.sendTo, '', this.loadingDuration, this.scrollToTop, event);
     }
   }
-
-
 }

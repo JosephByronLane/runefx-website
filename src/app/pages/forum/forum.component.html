@@ -23,6 +23,12 @@
                 <p class="bold-text sdr-text">></p>
             }
         }
+        @empty {
+            <app-error-warning-ox
+            [errorMessage]="'There are no content to laod right now.'"
+            [errorDescription]="'Try logging in and creating something!.'"
+            />
+    }
     </div>
     <!-- handles viewing a subtopics posts -->
     @if (isThereSpecificSubtopic && subtopicData) {
@@ -31,6 +37,7 @@
             [subtopic]="subtopicData"        
         />       
     }
+
 
     @if (isThereSpecificPost && postData) {
         <app-forum-post
@@ -49,6 +56,12 @@
             />
                 
         }
+        @empty {
+            <app-error-warning-ox
+        [errorMessage]="'There are no content to laod right now.'"
+        [errorDescription]="'Try logging in and creating something!.'"
+        />
+    }
     }
 
 

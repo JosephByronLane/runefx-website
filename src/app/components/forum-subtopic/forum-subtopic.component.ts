@@ -4,11 +4,12 @@ import { UtilsService } from '../../services/utils.service';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { Title } from '@angular/platform-browser';
 import { ForumService } from '../../services/forum.service';
+import { ErrorWarningOxComponent } from '../error-warning-ox/error-warning-ox.component';
 
 @Component({
   selector: 'app-forum-subtopic',
   standalone: true,
-  imports: [],
+  imports: [ErrorWarningOxComponent],
   templateUrl: './forum-subtopic.component.html',
   styleUrl: './forum-subtopic.component.css'
 })
