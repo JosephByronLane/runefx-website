@@ -48,7 +48,6 @@ export class DropdownComponent {
   @Input() isOpen: boolean = false;
 
   handleClick(event: MouseEvent, dropdownItem: IDropdownItem){
-    console.log("handleclick clicked", this.isOpen)
     if (!this.isOpen) {
       this.isOpen=true
       return;

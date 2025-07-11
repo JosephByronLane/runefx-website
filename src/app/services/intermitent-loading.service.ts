@@ -26,16 +26,12 @@ export class IntermitentLoadingService {
   }
 
   setLoadingFalse (){
-    console.log("set isloading to false")
     this.isLoading.next(false);   
-     console.log(this.isLoading.getValue())
 
   }
 
   setLoadingTrue(){
-    console.log("set isloading to true")
     this.isLoading.next(true)
-    console.log(this.isLoading.getValue())
   }
 
    showLoadingScreen() { 
@@ -74,7 +70,6 @@ export class IntermitentLoadingService {
     }     
 
     if (!this.enabled) {
-      console.log('disabled');
       return;
     }
 
@@ -85,9 +80,7 @@ export class IntermitentLoadingService {
     this.showLoadingScreen()
 
     setTimeout(() => {
-      console.log("switching navigating")
       this.router.navigate([routePath]).then((_) => { 
-        console.log("nagivated")
         if (scrollToId || scrollToId === '') {
           setTimeout(() => { 
             const element = document.getElementById(scrollToId);
@@ -96,7 +89,7 @@ export class IntermitentLoadingService {
         }
 
       }).catch((error) => {
-        console.log("error in intermitent setvice", error)
+        console.error("error in intermitent setvice", error)
         this.hideLoadingScreen();
         this.setLoadingFalse();
 
@@ -105,7 +98,6 @@ export class IntermitentLoadingService {
 
     setTimeout(()=>{
       if(!this.isLoading.getValue()){
-        console.log("api wasnt triggered, hiding")
         setTimeout(()=>{
           this.hideLoadingScreen()      
         },1500)

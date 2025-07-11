@@ -108,7 +108,6 @@ export class NavbarComponent {
   ngOnInit() {
     this.authService.isAuthenticatedValue.subscribe(isAuth => {
       this.isLoggedIn = isAuth;
-      console.log(this.isLoggedIn)
     });
     
     this.authService.CurrentUserValue.subscribe(user => {

@@ -13,7 +13,6 @@ export function intermitentLoadingInterceptor(req:HttpRequest<any>, next:HttpHan
 
   intermitentLoading.setLoadingTrue()
   initialLoading.setisAPIRequestTrue()
-  console.log("loading interceptor")
   
   return next(req).pipe(
     finalize(() => {
@@ -24,13 +23,11 @@ export function intermitentLoadingInterceptor(req:HttpRequest<any>, next:HttpHan
             initialLoading.setisAPIRequestFalse();
             initialLoading.hideInitialLoadingScreen();
           }, 500)
-          console.log("hiding loading scrren interceptor")
       } catch (error) {
         intermitentLoading.setLoadingFalse();
         intermitentLoading.hideLoadingScreen();
         initialLoading.setisAPIRequestFalse();
         initialLoading.hideInitialLoadingScreen();
-        console.error("Error hiding loading screen:", error);
       }
     })
   );

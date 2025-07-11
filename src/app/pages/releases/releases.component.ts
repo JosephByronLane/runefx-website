@@ -24,12 +24,10 @@ export class ReleasesComponent implements OnInit {
   ngOnInit(): void {
     this.releasesService.getReleases().subscribe({
       next: (releases: IReleaseAPIResponse[]) => {
-        console.log(releases);
         this.releases = releases;
       },
       error: (error: any) => {
         this.errorLoading=true;
-        console.error('Error fetching releases:', error);
       }
     });
   }

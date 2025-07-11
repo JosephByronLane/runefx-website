@@ -52,7 +52,6 @@ export class InitialLoadingService {
       element?.classList.remove("disabled")  
       setTimeout(()=>{
         if(!this.isAPIRequest.getValue()){
-          console.log("no api request, hiding main")
           this.hideInitialLoadingScreen()
         }
       }, 1000)

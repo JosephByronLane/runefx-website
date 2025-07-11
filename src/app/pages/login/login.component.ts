@@ -44,9 +44,7 @@ export class LoginComponent {
       next: (msg) => {
         this.loggerService.log(LogLevel.Debug, "Login successful");
         this.isAttemptingLogin = false;
-        console.log('-----------------------------------------------------')
-        console.log(msg)        
-        console.log('-----------------------------------------------------')
+
       },
       error: (error) => {
         this.isAttemptingLogin = false;
