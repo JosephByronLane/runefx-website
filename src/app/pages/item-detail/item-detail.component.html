@@ -19,30 +19,30 @@
             <ng-template>
                 <div class="sdr-text">
                     <!-- god  bless these ifs -->
-                    @if(item.director.length > 0 && item.director !== ""){
+                    @if(item.director.length > 0 && item.director){
                         <p>Director:</p>
                         <p>{{ item.director.join(', ') }}</p>
                     }
 
-                    @if(item.producers.length > 0 && item.producers !=""){                        
+                    @if(item.producers.length > 0 && item.producers){                        
                         <br>
                         <p>Series Executive Producers:</p>
                         <p>{{ item.producers.join(', ') }}</p>
                     }
 
-                    @if(item.vfxsupe.length > 0 && item.vfxsupe !=""){
+                    @if(item.vfxsupe.length > 0 && item.vfxsupe){
                         <br>
                         <p>RuneFX Visual Effects Supervisor:</p>
                         <p>{{ item.vfxsupe.join(', ') }}</p>
                     }
 
-                    @if(item.vfxprod.length > 0  && item.vfxprod !=""){
+                    @if(item.vfxprod.length > 0  && item.vfxprod){
                         <br>
                         <p>RuneFX Visual Effects Producer:</p>
                         <p>{{ item.vfxprod.join(', ') }}</p>
                     }
 
-                    @if(item.animsupe.length > 0 && item.animsupe !=""){
+                    @if(item.animsupe.length > 0 && item.animsupe){
                         <br>
                         <p>RuneFX Animation Supervisor:</p>
                         <p>{{ item.animsupe.join(', ') }}</p>

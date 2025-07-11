@@ -10,6 +10,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { RButtonComponent } from '../../components/rbutton/rbutton.component';
 import { VfxDataFetcherService } from '../../services/vfx-data-fetcher.service';
+import { VfxService } from '../../services/vfx.service';
+import { IVFXItem } from '../../interfaces/IVFXItem';
 
 
 @Component({
@@ -20,19 +22,28 @@ import { VfxDataFetcherService } from '../../services/vfx-data-fetcher.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
-  ShowcaseList:any[] = [];
-  constructor(private loadingScreenService: IntermitentLoadingService, private VfxData: VfxDataFetcherService) {}
+  public ShowcaseList:IVFXItem[] = []
+  constructor(private loadingScreenService: IntermitentLoadingService, private VfxData: VfxService) {}
   
   ratio = window.screen.width/window.screen.height;
   ratioR = Number((this.ratio).toFixed(1))
   diff = Math.abs(this.ratio-1.7);
   
   ngOnInit(): void {
-    this.ShowcaseList = this.VfxData.getAllItems();
-    this.ShowcaseList = this.ShowcaseList.slice(0, 9)
+    let sliceNumber: number = 9 
     if(this.diff>.7){
-      this.ShowcaseList = this.ShowcaseList.slice(0, 6)
+       sliceNumber = 6
     }
+      this.VfxData.getShows()
+      .subscribe({
+        next: (value: IVFXItem[]) =>{
+          this.ShowcaseList = value.slice(0,sliceNumber);
+        },
+        error: (error) =>{
+          console.log(error);
+        }
+      })    
+
   }
 
 }
