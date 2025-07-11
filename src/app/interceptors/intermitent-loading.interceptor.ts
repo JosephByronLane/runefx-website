@@ -3,26 +3,33 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpHandlerFn } f
 import { BehaviorSubject, Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { IntermitentLoadingService } from '../services/intermitent-loading.service';
+import { InitialLoadingService } from '../services/initial-loading.service';
 
 
 
 export function intermitentLoadingInterceptor(req:HttpRequest<any>, next:HttpHandlerFn): Observable<HttpEvent<any>>{
-  const loadingService = inject(IntermitentLoadingService);
+  const intermitentLoading = inject(IntermitentLoadingService);
+  const initialLoading = inject(InitialLoadingService)
 
-  loadingService.setLoadingTrue()
+  intermitentLoading.setLoadingTrue()
+  initialLoading.setisAPIRequestTrue()
   console.log("loading interceptor")
   
   return next(req).pipe(
     finalize(() => {
       try {        
           setTimeout(()=>{
-            loadingService.setLoadingFalse();
-            loadingService.hideLoadingScreen();
+            intermitentLoading.setLoadingFalse();
+            intermitentLoading.hideLoadingScreen();
+            initialLoading.setisAPIRequestFalse();
+            initialLoading.hideInitialLoadingScreen();
           }, 500)
           console.log("hiding loading scrren interceptor")
       } catch (error) {
-        loadingService.setLoadingFalse();
-        loadingService.hideLoadingScreen();
+        intermitentLoading.setLoadingFalse();
+        intermitentLoading.hideLoadingScreen();
+        initialLoading.setisAPIRequestFalse();
+        initialLoading.hideInitialLoadingScreen();
         console.error("Error hiding loading screen:", error);
       }
     })

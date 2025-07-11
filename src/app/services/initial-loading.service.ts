@@ -51,8 +51,11 @@ export class InitialLoadingService {
       const element = document.getElementById('splash-screen-initial');
       element?.classList.remove("disabled")  
       setTimeout(()=>{
-        this.hideInitialLoadingScreen()
-      }, 2000)
+        if(!this.isAPIRequest.getValue()){
+          console.log("no api request, hiding main")
+          this.hideInitialLoadingScreen()
+        }
+      }, 1000)
     }
   }
 
@@ -64,10 +67,20 @@ export class InitialLoadingService {
   private subscription: Subscription;
 
 
+  private isAPIRequest = new BehaviorSubject<boolean>(false)
+  public isAPIRequest$ = this.isAPIRequest.asObservable();
+
+
+  setisAPIRequestFalse(){
+    this.isAPIRequest.next(false)
+  }
+  setisAPIRequestTrue(){
+    this.isAPIRequest.next(true)
+  }
   constructor(private router: Router) {
     this.subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-             this._browserRefresh.next(!this.router.navigated);
+        this._browserRefresh.next(!this.router.navigated);
       }
     });
   }

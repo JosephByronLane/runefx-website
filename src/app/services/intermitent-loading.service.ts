@@ -106,10 +106,11 @@ export class IntermitentLoadingService {
     setTimeout(()=>{
       if(!this.isLoading.getValue()){
         console.log("api wasnt triggered, hiding")
-        this.hideLoadingScreen()
-
+        setTimeout(()=>{
+          this.hideLoadingScreen()      
+        },1500)
       }
-    },1000)
+    },500)
 
 
 
