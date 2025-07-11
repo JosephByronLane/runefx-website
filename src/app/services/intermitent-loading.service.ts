@@ -25,7 +25,7 @@ export class IntermitentLoadingService {
   ) {
   }
 
-setLoadingFalse (){
+  setLoadingFalse (){
     console.log("set isloading to false")
     this.isLoading.next(false);   
      console.log(this.isLoading.getValue())

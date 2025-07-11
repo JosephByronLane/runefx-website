@@ -27,23 +27,24 @@ export class AppComponent {
   browserRefresh?: boolean;
   subscription: Subscription;
 
-  showLoadingScreen: boolean = environment.production  
 
   //DEBUG FLAG TO STOP INITIAL LOADING SCREEN
+  showLoadingScreen: boolean = true 
+
 
   
 
   constructor(public initloader: InitialLoadingService, private readonly router: Router, private activatedRoute: ActivatedRoute, private readonly location: Location) {
     //subscribe to refreshed to get updates on it
     //if it updates, and its true then show the bigass loading screen
-    this.subscription = this.initloader.browserRefresh.subscribe((refreshed) => {
+    this.subscription = this.initloader.browserRefresh$ .subscribe((refreshed) => {
       if(refreshed){
         let pathString = location.path();
         //when we're on home, the url is undefined because its literally nothing, so when that happens we replace it with '' so it finds the correct value.
         pathString = pathString.split('/')[1];
         if (pathString===undefined) pathString=''
         if(this.showLoadingScreen){
-          initloader.startLoadingScreen(pathString, refreshed);         
+          initloader.showInitialLoadingScreen(pathString, refreshed);       
 
         }
       }
