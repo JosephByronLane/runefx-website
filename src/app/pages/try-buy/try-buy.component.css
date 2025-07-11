@@ -5,6 +5,13 @@
     height: 10%; 
     background-color: var(--darker-dark);
 }
+*{
+    color: var(--primary-text-color)
+}
+
+.container{
+    padding: 2vh 2vw;
+}
 
 .little-padding{
     padding-bottom: 2vh;
