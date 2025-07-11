@@ -13,11 +13,11 @@
 <app-info-box 
     class="dont-fucking-go-over"
     title="The most advanced renderer yet." 
-    desc="Runic Renderer is RuneFXs multi-award-winning, state-of-the-art production physically based, unbiased spectral renderer, which has been used on many award winning feature films such as . Runic Renderer was developed at RuneFX and is in continuous active development and includes an extensive library of production-tested, physically based materials, a USD Hydra render delegate, multi-machine and cloud rendering via the Arras distributed computation framework.">
+    desc="Runic Renderer is RuneFXs multi-award-winning, state-of-the-art production physically based, unbiased spectral renderer, which has been used on many award winning feature films. Runic Renderer was developed at RuneFX and is in continuous active development and includes an extensive library of production-tested, physically based materials, a USD Hydra render delegate, multi-machine and cloud rendering via the Arras distributed computation framework.">
 </app-info-box>
 <app-background-video
   [title]="'GPU-Accelerated'"
-  [description]="'Runic Renderer is a powerful GPU-accelerated renderer, built to meet the specific demands of contemporary high-end production rendering. Tailored to support creative individuals and studios of every size, Redshift offers a suite of powerful features and integrates with industry standard CG applications.'"
+  [description]="'Runic Renderer is a powerful GPU-accelerated renderer, built to meet the specific demands of contemporary high-end production rendering. Tailored to support creative individuals and studios of every size, Runic Renderer offers a suite of powerful features and integrates with industry standard CG applications.'"
   [height]="'50vh'" 
   [src]="'https://maxonassets.imgix.net/images/hirokazu-yokohara-rising-ruins.jpg?fm=webp&auto=format,compress&w=1920&h=1014&ar=16:9&fit=clip&crop=faces&q=80'"
   [scale]="1.3"
@@ -55,7 +55,7 @@
 
 <app-background-video
   [title]="'Characters'"
-  [description]="'Every artist wants their renders to look great, but also need results quickly because faster rendering means more time to be creative and deliver client revisions. There are many amazing renderers out there that can bring your 3D creations to life, but only Redshift consistently delivers both breathtaking speed and remarkable imagery.'"
+  [description]="'Every artist wants their renders to look great, but also need results quickly because faster rendering means more time to be creative and deliver client revisions. There are many amazing renderers out there that can bring your 3D creations to life, but only Runic Renderer consistently delivers both breathtaking speed and remarkable imagery.'"
   [height]="'50vh'" 
   [src]="'https://assets.renderman.pixar.com/Tutorials/crocostrich/crocostrich-banner.jpg'"
   [scale]="1.3"
@@ -74,7 +74,7 @@
 
 <app-background-video
   [title]="'Fully realistic glass caustics.'"
-  [description]="'Every artist wants their renders to look great, but also need results quickly because faster rendering means more time to be creative and deliver client revisions. There are many amazing renderers out there that can bring your 3D creations to life, but only Redshift consistently delivers both breathtaking speed and remarkable imagery.'"
+  [description]="'Caustics takes a lot of calculations and is one of the more difficult things we can ask of a GPU. With Runic Renderer, we can handle this phenomenon easily thanks to our dedicated caustics solver allowing artists to get the maximum impact without spending the rest of their lives rendering.'"
   [height]="'50vh'" 
   [src]="'https://i.imgur.com/XbuWO5K.png'"
   [scale]="1.3"
@@ -141,22 +141,10 @@ desc="">
 
 <app-info-box title="DDC Compatibility" class="dcc" id="credits" >
     <ng-template>
-        <div class="sdr-text basic-holder-4-1">
+        <div class="sdr-text ">
             <div class="dcc-holder">
-                <p>Maya</p>
-                <img src="https://pixar-community-production.s3-us-west-1.amazonaws.com/Icons/maya-icon.png" alt="">
-            </div>
-            <div class="dcc-holder">
-                <p>Houdini</p>
-                <img src="https://pixar-community-production.s3-us-west-1.amazonaws.com/Icons/houdini-icon.png" alt="">
-            </div>
-            <div class="dcc-holder">
-                <p>Katana</p>
-                <img src="https://pixar-community-production.s3-us-west-1.amazonaws.com/Icons/katana-icon.png" alt="">
-            </div>
-            <div class="dcc-holder">
-                <p>Blender</p>
-                <img src="https://pixar-community-production.s3-us-west-1.amazonaws.com/Icons/blender-icon.png" alt="">
+                <p>SideFX Solaris</p>
+                <img src="https://media.sidefx.com/uploads/products/whats-new-18-5/lookdev/lookdev_solaris.svg" alt="">
             </div>
         </div>
     </ng-template>
@@ -173,21 +161,21 @@ desc="">
         <app-info-box 
         class="dont-fucking-go-over"
         title="CPU" 
-        desc="Runic Renderer require a processor with AVX capabilities.">
+        desc="Runic Renderer requires a processor with AVX2 capabilities.">
         </app-info-box>
     </div>
     <div class="dcc-holder">
         <app-info-box 
         class="dont-fucking-go-over"
         title="GPU" 
-        desc="Runic Renderer needs a minimum of 4GB of RAM and XPU needs a minimum of 11GB of VRAM. Maximum RAM depends on scene complexity.">
+        desc="Runic Renderer needs a minimum of 4GB of RAM and a minimum of 11GB of VRAM. Maximum RAM depends on scene complexity.">
         </app-info-box>
     </div>
     <div class="dcc-holder">
         <app-info-box 
         class="dont-fucking-go-over"
         title="Memory" 
-        desc="Runic Renderer and the Optix denoiser require an Nvidia graphics card of Maxwell architecture or above. ">
+        desc="Runic Renderer and the Optix denoiser require an Nvidia graphics card of Turing architecture or above. ">
         </app-info-box>
     </div>
     <div class="dcc-holder">

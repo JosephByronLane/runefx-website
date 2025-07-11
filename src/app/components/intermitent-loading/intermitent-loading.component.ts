@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
-import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-intermitent-loading',

@@ -1,0 +1,32 @@
+{
+"allAccordionItems": [
+    { 
+      "title": "What is RuneFX?", 
+      "content": "RuneFX is a company dedicated to bla bla bla... Ok, for real though this is my graduation project and this whole shbang is fake. A big website that looks real, and it worked because I graduated no problemo."
+    },
+    { 
+      "title": "How can I get my artwork featured on the webpage?", 
+      "content": "So, al of the art on the webpage were nice artworks I found on arstation. I own none of the rights and they all belong to their original authors. Back to the fake-company formal speak."
+    },
+    { 
+      "title": "Which operating systems does RuneFX support?", 
+      "content": "RuneFX is available for Windows 10/11, and Linux (Ubuntu 20.04 LTS and newer)."
+    },
+    { 
+      "title": "Do you offer educational licenses?", 
+      "content": "Yes, we offer special educational pricing for academic institutions. If you are an individual student you may use the Non commercial liscence freely (Assuming you aren't doing any commercial work)."
+    },
+    { 
+      "title": "What are the system requirements for Runic Renderer?", 
+      "content": "Minimum: 64-bit CPU, 16GB RAM, 5GB storage, OpenGL 4.0 compatible GPU with 4GB VRAM. Recommended: 8+ core CPU, 32GB RAM, 10GB SSD storage, NVIDIA RTX/AMD equivalent GPU with 8GB+ VRAM. For optimal performance on complex projects, we recommend higher specifications."
+    },
+    { 
+      "title": "Can I transfer my license between computers?", 
+      "content": "Yes, standard licenses can be activated on up to 2 devices simultaneously for the same user. You can deactivate on one machine to free up an activation slot. Studio licenses include more flexible deployment options based on your specific agreement."
+    },
+    { 
+      "title": "How do I report bugs or request features?", 
+      "content": "You can report bugs through our forum under the Issues section of the appropiate topic."
+    }
+  ]
+}

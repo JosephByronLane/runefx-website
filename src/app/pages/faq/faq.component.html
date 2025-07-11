@@ -1,0 +1,42 @@
+<app-background-video
+  [title]="'Frequently Asked Questions'"
+  [description]="'Find answers to common questions about RuneFX products, licensing, technical details, and support.'"
+  [height]="'40vh'" 
+  [src]="'https://cdnb.artstation.com/p/assets/images/images/059/233/947/large/mauger-baptiste-crop-01.jpg?1675933147'"
+  [scale]="1.4"
+  [video]="0"
+  [BottomPadding]="'.5vh'"
+  [scrollFactor]=".25"
+  [initialOffset]="-135"
+  [textAlignment]="'left'" 
+  [textWidth]="'95%'"
+  [showTextWhenResponsive]="true"
+>  
+</app-background-video>
+
+<app-info-box  id="Who"
+    class="dont-fucking-go-over"
+    title="How can we help you?" 
+    desc="Browse our FAQ sections below to find answers to the most common questions about our products and services. Can't find what you're looking for? Contact our support team.">
+</app-info-box> 
+
+<div class="faq-container">
+  <div class="accordion-section">
+    @for (item of accordionItems; track $index) {
+      <app-accordion
+        [title]="item.title"
+        [content]="item.content">
+      </app-accordion>
+    }
+  </div>
+
+  <div class="contact-section">
+    <h3>Still have questions?</h3>
+    <p>Our support team is here to help with any questions you may have about our products, licensing, or technical issues.</p>
+    <app-rbutton
+    [buttonText]="'Contact us'"
+    [sendTo]="'404'"
+    ></app-rbutton>
+  </div>
+</div>
+

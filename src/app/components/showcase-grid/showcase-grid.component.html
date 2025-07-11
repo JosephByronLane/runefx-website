@@ -1,4 +1,4 @@
-<div class="grid-container" [style.grid-template-columns]="generateGridColumns()" [style.grid-template-rows]="generateGridRows()">
+<div class="grid-container" [style.grid-template-columns]="generateGridColumns()" >
     @for (item of showcaseList; track $index) {
       <app-simple-box [item]="item" class="showcasebox"></app-simple-box>
     } @empty {

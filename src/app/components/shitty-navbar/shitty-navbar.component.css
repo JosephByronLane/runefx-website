@@ -8,7 +8,7 @@
     justify-content: space-between; 
     margin: 1vh 18vw 1vh 16vw;
     z-index: 1;
-    background-color: var(--triangle-after);
+    background-color: var(--lighter-dark);
     width: 100%;
 }
 
@@ -30,7 +30,6 @@
     color: white;
     cursor: pointer;
     transition: color .5s;
-    /* font-size: var(--header-text-size);  */
     flex-grow: 1; 
     text-align: center; 
 }
@@ -50,7 +49,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--triangle-before);;
+    background: var(--darker-dark);
     clip-path: polygon(0 0, 100.5% , -0.5% 100%);
  }
  .triangle-container::after {
@@ -60,13 +59,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--triangle-after);
+    background: var(--lighter-dark);
     clip-path: polygon(100% 0, 102% 100%, -2% 100%);
 }
 
 .black-part{
     width: 24.5vw;
-    background: var(--triangle-before);
+    background: var(--darker-dark);
 }
 
 
@@ -76,7 +75,7 @@
     position: sticky;
     top: 7.6vh;
     z-index: 9997;
-    background: var(--triangle-after);
+    background: var(--lighter-dark);
 
  }
  .shittier-navbar ul li a{

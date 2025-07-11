@@ -29,58 +29,15 @@
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     align-items: top; 
     gap: .2vw;
-    background-color: var(--triangle-before);
-    padding: 4vh 20vw 4vh 10vw
-  }
-  
-  .footer-section h4 {
-    margin-top: 0;
-    transition: color 0.3s ease; 
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    font-size: 2vh;
-  }
-  
-  .footer-section ul {
-    list-style: none; 
-    padding: 0;
-    margin: 0; 
-  }
-  
-  .footer-section ul li a {
-    color: white; 
-    text-decoration: none; 
-    transition: color 0.3s ease; 
-    font-family: 'Open Sans', sans-serif;
-    font-weight: normal;
-    font-size: 1.5vh;
-  }
-  
-.footer-section h4:hover {
-    color: var(--hover-text-color); 
-    cursor: pointer;
-
+    background-color: var(--darker-dark);
+    padding: 4vh calc(var(--base-site-padding-w)*2) 4vh var(--base-site-padding-w) 
 }
 
-  .footer-section ul li a:hover {
-    color: var(--hover-text-color); 
-    cursor: pointer;
 
-  }
-  
-  .footer-social {
-    display: flex;
-    gap: 10px; 
-  }
-  
-  .footer-social a {
-    text-decoration: none; 
-    color: white;
-  }
   
 .footer-container{
     display: flex;
-    background-color: var(--triangle-after);
+    background-color: var(--lighter-dark);
 
 }
 

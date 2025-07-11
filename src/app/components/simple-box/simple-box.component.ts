@@ -13,16 +13,18 @@ import { NavbarStuffService } from '../../services/navbar-stuff.service';
 })
 export class SimpleBoxComponent {
   @Input() item: any; 
-  constructor(private router: Router, private loader:IntermitentLoadingService, private dataFetches :VfxDataFetcherService, public navbarTools:NavbarStuffService) {}
+  constructor(private router: Router, public readonly loader:IntermitentLoadingService, private dataFetches :VfxDataFetcherService, public navbarTools:NavbarStuffService) {}
 
   localDataFetcher :any; //im lazy, judge me.
 
   //we remove the dashes and replace them with spaces, since thats how they are in the json
-  navigateToDetails(): void {
-    const itemSlug = this.dataFetches.createSlug(this.item.title); //indian youtube man said these were called slugs.
-   // this.router.navigate(['/vfx', itemSlug]);  
-    this.loader.switchWithLoading('/vfx/' + itemSlug,'', 1000);
+  navigateToDetails(event: MouseEvent): void {
+    const itemSlug = this.dataFetches.createSlug(this.item.title); 
+    this.loader.switchWithLoading('/vfx/' + itemSlug,'', 1000, true, event);
   }
 
+  getItemSlug(): string {
+    return this.dataFetches.createSlug(this.item.title);
+  }
 
 }

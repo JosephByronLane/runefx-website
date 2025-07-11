@@ -1,0 +1,11 @@
+<div class="accordion-item base-bradius">
+  <div class="accordion-header light-bg" (click)="toggle()">
+    <h3>{{ title }}</h3>
+    <span class="arrow">&lt;</span>
+  </div>
+  @if (isOpen) {
+    <div class="accordion-body dark-bg">
+        <p>{{ content }}</p>
+    </div>
+  }
+</div>

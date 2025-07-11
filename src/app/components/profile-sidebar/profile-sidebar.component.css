@@ -1,0 +1,133 @@
+.profile-sidebar-container {
+    position: fixed;
+    top: var(--header-size);
+    right: 0;
+    height: calc(100vh - var(--header-size));
+    background-color: var(--lighter-dark);    
+    z-index: 1;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .arrow-container {
+    position: absolute;
+    top: 10%;
+    left:-1.5vw;
+    width: 1.5vw;
+    height: 4vh;
+    background-color: var(--lighter-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    z-index: 1;
+  }
+  
+  .arrow {
+    color: white;
+    font-size: 18px;
+  }
+  
+  .sidebar-content {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+    width: 12.5vw;
+  }
+
+  .login-form h3 {
+    color: white;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: var(--border-radius);
+  }
+
+
+
+.error-container {
+  height: 2vh;
+}
+.error-message {
+  color: #ff4d4d;
+  padding: .2vh .2vw;
+  border-radius: var(--border-radius);
+  font-size: 1.5vh;
+}
+.login-options {
+    margin-top: 20px;
+    font-size: 0.9em;
+  }
+  
+  .option-link {
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .link {
+    color: var(--hover-text-color);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .profile-info h3 {
+    color: white;
+    margin-bottom: 20px;
+    width: 100%;
+    border-bottom: 1px solid var(--hover-text-color);
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-options .option {
+    padding: 10px 0;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  .profile-info{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile-picture{
+    margin: 1vw 2vh;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+  }
+  .profile-picture img{
+    width: 100%;
+  }
+  
+  .profile-options .option:hover {
+    color: var(--hover-text-color);
+  }
+
+  .dimmed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -3;
+  }
+.disabled{
+  display: none;
+}

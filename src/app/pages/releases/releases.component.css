@@ -1,0 +1,29 @@
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vh 1.5vw;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: flex-end;
+    justify-items: center;
+}
+
+.box-size{
+    width: 100%;
+    height: auto;
+}
+
+@media(max-width: 1500px){
+    .grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media(max-width: 750px){
+    .grid{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

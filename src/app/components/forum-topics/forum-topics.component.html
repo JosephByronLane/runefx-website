@@ -1,0 +1,50 @@
+<div class="header-container" >
+    <a class="logo-container" (click)="loadingService.switchWithLoading('forum/'+topic.id+'/'+topic.slug, '', 2000, true, $event)" [href]="'forum/'+topic.id+'/'+topic.slug">
+        <h1 class="title-text hover">{{topic.title}}</h1>
+    </a>
+
+    <div class="triangle-container"></div>
+
+    <div class="post-data">
+        @if (!isResponsive) {
+            <div>
+                <p class="bold-text sdr-text">Post Count</p>
+            </div>
+            <div>
+                <p class="bold-text sdr-text">Latest Post</p>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="subtopic-container">
+    @for (subtopic of topic.subtopics; track $index) {
+        <div class="subtopic-item">
+            <a class="subtopic-data" (click)="loadingService.switchWithLoading('forum/'+topic.id+'/'+topic.slug+'/'+subtopic.id+'/'+subtopic.slug, '', 2000, true, $event)" [href]="'forum/'+topic.id+'/'+topic.slug+'/'+subtopic.id+'/'+subtopic.slug">
+                <h2 class="bold-text sm-title-text hover">{{subtopic.title}}</h2>
+                <p  class="forum-subtopic-dsc secondary-text">{{subtopic.description}}</p>
+            </a>
+            <div class="post-data-info-container">
+                @if (!isResponsive) {
+                    <div class="subtopic-post-count">
+                        <p class="bold-text sdr-text">{{subtopic.post_count}}</p>
+                    </div>
+                    <!--
+                    Hi if youre reading this! I know this is a cheat, and thats because profile page is not implemented yet, but i want to give the impression that it is lmao.
+                    I also dont think i will implement them, i've burnt out on this forum side of things and just want to be done with it  
+                    -->
+                    <a class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('not-allowed', '', 2000, true, $event)" [href]="'not-allowed'">
+                        <div class="subtopic-latest-post-user">
+                            <img src={{subtopic.latest_post_data.user_pfp_url}} alt="User profile">
+                        </div>
+                        <div class="subtopic-latest-post-text">
+                            <p class="bold-text sdr-text hover break-word">{{forumService.truncateUserName(subtopic.latest_post_data.username)}}</p>
+                            <p class="secondary-text">{{utilsService.timeAgo(subtopic.latest_post_data.latest_post_time)}}</p>
+                        </div>
+                    </a>   
+                }
+ 
+            </div>     
+        </div>
+    }
+</div>

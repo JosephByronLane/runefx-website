@@ -2,7 +2,7 @@
     color:var(--primary-text-color)
 }
 
-.button-container {
+.a-container {
     display: flex;
   }
   
@@ -18,7 +18,7 @@
     justify-content: flex-end;
   }
   
-  button {
+  a {
     padding: 1vh 5vw;
     margin: 2vh 0;
     transition: all 0.3s ease;
@@ -29,9 +29,23 @@
     border-radius: var(--border-radius);
   }
   
-  button:hover {
+  a:hover {
     background-color: transparent;
     color: var(--hover-text-color);
     border: 1px solid var(--hover-text-color);
+  }
+  
+  a.disabled, a:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #ccc;
+    border-color: #999;
+    color: #666;
+  }
+  
+  a.disabled:hover, a:disabled:hover {
+    background-color: #ccc;
+    border-color: #999;
+    color: #666;
   }
   

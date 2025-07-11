@@ -27,13 +27,10 @@ export class ShittyNavbarComponent {
 
 
   ngOnInit(): void {
-    console.log(this.diff);
     this.gridColumnCount = this.navItems.length;
-    console.log(this.gridColumnCount);
 
     if (this.diff>1){
       this.gridColumnCount /=2;
-      console.log(this.gridColumnCount);
 
     }
 }

@@ -1,14 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { IDropdownItem } from '../../interfaces/IDropdownItem';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { state, style, trigger, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-dropdown',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.css',
   animations: [
@@ -36,23 +35,27 @@ export class DropdownComponent {
         {
           id: '1',
           displayString: 'bruh',
-          link: '/'
+          scrollTo: 'bruh',
         },
         {
           id: '2',
           displayString: 'man',
-          link: '/'
+          scrollTo: 'bruh',
         },                 
       ]
   }
   @Input() dropdownAnimationDuration: number = 0.25
   @Input() isOpen: boolean = false;
 
-  constructor(private tempLoadingService: IntermitentLoadingService) {}
-  //TODO: make a helper function to navigate to internal and external links
-  navigate(path:string, id:string, duration:number) {
-    this.tempLoadingService.switchWithLoading(path, id, duration);
+  handleClick(event: MouseEvent, dropdownItem: IDropdownItem){
+    if (!this.isOpen) {
+      this.isOpen=true
+      return;
+    } 
+    this.tempLoadingService.switchWithLoading(dropdownItem.link, '', 2000, true, event)
   }
 
+
+  constructor(public tempLoadingService: IntermitentLoadingService) {}
 
 }

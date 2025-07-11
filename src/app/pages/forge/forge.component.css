@@ -3,5 +3,12 @@
     grid-template-columns: repeat(2, 1fr) ;
     grid-template-rows: auto; 
     height: 10%; 
-    background-color: var(--triangle-before);
+    background-color: var(--darker-dark);
+}
+
+
+@media(max-width: 750px){
+    .basic-holder-3{
+        grid-template-columns: repeat(1, 1fr) ;
+    }
 }

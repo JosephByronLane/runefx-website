@@ -2,23 +2,32 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+}
+a{
+    text-decoration: none;
     color: var(--primary-text-color);
 }
-
 :root {
-    --primary-text-color: white;
-    --primary-bg-color: #333; /*og is 333*/
-    --hover-text-color: #7aa3d1;
-    --triangle-before: rgb(22,22,22); /*rgb(22,22,22);*/
-    --triangle-after: rgb(32,32,32); /*rgb(32,32,32);*/
-    --header-text-size: 1.5vw;
+    --primary-text-color: hsl(0, 0%, 95%);
+    --secondary-text-color: hsl(0, 0%, 70%);
+    --tertiary-text-color: hsl(212, 3%, 30%);
+
+    --hover-text-color: hsl(212, 49%, 65%);
+
+    --darker-dark: hsl(212, 3%, 8%); /*rgb(22,22,22);*/
+    --lighter-dark: hsl(212, 3%, 13%); /*rgb(32,32,32);*/
+    --header-text-size: 2.5vh;
     --header-home-text-size: 4vh;
 
     --header-size:8vh;
 
-    --base-site-margin-top:2vh;
-    --base-site-margin-lr:2vh 2vw;
+    --base-site-margin-top:5vh;
+    --base-site-margin-lr:5vh 5vw;
     --base-site-padding-lr:var(var(--base-site-margin-lr));
+    --base-site-padding-h: 5vh;
+    --base-site-padding-w: 5vw;
 
     --border-radius: .5vh;
 
@@ -27,20 +36,31 @@
     --responsive-threshhold: 1150px
   }
 
-*{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: normal;
-}
 
 .title-text{
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: 4vh;
 }
+.sm-title-text{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 2.5vh;
+}
 .sdr-text{
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
-    font-size: 2vh;
+    font-size: 1.8vh;
+}
+.sm-sdr-text{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.5vh;
+}
+.sm-text{
+    font-size: 1vh;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
 }
 
 .footer-text{
@@ -48,8 +68,137 @@
     font-weight: normal;
     font-size: 2.5vh;
 }
+
 .footer-title{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 3vh;
 }
+
+.base-margin{
+    margin: var(--base-site-padding-h) var(--base-site-padding-w);
+}
+
+.base-margin-lr{
+    margin: 0vh var(--base-site-padding-w);
+}
+
+.base-margin-tb{
+    margin: var(--base-site-padding-h) 0vw;
+}
+
+.base-padding-lr{
+    padding: 0vh var(--base-site-padding-w);
+}
+
+.base-padding-tb{
+    padding: var(--base-site-padding-h) 0vw;
+}
+
+.base-padding{
+    padding: var(--base-site-padding-h) var(--base-site-padding-w) !important;
+}
+
+.base-bradius{
+    border-radius: var(--border-radius);
+}
+
+.dark-bg{
+    background-color: var(--darker-dark);
+}
+.light-bg{
+    background-color: var(--lighter-dark);
+}
+
+.bold-text{
+    font-weight: 700;
+}
+
+.color-hover{
+      transition: color 0.5s;
+}
+.pointy-cursor{
+    cursor: pointer;
+}
+.color-hover:hover{
+    color: var(--hover-text-color);
+}
+
+/*no need for primary text since all text by default is primary text*/
+.secondary-text{
+    color: var(--secondary-text-color) !important;
+}
+.tertiary-text{
+    color: var(--tertiary-text-color) !important;
+}
+
+
+
+/* markdown component styles */
+
+.md {
+    font-size: 120%;
+}
+
+.md h1,
+.md h2{
+    font-size: 150%;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.md p:has(img){
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+.md p {
+    text-align: justify;
+}
+
+.md p img{
+    margin-top: 4vh;
+    border-radius: var(--border-radius);
+    width:40%;
+}
+
+@media(max-width: 750px){
+    .md p img{
+        margin-top: 4vh;
+        border-radius: var(--border-radius);
+        width:80%;
+    }
+}
+
+.md p:has(img) + p {
+    text-align: center;
+    margin-bottom: 5vh
+}
+.md h1,
+.md h2,
+.md h3,
+.md h4,
+.md h5 {
+    font-weight: 700 !important;
+}
+
+.md h1 strong,
+.md h2 strong,
+.md h3 strong,
+.md h4 strong,
+.md h5 strong {
+    font-weight: 700 !important;
+}
+
+.md h1:not(:first-child), 
+.md h2:not(:first-child),
+.md h3:not(:first-child),
+.md h4:not(:first-child),
+.md h5:not(:first-child) 
+{
+    margin-top: 2vh;
+    margin-bottom: 1.5vh;
+}
+

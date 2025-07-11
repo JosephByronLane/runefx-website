@@ -1,9 +1,5 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { NoopAnimationPlayer, animate, state, style, transition, trigger, ɵBrowserAnimationBuilder} from '@angular/animations';
+import { Component,} from '@angular/core';
 import { CommonModule } from '@angular/common'; 
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { RouterModule } from '@angular/router';
 
 @Component({

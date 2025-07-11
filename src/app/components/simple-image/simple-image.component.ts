@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { RouterLink } from '@angular/router';
 import { NavbarStuffService } from '../../services/navbar-stuff.service';
 
 @Component({
   selector: 'app-simple-image',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './simple-image.component.html',
   styleUrl: './simple-image.component.css'
 })
@@ -22,10 +21,10 @@ export class SimpleImageComponent implements OnInit{
 
   //dom sanitizer cause angular or something  complained about unsafe websites
   constructor(
-    private sanitizer: DomSanitizer,
+    private readonly sanitizer: DomSanitizer,
      public scroller:NavbarStuffService,
-     private el: ElementRef,
-     private renderer: Renderer2
+     private readonly el: ElementRef,
+     private readonly renderer: Renderer2
     ) {}
 
   //sanitize the url so that  bitchass don't complain
