@@ -43,8 +43,6 @@ export class InitialLoadingService {
     }, 1000)
   }
 
-
-
   //unhides the thingy by removing the disabled class, and the whole animaiton plays
   showInitialLoadingScreen(path: string, refreshed:boolean):void{
     if(refreshed){
