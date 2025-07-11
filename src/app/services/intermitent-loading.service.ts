@@ -36,7 +36,7 @@ export class IntermitentLoadingService {
 
    showLoadingScreen() { 
     this.loadingscreenelement = document.getElementById('splash-screen-intermitent'); 
-    if (!this.loadingscreenelement && !this.enabled){
+    if (!this.loadingscreenelement || !this.enabled){
       this.logger.log(LogLevel.Error, 'Loading screen element not found or loading disabled');
       return;
     }
