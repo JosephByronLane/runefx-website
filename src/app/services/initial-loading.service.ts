@@ -54,7 +54,7 @@ export class InitialLoadingService {
         if(!this.isAPIRequest.getValue()){
           this.hideInitialLoadingScreen()
         }
-      }, 1000)
+      }, 3000)
     }
   }
 

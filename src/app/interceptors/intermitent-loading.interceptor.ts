@@ -24,6 +24,7 @@ export function intermitentLoadingInterceptor(req:HttpRequest<any>, next:HttpHan
             initialLoading.hideInitialLoadingScreen();
           }, 500)
       } catch (error) {
+        console.error(error)
         intermitentLoading.setLoadingFalse();
         intermitentLoading.hideLoadingScreen();
         initialLoading.setisAPIRequestFalse();
