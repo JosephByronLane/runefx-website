@@ -98,7 +98,7 @@
                 {
                     "id": "3",
                     "displayString": "Gallery",
-                    "scrollTo": "under-construction"
+                    "link": "under-construction"
                 }
             ]
         },
@@ -115,12 +115,12 @@
                 {
                     "id": "2",
                     "displayString": "Forums",
-                    "scrollTo": "Forums"
+                    "link": "forum"
                 },
                 {
                     "id": "3",
                     "displayString": "Sample Scenes",
-                    "scrollTo": "under-construction"
+                    "link": "under-construction"
                 }
             ]
         }

@@ -212,7 +212,6 @@ export class ForumComponent implements OnInit {
       .subscribe({
         next: (value: IPostAPIResponse) =>{
           this.postData = value;
-          console.log('postData', this.postData);
         },
         error: (error) =>{  
           console.log(error);

@@ -6,4 +6,21 @@
     margin: auto;
     padding: 10vh 0;
     color: var(--primary-text-color);
+    max-width: 100%;
   }
+
+
+@media(max-width: 750px){
+  .error-loading-topics{
+      padding: 5vh 5vw;
+      width: 80%;
+      text-align: center;
+  }
+
+  .error-loading-topics h1{
+    width: 100%;
+  }
+  .error-loading-topics p{
+    width: 100%;
+  }
+}

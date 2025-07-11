@@ -6,6 +6,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { provideMarkdown } from 'ngx-markdown';
+import { intermitentLoadingInterceptor } from './interceptors/intermitent-loading.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -14,7 +15,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(
       withInterceptors([
-        authInterceptor
+        authInterceptor,
+        intermitentLoadingInterceptor
       ])
     ),
     provideMarkdown()

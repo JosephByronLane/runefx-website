@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilsService } from './utils.service';
-import { LoggerService } from './logger.service';
+import { LoggerService, LogLevel } from './logger.service';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,73 +17,96 @@ export class IntermitentLoadingService {
   private readonly enabled:boolean=true; //disables the loading screen, ej switching without the loading screen appearing
 
 
+  private isLoading = new BehaviorSubject<boolean>(false);
+
+  loading$ = this.isLoading.asObservable();
+
   constructor(private readonly router: Router, private  readonly utils: UtilsService, private readonly logger: LoggerService
   ) {
   }
 
-  private showLoadingScreen() { //man i love css
-    this.loadingscreenelement = document.getElementById('splash-screen-intermitent'); //im 90% sure angular has a way to do this but im too lazy to look it up
-    this.loadingscreenelement.classList.remove("disabled");
-    this.loadingscreenelement.classList.add("fade-in")
+  setLoadingFalse (){
+    this.isLoading.next(false);   
+
   }
 
-  private hideLoadingScreen() {
+  setLoadingTrue(){
+    this.isLoading.next(true)
+  }
+
+   showLoadingScreen() { 
+    this.loadingscreenelement = document.getElementById('splash-screen-intermitent'); 
+    if (!this.loadingscreenelement || !this.enabled){
+      this.logger.log(LogLevel.Error, 'Loading screen element not found or loading disabled');
+      return;
+    }
+    this.logger.log(LogLevel.Info, 'Showing loading screen');
+    this.loadingscreenelement.classList.remove("disabled");
+    this.loadingscreenelement.classList.add("fade-in");
+  }
+
+   hideLoadingScreen() {
+    if (!this.enabled) return;
+    
     setTimeout(() => {
       if(!this.keepOn){
         this.loadingscreenelement = document.getElementById('splash-screen-intermitent');
-        this.loadingscreenelement.classList.add("fade-out");
-        this.loadingscreenelement.classList.remove("fade-in");
+        if (this.loadingscreenelement) {
+          this.logger.log(LogLevel.Info, 'Hiding loading screen');
+          this.loadingscreenelement.classList.add("fade-out");
+          this.loadingscreenelement.classList.remove("fade-in");
+          this.isLoading.next(false);
+        } else {
+          this.logger.log(LogLevel.Error, 'Loading screen element not found when trying to hide');
+        }
       }
-
     }, 500);
   }
 
   
   switchWithLoading(routePath: string, scrollToId?: string, duration: number = 3000, scrollToTop: boolean = true, event?: MouseEvent, ) {
     if (event && !event.ctrlKey && !event.metaKey && event.button === 0) {
-      event.preventDefault(); // Prevent default navigation
-    } 
-    
-    
-    console.log('switchWithLoading', routePath);
+      event.preventDefault();
+    }     
+
     if (!this.enabled) {
-      console.log('disabled');
       return;
     }
+
     
-    console.log('scrollToTop', scrollToTop);
     if(scrollToTop){
       this.utils.scrollToTop();
     }
-
-    console.log('showLoadingScreen');
-    this.showLoadingScreen(); //we enable loading screen
+    this.showLoadingScreen()
 
     setTimeout(() => {
-      console.log('navigating to', routePath);
-      this.router.navigate([routePath]).then((success) => { //switch to it
-        console.log('success', success);
-        console.log('navigated to', routePath);
-
-        if (scrollToId || scrollToId === '') { //see if we gotta scroll somewhere
+      this.router.navigate([routePath]).then((_) => { 
+        if (scrollToId || scrollToId === '') {
           setTimeout(() => { 
-            console.log('scrolling to', scrollToId);
             const element = document.getElementById(scrollToId);
             element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 0); // scroll to shit
+          }, 0); 
         }
 
-        console.log('navigated to', routePath);
       }).catch((error) => {
-        
-        console.log('error', error);
+        console.error("error in intermitent setvice", error)
         this.hideLoadingScreen();
-      });
-    }, 500); 
+        this.setLoadingFalse();
 
-    setTimeout(() => {
-      this.hideLoadingScreen();
-    }, duration); //then hide loading screen 
+      });
+    }, 200);
+
+    setTimeout(()=>{
+      if(!this.isLoading.getValue()){
+        setTimeout(()=>{
+          this.hideLoadingScreen()      
+        },1500)
+      }
+    },500)
+
+
+
     
+     
   }
 }

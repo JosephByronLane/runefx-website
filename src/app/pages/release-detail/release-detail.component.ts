@@ -85,7 +85,6 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
           content:titleText, 
           extras: {desc: descText}}
         )
-        console.log(result)
         index +=1;
         continue;
       }
@@ -111,10 +110,8 @@ export class ReleaseDetailComponent implements OnChanges, OnInit{
       buffer += line + '\n'
 
     }
-    console.log(result)
     flushBuffer()
 
-    console.log(this.releaseFormattedStuff)
 
     return result
   }

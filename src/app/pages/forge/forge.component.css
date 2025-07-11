@@ -5,3 +5,10 @@
     height: 10%; 
     background-color: var(--darker-dark);
 }
+
+
+@media(max-width: 750px){
+    .basic-holder-3{
+        grid-template-columns: repeat(1, 1fr) ;
+    }
+}

@@ -24,6 +24,7 @@ export class RButtonComponent {
   constructor(private readonly temploading: IntermitentLoadingService, public utils: UtilsService) {}
 
   handleClick(event: MouseEvent){
+    event.preventDefault();
     if(this.disabled) return;
     
     if(this.doesNavigate){
@@ -43,6 +44,4 @@ export class RButtonComponent {
       this.temploading.switchWithLoading(this.sendTo, '', this.loadingDuration, this.scrollToTop, event);
     }
   }
-
-
 }

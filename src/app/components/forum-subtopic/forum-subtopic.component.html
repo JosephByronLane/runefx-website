@@ -7,12 +7,14 @@
 
 
     <div class="post-data">
-        <div>
-            <p class="bold-text sdr-text">Replies</p>
-        </div>
-        <div>
-            <p class="bold-text sdr-text">Latest Reply</p>
-        </div>
+        @if (!isResponsive) {
+            <div>
+                <p class="bold-text sdr-text">Replies</p>
+            </div>
+            <div>
+                <p class="bold-text sdr-text">Latest Reply</p>
+            </div>
+        }
     </div>
 </div>
 
@@ -30,33 +32,42 @@
                 </div>
             </div>
             <div class="post-data-info-container">
-                <div class="subtopic-post-count">
-                    <p class="bold-text sdr-text">{{posts.amount_of_comments}}</p>
-                </div>
-                @if (posts.latest_comment_data.latest_post_time != "0") {
-                    <!--
-                    Hi if youre reading this! I know this is a cheat, and thats because profile page is not implemented yet, but i want to give the impression that it is lmao.
-                    I also dont think i will implement them, i've burnt out on this forum side of things and just want to be done with it  
-                    -->
-                    <a class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('not-allowed', '', 2000, true, $event)" [href]="'not-allowed'">
-                        <div class="subtopic-latest-post-user">
-                            <img src={{posts.latest_comment_data.user_pfp_url}} alt="User profile">
-                        </div>
-                        <div class="subtopic-latest-post-text">
-                            <p class="bold-text sdr-text hover break-word">{{forumService.truncateUserName(posts.latest_comment_data.username)}}</p>
-                            <p class="sm-sdr-text secondary-text">{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
-                        </div>
-                    </a>  
+                @if (!isResponsive) {
+                    <div class="subtopic-post-count">
+                        <p class="bold-text sdr-text">{{posts.amount_of_comments}}</p>
+                    </div>
+                    @if (posts.latest_comment_data.latest_post_time != "0") {
+                        <!--
+                        Hi if youre reading this! I know this is a cheat, and thats because profile page is not implemented yet, but i want to give the impression that it is lmao.
+                        I also dont think i will implement them, i've burnt out on this forum side of things and just want to be done with it  
+                        -->
+                        <a class="subtopic-latest-post-data pointy-cursor" (click)="loadingService.switchWithLoading('not-allowed', '', 2000, true, $event)" [href]="'not-allowed'">
+                            <div class="subtopic-latest-post-user">
+                                <img src={{posts.latest_comment_data.user_pfp_url}} alt="User profile">
+                            </div>
+                            <div class="subtopic-latest-post-text">
+                                <p class="bold-text sdr-text hover break-word">{{forumService.truncateUserName(posts.latest_comment_data.username)}}</p>
+                                <p class="sm-sdr-text secondary-text">{{utilsService.timeAgo(posts.latest_comment_data.latest_post_time)}}</p>
+                            </div>
+                        </a>  
+                    }
+                    @else {
+                            <a class="subtopic-latest-post-data " >
+                            <div class="subtopic-latest-post-text">
+                                <p class="bold-text sdr-text hover break-word">No replies.</p>
+                            
+                            </div>
+                        </a>  
+                    }
                 }
-                @else {
-                        <a class="subtopic-latest-post-data " >
-                        <div class="subtopic-latest-post-text">
-                            <p class="bold-text sdr-text hover break-word">No replies.</p>
-                           
-                        </div>
-                    </a>  
-                }
+
             </div>     
         </div>
+    }
+    @empty {
+        <app-error-warning-ox
+        [errorMessage]="'There is no content to laod right now.'"
+        [errorDescription]="'Try logging in and creating something!.'"
+        />
     }
 </div>

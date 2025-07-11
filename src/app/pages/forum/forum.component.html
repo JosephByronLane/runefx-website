@@ -23,6 +23,12 @@
                 <p class="bold-text sdr-text">></p>
             }
         }
+        @empty {
+            <app-error-warning-ox
+            [errorMessage]="'There is no content to laod right now.'"
+            [errorDescription]="'Try logging in and creating something!.'"
+            />
+    }
     </div>
     <!-- handles viewing a subtopics posts -->
     @if (isThereSpecificSubtopic && subtopicData) {
@@ -31,6 +37,7 @@
             [subtopic]="subtopicData"        
         />       
     }
+
 
     @if (isThereSpecificPost && postData) {
         <app-forum-post
@@ -51,13 +58,13 @@
         }
     }
 
-
+    <!-- if topics are empty, then straight up nothing shows up. -->
+    @if (errorLoadingTopics) {
+        <app-error-warning-ox
+        class=""
+            [errorMessage]="'There seems to be an error loading the forum content.'"
+            [errorDescription]="'Please try again later or contact an administrator.'"
+        />
+    }
 </div>
 
-<!-- if topics are empty, then straight up nothing shows up. -->
-@if (errorLoadingTopics) {
-    <app-error-warning-ox
-        [errorMessage]="'There seems to be an error loading the forum content.'"
-        [errorDescription]="'Please try again later or contact an administrator.'"
-    />
-}

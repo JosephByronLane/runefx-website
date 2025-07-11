@@ -74,9 +74,7 @@ export class ProfileSidebarComponent {
   toggleSidebar() {
     this.authService.toggleProfileSidebar()
   }
-
-
-
+  
   ngOnInit() {
     this.loggerService.log(LogLevel.Debug, `Profile Sidebar - Initialized`)
     this.authService.CurrentUserValue.subscribe(

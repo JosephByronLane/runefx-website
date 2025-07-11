@@ -204,3 +204,35 @@
     width: 100%;
     max-width: 15vw;
 }
+@media(max-width: 1500px){
+    .triangle-container::after {
+        background: var(--darker-dark);
+    }
+    .post-data{
+        background: var(--darker-dark) !important;
+        width: 100%;
+    }  
+}
+
+@media(max-width: 750px){
+    .post-data{
+        width: 0vw !important;
+        padding: 0 !important;
+    }
+    .triangle-container{
+        width: 0vw !important;
+
+    }
+
+    .logo-container{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+    .logo-container h1{
+        justify-self: center;
+        align-self: center;
+        text-align: center;
+    }
+}

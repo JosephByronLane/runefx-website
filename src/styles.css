@@ -18,7 +18,7 @@ a{
 
     --darker-dark: hsl(212, 3%, 8%); /*rgb(22,22,22);*/
     --lighter-dark: hsl(212, 3%, 13%); /*rgb(32,32,32);*/
-    --header-text-size: 1.5vw;
+    --header-text-size: 2.5vh;
     --header-home-text-size: 4vh;
 
     --header-size:8vh;
@@ -162,6 +162,14 @@ a{
     margin-top: 4vh;
     border-radius: var(--border-radius);
     width:40%;
+}
+
+@media(max-width: 750px){
+    .md p img{
+        margin-top: 4vh;
+        border-radius: var(--border-radius);
+        width:80%;
+    }
 }
 
 .md p:has(img) + p {

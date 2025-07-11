@@ -1,5 +1,8 @@
 <div class="header-container" >
-    <div class="logo-container"  (click)="utils.scrollToTop(); navigate('','',7000)">
+    <div class="logo-container"  (click)="utils.scrollToTop(); temploading.switchWithLoading(
+                         ' ', 
+                         ' ', 
+                         2000, true); isMenuOpen = false;">
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261.48 95.63" >
             <defs>
               <style>
@@ -37,13 +40,42 @@
       </div>
     </div>
 </div>
-<div class="mobile-menu"[ngClass]="{'open': isMenuOpen}" appClickOutside (appClickOutside)="isMenuOpen = false">
+<div class="mobile-menu" [@slideInOut]="menuState" [ngClass]="{'open': isMenuOpen}" appClickOutside (appClickOutside)="closeMenu()">
   <ul>
-      <li class="home-tab"><a routerLinkActive="active-link"  (click)="utils.scrollToTop(); navigateAndClose('', '', 7000)">Home</a></li>
-      <li><a class="title-nav" routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('vfx', '', 500)">Showcase</a></li>
-      <li><a class="title-nav" routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('render', '', 2000)">Technologies</a></li>
-      <li><a class="title-nav" routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('try-buy', '', 5000)">Try/Buy</a></li>
-      <li><a class="title-nav" routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('about', '', 500)">About</a></li>
+    <li class="home-tab">
+      <a routerLinkActive="active-link" (click)="utils.scrollToTop(); navigateAndClose('', '', 7000)">Home</a>
+    </li>
+    
+    @for (item of dropdownItems; track item.id) {
+      <app-navbar-accordion
+      [item]="item"
+      ></app-navbar-accordion>
+    }
+    
+    <li class="accordion-menu-item">    
+      <div class="accordion-content" [@accordionAnimation]="isAccordionOpen('profile') ? 'open' : 'closed'">
+        <div class="mobile-profile-content">
+          @if (isLoggedIn) {            
+            <div class="mobile-profile-info">
+              <div class="mobile-avatar">
+                <img [src]="currentUser?.profile_picture_url || 'assets/default-avatar.png'" alt="Profile">
+              </div>
+              <span class="mobile-username">{{ currentUser?.username }}</span>
+            </div>
+            <div class="mobile-profile-actions">
+              <a class="profile-action" (click)="temploading.switchWithLoading('user/profile', '', 2000); isMenuOpen = false">My Profile</a>
+              <a class="profile-action" (click)="temploading.switchWithLoading('user/settings', '', 2000); isMenuOpen = false">Settings</a>
+              <a class="profile-action" (click)="logoutAndClose()">Logout</a>
+            </div>
+          } @else {            
+              <app-navbar-accordion
+              [item]="profileItem"
+              >
+              </app-navbar-accordion>
+            }
+        </div>
+      </div>
+    </li>
   </ul>
 </div>
 <style>
