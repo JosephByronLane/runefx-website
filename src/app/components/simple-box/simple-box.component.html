@@ -1,4 +1,4 @@
-<a class="box" [href]="'/vfx/' + getItemSlug()" (click)="loader.switchWithLoading('/vfx/' + getItemSlug(), '', 1000, true, $event)">
+<a class="box" [href]="'/vfx/' + item.id" (click)="loader.switchWithLoading('/vfx/' +  item.id, '', 1000, true, $event)">
     <img src="{{item.imgsrc}}"/>
     <h3 class="sdr-text">{{item.title}}</h3>
 </a>

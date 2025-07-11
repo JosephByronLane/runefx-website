@@ -1,12 +1,13 @@
 export interface IVFXItem {
+  id:number;
   title: string;
   imgsrc: string;
   actualimage: string;
   desc: string;
-  director: string[];
+  directors: string[];
   producers: string[];
-  vfxsupe: string[];
-  vfxprod: string[];
-  animsupe: string[];
+  vfx_supervisors: string[];
+  vfx_producers: string[];
+  animation_supervisors: string[];
   year:string;
 }

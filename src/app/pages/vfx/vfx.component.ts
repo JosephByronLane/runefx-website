@@ -3,7 +3,6 @@ import { ShittyNavbarComponent } from '../../components/shitty-navbar/shitty-nav
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { ShowcaseGridComponent } from '../../components/showcase-grid/showcase-grid.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
-import { VfxDataFetcherService } from '../../services/vfx-data-fetcher.service';
 import { InitialLoadingService, browserRefresh } from '../../services/initial-loading.service';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
 import { IVFXItem } from '../../interfaces/IVFXItem';

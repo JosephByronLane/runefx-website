@@ -9,7 +9,6 @@ import { BackgroundVideoComponent } from '../../components/background-video/back
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { RButtonComponent } from '../../components/rbutton/rbutton.component';
-import { VfxDataFetcherService } from '../../services/vfx-data-fetcher.service';
 import { VfxService } from '../../services/vfx.service';
 import { IVFXItem } from '../../interfaces/IVFXItem';
 
@@ -17,7 +16,7 @@ import { IVFXItem } from '../../interfaces/IVFXItem';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, ShowcaseGridComponent, SimpleBoxComponent, LoadingScreenComponent, RouterModule, BackgroundVideoComponent, InfoBoxComponent, RButtonComponent],
+  imports: [NavbarComponent, ShowcaseGridComponent, LoadingScreenComponent, RouterModule, BackgroundVideoComponent, InfoBoxComponent, RButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
