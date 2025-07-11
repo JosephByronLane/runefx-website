@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpHandlerFn } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { inject  } from '@angular/core';
+import {  HttpRequest,  HttpEvent, HttpHandlerFn } from '@angular/common/http';
+import {  Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { IntermitentLoadingService } from '../services/intermitent-loading.service';
 import { InitialLoadingService } from '../services/initial-loading.service';
@@ -24,6 +24,7 @@ export function intermitentLoadingInterceptor(req:HttpRequest<any>, next:HttpHan
             initialLoading.hideInitialLoadingScreen();
           }, 500)
       } catch (error) {
+        console.error(error)
         intermitentLoading.setLoadingFalse();
         intermitentLoading.hideLoadingScreen();
         initialLoading.setisAPIRequestFalse();

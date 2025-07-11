@@ -1,7 +1,7 @@
 <app-background-video
-  [title]="item?.title"
+  [title]="item.title"
   [height]="'40vh'"
-  [src]="item?.actualimage"
+  [src]="item.actualimage"
   [scale]="1.2"
   [video]="0"
   [BottomPadding]="'.5vh'"
@@ -19,33 +19,33 @@
             <ng-template>
                 <div class="sdr-text">
                     <!-- god  bless these ifs -->
-                    @if(item.director.length > 0 && item.director !== ""){
+                    @if(item.directors.length > 0 && item.directors){
                         <p>Director:</p>
-                        <p>{{ item.director.join(', ') }}</p>
+                        <p>{{ item.directors.join(', ') }}</p>
                     }
 
-                    @if(item.producers.length > 0 && item.producers !=""){                        
+                    @if(item.producers.length > 0 && item.producers){                        
                         <br>
                         <p>Series Executive Producers:</p>
                         <p>{{ item.producers.join(', ') }}</p>
                     }
 
-                    @if(item.vfxsupe.length > 0 && item.vfxsupe !=""){
+                    @if(item.vfx_supervisors.length > 0 && item.vfx_supervisors){
                         <br>
                         <p>RuneFX Visual Effects Supervisor:</p>
-                        <p>{{ item.vfxsupe.join(', ') }}</p>
+                        <p>{{ item.vfx_supervisors.join(', ') }}</p>
                     }
 
-                    @if(item.vfxprod.length > 0  && item.vfxprod !=""){
+                    @if(item.vfx_producers.length > 0  && item.vfx_producers){
                         <br>
                         <p>RuneFX Visual Effects Producer:</p>
-                        <p>{{ item.vfxprod.join(', ') }}</p>
+                        <p>{{ item.vfx_producers.join(', ') }}</p>
                     }
 
-                    @if(item.animsupe.length > 0 && item.animsupe !=""){
+                    @if(item.animation_supervisors.length > 0 && item.animation_supervisors){
                         <br>
                         <p>RuneFX Animation Supervisor:</p>
-                        <p>{{ item.animsupe.join(', ') }}</p>
+                        <p>{{ item.animation_supervisors.join(', ') }}</p>
                     }
                 </div>
             </ng-template>

@@ -3,9 +3,10 @@ import { ShittyNavbarComponent } from '../../components/shitty-navbar/shitty-nav
 import { BackgroundVideoComponent } from '../../components/background-video/background-video.component';
 import { ShowcaseGridComponent } from '../../components/showcase-grid/showcase-grid.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
-import { VfxDataFetcherService } from '../../services/vfx-data-fetcher.service';
 import { InitialLoadingService, browserRefresh } from '../../services/initial-loading.service';
 import { IntermitentLoadingService } from '../../services/intermitent-loading.service';
+import { IVFXItem } from '../../interfaces/IVFXItem';
+import { VfxService } from '../../services/vfx.service';
 
 @Component({
   selector: 'app-vfx',
@@ -16,24 +17,32 @@ import { IntermitentLoadingService } from '../../services/intermitent-loading.se
 })
 export class VfxComponent implements OnInit{
   itemCount:number = 0;
-  ShowcaseList:any[]=[ ]
+  ShowcaseList:IVFXItem[]=[ ]
   filteredShowcaseList: any[] = [];
   public browserRefresh?: boolean;
 
-  constructor(private VfxData: VfxDataFetcherService, private loadingService: InitialLoadingService, public loader:InitialLoadingService){
+  constructor(private VfxData: VfxService, private loadingService: InitialLoadingService, public loader:InitialLoadingService){
   }
 
 
   //we use this to  1) get the data of the shows
   //and 2) see if brower refreshed (for loading screen)
   ngOnInit() {
-    this.ShowcaseList = this.VfxData.getAllItems();
-    this.itemCount = this.navItems.length;
+      this.VfxData.getShows()
+      .subscribe({
+        next: (value: IVFXItem[]) =>{
+          this.ShowcaseList = value;
+        },
+        error: (error) =>{
+          console.log(error);
+        }
+      })  
+      this.itemCount = this.navItems.length;
   }
 
   //filter shit by year so i can just dump it all into the huge json
   filterShowcaseListByYear(year: string) {
-    return this.filteredShowcaseList = this.ShowcaseList.filter(item => item.year === year);
+    return this.filteredShowcaseList = this.ShowcaseList.filter(item => item.year == year);
   }
   
   //nav items for shitty navbar. There should be one similar to this in /render
