@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://api.runefx.com/api'
+    apiUrl: 'https://api.runefx.org'
 
 };
