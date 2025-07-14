@@ -58,7 +58,7 @@ export const routes: Routes = [
         component: ForgeComponent
     },
     { 
-        path: 'vfx/:name',
+        path: 'vfx/:id',
         title: 'RuneFX | Showcase',
         component: ItemDetailComponent 
     },

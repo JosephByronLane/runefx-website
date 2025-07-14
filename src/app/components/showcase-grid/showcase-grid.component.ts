@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SimpleBoxComponent } from '../simple-box/simple-box.component';
 import { CommonModule } from '@angular/common'; 
+import { IVFXItem } from '../../interfaces/IVFXItem';
 
 @Component({
   selector: 'app-showcase-grid',
@@ -15,7 +16,7 @@ export class ShowcaseGridComponent {
   @Input() height!: number;
   @Input() gridX!: number;
   @Input() gridY!: number;
-  @Input() showcaseList!: any[]; 
+  @Input() showcaseList!: IVFXItem[]; 
   @Input() isExternalWebpage:boolean = false;
 
 //include in helper function

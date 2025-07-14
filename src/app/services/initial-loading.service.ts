@@ -43,8 +43,6 @@ export class InitialLoadingService {
     }, 1000)
   }
 
-
-
   //unhides the thingy by removing the disabled class, and the whole animaiton plays
   showInitialLoadingScreen(path: string, refreshed:boolean):void{
     if(refreshed){
@@ -54,7 +52,7 @@ export class InitialLoadingService {
         if(!this.isAPIRequest.getValue()){
           this.hideInitialLoadingScreen()
         }
-      }, 1000)
+      }, 3000)
     }
   }
 
