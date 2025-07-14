@@ -72,7 +72,6 @@ export class IntermitentLoadingService {
     if (!this.enabled) {
       return;
     }
-
     
     if(scrollToTop){
       this.utils.scrollToTop();
