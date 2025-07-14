@@ -1,9 +1,11 @@
 <div class="footer-section">
-    <h4 (click)="navbarTools.scrollToTop(); temploading.switchWithLoading('vfx', '',1000)">{{item.title}}</h4>
+    <h4 (click)="navbarTools.scrollToTop(); temploading.switchWithLoading(item.link)">{{item.title}}</h4>
     <ul class="list-container">
         @for (subItem of item.items; track $index) {
             <li>
-                <a class="list-item"(click)="temploading.switchWithLoading('vfx','2024',1000)">{{subItem.displayString}}</a>
+                <a class="list-item"(click)="temploading.switchWithLoading(subItem.link ? subItem.link : item.link,
+                 subItem.link  ? '' : subItem.scrollTo
+                 )">{{subItem.displayString}}</a>
             </li>
         }
     </ul>

@@ -7,7 +7,7 @@
       <ul>
         @for (item of dropdownItem.items; track $index) {
           <li (click)="tempLoadingService.switchWithLoading(
-            item.link || dropdownItem.link, 
+            item.link ? item.link : dropdownItem.link, 
             item.link ? '' : item.scrollTo, 
             2000, true, $event)">
             <a [href]="(item.link || dropdownItem.link) + (item.scrollTo ? '#' + item.scrollTo : '')">{{ item.displayString }}</a>
