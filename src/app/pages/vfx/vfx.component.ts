@@ -34,7 +34,7 @@ export class VfxComponent implements OnInit{
           this.ShowcaseList = value;
         },
         error: (error) =>{
-          console.log(error);
+          console.error(error);
         }
       })  
       this.itemCount = this.navItems.length;

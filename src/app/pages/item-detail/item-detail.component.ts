@@ -28,7 +28,7 @@ export class ItemDetailComponent {
           this.item = value
         },
         error: (error: HttpErrorResponse) =>{
-          console.log(error);
+          console.error(error);
           if (error.status){
             loadingService.switchWithLoading('404')
           }

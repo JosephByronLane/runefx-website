@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit{
           this.ShowcaseList = value.slice(0,sliceNumber);
         },
         error: (error) =>{
-          console.log(error);
+          console.error(error);
         }
       })    
 

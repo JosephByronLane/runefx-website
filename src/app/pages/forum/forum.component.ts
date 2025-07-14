@@ -83,7 +83,7 @@ export class ForumComponent implements OnInit {
           this.breadcrumbs.push({text: value.title, link: 'forum/'+value.id+'/'+value.slug});
         },
         error: (error) =>{
-          console.log(error);
+          console.error(error);
         }
       })
     }
@@ -106,12 +106,12 @@ export class ForumComponent implements OnInit {
               this.breadcrumbs.push(breadcrumbTempSubtopic);
             },
             error: (error) =>{
-              console.log(error);
+              console.error(error);
             }
           })
         },
         error: (error) =>{
-          console.log(error);
+          console.error(error);
         }
       })
 
@@ -156,20 +156,20 @@ export class ForumComponent implements OnInit {
                           this.breadcrumbs.push(breadcrumbTempPost);
                         },
                         error: (error) =>{
-                          console.log(error);
+                          console.error(error);
                         }
                       })                    
                   }
                 },
                 error: (error) =>{
-                  console.log(error);
+                  console.error(error);
                 }
               })      
             }
           }
         },
         error: (error) =>{
-          console.log(error);
+          console.error(error);
         }
       })
     }
@@ -186,7 +186,7 @@ export class ForumComponent implements OnInit {
           this.topicData = [value];
         },
         error: (error) =>{
-          console.log(error);
+          console.error(error);
           this.errorLoadingTopics = true;
         }
       })
@@ -200,7 +200,7 @@ export class ForumComponent implements OnInit {
           this.subtopicData = value;
         },
         error: (error) =>{
-          console.log(error);
+          console.error(error);
           this.errorLoadingTopics = true;
         }
       })
@@ -214,7 +214,7 @@ export class ForumComponent implements OnInit {
           this.postData = value;
         },
         error: (error) =>{  
-          console.log(error);
+          console.error(error);
           this.errorLoadingTopics = true;
         }
       })
@@ -227,7 +227,7 @@ export class ForumComponent implements OnInit {
         this.topicData = value;
       },
       error: (error) =>{
-        console.log(error);
+        console.error(error);
         this.errorLoadingTopics = true;
       }
     })
