@@ -64,7 +64,7 @@ export class IntermitentLoadingService {
   }
 
   
-  switchWithLoading(routePath: string, scrollToId?: string, duration: number = 3000, scrollToTop: boolean = true, event?: MouseEvent, ) {
+  switchWithLoading(routePath?: string, scrollToId?: string, duration: number = 3000, scrollToTop: boolean = true, event?: MouseEvent, ) {
     if (event && !event.ctrlKey && !event.metaKey && event.button === 0) {
       event.preventDefault();
     }     
@@ -72,7 +72,6 @@ export class IntermitentLoadingService {
     if (!this.enabled) {
       return;
     }
-
     
     if(scrollToTop){
       this.utils.scrollToTop();
@@ -85,7 +84,7 @@ export class IntermitentLoadingService {
           setTimeout(() => { 
             const element = document.getElementById(scrollToId);
             element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 0); 
+          }, 500); 
         }
 
       }).catch((error) => {

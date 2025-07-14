@@ -14,8 +14,10 @@ import { FooterItemComponent } from '../footer-item/footer-item.component';
 export class FooterComponent {
 
   footerItems: IDropdownItem[] = navbarItems;
-
   currentYear = new Date().getFullYear();
-  constructor(public temploading: IntermitentLoadingService, public navbarTools:NavbarStuffService) {}
+  constructor(public temploading: IntermitentLoadingService, public navbarTools:NavbarStuffService) {
+      console.log(this.footerItems)
+
+  }
 
 }
