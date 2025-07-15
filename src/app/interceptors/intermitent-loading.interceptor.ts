@@ -28,6 +28,8 @@ export function intermitentLoadingInterceptor(req:HttpRequest<any>, next:HttpHan
             intermitentLoading.hideLoadingScreen();
             initialLoading.setisAPIRequestFalse();
             initialLoading.hideInitialLoadingScreen();
+
+            requestsPending = 0;
           }, 500)
         }
 
@@ -39,6 +41,9 @@ export function intermitentLoadingInterceptor(req:HttpRequest<any>, next:HttpHan
           intermitentLoading.hideLoadingScreen();
           initialLoading.setisAPIRequestFalse();
           initialLoading.hideInitialLoadingScreen();
+
+          requestsPending = 0;
+
         }
 
 
