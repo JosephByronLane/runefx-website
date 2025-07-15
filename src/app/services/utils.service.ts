@@ -48,7 +48,6 @@ export class UtilsService {
     const containerRect = containerElement.getBoundingClientRect();
     const containerTop = containerRect.top + window.scrollY;
     const containerHeight = containerRect.height;
-    const windowHeight = window.innerHeight;
 
     const scrolled = window.scrollY+400;
     const offset = scrolled - containerTop;
@@ -60,10 +59,9 @@ export class UtilsService {
     const maxTranslateY = padding;
     const minTranslateY = -padding;
 
-    if (scrolled > containerTop - windowHeight && scrolled < containerTop + containerHeight) {
-      const boundedTranslateY = Math.max(minTranslateY, Math.min(translateY, maxTranslateY));
-      renderer.setStyle(parallaxElement, 'transform', `translateY(${boundedTranslateY}px)`);
-    }
+    const boundedTranslateY = Math.max(minTranslateY, Math.min(translateY, maxTranslateY));
+    renderer.setStyle(parallaxElement, 'transform', `translateY(${boundedTranslateY}px)`);
+  
   }
   units = [
     { label: 'year', seconds: 31536000 },

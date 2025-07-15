@@ -57,6 +57,7 @@ export class BackgroundVideoComponent implements OnInit {
 
   
   textAnimationState: 'hidden' | 'visible' = 'hidden';
+  hasElementBeenViewed = 0;
 
   //the parent element of the title-text and description-text
   @ViewChild('textContainerElement') textContainerElement!: ElementRef;
@@ -140,7 +141,9 @@ export class BackgroundVideoComponent implements OnInit {
     if (this.video==0){
       this.updateVideoParallax();
     }
-    this.textAnimationState = this.utils.isElementInView(this.textContainerElement) ? 'visible' : 'hidden';
+    if (this.utils.isElementInView(this.textContainerElement)){
+      this.textAnimationState = 'visible';
+    }
   } 
 
   ngAfterViewInit() {    
@@ -161,15 +164,17 @@ export class BackgroundVideoComponent implements OnInit {
   simulateScroll(): void {
     if (this.video === 0) {
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
-      
-      window.scrollTo(0, currentScrollY + 1);
+      window.scrollTo(0, 0);
       
       this.updateVideoParallax();
-      
-      setTimeout(() => {
-        window.scrollTo(0, currentScrollY);
-        this.updateVideoParallax();
-      }, 10);
+    
+      window.scrollTo({
+        top: currentScrollY,
+        left: 0,
+        behavior: 'smooth'
+      });
+      this.updateVideoParallax();   
+
     }
   }
 
