@@ -98,3 +98,10 @@ And last but not least, to the various VFX companies (or VFX adjacent) whose web
 - [SideFX](https://www.sidefx.com/) (I literally copied their footer design, also the `RQueue` is based on their `HQueue`),
 - [Theory Accelerated](https://www.theoryaccelerated.com/) (For the `Axiom` section, which is literally just their (really good, go check it out) `Axiom solver`, but rebranded with `RuneFX` stuff.)
 - [QuadSpinner](https://quadspinner.com/) (For the `Forge` section, which is literally just their (also really good, go check it out) `Gaea`.)
+
+
+## Stuff to do incase I ever come back to this project
+- [ ] Make/find a way to have the intermitent-loading also accept when an iframe begins playing, so that the page doesn't load until the video is ready to go.
+- [ ] Refactor the whole codebase cause the whole foundation and base of the project was made when it was smaller, and now that its grown i kinda need to reorganize it.
+- [ ] More releases for the release page?
+- [ ] Make accesibility improvements.
