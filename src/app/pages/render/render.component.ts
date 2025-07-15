@@ -21,6 +21,6 @@ export class RenderComponent {
     { text: 'Rendering', targetId: 'Rendering' },
     { text: 'Simulations', targetId: 'Simulations' },
     { text: 'Parallelization', targetId: 'Parallelization' },
-    { text: 'Machine Learning', targetId: 'Machine' }
+    { text: 'Machine Learning', targetId: 'MachineLearning' }
   ];
 }

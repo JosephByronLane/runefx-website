@@ -16,7 +16,12 @@ export class ShittyNavbarComponent {
   scrollToElement(targetId: string, offset: number): void {
     const element = document.getElementById(targetId);
     if (element) {
-      element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - 110,
+        behavior: 'smooth'
+      });
+
     }
   }
   
