@@ -21,7 +21,7 @@
                 <p class="sdr-text" [ngStyle]="{'font-size': descriptionFontSize,  'text-align':textAlignment}">{{ description }}</p>
             }
             @if(button===1){
-                <app-rbutton [sendTo]="ButtonLink" [buttonText]="ButtonText" class="action-button" [buttonAlignment]="ButtonAlignment" [loadingDuration]="LoadingDuration" [isExternalWebpage]="isExternalWebpage"/>
+                <app-rbutton [sendTo]="ButtonLink" [buttonText]="ButtonText" class="action-button" [buttonAlignment]="ButtonAlignment" [loadingDuration]="LoadingDuration" [isExternalWebpage]="isExternalWebpage" [scrollToTop]="true"/>
             }
         </div>
         <div class="credits-text">

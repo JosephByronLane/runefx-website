@@ -73,9 +73,7 @@ export class IntermitentLoadingService {
       return;
     }
     
-    if(scrollToTop){
-      this.utils.scrollToTop();
-    }
+
     this.showLoadingScreen()
 
     setTimeout(() => {
@@ -85,6 +83,11 @@ export class IntermitentLoadingService {
             const element = document.getElementById(scrollToId);
             element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 500); 
+        }
+        if(scrollToTop){
+          setTimeout(() => { 
+            this.utils.scrollToTop();
+          }, 500);
         }
 
       }).catch((error) => {
