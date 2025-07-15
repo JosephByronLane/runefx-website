@@ -10,12 +10,23 @@
 </app-background-video>
 
 <app-info-box title="Recent Projects" id="recent" >
+
     <ng-template>
+      @if (ShowcaseList.length>0) {
         <div class="grid">
             <app-showcase-grid [width]="100" [height]="100" [gridX]="3" [gridY]="1" [showcaseList]="ShowcaseList"></app-showcase-grid>
             <app-rbutton [sendTo]="'vfx'"/>
         </div>
+      }
+      @else {
+        <app-error-warning-ox
+          [errorMessage]="'Error loading recent shows.'"
+          [errorDescription]="'If this error persists contact the site administrator.'"
+        />
+      }
+
       </ng-template>
+
 </app-info-box>
 
 <app-background-video

@@ -11,12 +11,13 @@ import { InfoBoxComponent } from '../../components/info-box/info-box.component';
 import { RButtonComponent } from '../../components/rbutton/rbutton.component';
 import { VfxService } from '../../services/vfx.service';
 import { IVFXItem } from '../../interfaces/IVFXItem';
+import { ErrorWarningOxComponent } from '../../components/error-warning-ox/error-warning-ox.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, ShowcaseGridComponent, LoadingScreenComponent, RouterModule, BackgroundVideoComponent, InfoBoxComponent, RButtonComponent],
+  imports: [NavbarComponent, ShowcaseGridComponent, LoadingScreenComponent, RouterModule, BackgroundVideoComponent, InfoBoxComponent, RButtonComponent, ErrorWarningOxComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
