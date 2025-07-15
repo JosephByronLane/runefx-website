@@ -94,10 +94,10 @@ And last but not least, to the various VFX companies (or VFX adjacent) whose web
 - [WetaFX](https://www.wetafx.co.nz/) For a few of their tecnologies to put in the `Technologies` section, 
 - [ILM](https://www.ilm.com/) From whom I got most of the shows that "RuneFX" has made, 
 - [RenderMan](https://renderman.pixar.com/) Also used for general inspiration, and a few bits of `Runic Renderer` description and pricing,
-- [Maxon Redshift](https://www.maxon.net/en/redshift) (Mostly for the forums design and description of `Runic Renderer`),
-- [SideFX](https://www.sidefx.com/) (I literally copied their footer design, also the `RQueue` is based on their `HQueue`),
-- [Theory Accelerated](https://www.theoryaccelerated.com/) (For the `Axiom` section, which is literally just their (really good, go check it out) `Axiom solver`, but rebranded with `RuneFX` stuff.)
-- [QuadSpinner](https://quadspinner.com/) (For the `Forge` section, which is literally just their (also really good, go check it out) `Gaea`.)
+- [Maxon Redshift](https://www.maxon.net/en/redshift) Mostly for the forums design and description of `Runic Renderer`,
+- [SideFX](https://www.sidefx.com/) I literally copied their footer design, also the `RQueue` is based on their `HQueue`,
+- [Theory Accelerated](https://www.theoryaccelerated.com/) For the `Axiom` section, which is literally just their (really good, go check it out) `Axiom solver`, but rebranded with `RuneFX` stuff.
+- [QuadSpinner](https://quadspinner.com/) For the `Forge` section, which is literally just their (also really good, go check it out) `Gaea`.
 
 
 ## Stuff to do incase I ever come back to this project
