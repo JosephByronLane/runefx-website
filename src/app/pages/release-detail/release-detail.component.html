@@ -1,4 +1,5 @@
-<app-background-video
+@if (release.showcase_picture_url!=undefined) {
+  <app-background-video
   [title]="release.title"
   [description]="release.description"
   [height]="'40vh'" 
@@ -36,5 +37,10 @@
     }
   }
 </div>
-
-
+}
+@else {
+  <app-error-warning-ox
+      [errorMessage]="'Whoops! The page isnt done loading yet!'"
+      [errorDescription]="'Hopefully this message dissapears soon and you see the actual content.'"
+  />
+}

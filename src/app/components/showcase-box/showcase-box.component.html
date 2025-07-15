@@ -1,5 +1,5 @@
 <a class="showcase-root" 
-     (click)="tempLoadingService.switchWithLoading(redirectTo, '', 2000)" 
+     (click)="handleClick($event)" 
      [style.--image-split]="imageSplit + '%'"
      [attr.aria-label]="title"
      [href]="redirectTo"

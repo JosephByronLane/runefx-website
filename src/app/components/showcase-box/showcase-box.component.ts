@@ -17,4 +17,9 @@ export class ShowcaseBoxComponent {
   @Input() imageSplit: number = 50;
 
   constructor(readonly tempLoadingService: IntermitentLoadingService) { }
+
+  handleClick(event: MouseEvent){
+    event.preventDefault();
+    this.tempLoadingService.switchWithLoading(this.redirectTo, '', 2000)
+  }
 }
