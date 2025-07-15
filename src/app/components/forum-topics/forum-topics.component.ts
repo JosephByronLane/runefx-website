@@ -22,13 +22,12 @@ export class ForumTopicsComponent implements OnChanges{
     slug: "error-topic"  
   };
 
-  isResponsive: boolean = true;
+  isResponsive: boolean = false;
   formatedDate: string = 'Error retrieving date';
   constructor(    public readonly utilsService: UtilsService, public readonly loadingService: IntermitentLoadingService, public readonly forumService: ForumService, private readonly title: Title) {
     if(window.screen.width < 1600){
       this.isResponsive = true;
     }
-    
   }
 
   ngOnChanges(changes: SimpleChanges): void {
