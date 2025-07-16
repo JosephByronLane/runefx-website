@@ -9,7 +9,9 @@
           <li (click)="tempLoadingService.switchWithLoading(
             item.link ? item.link : dropdownItem.link, 
             item.link ? '' : item.scrollTo, 
-            2000, true, $event)">
+            2000, 
+            item.link ? true : false, 
+            $event)">
             <a [href]="(item.link || dropdownItem.link) + (item.scrollTo ? '#' + item.scrollTo : '')">{{ item.displayString }}</a>
           </li>        
         }

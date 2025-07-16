@@ -27,7 +27,18 @@ export class UtilsService {
 
     return result;
   }
+  scrollToElement(targetId: string, offset: number): void {
+    const element = document.getElementById(targetId);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - 110,
+        behavior: 'smooth'
+      });
 
+    }
+  }
+  
   isElementInView(element: ElementRef): boolean {
     if (!element){
       return false;

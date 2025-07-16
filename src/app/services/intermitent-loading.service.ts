@@ -80,11 +80,11 @@ export class IntermitentLoadingService {
       this.router.navigate([routePath]).then((_) => { 
         if (scrollToId || scrollToId === '') {
           setTimeout(() => { 
-            const element = document.getElementById(scrollToId);
-            element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            let scrollOffset = screen.height/100;
+            this.utils.scrollToElement(scrollToId, scrollOffset)
           }, 500); 
         }
-        if(scrollToTop){
+        else if(scrollToTop){
           setTimeout(() => { 
             this.utils.scrollToTop();
           }, 500);

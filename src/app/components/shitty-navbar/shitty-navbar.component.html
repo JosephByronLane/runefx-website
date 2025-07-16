@@ -9,7 +9,7 @@
         <ul [ngStyle]="{'grid-template-columns': 'repeat(' + gridColumnCount + ', 1fr)'}">
             @for (item of navItems; track  $index){
                 <li>
-                    <a (click)="scrollToElement(item.targetId, 0)" class="sdr-text">{{ item.text }}</a>
+                    <a (click)="utilsService.scrollToElement(item.targetId, -100)" class="sdr-text">{{ item.text }}</a>
                 </li>
             }
         </ul>
