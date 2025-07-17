@@ -7,13 +7,12 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class IntermitentLoadingService {
-  private loadingscreenelement: any
-
+  private loadingscreenelement: HTMLElement | null = null
+  private mainBodyElement: HTMLElement | null = null
   //
   // USE THIS FLAG TO KEEP THE INTERMITENT SCREEN ON, IT WONT FADE
   //
 
-  private readonly keepOn:boolean = false; //keeps the loading screen on definetively, ej it never goes away
   private readonly enabled:boolean=true; //disables the loading screen, ej switching without the loading screen appearing
 
 
@@ -23,6 +22,7 @@ export class IntermitentLoadingService {
 
   constructor(private readonly router: Router, private  readonly utils: UtilsService, private readonly logger: LoggerService
   ) {
+
   }
 
   setLoadingFalse (){
@@ -36,10 +36,15 @@ export class IntermitentLoadingService {
 
    showLoadingScreen() { 
     this.loadingscreenelement = document.getElementById('splash-screen-intermitent'); 
-    if (!this.loadingscreenelement || !this.enabled){
+    this.mainBodyElement =  document.getElementById('super-duper-main-root')
+
+    if (!this.loadingscreenelement || !this.enabled || !this.mainBodyElement){
       this.logger.log(LogLevel.Error, 'Loading screen element not found or loading disabled');
       return;
     }
+
+
+    this.mainBodyElement.classList.add('main-body-hidden')
     this.logger.log(LogLevel.Info, 'Showing loading screen');
     this.loadingscreenelement.classList.remove("disabled");
     this.loadingscreenelement.classList.add("fade-in");
@@ -49,17 +54,23 @@ export class IntermitentLoadingService {
     if (!this.enabled) return;
     
     setTimeout(() => {
-      if(!this.keepOn){
-        this.loadingscreenelement = document.getElementById('splash-screen-intermitent');
-        if (this.loadingscreenelement) {
-          this.logger.log(LogLevel.Info, 'Hiding loading screen');
-          this.loadingscreenelement.classList.add("fade-out");
-          this.loadingscreenelement.classList.remove("fade-in");
-          this.isLoading.next(false);
-        } else {
-          this.logger.log(LogLevel.Error, 'Loading screen element not found when trying to hide');
-        }
+      if (!this.loadingscreenelement || !this.enabled || !this.mainBodyElement){
+        this.logger.log(LogLevel.Error, 'Loading screen element not found or loading disabled');
+        return;
       }
+
+      this.mainBodyElement.classList.remove('main-body-hidden')
+
+      this.loadingscreenelement = document.getElementById('splash-screen-intermitent');
+      if (this.loadingscreenelement) {
+        this.logger.log(LogLevel.Info, 'Hiding loading screen');
+        this.loadingscreenelement.classList.add("fade-out");
+        this.loadingscreenelement.classList.remove("fade-in");
+        this.isLoading.next(false);
+      } else {
+        this.logger.log(LogLevel.Error, 'Loading screen element not found when trying to hide');
+      }
+      
     }, 500);
   }
 
@@ -73,6 +84,7 @@ export class IntermitentLoadingService {
       return;
     }
     
+
 
     this.showLoadingScreen()
 

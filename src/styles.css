@@ -36,6 +36,11 @@ a{
     --responsive-threshhold: 1150px
   }
 
+/* used only on the main body in index.html to stop scrolling */
+.main-body-hidden{
+    overflow: hidden;
+}
+
 
 .title-text{
     font-family: 'Open Sans', sans-serif;

@@ -26,6 +26,8 @@ export function intermitentLoadingInterceptor(req:HttpRequest<any>, next:HttpHan
           setTimeout(()=>{
             intermitentLoading.setLoadingFalse();
             intermitentLoading.hideLoadingScreen();
+
+
             initialLoading.setisAPIRequestFalse();
             initialLoading.hideInitialLoadingScreen();
 
