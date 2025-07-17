@@ -48,11 +48,6 @@ export class InitialLoadingService {
     if(refreshed){
       const element = document.getElementById('splash-screen-initial');
       element?.classList.remove("disabled")  
-      setTimeout(()=>{
-        if(!this.isAPIRequest.getValue()){
-          this.hideInitialLoadingScreen()
-        }
-      }, 3000)
     }
   }
 
