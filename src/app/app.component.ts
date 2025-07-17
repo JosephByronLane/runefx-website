@@ -44,7 +44,7 @@ export class AppComponent {
         pathString = pathString.split('/')[1];
         if (pathString===undefined) pathString=''
         if(this.showLoadingScreen){
-          initloader.showInitialLoadingScreen(pathString, refreshed);       
+          initloader.showInitialLoadingScreen(refreshed);       
 
         }
       }

@@ -18,36 +18,40 @@ export class InitialLoadingService {
   //
   //
 
-
+  private loadingscreenelement: HTMLElement | null = null
+  private mainBodyElement: HTMLElement | null = null
   
-  //we add the class of .fade-out so that it begins fading out.
-  //who would of thought, eh?
-  hideInitialLoadingScreen(): void {
-    const element = document.getElementById('splash-screen-initial');
-    const logo = document.getElementById('splash-logo-initial');
 
-    if (element && logo) {
-      element.classList.add('fade-out');
-      logo.classList.add('fade-out-tl');
+  hideInitialLoadingScreen(): void {   
+    if (!this.loadingscreenelement) return;
+    if (!this.mainBodyElement) return;
 
-      setTimeout(() => {
-        element.classList.add('disabled');
-        element.classList.remove('fade-out');
+    this.mainBodyElement.classList.remove('main-body-hidden')
+    this.loadingscreenelement.classList.add('fade-out');
 
-        logo.classList.add('disabled');
-        logo.classList.remove('fade-out-tl');
-      }, 1000); 
-    }
+    setTimeout(() => {
+      if (!this.loadingscreenelement) return;
+
+      this.loadingscreenelement.classList.add('disabled');
+      this.loadingscreenelement.classList.remove('fade-out');    
+    }, 1000); 
+
     setTimeout(()=>{
-      element?.classList.add("disabled")    
+      if (!this.loadingscreenelement || !this.mainBodyElement) return;
+
+      this.loadingscreenelement.classList.add("disabled")    
     }, 1000)
   }
 
-  //unhides the thingy by removing the disabled class, and the whole animaiton plays
-  showInitialLoadingScreen(path: string, refreshed:boolean):void{
+  showInitialLoadingScreen(refreshed:boolean):void{
+    this.loadingscreenelement = document.getElementById('splash-screen-initial');
+    this.mainBodyElement =  document.getElementById('super-duper-main-root')
+
+    if (!this.loadingscreenelement || !this.mainBodyElement) return;
     if(refreshed){
-      const element = document.getElementById('splash-screen-initial');
-      element?.classList.remove("disabled")  
+      this.loadingscreenelement.classList.remove("disabled")  
+      this.mainBodyElement.classList.add('main-body-hidden')
+
     }
   }
 
